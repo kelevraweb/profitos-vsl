@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>profitOS · Andrea Audisio</title>
+<meta name="description" content="Un sistema che ti porta clienti gia decisi, senza setter e senza closer.">
+<style>html,body{margin:0;padding:0;background:#0C0908}</style>
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/3624e535-0ed0-45c2-9694-b04d72b2e7f6/players/6aa6edc426a2d95f642e484b/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/3624e535-0ed0-45c2-9694-b04d72b2e7f6/6aa6ed14ebc33034308eb00a/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
+</head>
+<body>
+<!-- ================================================================
+     VSL profitOS · blocco unico per GoHighLevel
+     Incollalo in un elemento "Custom Code / HTML" a piena larghezza.
+     Niente doctype, html, head o body: li mette GHL.
+     Tutto il CSS è agganciato a .pos, gli id sono prefissati pos-.
+     Da riempire: URL_CHIAMATA, nel blocco CONFIG in fondo.
+     ================================================================ -->
+
+<!-- ================================================================
+     PLAYER · precaricamento
+     Questi tag funzionano anche qui, ma il posto giusto e' l'HEAD:
+     in GoHighLevel -> Impostazioni pagina -> Tracking Code -> Header.
+     Spostandoli li' il player parte prima, perche' il browser li vede
+     mentre sta ancora scaricando il resto della pagina.
+     ================================================================ -->
+<div class="pos" id="pos-vsl">
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@600;800&display=swap");
+
+.pos{
+  --acc:#FF6B00; --bg:#0C0908; --s2:#110C0A; --s3:rgba(15,11,9,.88);
+  --txt:rgba(240,232,226,.8); --dim:rgba(240,232,226,.62); --bor:rgba(255,107,0,.15);
+  --neg:rgb(158,145,138);
+  --black:'Arial Black','Helvetica Neue',Helvetica,Arial,sans-serif;
+  background:var(--bg);color:#fff;
+  font:16px/1.7 'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;
+}
+.pos *{box-sizing:border-box}
+.pos p,.pos h1,.pos h2,.pos h3,.pos h4,.pos ul,.pos ol{margin:0}
+.pos a{color:inherit;text-decoration:none}
+.pos .wide{max-width:76rem;margin:0 auto;padding:0 40px}
+.pos .sez{padding:88px 0}
+.pos .marchio{font-family:Figtree,'Helvetica Neue',Arial,sans-serif;font-weight:800;
+  letter-spacing:-.8px;line-height:1}
+.pos .et{color:var(--acc);font-size:12px;font-weight:700;letter-spacing:2.3px;
+  text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.pos .et::before{content:"";width:6px;height:6px;background:var(--acc);border-radius:2px 50% 50% 50%}
+.pos h2{font-family:var(--black);font-weight:900;font-size:48px;line-height:56px;
+  letter-spacing:-1.8px;margin-top:16px;text-wrap:balance}
+.pos .intro{max-width:38rem;margin-top:20px;color:var(--txt);font-size:18px;line-height:30px}
+.pos .intro b,.pos .sub b{color:#fff;font-weight:600}
+.pos .centro{text-align:center}
+.pos .centro h2,.pos .centro .intro{margin-left:auto;margin-right:auto}
+.pos .centro .et{justify-content:center}
+
+/* barra */
+.pos .barra{display:flex;align-items:center;justify-content:center;height:84px;
+  border-bottom:1px solid var(--bor)}
+.pos .barra .marchio{font-size:34px;letter-spacing:-1.2px}
+
+/* hero */
+.pos .hero{position:relative;overflow:hidden;padding:72px 0 88px}
+.pos .hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(110% 60% at 50% 0%,rgba(255,107,0,.18),transparent 55%)}
+.pos .hero .wide{position:relative}
+.pos h1{font-family:var(--black);font-weight:900;font-size:56px;line-height:72px;
+  letter-spacing:-1.6px;text-wrap:balance;max-width:22ch}
+/* Su desktop 22ch lasciava il titolo su sei righe strette con 400px di vuoto
+   a destra. Misura più larga, quattro righe, e il blocco riempie la colonna. */
+@media (min-width:1025px){
+  .pos h1{font-size:52px;line-height:68px;letter-spacing:-1.4px;max-width:30ch}
+  .pos .hero .sub{max-width:46rem;font-size:18px;line-height:31px}
+  .pos .hero{padding:88px 0 96px}
+}
+.pos mark{background:var(--acc);color:var(--bg);padding:5px 14px;border-radius:10px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.pos .sub{max-width:40rem;margin-top:28px;color:var(--txt);font-size:17px;line-height:29px}
+.pos .nowrap{white-space:nowrap;color:var(--acc)}
+/* Hero al centro a ogni larghezza. La condizione stava dentro l'h1 e alla
+   dimensione del titolo mangiava due righe; ora è una riga a sé, e il blocco
+   arancione non si spezza più a metà. */
+.pos .hero .wide{text-align:center}
+.pos .hero h1{max-width:19ch;margin-left:auto;margin-right:auto}
+.pos .cond{max-width:34rem;margin:22px auto 0;color:var(--txt);
+  font-weight:700;font-size:19px;line-height:28px}
+.pos .hero .sub,.pos .conto{margin-left:auto;margin-right:auto}
+/* questa headline e' lunga: alla misura piena occuperebbe tutto lo schermo */
+.pos .hero h1{font-size:clamp(28px,3.5vw,52px);line-height:1.16;letter-spacing:-1.4px;
+  max-width:none;text-wrap:balance}
+.pos .hero .cond{max-width:58ch;margin-left:auto;margin-right:auto}
+@media (max-width:1024px){.pos .hero h1{font-size:clamp(26px,5.4vw,34px);max-width:none}}
+.pos mark{white-space:nowrap}
+
+/* countdown */
+.pos .conto{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px;
+  max-width:34rem;margin-top:32px;padding:20px 28px;border:1px solid var(--bor);
+  border-radius:16px;background:rgba(15,11,9,.4);text-align:center}
+.pos .pulsa{width:6px;height:6px;border-radius:50%;background:var(--acc);display:inline-block;
+  margin-right:8px;animation:pos-pulsa 1.6s ease-out infinite}
+@keyframes pos-pulsa{0%{box-shadow:0 0 0 0 rgba(255,107,0,.8)}70%{box-shadow:0 0 0 8px rgba(255,107,0,0)}}
+.pos .stato{color:var(--acc);font-size:12px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase}
+.pos .conto .titolo{font-size:18px;font-weight:700;letter-spacing:-.36px;margin-top:6px}
+.pos .cifre{display:flex;align-items:flex-start;gap:12px}
+.pos .cifra{min-width:44px;text-align:center}
+.pos .cifra b{display:block;font-size:35px;font-weight:800;line-height:35px;letter-spacing:-1px}
+.pos .cifra span{display:block;margin-top:6px;color:var(--dim);font-size:9px;
+  font-weight:600;letter-spacing:1.26px;text-transform:uppercase}
+.pos .duepunti{color:var(--dim);font-size:28px;font-weight:800;line-height:35px;font-style:normal}
+
+/* video */
+.pos .video{position:relative;margin-top:40px;border:1px solid var(--bor);border-radius:22px;
+  overflow:hidden;background:var(--s3);box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.pos .cornice{position:relative;padding-top:56.25%}
+.pos .cornice iframe,.pos .vuoto{position:absolute;inset:0;width:100%;height:100%;border:0}
+.pos .vuoto{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  color:var(--dim);font-size:13px;text-align:center;padding:0 24px}
+.pos .play{width:64px;height:64px;border-radius:50%;background:var(--acc);color:var(--bg);
+  display:flex;align-items:center;justify-content:center;font-size:22px}
+
+/* striscia */
+.pos .striscia{border-top:1px solid var(--bor);border-bottom:1px solid var(--bor);
+  padding:20px 0 24px;overflow:hidden;background:linear-gradient(rgba(15,11,9,0),rgba(15,11,9,.9))}
+.pos .striscia .titolo{max-width:76rem;margin:0 auto 14px;padding:0 40px;
+  color:var(--dim);font-size:11px;font-weight:600;letter-spacing:1.76px;text-transform:uppercase}
+.pos .pista{display:flex;gap:12px;width:max-content;animation:pos-scorri 52s linear infinite}
+@keyframes pos-scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.pos .tessera{display:flex;align-items:center;gap:12px;flex-shrink:0;
+  border:1px solid var(--bor);border-radius:16px;padding:12px 16px;background:rgba(15,11,9,.6)}
+.pos .sigla{width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:rgba(255,107,0,.08);
+  color:var(--acc);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.pos .tessera .nome{font-size:13px;font-weight:600;line-height:16px;white-space:nowrap}
+.pos .tessera .ruolo{color:var(--dim);font-size:11px;line-height:13px;white-space:nowrap;display:block}
+.pos .tessera .num{font-size:23px;font-weight:800;letter-spacing:-.46px;white-space:nowrap}
+.pos .tessera .da,.pos .tessera .nota{color:var(--dim);font-size:13px;white-space:nowrap}
+
+/* caso grande */
+.pos .grande{display:grid;grid-template-columns:1.6fr 1fr;border:1px solid rgba(255,107,0,.08);
+  border-radius:26px;overflow:hidden;
+  background:radial-gradient(120% 140% at 12% 0%,rgba(255,107,0,.08),rgba(15,11,9,.5) 60%)}
+.pos .grande>div{padding:44px}
+.pos .cifrona{font-size:154px;line-height:138px;letter-spacing:-6px;font-weight:700;margin-top:20px}
+.pos .cifrona span{color:var(--acc)}
+.pos .col2{border-left:1px solid rgba(255,107,0,.08);display:flex;flex-direction:column;
+  justify-content:center;gap:30px}
+.pos .col2 p{color:var(--dim);font-size:12px;font-weight:600;letter-spacing:2.3px;text-transform:uppercase}
+.pos .col2 b{display:block;margin-top:8px;font-size:42px;line-height:1.1;letter-spacing:-.84px}
+.pos .col2 b.arancio{color:var(--acc)}
+.pos .col2 em{display:block;margin-top:6px;color:var(--dim);font-size:13px;
+  font-style:normal;font-weight:400;letter-spacing:0}
+
+/* ecosistema */
+.pos .eco{border:1px solid var(--bor);border-radius:24px;margin-top:36px;
+  background:rgba(17,12,10,.5);overflow:hidden}
+.pos .eco svg{display:block;width:100%}
+/* transform-box: senza, Safari misura l'origine sul bounding box
+   dell'elemento e l'anello ruota fuori asse */
+.pos #pos-eco-largo .anello{animation:pos-ruota 34s linear infinite;
+  transform-box:view-box;transform-origin:600px 300px}
+@keyframes pos-ruota{to{transform:rotate(360deg)}}
+.pos .nodo circle{transition:r .3s}
+.pos .nodo:hover circle.bolla{r:34}
+
+/* storie */
+.pos .storie{position:relative;margin-top:36px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.pos .rullo{display:flex;gap:14px;width:max-content;
+  animation:pos-scorri 80s linear infinite}
+.pos .storia{position:relative;flex:0 0 17.5rem;width:17.5rem;border:1px solid var(--bor);
+  border-radius:16px;overflow:hidden;background:var(--s3)}
+.pos .storia video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
+.pos .storia .capo{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;
+  padding:12px;background:linear-gradient(rgba(0,0,0,.55),transparent)}
+.pos .storia .capo img{width:28px;height:28px;flex:0 0 28px;border-radius:50%;object-fit:cover}
+.pos .storia .chi{display:flex;align-items:center;gap:6px;min-width:0;font-size:13px;font-weight:600}
+.pos .storia .chi span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pos .storia .spunta{width:14px;height:14px;flex:0 0 14px;border-radius:50%;background:#3897F0;
+  display:flex;align-items:center;justify-content:center;font-size:8px;font-style:normal}
+.pos .storia .ora{margin-left:auto;flex-shrink:0;color:var(--dim);font-size:12px}
+.pos .storia .piede{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;
+  gap:10px;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.pos .storia .piede a{flex-shrink:0;display:flex;align-items:center;gap:7px;border-radius:99px;
+  padding:8px 14px;background:var(--acc);color:var(--bg);font-size:13px;font-weight:700}
+.pos .storia .cat{min-width:0;font-size:13px;font-weight:500;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* mappa */
+.pos .mappa{border:1px solid var(--bor);border-radius:24px;margin-top:36px;padding:24px;
+  background:rgba(17,12,10,.5);min-height:120px}
+.pos .mappa svg{display:block;width:100%}
+.pos .m-terra{fill:#3A2A1E}
+.pos .m-on{fill:var(--acc);filter:drop-shadow(0 0 5px rgba(255,107,0,.9))}
+.pos .m-alone{fill:var(--acc);fill-opacity:.14;animation:pos-respiro 2.6s ease-in-out infinite}
+@keyframes pos-respiro{0%,100%{opacity:.32;r:22}50%{opacity:.08;r:34}}
+
+/* paesi */
+.pos .paesi{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.pos .paese{display:flex;align-items:center;gap:10px;border:1px solid var(--bor);
+  border-radius:99px;padding:10px 18px;background:rgba(15,11,9,.5);font-size:15px}
+.pos .paese i{width:8px;height:8px;border-radius:50%;background:var(--acc);
+  box-shadow:0 0 10px rgba(255,107,0,.9);animation:pos-pulsa 2.2s ease-out infinite}
+
+/* chi sono */
+.pos .chi{display:flex;gap:44px;align-items:flex-start}
+/* la foto è verticale 720x1280: in un quadrato tagliava testa e gambe,
+   quindi il riquadro è 3:4 con l'inquadratura tenuta in alto.
+   Dietro, un pannello arancione sfalsato fa da cornice. */
+.pos .ritratto{position:relative;flex:0 0 260px;width:260px}
+.pos .ritratto::before{content:"";position:absolute;inset:18px -18px -18px 18px;
+  border-radius:22px;background:linear-gradient(150deg,var(--acc),rgba(255,107,0,.28));
+  box-shadow:0 30px 70px rgba(255,107,0,.18)}
+.pos .ritratto img{position:relative;display:block;width:100%;height:347px;
+  border-radius:20px;object-fit:cover;object-position:center 20%;
+  border:1px solid rgba(255,107,0,.35)}
+.pos .chi p{color:var(--txt);font-size:17px;line-height:29px;margin-top:16px}
+
+/* fasi */
+.pos .fasi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.pos .fase{border:1px solid var(--bor);border-radius:20px;padding:32px;background:var(--s3);position:relative}
+.pos .fase .ordinale{font-size:64px;font-weight:800;line-height:1;color:rgba(255,107,0,.16);letter-spacing:-2px}
+.pos .fase .quale{color:var(--acc);font-size:11px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;margin-top:12px}
+.pos .fase h3{font-size:26px;line-height:32px;letter-spacing:-.8px;margin-top:8px}
+.pos .fase .quando{color:var(--dim);font-size:13px;font-weight:600;margin-top:6px}
+.pos .fase p{color:var(--txt);font-size:15px;line-height:25px;margin-top:16px}
+.pos .fase ul{margin-top:14px;padding:0;list-style:none}
+.pos .fase li{display:flex;gap:10px;padding:3px 0;color:var(--txt);font-size:15px;line-height:24px}
+.pos .fase li::before{content:"";flex:0 0 6px;height:6px;margin-top:9px;border-radius:50%;background:var(--acc)}
+
+/* costellazione */
+.pos .cielo{border:1px solid var(--bor);border-radius:24px;overflow:hidden;
+  background:rgba(17,12,10,.5);margin-top:36px}
+.pos .cielo svg{display:block;width:100%}
+.pos .didascalia{padding:0 16px 18px;color:var(--dim);font-size:11px;text-align:center}
+.pos #pos-cielo-stretto,.pos #pos-eco-stretto{display:none}
+
+/* per chi è */
+.pos .due{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.pos .colonna{border:1px solid var(--bor);border-radius:20px;padding:32px;background:var(--s3)}
+.pos .colonna h3{font-size:22px;line-height:28px;letter-spacing:-.6px;margin-bottom:18px}
+.pos .colonna ul{padding:0;list-style:none}
+.pos .colonna li{display:flex;gap:12px;padding:8px 0;color:var(--txt);font-size:16px;line-height:26px}
+.pos .colonna li b{color:#fff;font-weight:600}
+.pos .segno{flex:0 0 22px;height:22px;margin-top:3px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.pos .si .segno{background:rgba(255,107,0,.12);color:var(--acc)}
+.pos .no .segno{background:rgba(158,145,138,.14);color:var(--neg)}
+
+/* casi */
+.pos .griglia{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.pos .caso{border:1px solid var(--bor);border-radius:20px;padding:36px;background:var(--s3)}
+.pos .caso h3{font-size:19px;line-height:24px;letter-spacing:-.38px;margin-top:8px}
+.pos .caso .testa{display:flex;align-items:center;gap:16px}
+.pos .caso .testa img{flex:0 0 76px;width:76px;height:76px;border-radius:14px;
+  object-fit:cover;border:1px solid var(--bor)}
+.pos .caso .testa h3{margin-top:4px}
+.pos .caso p{color:var(--txt);font-size:15px;line-height:24px;margin-top:12px}
+.pos .impact{margin:20px 0 8px;color:var(--dim);font-size:11px;font-weight:700;
+  letter-spacing:1.6px;text-transform:uppercase}
+.pos .caso ul{padding:0;list-style:none}
+.pos .caso li{display:flex;gap:10px;padding:4px 0;color:var(--txt);font-size:15px;line-height:24px}
+.pos .caso li::before{content:"";flex:0 0 6px;height:6px;margin-top:9px;border-radius:50%;background:var(--acc)}
+
+/* faq */
+.pos .faq{max-width:52rem;margin-top:40px}
+.pos details{border:1px solid var(--bor);border-radius:16px;padding:22px 26px;
+  background:var(--s3);margin-bottom:12px}
+.pos summary{cursor:pointer;list-style:none;font-size:19px;font-weight:600;
+  letter-spacing:-.3px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.pos summary::-webkit-details-marker{display:none}
+.pos summary::after{content:"+";color:var(--acc);font-size:26px;font-weight:400;line-height:1}
+.pos details[open] summary::after{content:"–"}
+.pos details p{color:var(--txt);font-size:16px;line-height:27px;margin-top:14px}
+.pos details b{color:#fff;font-weight:600}
+
+/* filosofia */
+.pos .filo{border:1px solid var(--bor);border-radius:24px;padding:56px;margin-top:36px;
+  background:var(--s3);text-align:center}
+.pos .filo p{font-family:var(--black);font-weight:900;font-size:34px;line-height:48px;
+  letter-spacing:-1px;text-wrap:balance}
+.pos .filo p span{color:var(--acc)}
+.pos .firma{margin-top:24px;color:var(--dim);font-size:12px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase}
+
+/* bonus, cta, dock, footer */
+.pos .bonus{max-width:40rem;margin:44px auto 0;border:1px solid rgba(255,107,0,.08);
+  border-radius:24px;padding:32px 36px;background:var(--s3);text-align:left}
+.pos .bonus ul{margin-top:16px;padding:0;list-style:none}
+.pos .bonus li{display:flex;gap:12px;padding:8px 0;color:var(--txt);font-size:17px;line-height:27px}
+.pos .bonus li::before{content:"";flex:0 0 6px;height:6px;margin-top:11px;border-radius:50%;background:var(--acc)}
+.pos .bonus b{color:#fff;font-weight:600}
+.pos .bottone{display:inline-block;margin-top:36px;border-radius:99px;padding:22px 42px;
+  background:var(--acc);color:var(--bg);font-weight:600;font-size:17px;
+  transition:filter .2s,transform .2s}
+.pos .bottone:hover{filter:brightness(1.1)}
+.pos .bottone:active{transform:translateY(1px)}
+.pos .postilla{margin-top:16px;color:var(--dim);font-size:13px}
+.pos .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;border-top:1px solid var(--bor);
+  background:rgba(15,11,9,.94);transform:translateY(110%);
+  transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.pos .dock.on{transform:none}
+.pos .dock .wide{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 40px}
+.pos .dock p{font-size:15px;font-weight:600}
+.pos .dock a{border-radius:99px;padding:12px 26px;background:var(--acc);color:var(--bg);
+  font-weight:700;font-size:15px;white-space:nowrap}
+.pos footer{border-top:1px solid var(--bor);padding:48px 0 40px}
+.pos footer p{max-width:42rem;color:var(--dim);font-size:13px;line-height:20px}
+.pos footer .link{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;font-size:13px}
+.pos footer .link a{color:var(--txt);text-decoration:underline}
+
+@media (max-width:1024px){
+  .pos .wide{padding:0 24px}
+  .pos .sez{padding:64px 0}
+  .pos h1{font-size:40px;line-height:54px}
+  .pos h2{font-size:34px;line-height:42px;letter-spacing:-1.2px}
+  .pos .grande{grid-template-columns:1fr}
+  .pos .grande>div{padding:28px}
+  .pos .col2{border-left:0;border-top:1px solid rgba(255,107,0,.08);
+    flex-direction:row;flex-wrap:wrap;gap:24px 40px}
+  .pos .cifrona{font-size:92px;line-height:92px;letter-spacing:-3.7px}
+  .pos .chi{flex-direction:column;gap:24px}
+  .pos .ritratto{flex-basis:auto;width:200px}
+  .pos .ritratto img{height:267px}
+  .pos .ritratto::before{inset:14px -14px -14px 14px}
+  .pos .fasi,.pos .griglia,.pos .due{grid-template-columns:1fr}
+  .pos .filo{padding:32px}
+  .pos .filo p{font-size:24px;line-height:36px}
+}
+@media (max-width:571px){
+  .pos .storia{flex:0 0 13.5rem;width:13.5rem}
+  .pos h1{font-size:28px;line-height:42px;letter-spacing:-.5px}
+  .pos h2{font-size:26px;line-height:34px}
+  .pos .caso,.pos .bonus,.pos .fase,.pos .colonna{padding:22px}
+  .pos .cifra b{font-size:26px;line-height:26px}
+  .pos #pos-cielo-largo,.pos #pos-eco-largo{display:none}
+  .pos #pos-cielo-stretto,.pos #pos-eco-stretto{display:block}
+  /* su telefono l'hero va al centro: allineato a sinistra il titolo
+     lasciava una colonna sbilanciata e il countdown fuori asse */
+  .pos .hero .wide{text-align:center}
+  .pos h1{line-height:38px}
+  .pos .hero h1{max-width:none}
+  .pos .cond{margin-top:16px;font-size:17px;line-height:25px}
+  .pos .dock .wide{padding:12px 20px}
+  .pos .dock p{display:none}
+  .pos .dock a{width:100%;text-align:center}
+}
+</style>
+
+<div class="barra"><p class="marchio">profitOS</p></div>
+
+<header class="hero">
+  <div class="wide">
+    <h1>In 35 minuti ti mostro un business da <mark>100.000€ al mese</mark> in quattro nel team,
+    lavorando 3/4 ore al giorno: senza setter, senza closer, senza una chiamata a freddo.</h1>
+    <p class="cond">Non è la nicchia, né l&rsquo;offerta, né il posizionamento: quelle te le hanno
+    vendute. Nel 2026 la fiducia te la devi guadagnare, e le cose da fare per guadagnarla sono venti.
+    Le fai tutte tu, ed è per questo che non ne funziona nessuna.</p>
+    <p class="sub">Sono Andrea Audisio. Il mese scorso ho incassato <b>circa 100.000€ con quattro persone, tre part-time</b>: niente setter, niente closer, nessuna chiamata di vendita a freddo. È lo stesso sistema che tiene <b>tutti e quattro i miei business oltre i 50.000€ al mese</b> <b class="nowrap">(guarda il video)</b></p>
+
+    <div class="conto">
+      <div>
+        <p class="stato"><i class="pulsa"></i>Poche call a settimana</p>
+        <p class="titolo">Le faccio io, con due del team.</p>
+      </div>
+      <p style="flex:1 1 16rem;min-width:15rem;color:var(--dim);font-size:14px;line-height:22px">
+        Nessun contatore che scende: se questa settimana non c'è posto vuol dire che non c'è, e passi
+        alla successiva.</p>
+    </div>
+
+    <div class="video">
+      <vturb-smartplayer id="vid-6aa6edc426a2d95f642e484b" style="display:block;margin:0 auto;width:100%">
+        <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background:#000"></div>
+      </vturb-smartplayer>
+      <script>
+        (function () {
+          var s = document.createElement("script");
+          s.src = "https://scripts.converteai.net/3624e535-0ed0-45c2-9694-b04d72b2e7f6/players/6aa6edc426a2d95f642e484b/v4/player.js";
+          s.async = true;
+          document.head.appendChild(s);
+        })();
+      </script>
+    </div>
+  </div>
+</header>
+
+<div class="striscia">
+  <p class="titolo">Alcuni di quelli che ce l'hanno già fatta</p>
+  <div class="pista" id="pos-pista"></div>
+</div>
+
+<div class="sez"><div class="wide">
+  <div class="grande">
+    <div>
+      <p class="et">Il caso più grande</p>
+      <p class="cifrona">+4<span>M€</span></p>
+      <p class="intro">Investitore Efficace. L'abbiamo conosciuto quando aveva solo l'idea: brand,
+      funnel e procedure costruiti da zero. Oggi fattura <b>oltre 4 milioni l'anno.</b></p>
+    </div>
+    <div class="col2">
+      <div><p>È partito da</p><b>Zero<em>aveva solo l'idea</em></b></div>
+      <div><p>È arrivato a</p><b class="arancio">Leader<em>in Italia sulla finanza personale</em></b></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">La community</p>
+  <h2>Chi c'è dentro profitOS.</h2>
+  <p class="intro">Non un elenco di loghi: le persone che stiamo seguendo adesso, con i loro
+  contenuti e i loro profili.</p>
+  <div class="storie"><div class="rullo" id="pos-storie"></div></div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Perché non converti</p>
+  <h2>E allora perché non succede già?</h2>
+  <p class="intro">Ti hanno detto che è la nicchia. Che è il target, o l'offerta, o che non parli bene
+  al tuo pubblico. Non è niente di tutto questo. <b>Sono successe due cose insieme, e insieme fanno
+  un disastro.</b></p>
+  <div class="due">
+    <div class="colonna">
+      <h3>La fiducia è crollata</h3>
+      <p style="color:var(--txt);font-size:16px;line-height:26px">In sette anni la fiducia media dei
+      consumatori è scesa di circa il <b>20%</b>. Chiunque può suonarsela e cantarsela: tu adesso non
+      mi conosci, potrei raccontarti quello che voglio e non avresti modo di saperlo se non andando a
+      controllare.</p>
+    </div>
+    <div class="colonna">
+      <h3>La barriera è sparita</h3>
+      <p style="color:var(--txt);font-size:16px;line-height:26px">Una volta fare business online era
+      complesso. Oggi bastano un telefono e un'idea, quindi <b>entrano tutti</b>. Il tuo cliente apre
+      Instagram e vede quindici persone che dicono le tue stesse parole, con le tue stesse promesse.</p>
+    </div>
+  </div>
+  <p class="intro" style="margin-top:28px">Cosa fa? Ci pensa, chiede più prove, rimanda. Poi dice
+  “ci penso” e sparisce. <b>Non hai un problema di vendita o di marketing: hai un problema di
+  fiducia, che si presenta in vendita ma nasce molto prima.</b></p>
+  <p class="intro">I funnel e i contenuti funzionano ancora — ma <b>funzionano dopo</b>. Dopo che
+  sanno chi sei, dopo che ti hanno visto trenta volte. Nessuno di quelli che vedi là fuori mette nel
+  proprio funnel gente che non lo conosce: chi entra va solo accompagnato alla cassa. Senza quella
+  fiducia costruita prima, il funnel è un imbuto vuoto.</p>
+  <p class="intro">Ed è qui il punto: clienti in target, già convinti, essere il riferimento del tuo
+  mercato. <b>Non sono obiettivi diversi e non sono il problema: sono quello che succede quando il
+  problema è risolto.</b></p>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Le tre strade</p>
+  <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
+  <p class="intro">A questo punto ti sei accorto che da solo non ce la fai. Le porte che il mercato
+  ti apre sono tre, e ognuna ti lascia esattamente dove eri.</p>
+  <div class="fasi">
+    <div class="fase">
+      <p class="ordinale">01</p>
+      <p class="quale">L'agenzia</p>
+      <h3>Ti toglie il controllo</h3>
+      <p>Il problema non è che lavori male: è che ha un interesse opposto al tuo, e fa un pezzo solo.
+      Il resto resta comunque a te, e il giorno che smetti di pagare torni al punto di partenza —
+      con qualche mese in meno e il conto pagato.</p>
+    </div>
+    <div class="fase">
+      <p class="ordinale">02</p>
+      <p class="quale">Il corso</p>
+      <h3>Ti lascia tutto il lavoro</h3>
+      <p>Ti frega in modo più sottile, perché sembra che funzioni: hai capito, bravo. Ma capire e
+      fare sono due mestieri diversi e te ne hanno venduto uno. Finiti i video ti ritrovi davanti
+      allo stesso foglio bianco, con le stesse 24 ore e in più la lista di tutto quello che manca.</p>
+    </div>
+    <div class="fase">
+      <p class="ordinale">03</p>
+      <p class="quale">L'AI generica</p>
+      <h3>Ti dà pezzi scollegati</h3>
+      <p>Un modello generico non ha criterio: è uno specchio che ti dà ragione. Chiunque può fare una
+      cosa buona una volta, nessuno la fa venti volte coerente col mese prima. E resti tu a fare da
+      colla fra quindici strumenti che non si parlano.</p>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">La quarta porta</p>
+  <h2>Cos&rsquo;è profitOS.</h2>
+  <p class="intro"><b>Tutta la parte operativa — quella che ti tiene occupato tutto il giorno — non
+  la fai più tu.</b> Le decisioni restano tue: tieni la testa e deleghi la fatica. Non è
+  un&rsquo;agenzia che lavora al posto tuo, e non è un corso che ti insegna a lavorare di più: è un
+  insieme di strumenti collegati fra loro, costruiti sul tuo posizionamento, che <b>producono la
+  prima versione di tutto quello che oggi fai a mano</b>. A te resta correggere.</p>
+  <p class="intro">Il modo in cui funziona ha un nome: <b>delega inversa</b>. Di solito deleghi la testa e ti tieni la fatica. Qui è il contrario: <b>deleghi la
+  fatica e ti tieni la testa</b>. In ogni altro modello la prima versione la produci tu e l'esperto
+  corregge. Qui la prima versione la produce il sistema, e correggi tu — perché non impari facendo,
+  impari correggendo, e correggere costa un decimo del tempo.</p>
+  <p class="intro">Non sei dipendente come con l'agenzia, perché le decisioni restano tue. E non sei
+  solo come col corso, perché l'operativo non lo fai tu. <b>Nel 2019 non si poteva fare</b>: per
+  toglierti l'esecuzione serviva qualcuno che la facesse, e quel qualcuno costava come un'agenzia.</p>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Il giro</p>
+  <h2>Ogni pezzo sa cosa ha fatto quello prima.</h2>
+  <p class="intro">Non sono tool comprati separatamente: è un ecosistema. L'offerta decide i
+  contenuti, i contenuti generano le conversazioni, le conversazioni entrano nel CRM, la vendita sa
+  già cos'è successo. <b>E la delivery torna dentro come caso studio: il giro riparte.</b></p>
+  <div class="eco"><div id="pos-eco-largo"></div><div id="pos-eco-stretto"></div></div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Cosa c'è dentro</p>
+  <h2>Gli strumenti, nell'ordine in cui li usi.</h2>
+  <p class="intro">Non è un prompt trovato online: dentro ci sono diciannove anni di lavoro su
+  offerte, acquisizione, funnel e vendita. <b>L'AI non sostituisce l'esperienza: è l'esperienza che
+  ci abbiamo messo dentro a fare la differenza.</b></p>
+  <div class="fasi">
+    <div class="fase">
+      <p class="ordinale">01</p>
+      <p class="quale">Offerta</p>
+      <h3>Una settimana in poche ore</h3>
+      <p>Ti porta dentro i passaggi e ti dice, con dei numeri sopra, quanto dolore risolve la tua
+      offerta, quanto valore percepito ha e quanto costa erogarla. Non consigli: un documento.</p>
+      <ul><li>Offerta scritta e posizionamento</li><li>Promessa unica e base del metodo</li><li>Brand book: colori e tono di voce</li></ul>
+    </div>
+    <div class="fase">
+      <p class="ordinale">02</p>
+      <p class="quale">Contenuti</p>
+      <h3>Piani interi in una passata</h3>
+      <p>Guarda cosa succede nel tuo settore, le notizie, i competitor, e scrive piani editoriali di
+      settimane: post, caroselli, storie e reel già nel tuo tono e impaginati per il tuo brand.</p>
+      <ul><li>Gobbo mentre giri</li><li>Storie caricate e tagliate da sole</li><li>Montaggio in blocco, copertine incluse</li></ul>
+    </div>
+    <div class="fase">
+      <p class="ordinale">03</p>
+      <p class="quale">Setti</p>
+      <h3>I DM non si perdono più</h3>
+      <p>Aggancia un lead magnet a ogni contenuto, risponde in pubblico, scrive in privato, consegna
+      il materiale e continua la conversazione. Recupera chi sparisce e prenota le call da solo,
+      anche alle due di notte. Ha cinque regole che non può rompere, scritte da noi.</p>
+      <ul><li>Niente link inventati</li><li>Niente appuntamenti che non esistono</li><li>Non si ripete</li></ul>
+    </div>
+    <div class="fase">
+      <p class="ordinale">04</p>
+      <p class="quale">Funnel Builder</p>
+      <h3>Non ti richiede quello che hai già dato</h3>
+      <p>Eredita tutto dall'analisi iniziale: l'unica domanda nuova è come si chiama il tuo metodo.
+      Poi ti consiglia quale dei dieci funnel fa per te e lo costruisce intero.</p>
+      <ul><li>Pagine pubblicate online, senza codice</li><li>Ganci per le inserzioni e sequenze mail</li><li>Script della call e della VSL</li></ul>
+    </div>
+    <div class="fase">
+      <p class="ordinale">05</p>
+      <p class="quale">Vendita</p>
+      <h3>Il suggeritore in call</h3>
+      <p>Legge la candidatura e tutto il contesto della persona con cui stai parlando, e mentre sei
+      in chiamata ti dice come rispondere e come lavorare le obiezioni. Così il business non dipende
+      più dall'avere in casa qualcuno bravo a vendere.</p>
+    </div>
+    <div class="fase">
+      <p class="ordinale">06</p>
+      <p class="quale">Nova</p>
+      <h3>Ventiquattro ore su ventiquattro</h3>
+      <p>Tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di
+      lavoro. Se sei sveglio di notte e vuoi andare avanti, c'è comunque qualcuno che ti risponde.</p>
+    </div>
+  </div>
+  <p class="et" style="margin-top:40px">Setti, in questo momento</p>
+  <div class="paesi">
+    <span class="paese"><i></i>12.000 conversazioni gestite</span>
+    <span class="paese"><i></i>74.000 messaggi</span>
+    <span class="paese"><i></i>200–500 messaggi al giorno</span>
+    <span class="paese"><i></i>673 lead fermi recuperati in un giorno</span>
+  </div>
+  <p class="intro" style="margin-top:28px">Sul mio profilo, con un lead magnet agganciato a ogni
+  contenuto: <b>quasi 7.000 contatti in tre mesi, a costo zero</b>. A 2€ a lead sarebbero stati
+  14.000€ di pubblicità. E tre mesi fa quel profilo aveva 5.000 follower.</p>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Clienti</p>
+  <h2>Dove lavoriamo</h2>
+  <p class="intro">Non siamo un'agenzia locale: i progetti che seguiamo stanno in cinque Paesi.</p>
+  <div class="mappa" id="pos-mappa"></div>
+  <div class="paesi">
+    <span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span>
+    <span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span>
+    <span class="paese"><i></i>Emirati · Dubai</span>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide"><div class="chi">
+  <div class="ritratto"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9accb74b83b18bcfad9701.jpeg" alt="Andrea Audisio"></div>
+  <div>
+    <p class="et">Chi è Andrea</p>
+    <h2>Ho aperto partita IVA a 18 anni. Allora bastavano <span style="color:var(--acc)">50€</span>
+    per riempire un ristorante di contatti.</h2>
+    <p>Diciannove anni fa funzionava così, e non perché fossimo più bravi: c&rsquo;erano meno offerte
+    e più fiducia. Eri uno dei pochi a fare quella cosa lì, la gente vedeva la tua pubblicità e non
+    ne aveva già viste altre dodici quella mattina. Quindi ti lasciava il numero. E quando chiamavi,
+    rispondeva.</p>
+    <p>Quel mondo non esiste più — ma i funnel che si vendono oggi sono ancora costruiti per quel
+    mondo lì. <b>Chi ti vende il metodo è partito quattro o cinque anni fa</b>, quando costruire un
+    pubblico costava dieci volte meno in tempo e in denaro: se ripartisse adesso con lo stesso
+    identico metodo non farebbe un euro.</p>
+    <p><b>E attenzione, vale anche per me.</b> Se dovessi ricominciare oggi facendo le cose come le
+    facevo allora, non ce la farei nemmeno io. È per questo che a febbraio ho ricostruito tutto da
+    zero con un modello diverso, e la prima cavia sono stato io: i <b>100.000€ del mese scorso, con
+    quattro persone di cui tre part-time</b>, sono usciti da qui dentro.</p>
+    <p>Il modello però ha diciannove anni. È lo stesso con cui ho lavorato per <b>Lego, BMW e
+    Ducati</b> dentro un gruppo da 20 milioni; quello con cui ho portato Investitore Efficace da
+    un&rsquo;idea a 4 milioni l&rsquo;anno, e oggi sono nel loro board; quello con cui ho fondato
+    <b>SalesValley</b> da zero, che in meno di due anni sta per essere comprata da un gruppo da 200
+    milioni. Quello che è nuovo non è cosa faccio: è che non lo devo più fare a mano.</p>
+    <p>Non ti sto mostrando screenshot. <b>Sono cariche e quote pubbliche: ci metti venti minuti a
+    verificarle.</b> Chi ti mostra screenshot lo fa perché non ha altro. E guarda che SalesValley su
+    Instagram ha tremila follower — rileggilo, perché è già mezza risposta al “ma io un pubblico non
+    ce l&rsquo;ho”.</p>
+  </div>
+</div></div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Come funziona davvero</p>
+  <h2>Le cose pratiche, quelle che di solito si scoprono dopo.</h2>
+  <p class="intro">Il percorso dura <b>tre o sei mesi secondo da dove parti</b>. Non sono pacchetti
+  diversi: cambia quanto ci sono io. Quello che segue è l'ordine, e non si salta.</p>
+  <div class="fasi">
+    <div class="fase">
+      <p class="ordinale">01</p>
+      <p class="quale">I primi sette giorni</p>
+      <h3>L'offerta, e nient'altro</h3>
+      <p class="quando">Uguali per tutti</p>
+      <p>Si definisce l'offerta e la si valida insieme in call: è l'unico punto del percorso dove
+      sbagliare costa mesi. Prima di averla chiusa <b>non si tocca né un contenuto né un funnel</b>,
+      perché se l'offerta è sbagliata tutto il resto amplifica un errore.</p>
+      <ul><li>Offerta scritta, con i punteggi</li><li>Posizionamento e promessa unica</li><li>Validata insieme prima di partire</li></ul>
+    </div>
+    <div class="fase">
+      <p class="ordinale">02</p>
+      <p class="quale">Poi</p>
+      <h3>Il sistema si installa</h3>
+      <p class="quando">Le tue due o tre ore al giorno</p>
+      <p>Contenuti, conversazioni e funnel entrano in funzione uno dopo l'altro. A te restano
+      <b>due o tre ore al giorno</b>: se non le hai, te lo dico adesso, lascia perdere. In quelle
+      ore fai le uniche tre cose che non si possono delegare.</p>
+      <ul><li>Ci metti la faccia</li><li>Vendi, finché non hai un team</li><li>Giudichi quello che esce</li></ul>
+    </div>
+    <div class="fase">
+      <p class="ordinale">03</p>
+      <p class="quale">A tre o sei mesi</p>
+      <h3>Il tempo che serve davvero</h3>
+      <p class="quando">E se non basta, si continua</p>
+      <p>Gli altri ti danno tre o sei mesi perché oltre gli costa margine. Per me è il tempo tecnico
+      che serve, non una scadenza: <b>se alla fine non sei arrivato a nulla, il percorso non
+      finisce.</b> Se invece cerchi clienti la settimana prossima, non possiamo aiutarti.</p>
+      <ul><li>Volumi più grandi, stesso carico</li><li>Semmai togli figure, non le aggiungi</li><li>Non aumenti i costi: aumenti il margine</li></ul>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">La piattaforma</p>
+  <h2>Nove pezzi, uno dietro l'altro.</h2>
+  <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
+  dell'onboarding — più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
+  la community. Così eviti la paralisi da corsi che uccide la maggior parte dei programmi.</p>
+  <div class="cielo">
+    <div id="pos-cielo-largo"></div><div id="pos-cielo-stretto"></div>
+    <p class="didascalia">Nove livelli, uno dietro l'altro. Tocca una stella per isolarla.</p>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Selezione</p>
+  <h2>Per chi è, e per chi no.</h2>
+  <div class="due">
+    <div class="colonna si">
+      <h3>Funziona con te se</h3>
+      <ul>
+        <li><span class="segno">✓</span><span><b>Vendi già.</b> Sei a 5K€/mese o poco sotto, con un'offerta che sta in piedi.</span></li>
+        <li><span class="segno">✓</span><span><b>Hai competenze vere.</b> Quello che vendi lo sai fare davvero.</span></li>
+        <li><span class="segno">✓</span><span><b>Guardi lontano.</b> Ragioni in anni, non in settimane.</span></li>
+        <li><span class="segno">✓</span><span><b>Sai eseguire.</b> Quando c'è da fare, fai.</span></li>
+        <li><span class="segno">✓</span><span><b>Metti per iscritto come lavori.</b> Il sistema deve poter imparare il tuo modo.</span></li>
+        <li><span class="segno">✓</span><span><b>Ci sei le prime settimane.</b> Due o tre ore al giorno, con i nostri strumenti e il nostro supporto.</span></li>
+      </ul>
+    </div>
+    <div class="colonna no">
+      <h3>Non funziona se</h3>
+      <ul>
+        <li><span class="segno">✕</span><span><b>Parti da zero.</b> Il sistema amplifica quello che sai fare, non inventa una professione.</span></li>
+        <li><span class="segno">✕</span><span><b>Non hai due ore al giorno.</b> Sotto quella soglia non si muove niente, e te lo dico prima.</span></li>
+        <li><span class="segno">✕</span><span><b>Cerchi lo sforzo minimo.</b> Il sistema toglie il lavoro inutile, non tutto.</span></li>
+        <li><span class="segno">✕</span><span><b>Vuoi tutto e subito.</b> I primi due mesi servono a ripagare, non a esplodere.</span></li>
+        <li><span class="segno">✕</span><span><b>La colpa è sempre di altri.</b> Con quella premessa non si costruisce niente.</span></li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Casi studio</p>
+  <h2>Alcuni di quelli che ce l'hanno già fatta</h2>
+  <div class="griglia" id="pos-casi"></div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">FAQ</p>
+  <h2>Risposte oneste. Senza giri di parole.</h2>
+  <div class="faq" id="pos-faq"></div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Come la vediamo</p>
+  <h2>La nostra filosofia</h2>
+  <div class="filo">
+    <p>Il punto dell'AI è che dovrebbe <span>toglierti il lavoro</span>, non creartene altro. Io non
+    credo che sostituirà le persone: credo che se un lavoro lo fa male, <span>è giusto che lo faccia
+    un sistema fatto bene</span>. Quello che resta a te è la faccia, il giudizio e le decisioni.</p>
+    <p class="firma">Andrea Audisio</p>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">La garanzia</p>
+  <h2>Te la leggo qui, non in chiamata.</h2>
+  <p class="intro">Una garanzia che ti spiegano in call non è una garanzia: <b>è un motivo per farti
+  fare quella call.</b> Quindi eccola per intero, prima che tu parli con chiunque. Non è il
+  “soddisfatto o rimborsato” legato a mille clausole scritte al rovescio: è legata al meccanismo.</p>
+  <div class="due">
+    <div class="colonna">
+      <h3>Primo strato</h3>
+      <p style="color:var(--txt);font-size:16px;line-height:26px">Entro i primi giorni hai in mano la
+      tua offerta smontata e rimessa in piedi, nera su bianco, <b>senza averla scritta tu</b>. Se
+      dopo che l'abbiamo vista insieme non ti torna, ci scrivi una mail e ti restituiamo tutti i
+      soldi. Non ti chiedo nulla, e non ti metto al telefono con qualcuno che prova a farti cambiare
+      idea.</p>
+    </div>
+    <div class="colonna">
+      <h3>Secondo strato</h3>
+      <p style="color:var(--txt);font-size:16px;line-height:26px">Se hai messo le tue ore, hai fatto
+      quello che c'era da fare e alla fine dei mesi non ti sei almeno ripagato l'investimento,
+      <b>resti dentro finché non te lo sei ripagato</b>. Il rischio deve stare da questa parte del
+      tavolo: se il sistema funziona a me non costa niente, se non funziona è giusto
+      che costi a me.</p>
+    </div>
+  </div>
+  <p class="intro" style="margin-top:28px">Quello che invece non ti garantisco è il successo. Chi te
+  lo garantisce ti sta mentendo: dipende anche da te.</p>
+</div></div>
+
+<div class="sez centro" id="pos-chiusura"><div class="wide">
+  <p class="et">Posti limitati</p>
+  <h2>Se ti sei riconosciuto, il passo dopo è una chiamata.</h2>
+  <p class="intro">Ti faccio qualche domanda prima. Non servono a profilarti: se non hai voglia si
+  capisce da come rispondi, e ci siamo risparmiati tempo tutti e due. Chi arriva in call <b>sa già cosa
+  facciamo e come lavoriamo, e deve solo capire quanto investire.</b></p>
+  <div class="bonus">
+    <p class="et">Perché adesso, e non fra sei mesi</p>
+    <ul>
+      <li>La barriera d'ingresso non è mai stata così bassa: <b>ogni mese entra gente nuova nella tua nicchia.</b></li>
+      <li>Fra sei mesi il tuo posizionamento costa di più da prendere, perché ci sarà qualcun altro là sopra. È aritmetica.</li>
+      <li><b>Sei già strutturato e vuoi un ecosistema tuo</b> invece del nostro? Te lo costruiamo su misura: prenota comunque e segnalalo.</li>
+    </ul>
+  </div>
+  <a class="bottone" href="#" id="pos-cta">Prenota la tua chiamata →</a>
+  <p class="postilla">Se non ha senso te lo dico in call, e ce ne andiamo a casa tutti e due contenti.</p>
+</div></div>
+
+<div class="dock" id="pos-dock"><div class="wide">
+  <p>Accesso immediato: entri oggi, parti oggi</p>
+  <a href="#" id="pos-cta-dock">Prenota la tua chiamata →</a>
+</div></div>
+
+<footer><div class="wide">
+  <p class="marchio" style="font-size:28px">profitOS</p>
+  <p style="margin-top:20px">I risultati riportati in questa pagina sono casi reali di clienti e
+  progetti nostri. Non sono una promessa: quello che ottieni dipende dal tuo mercato, dalla tua
+  offerta e dal lavoro che ci metti.</p>
+  <p style="margin-top:16px">Questo sito non fa parte di Facebook o di Meta Platforms, Inc. e non è
+  approvato da Meta in alcun modo. Facebook e Instagram sono marchi registrati di Meta Platforms, Inc.</p>
+  <div class="link"><a href="#">Privacy policy</a><a href="#">Cookie policy</a><a href="#">Termini e condizioni</a></div>
+  <p style="margin-top:20px">© 2026 profitOS · P.IVA da inserire · Sede legale da inserire</p>
+</div></footer>
+
+<script>
+(function () {
+  /* ============ CONFIG · le uniche righe da toccare ============ */
+  var URL_CHIAMATA = "#";    /* calendario, quiz o candidatura */
+  /* Nessun countdown: nella VSL dici esplicitamente di non usare il contatore
+     fake. La scarsità dichiarata in pagina è quella vera — poche call a
+     settimana, fatte da te e da due del team. */
+  /* ============================================================ */
+
+  var R = document.getElementById("pos-vsl");
+  var $ = function (id) { return document.getElementById(id); };
+
+
+  /* --- mappa a puntini ---------------------------------------------
+     Le coste vettoriali erano 21 KB di coordinate. Qui la terraferma è
+     una griglia 104x48 campionata da quella mappa e impacchettata a due
+     bit per cella (0 mare, 1 terra, 2 Paese acceso): 1,6 KB di base64
+     invece di 21 KB, e il blocco resta leggibile. */
+  var GRIGLIA = "AAAAAAAAAAQVRVVVUAAUAAAAAFAAAAAAAAAAAAAAAAAAQAUFVVVQABEAAAAAAAAAAAAAAAAAAAAAAAQARQVVVUAAAAAAEAAUAAAAAAAAAAAAAAAAAVEQABVVUAAAAABAAVUABAAAAAAAAAAAAAAAAAAAFVVQAAAAAQAFVAAAAAAAAAAAAAAAAAURQUAVVUAAAAAEABVVVQAAAAAAAAAAAAAABVFVQBVVQAAAAAQEVVVVRUAAAAAAAAAAKqABVEFUBVVAAAEAABVVVVVVVBAAAAAAAACqpVUQVBQFVAAAABRBVVVVVVVVVAAAAAAAFKqlVVVQFQVQAAAQFFVVVVVVVVVUAAAAAAAAKqVVVVRUBUAAAEARVVVVVVVVVVQAAAAAAACqpVVVQEABAAABQBVVVVVVVVVUUAAAAAAAACoFVVUAUAAAAAFAFVVVVVVVVREAAAAAAAAAAABVVVAVAAAAAABVVVVVVVVQBQAAAAAAAAAAAFVVVFVAAAAAABVVVVVVVVAEAAAAAAAAAAAAFVVVVUAAAAAAVVVVVVVVUAAAAAAAAAAAAAAKqoVUEAAAAAEVVVVQABVQAAAAAAAAAAAAAAqqqWkAAAAAgAFEVVUAVUAAAAAAAAAAAAAACqqqoAAAAIAgVAAAVVVUBAAAAAAAAAAAAAAKqqqAAAAAACBVAAFVVUAAAAAAAAAAAAAAAAKqqgAAAAAAAAAAAVVVUEAAAAAAAAAAAAAAAFoCAAAAAAAAAAABVVVQAAAAAAAAAAAAAAAAVQAAAAAAAAAAAAVRVUAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAVFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVQAAAAAAAAAABBBAAAAAAAAAAAAAAAAAAAFVUAAAAAAAAAAAEAQAAAAAAAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAVVAAAAAAAAAAAAAAAAAAUVQAAAAAAAAAAAVVVAAAAAAAAAAAAAAAAABVQAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAABVVQAAAAAAAAAAAAAAAABVAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAVVVVVAAAAAAAAAAAAAAAAAAUAAAAAAAFVUFVVVVVQAAAA";
+  var COL = 104, RIG = 48, PASSO = 10;
+  var PAESI = [["Italia",57,18],["Portogallo",52,19],["Malta",57,19],
+               ["Stati Uniti",31,19],["Dubai",66,22]];
+  (function () {
+    var bin = atob(GRIGLIA), celle = [], i, by, sh;
+    for (i = 0; i < bin.length; i++) {
+      by = bin.charCodeAt(i);
+      for (sh = 6; sh >= 0; sh -= 2) celle.push((by >> sh) & 3);
+    }
+    var punti = "", c, r, v;
+    for (i = 0; i < COL * RIG; i++) {
+      v = celle[i]; if (!v) continue;
+      c = i % COL; r = (i / COL) | 0;
+      punti += '<circle class="' + (v === 2 ? "m-on" : "m-terra") + '" cx="' +
+        (c * PASSO + PASSO / 2) + '" cy="' + (r * PASSO + PASSO / 2) + '" r="' + (v === 2 ? 4 : 2.6) + '"/>';
+    }
+    var aloni = PAESI.map(function (p) {
+      return '<circle class="m-alone" cx="' + (p[1] * PASSO + PASSO / 2) + '" cy="' +
+        (p[2] * PASSO + PASSO / 2) + '" r="22"><title>' + p[0] + "</title></circle>";
+    }).join("");
+    $("pos-mappa").innerHTML = '<svg viewBox="0 0 ' + COL * PASSO + " " + RIG * PASSO +
+      '" role="img" aria-label="I Paesi dove profitOS ha clienti">' + aloni + punti + "</svg>";
+  })();
+
+
+  /* --- storie: undici profili, lista stampata due volte per il giro.
+     I video partono solo quando sono a schermo: ventidue in riproduzione
+     insieme scalderebbero il processore per niente. --- */
+  var FR = "https://framerusercontent.com/";
+  var STORIE = [
+    ["investitore.efficace","6hr","Formazione Finanziaria","apKvDnfpIX3pYWWBVMUmMSfY18.jpg","hk5GgoB9ErdviIb4j0Y7WIwUHc.mp4","HgJL1ENmM8ATm8bz4pSYADFuBc.jpg"],
+    ["gravidanza.serena","7hr","Osteopatia e Gravidanza","EAUmQ3f6kOUWzY9jtPHMnWrg9pg.jpg","k4n3ZLMjRTVSliZMQbCqtpWq20.mp4","Q3t8O8LrCO1flGQkJ9AcHU83mrM.jpg"],
+    ["alessandro_moreo_trainer","7hr","Personal Trainer","VkE8pEugmscLCOwjtInv0iQHIjk.jpg","98skhEqghWPsQVd0kzLmvVhD4eY.mp4","KczLxqkJnvGue8BlENa4X9gPac.jpeg"],
+    ["equilibrio_intestinale","7hr","Nutrizione ed intestino","sqUXcQ9szRLAHETvvAd3IPhucds.jpg","PVjkJyCUpcs60jvaOECwcdS9qGc.mp4","uxrZ0CzAnwLzhdxlY9CvtOgmpY.jpeg"],
+    ["addio_dolore","7hr","Fisioterapia e recupero","vPnkb1whcgjCmcRL4DhdQ3FPqE.jpg","pyiC6eqZVIz9jExRupST5TNc4.mp4","zY9ANCOeTs7snstQrO1xsDZ2c.png"],
+    ["noemi.antonellii","7hr","Instagram Coach","YMSBMmk35p9llxIq8w5pb3enZd0.jpg","H8ChcTSwz9KHFEM0a4F5D1vSlVo.mp4","IZLu3QlLGzpyKD60ulCUUMXhI8.jpg"],
+    ["alessio.borromeo","8hr","Istruttore Cinofilo Online","0bUSJ73tk9TKXmGQIo4M12gQf0.jpg","SdcHUtk2pAvUFYOBtNF8TRHtLw.mp4","EZ8gIkkdmONpkRG1A1hGOTXISc.jpeg"],
+    ["andreafinotti_time","7hr","Formazione per Freelancer","v4QDF79tw2TTa37EKPkZB9BT7o.jpg","1otNci5LRUDK4M4I5Nt8j61aTc.mp4","4oTuPfXEbHqvoKc2OzYOpspdsro.jpeg"],
+    ["dott_giacomo_lucchesi","7hr","Biohacking e nutrizione","z1pIO9kj8y1h0u19LoPJtY9zii4.jpg","pHLyCm3MAaWp19JRbIhDgEWZE0.mp4","tynXDsKaEZy6rXoQsVxWgVR63w.jpg"],
+    ["siriatuf","7hr","Relazioni ed autostima","HDID5FXCB6TOXMWZf21BJBJVMU.jpg","1hE2yiAZ0BvGXHezKvSO00a3laE.mp4","5ulKhnAJqNmLBIuppzMXWadx5I.jpg"],
+    ["salesvalley_it","7hr","HR e formazione sales","s4dYcDSDi3wHGbXVdBy3Pe9liM.jpg","4n18qZ4WEvZPZ5rPsut9hxqjo.mp4","z8duWPQBYT0Da3IYaPLkvD2Epg.png"]
+  ];
+  var carta = function (s) {
+    return '<article class="storia">' +
+      '<video src="' + FR + "assets/" + s[4] + '" poster="' + FR + "images/" + s[5] +
+      '" muted loop playsinline preload="none"></video>' +
+      '<div class="capo"><img src="' + FR + "images/" + s[3] + '" alt="">' +
+      '<span class="chi"><span>' + s[0] + '</span><i class="spunta">✓</i></span>' +
+      '<span class="ora">' + s[1] + "</span></div>" +
+      '<div class="piede"><a href="https://www.instagram.com/' + s[0] +
+      '/" target="_blank" rel="noopener">Vai al profilo <span aria-hidden="true">›</span></a>' +
+      '<span class="cat">' + s[2] + "</span></div></article>";
+  };
+  $("pos-storie").innerHTML = STORIE.map(carta).join("") + STORIE.map(carta).join("");
+  (function () {
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) {
+        var el = v.target;
+        el.muted = true;   /* React a parte, alcuni browser bloccano play() senza questo */
+        if (v.isIntersecting) { var pr = el.play(); if (pr) pr.catch(function () {}); }
+        else el.pause();
+      });
+    }, { rootMargin: "0px 200px" });
+    R.querySelectorAll(".storia video").forEach(function (v) { io.observe(v); });
+  })();
+
+  $("pos-cta").href = URL_CHIAMATA;
+  $("pos-cta-dock").href = URL_CHIAMATA;
+
+  /* --- striscia: lista stampata due volte, l'animazione trasla di -50% --- */
+  var RAIL = [
+    ["IE","Investitore Efficace","Finanza personale","0","4M€","all'anno"],
+    ["SV","SalesValley","Sales recruitment","0","70+","clienti in 12 mesi"],
+    ["EV","Evolutiaa","Liberi professionisti","5-6K","60-70K","al mese"],
+    ["FE","Financial Elite","Lorenzo Bignami","","20K","al mese"],
+    ["ST","100k SalesTraining","Ivan Greppi","","20K","al mese"],
+    ["GL","Growlancer","Lancio","","600K","in 6 mesi"],
+    ["DP","Digital Product Mastery","Lancio","","500K","in 6 mesi"],
+    ["SA","Sara","Equilibrio intestinale","0","12K","il primo mese"],
+    ["LC","Luca Cenci","Coaching","1K","3K","nei primi 15 giorni"],
+    ["AB","Alessandro Badini","Mental coaching · 64 anni","","20K","in un mese"]
+  ];
+  $("pos-pista").innerHTML = RAIL.concat(RAIL).map(function (c) {
+    return '<article class="tessera"><span class="sigla">' + c[0] + '</span><span><span class="nome">' +
+      c[1] + '</span><span class="ruolo">' + c[2] + '</span></span>' +
+      '<span style="display:flex;align-items:baseline;gap:6px;margin-left:6px">' +
+      (c[3] ? '<span class="da">' + c[3] + '</span><span class="da">→</span>' : "") +
+      '<span class="num">' + c[4] + '</span></span><span class="nota">' + c[5] + "</span></article>";
+  }).join("");
+
+  /* --- casi studio · la quinta voce è l'immagine, quadrata 900x900 --- */
+  var CASI = [
+    ["Investitore Efficace","Da zero a 4 milioni all'anno",
+     "Abbiamo conosciuto Felipe Orrego quando aveva solo l'idea. Insieme abbiamo costruito il brand da zero, impostato le basi per un'azienda vera e lanciato il progetto sul mercato. Oggi Investitore Efficace è una delle realtà leader in Italia sulla finanza personale, con un fatturato di oltre 4 milioni l'anno.",
+     ["Creato e lanciato il brand da zero","Strutturato community funnel e prime campagne advertising","Installate SOP e procedure di gestione team e processi","Portato il business da startup a brand leader di nicchia"],
+     "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19a2eb1d7808531db.jpeg"],
+    ["SalesValley","+70 clienti B2B in 12 mesi",
+     "SalesValley è un progetto nostro, nato da zero e diventato in meno di un anno il punto di riferimento in Italia per hiring di sales e setter. In una nicchia iper-competitiva siamo riusciti a costruire un'azienda solida, con un posizionamento forte e clienti tra le aziende più importanti del Paese.",
+     ["Creato l'azienda e il brand da zero","Scalati a quasi 80 clienti in meno di un anno","Posizionamento come leader nazionale in Sales Recruitment","Team, procedure e academy interna costruite da zero"],
+     "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab92280583b8e7057a1c0.jpg"],
+    ["Evolutia","Da 6K a oltre 30/40K al mese in pochi mesi",
+     "Evolutia (Andrea Finotti e Selene Barletta) nasce come progetto da liberi professionisti, fermo a circa 6.000€ al mese. Con profitOS abbiamo trasformato la realtà in un'azienda strutturata, con team, procedure e KPI chiari, portandola stabilmente sopra i 30/40K al mese.",
+     ["Partenza da 6K/mese, oggi 30-40K/mese ricorrenti","Creazione di procedure interne e dashboard KPI","Scalato il team operativo, inserendo nuove figure chiave","Lanci gestiti e ottimizzati, con aumento dei margini e stabilità"],
+     "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19fa5199bb3253687.jpg"],
+    ["Personal brand","Da 10k€/m a 50k€/m con sistemi installati, non con l'hype",
+     "Negli ultimi anni abbiamo preso profili già competenti e li abbiamo trasformati in business con entrate mensili stabili. Non “contenuti virali”, ma offerte chiare, funnel puliti, CRM, processo vendite e delivery.",
+     ["Financial Elite – Lorenzo Bignami → stabilizzato a 20k/mese.","100k SalesTraining – Ivan Greppi → scalato a 20k/mese.","Evolutia → stabilizzato a +30k/mese.","Growlancer → lanciato e portato a 600K in 6 mesi.","Digital Product Mastery → oltre 500K in 6 mesi."],
+     ""]
+  ];
+  $("pos-casi").innerHTML = CASI.map(function (c) {
+    /* le immagini sono quadrate 900x900: miniatura senza ritagli */
+    var testa = c[4]
+      ? '<div class="testa"><img src="' + c[4] + '" alt="' + c[0] + '">' +
+        '<div><p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3></div></div>"
+      : '<p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3>";
+    return '<article class="caso">' + testa + "<p>" + c[2] +
+      '</p><p class="impact">Impact</p><ul>' + c[3].map(function (r) { return "<li>" + r + "</li>"; }).join("") + "</ul></article>";
+  }).join("");
+
+  /* --- FAQ --- */
+  var FAQ = [
+    ["Per chi è profitOS?","Per chi vende già e si è incastrato nell'operativo: personal brand, coach, consulenti e agenzie con un'offerta che regge e clienti che pagano. Servono tre cose: <b>qualcosa che già gira</b>, competenze confermate, e la disponibilità a mettere per iscritto come lavori. <b>Se parti da zero non è il posto giusto</b> — il sistema amplifica quello che sai fare, non inventa una professione."],
+    ["Quanto dura il percorso?","<b>Tre o sei mesi, secondo da dove parti.</b> Non sono pacchetti diversi: cambia la mia presenza e il nostro impegno. I primi sette giorni però sono uguali per tutti — si definisce l'offerta e la si valida insieme, e prima di quello non si tocca né un contenuto né un funnel. Se l'offerta è sbagliata, tutto il resto amplifica un errore."],
+    ["Quelle non sono le solite scadenze che ti mettono i corsi?","No, ed è il contrario. Loro ti danno tre o sei mesi perché oltre gli costa margine. Io ti dico che <b>quello è il tempo che serve davvero</b>: sono i tempi tecnici di chi ci è passato. E infatti se a tre o sei mesi non sei arrivato a nulla, il percorso non finisce: si continua."],
+    ["Io cosa devo fare?","<b>Due o tre ore al giorno</b>, e se non le hai lascia perdere. In quelle ore fai le uniche tre cose che non si possono delegare: <b>ci metti la faccia</b> nei contenuti, <b>vendi</b> all'inizio finché non hai un team, e <b>giudichi</b> quello che il sistema produce. Se speravi che ci fosse un modo per non fare nemmeno queste, non esiste — né da noi né da nessun altro."],
+    ["C'è una garanzia?","<b>Sì, e te la leggo qui invece che in chiamata</b>, perché una garanzia che ti spiegano in call non è una garanzia: è un motivo per farti fare quella call.<br><br><b>Primo strato.</b> Entro i primi giorni hai in mano la tua offerta smontata e rimessa in piedi, nera su bianco, senza averla scritta tu. Se dopo averla vista insieme non ti convince, ci scrivi una mail e ti restituiamo tutti i soldi. Non ti chiedo nulla e non ti metto al telefono con qualcuno che prova a farti cambiare idea.<br><br><b>Secondo strato.</b> Se hai messo le tue ore, hai fatto quello che c'era da fare e alla fine dei mesi non ti sei almeno ripagato l'investimento, <b>resti dentro finché non te lo sei ripagato</b>. Il rischio deve stare da questa parte del tavolo: se il sistema funziona non mi costa niente, se non funziona è giusto che costi a me."],
+    ["Servono competenze tecniche?","No. Non devi diventare bravo con le ads o con i CRM, e non è il tuo mestiere costruirti un sistema. Il lavoro nostro è consegnarti i pezzi già montati."],
+    ["Ho già un team: devo aggiungere persone?","Al contrario, di solito se ne tolgono. Quello che pagavi lo fa il sistema, quindi per crescere non aumenti i costi: aumenti il margine. E se un giorno il business chiude solo quando c'è uno bravo a vendere, non hai un sistema — hai una dipendenza."],
+    ["La mia azienda vuole un ecosistema suo, non il vostro.","Si può fare: se sei già strutturato te lo costruiamo su misura. Prenota comunque la chiamata e <b>segnalalo quando ti chiediamo di cosa hai bisogno</b>."],
+    ["Quanto costa?","Il prezzo te lo diciamo in chiamata, e non è una furbizia per farti prenotare: a quel punto sai già cosa facciamo e come lavoriamo, perché in questa pagina c&rsquo;è tutto. Resta solo da capire quanto investire."]
+  ];  $("pos-faq").innerHTML = FAQ.map(function (f, i) {
+    return "<details" + (i ? "" : " open") + "><summary>" + f[0] + "</summary><p>" + f[1] + "</p></details>";
+  }).join("");
+
+  /* --- Ecosistema Circolare: cerchio su desktop, colonna su telefono --- */
+  var NODI = [
+    ["Offerta","Scritta e validata nei primi 7 giorni"],
+    ["Contenuti","Piani interi, nel tuo tono di voce"],
+    ["Conversazioni","Setti risponde, segue e prenota"],
+    ["Vendita","Arrivano in call già decisi"],
+    ["Caso studio","Torna dentro e riparte il giro"]
+  ];
+  function ecosistema(w, h, stretto) {
+    var g = "", i, x, y, a, cx = w / 2, cy = h / 2, rr = stretto ? 0 : 190;
+    for (i = 0; i < NODI.length; i++) {
+      if (stretto) {                      /* colonna: il cerchio a 340px di
+                                             larghezza scriverebbe a 4,8px */
+        x = w / 2; y = 95 + i * 178;
+      } else {
+        a = (-90 + i * 72) * Math.PI / 180;
+        x = cx + rr * Math.cos(a); y = cy + rr * Math.sin(a);
+      }
+      g += '<g class="nodo">' +
+        '<circle class="bolla" cx="' + x + '" cy="' + y + '" r="' + (stretto ? 30 : 26) + '" fill="rgba(255,107,0,.12)"/>' +
+        '<circle cx="' + x + '" cy="' + y + '" r="' + (stretto ? 11 : 9) + '" fill="var(--acc)"/>' +
+        '<text x="' + x + '" y="' + (y + (stretto ? 62 : 52)) + '" text-anchor="middle" fill="#fff" font-size="' +
+        (stretto ? 24 : 17) + '" font-weight="700">' + NODI[i][0] + '</text>' +
+        '<text x="' + x + '" y="' + (y + (stretto ? 90 : 73)) + '" text-anchor="middle" fill="rgba(240,232,226,.62)" font-size="' +
+        (stretto ? 17 : 13) + '">' + NODI[i][1] + '</text></g>';
+    }
+    var scheletro = stretto
+      ? '<path d="M' + (w / 2) + ' 95L' + (w / 2) + ' ' + (95 + 4 * 178) + '" fill="none" ' +
+        'stroke="var(--acc)" stroke-opacity=".3" stroke-width="1.6" stroke-dasharray="10 14"/>' +
+        /* ritorno all'inizio: curva cubica, non quadratica. Con una quadratica
+           il punto di mezzo resta a x=132 e taglia in mezzo alle didascalie. */
+        '<path d="M' + (w / 2) + ' ' + (95 + 4 * 178 + 40) + 'C10 ' + (h * .7) + ' 10 ' + (h * .3) + ' ' +
+        (w / 2) + ' 55" fill="none" stroke="var(--acc)" stroke-opacity=".3" ' +
+        'stroke-width="1.6" stroke-dasharray="10 14"/>' +
+        '<path d="M' + (w / 2 - 7) + ' 66L' + (w / 2) + ' 52L' + (w / 2 + 7) + ' 66" fill="none" ' +
+        'stroke="var(--acc)" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>'
+      : '<circle class="anello" cx="' + cx + '" cy="' + cy + '" r="190" fill="none" stroke="var(--acc)" ' +
+        'stroke-opacity=".45" stroke-width="1.6" stroke-dasharray="10 14"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="150" fill="none" stroke="var(--acc)" stroke-opacity=".1" stroke-width="1"/>' +
+        '<text x="' + cx + '" y="' + (cy - 8) + '" text-anchor="middle" fill="#fff" font-size="26" font-weight="900" ' +
+        'font-family="Arial Black,Helvetica,Arial,sans-serif">Ecosistema</text>' +
+        '<text x="' + cx + '" y="' + (cy + 22) + '" text-anchor="middle" fill="var(--acc)" font-size="26" font-weight="900" ' +
+        'font-family="Arial Black,Helvetica,Arial,sans-serif">Circolare™</text>';
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="L\'Ecosistema Circolare">' +
+      scheletro + g + '</svg>';
+  }
+  $("pos-eco-largo").innerHTML = ecosistema(1200, 600, false);
+  $("pos-eco-stretto").innerHTML = ecosistema(500, 880, true);
+
+  /* --- costellazione dei 9 livelli, due disposizioni --- */
+  var LIV = [["01","Onboarding","i primi 7 giorni",15],["02","Offerta","scoring e brand book",9],
+    ["03","Contenuti","piani, gobbo, montaggio",10],["04","Setti","DM, follow-up, calendario",8],
+    ["05","Funnel Builder","dieci funnel, pagine online",11],["06","Vendita","AI in live sulle call",8],
+    ["07","Nova","l'assistente, 24 ore su 24",10],["08","Live settimanali","con Andrea",9],
+    ["09","Community","gli altri che stanno costruendo",13]];
+  var LARGO = [[105,395],[255,185],[400,300],[535,130],[630,385],[775,225],[890,415],[1020,200],[1125,330]];
+  var STRETTO = [[140,70],[330,175],[165,290],[345,400],[150,510],[340,615],[170,725],[345,830],[190,940]];
+
+  function cielo(pos, w, h, corpo, dida, id) {
+    var pol = "", i, a, x, y;
+    for (i = 0; i < Math.round(w * h / 7000); i++) {
+      a = i * 137.508 * Math.PI / 180;
+      x = (w * .03 + (Math.sin(a) * .5 + .5) * w * .94).toFixed(2);
+      y = (h * .03 + (Math.cos(a * 1.7) * .5 + .5) * h * .94).toFixed(2);
+      pol += '<circle cx="' + x + '" cy="' + y + '" r="' + (.6 + i % 5 * .25).toFixed(2) +
+        '" fill="#F0E8E2" opacity="' + (.12 + i % 7 * .045).toFixed(3) + '"/>';
+    }
+    var rotta = pos.map(function (p, k) { return (k ? "L" : "M") + p[0] + " " + p[1]; }).join("");
+    var st = LIV.map(function (s, k) {
+      var px = pos[k][0], py = pos[k][1], r = s[3];
+      return '<g class="stella" style="cursor:pointer;transition:opacity .25s">' +
+        '<circle cx="' + px + '" cy="' + py + '" r="' + r * 4.5 + '" fill="url(#pos-alone-' + id + ')"/>' +
+        '<circle cx="' + px + '" cy="' + py + '" r="' + r * .42 + '" fill="#FFF4EC"/>' +
+        '<path fill="var(--acc)" d="M' + px + " " + (py - r) + "L" + (px + r * .22) + " " + (py - r * .22) +
+        "L" + (px + r) + " " + py + "L" + (px + r * .22) + " " + (py + r * .22) + "L" + px + " " + (py + r) +
+        "L" + (px - r * .22) + " " + (py + r * .22) + "L" + (px - r) + " " + py + "L" + (px - r * .22) + " " + (py - r * .22) + 'z"/>' +
+        '<text x="' + px + '" y="' + (py + r * 2.2 + corpo) + '" text-anchor="middle" fill="#fff" font-size="' + corpo + '" font-weight="700">' + s[1] + "</text>" +
+        '<text x="' + px + '" y="' + (py + r * 2.2 + corpo + dida + 5) + '" text-anchor="middle" fill="var(--acc)" font-size="' + dida +
+        '" font-weight="700" letter-spacing="1.4">' + s[0] + (s[2] ? " · " + s[2].toUpperCase() : "") + "</text></g>";
+    }).join("");
+    return '<svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="I 9 livelli come costellazione">' +
+      '<defs><radialGradient id="pos-alone-' + id + '">' +
+      '<stop offset="0%" stop-color="var(--acc)" stop-opacity=".55"/>' +
+      '<stop offset="55%" stop-color="var(--acc)" stop-opacity=".12"/>' +
+      '<stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="pos-nebbia-' + id + '" cx="18%" cy="80%">' +
+      '<stop offset="0%" stop-color="var(--acc)" stop-opacity=".16"/>' +
+      '<stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="' + w + '" height="' + h + '" fill="url(#pos-nebbia-' + id + ')"/>' + pol +
+      '<path d="' + rotta + '" fill="none" stroke="var(--acc)" stroke-opacity=".28" stroke-width="1.2" stroke-dasharray="4 7"/>' +
+      st + "</svg>";
+  }
+  $("pos-cielo-largo").innerHTML = cielo(LARGO, 1200, 520, 15, 11, "l");
+  $("pos-cielo-stretto").innerHTML = cielo(STRETTO, 500, 1030, 17, 12, "s");
+
+  R.querySelectorAll(".cielo svg").forEach(function (svg) {
+    var g = svg.querySelectorAll(".stella");
+    function isola(k) { g.forEach(function (e, j) { e.style.opacity = (k === null || k === j) ? 1 : .35; }); }
+    g.forEach(function (e, j) {
+      e.addEventListener("mouseenter", function () { isola(j); });
+      e.addEventListener("mouseleave", function () { isola(null); });
+      e.addEventListener("touchstart", function () { isola(j); });
+    });
+  });
+
+  /* --- dock: entra passato l'hero, si ritira sulla CTA finale --- */
+  var dock = $("pos-dock"), fin = $("pos-chiusura");
+  function scorri() {
+    dock.classList.toggle("on",
+      window.scrollY > window.innerHeight * .9 &&
+      fin.getBoundingClientRect().top > window.innerHeight * .85);
+  }
+  window.addEventListener("scroll", scorri, { passive: true });
+  window.addEventListener("resize", scorri);
+  scorri();
+})();
+</script>
+
+<!-- ================================================================
+     ANIMAZIONI
+     Un sistema solo, non effetti sparsi: tutto entra con la stessa
+     curva e la stessa distanza. Gli stati nascosti vivono sotto
+     .pos.anima, classe che mette il JS: se lo script non parte la
+     pagina resta visibile e leggibile.
+     ================================================================ -->
+<style>
+.pos .an{will-change:opacity,transform,filter}
+.pos.anima .an{opacity:0;transform:translateY(26px) scale(.99);filter:blur(6px)}
+.pos.anima .an.dentro{opacity:1;transform:none;filter:blur(0);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1),
+             filter .7s cubic-bezier(.16,1,.3,1);
+  transition-delay:calc(var(--i,0) * 90ms)}
+.pos .an.posato{will-change:auto}
+
+/* titolo dell'hero: ogni parola sale da sotto la sua finestrella */
+.pos h1 .par{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding:.12em .04em;margin:-.12em -.04em}
+.pos h1 .par i{display:inline-block;font-style:normal}
+.pos.anima h1 .par i{transform:translateY(115%)}
+.pos.anima.pronta h1 .par i{transform:none;
+  transition:transform .95s cubic-bezier(.16,1,.3,1);
+  transition-delay:calc(var(--i,0) * 55ms + 80ms)}
+
+/* l'evidenziazione si accende da sinistra, dopo le parole */
+.pos.anima h1 mark{background-size:0% 100%;background-repeat:no-repeat;
+  background-image:linear-gradient(var(--acc),var(--acc));color:#fff;
+  transition:background-size .8s cubic-bezier(.16,1,.3,1),color .3s .45s}
+.pos.anima.pronta h1 mark{background-size:100% 100%;color:var(--bg)}
+
+/* il resto dell'hero entra in cascata */
+.pos.anima .hero .cond,.pos.anima .hero .sub,.pos.anima .conto,.pos.anima .video{
+  opacity:0;transform:translateY(20px)}
+.pos.anima.pronta .hero .cond,.pos.anima.pronta .hero .sub,
+.pos.anima.pronta .conto,.pos.anima.pronta .video{opacity:1;transform:none;
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.pos.anima.pronta .hero .cond{transition-delay:.45s}
+.pos.anima.pronta .hero .sub {transition-delay:.6s}
+.pos.anima.pronta .conto    {transition-delay:.75s}
+.pos.anima.pronta .video    {transition-delay:.9s}
+
+/* il cursore che scrive gli occhielli */
+.pos .et.scrive::after{content:"";display:inline-block;width:.5em;height:1em;
+  margin-left:2px;background:var(--acc);vertical-align:-.15em;
+  animation:pos-cursore .7s steps(1) infinite}
+@keyframes pos-cursore{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* le schede reagiscono al passaggio del mouse */
+.pos .fase,.pos .colonna,.pos .caso,.pos details,.pos .paese{
+  transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s}
+.pos .fase:hover,.pos .colonna:hover,.pos .caso:hover{transform:translateY(-4px);
+  border-color:rgba(255,107,0,.34);box-shadow:0 22px 50px rgba(0,0,0,.45)}
+.pos details:hover,.pos .paese:hover{border-color:rgba(255,107,0,.34)}
+.pos .bottone{transition:filter .2s,transform .2s,box-shadow .3s}
+.pos .bottone:hover{box-shadow:0 16px 40px rgba(255,107,0,.28)}
+
+@media (prefers-reduced-motion:reduce){
+  .pos.anima .an,.pos.anima .hero .cond,.pos.anima .hero .sub,
+  .pos.anima .conto,.pos.anima .video{opacity:1;transform:none;filter:none;transition:none}
+  .pos.anima h1 .par i{transform:none;transition:none}
+  .pos.anima h1 mark{background-size:100% 100%;color:var(--bg);transition:none}
+  .pos .et.scrive::after{display:none}
+}
+</style>
+
+<script>
+(function () {
+  var R = document.getElementById("pos-vsl");
+  var lento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* --- titolo: una finestrella per parola, mark compreso ---------------- */
+  var h1 = R.querySelector("h1"), n = 0;
+  if (h1) {
+    var pezzi = [];
+    h1.childNodes.forEach(function (nodo) {
+      if (nodo.nodeType === 3) {
+        nodo.textContent.split(/(\s+)/).forEach(function (t) {
+          if (!t.trim()) { pezzi.push(document.createTextNode(t)); return; }
+          var w = document.createElement("span"); w.className = "par";
+          var d = document.createElement("i"); d.textContent = t;
+          d.style.setProperty("--i", n++); w.appendChild(d); pezzi.push(w);
+        });
+      } else {
+        var w2 = document.createElement("span"); w2.className = "par";
+        var d2 = document.createElement("i");
+        d2.appendChild(nodo.cloneNode(true)); d2.style.setProperty("--i", n++);
+        w2.appendChild(d2); pezzi.push(w2);
+      }
+    });
+    h1.replaceChildren.apply(h1, pezzi);
+  }
+
+  R.classList.add("anima");
+
+  /* --- entrate a scorrimento -------------------------------------------- */
+  var SEL = ".sez > .wide > .et, .sez > .wide > h2, .sez > .wide > .intro," +
+            ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
+            ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
+            ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla";
+  var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
+  var conta = new Map();
+  voci.forEach(function (el) {
+    el.classList.add("an");
+    var g = el.parentElement, i = conta.get(g) || 0;
+    el.style.setProperty("--i", Math.min(i, 6));   /* oltre il sesto lo stacco non si legge */
+    conta.set(g, i + 1);
+  });
+
+  function mostra(el) {
+    if (el.classList.contains("dentro")) return;
+    el.classList.add("dentro");
+    setTimeout(function () { el.classList.add("posato"); }, 1600);
+    if (el.classList.contains("et")) scrivi(el);
+    var num = el.querySelector ? el.querySelector(".cifrona") : null;
+    if (num) sali(num);
+  }
+
+  var io = new IntersectionObserver(function (voci) {
+    voci.forEach(function (v) { if (v.isIntersecting) { mostra(v.target); io.unobserve(v.target); } });
+  }, { rootMargin: "0px 0px -12% 0px" });
+  voci.forEach(function (el) { io.observe(el); });
+
+  /* rete di sicurezza sullo scroll: se l'observer non scatta, niente resta
+     invisibile. Un timer cieco svelerebbe invece tutta la pagina in anticipo. */
+  function spazzola() {
+    voci.forEach(function (el) {
+      if (el.classList.contains("dentro")) return;
+      var b = el.getBoundingClientRect();
+      if (b.top < innerHeight * .95 && b.bottom > 0) mostra(el);
+    });
+  }
+  addEventListener("scroll", spazzola, { passive: true });
+
+  /* --- occhielli scritti a caratteri ------------------------------------ */
+  function scrivi(el) {
+    if (lento) return;
+    var testo = el.textContent, i = 0;
+    el.textContent = ""; el.classList.add("scrive");
+    (function passo() {
+      el.textContent = testo.slice(0, ++i);
+      if (i < testo.length) setTimeout(passo, 22);
+      else setTimeout(function () { el.classList.remove("scrive"); }, 500);
+    })();
+  }
+
+  /* --- il numero grande sale fino al suo valore ------------------------- */
+  function sali(el) {
+    if (lento) return;
+    var span = el.querySelector("span"), coda = span ? span.outerHTML : "";
+    var testo = span ? el.textContent.replace(span.textContent, "") : el.textContent;
+    var meta = parseFloat(testo.replace(/[^0-9.,]/g, "").replace(",", ".")); 
+    if (!isFinite(meta)) return;
+    var segno = /^\D+/.exec(testo), pre = segno ? segno[0] : "";
+    var t0 = performance.now(), durata = 1100;
+    (function tic(t) {
+      var k = Math.min(1, (t - t0) / durata);
+      var v = (meta * (1 - Math.pow(1 - k, 3)));
+      el.innerHTML = pre + (meta % 1 ? v.toFixed(1) : Math.round(v)) + coda;
+      if (k < 1) requestAnimationFrame(tic);
+    })(t0);
+  }
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { R.classList.add("pronta"); spazzola(); });
+  });
+  setTimeout(function () { R.classList.add("pronta"); spazzola(); }, 300);
+})();
+</script>
+
+</div>
+
+</body>
+</html>

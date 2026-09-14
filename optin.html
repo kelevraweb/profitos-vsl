@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Opt-in · profitOS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;800&display=swap">
+<style>
+:root{
+  --accent:#FF6B00; --bg:#0C0908; --s1:#0F0B09; --s2:#110C0A; --s3:rgba(15,11,9,.88);
+  --testo:rgba(240,232,226,.8); --fioco:rgba(240,232,226,.62); --bordo:rgba(255,107,0,.15);
+  --nero:'Arial Black','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;
+  font:16px/1.7 'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:41rem;margin:0 auto;padding:64px 20px;text-align:center}
+.wide{max-width:52rem;margin:0 auto;padding:0 20px 80px}
+
+/* ---- testata ---- */
+.marchio{font-family:Figtree,'Helvetica Neue',Arial,sans-serif;font-weight:800;
+  font-size:32px;line-height:1;letter-spacing:-1.2px;margin:0}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:36px 0 0}
+.chip{border:1px solid var(--bordo);border-radius:99px;padding:6px 14px;
+  font-size:12px;font-weight:600;letter-spacing:.4px;color:var(--testo);background:rgba(15,11,9,.4)}
+.occhiello{display:flex;justify-content:center;align-items:center;gap:9px;margin:28px 0 0;
+  color:var(--accent);font-size:12px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase}
+.punto{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulsa 1.6s ease-out infinite}
+@keyframes pulsa{0%{box-shadow:0 0 0 0 rgba(255,107,0,.8)}70%{box-shadow:0 0 0 8px rgba(255,107,0,0)}}
+h1{font-family:var(--nero);font-weight:900;font-size:40px;line-height:54px;
+  letter-spacing:-.8px;text-wrap:balance;margin:20px 0 0}
+mark{background:var(--accent);color:var(--bg);padding:4.5px 12px;border-radius:8px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sub{max-width:34rem;margin:28px auto 0;color:var(--testo);line-height:28px}
+.sub b{color:#fff;font-weight:600}
+.punti{max-width:30rem;margin:32px auto 0;padding:0;list-style:none;text-align:left}
+.punti li{display:flex;gap:12px;padding:8px 0;font-size:15px;line-height:24px;color:var(--testo)}
+.punti i{flex:0 0 18px;height:18px;margin-top:4px;border-radius:50%;background:var(--accent);
+  color:var(--bg);font:700 10px/18px sans-serif;font-style:normal;text-align:center}
+
+/* ---- modulo ---- */
+.scheda{max-width:28rem;margin:36px auto 0;border:1px solid var(--bordo);border-radius:24px;
+  padding:28px;background:var(--s2);text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+label.et{display:block;margin-bottom:6px;color:var(--fioco);
+  font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+.campo{display:flex;align-items:center;border:1px solid var(--bordo);border-radius:12px;
+  background:rgba(255,255,255,.05);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.campo:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,0,.22)}
+.campo.ko{border-color:var(--accent)}
+.pref{align-self:stretch;display:flex;align-items:center;padding:0 12px 0 16px;
+  border-right:1px solid var(--bordo);color:var(--fioco);font-size:15px}
+.campo input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;
+  padding:14px 16px;font-size:15px;font-family:inherit}
+.campo input::placeholder{color:var(--fioco)}
+.riga+.riga{margin-top:16px}
+.errore{margin:6px 0 0;color:var(--accent);font-size:13px;line-height:20px}
+.consenso{display:flex;gap:10px;align-items:flex-start;margin-top:16px;cursor:pointer}
+.consenso input{width:16px;height:16px;margin-top:2px;accent-color:var(--accent);cursor:pointer}
+.consenso span{color:var(--fioco);font-size:13px;line-height:20px}
+button{width:100%;margin-top:20px;border:0;border-radius:12px;padding:16px 24px;
+  background:var(--accent);color:var(--bg);font:700 15px/1 inherit;letter-spacing:.2px;cursor:pointer;
+  transition:filter .2s,transform .2s}
+button:hover{filter:brightness(1.1)} button:active{transform:translateY(1px)}
+button:disabled{opacity:.6;cursor:default}
+.nota{max-width:26rem;margin:12px auto 0;color:var(--fioco);font-size:13px;line-height:20px}
+
+/* ---- chi sono, casi, chiusura, footer ---- */
+.divisorio{border-top:1px solid var(--bordo);padding-top:56px}
+.chi{display:flex;gap:36px;align-items:flex-start;text-align:left}
+/* foto verticale 720x1280: riquadro 3:4, inquadratura tenuta in alto.
+   Dietro, un pannello arancione sfalsato fa da cornice. */
+.ritratto{position:relative;flex:0 0 180px;width:180px}
+.ritratto::before{content:"";position:absolute;inset:14px -14px -14px 14px;
+  border-radius:18px;background:linear-gradient(150deg,var(--accent),rgba(255,107,0,.28));
+  box-shadow:0 24px 60px rgba(255,107,0,.18)}
+.ritratto img{position:relative;display:block;width:100%;height:240px;border-radius:16px;
+  object-fit:cover;object-position:center 20%;border:1px solid rgba(255,107,0,.35)}
+.et-arancio{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:2.3px;
+  text-transform:uppercase;margin:0}
+h2{font-family:var(--nero);font-weight:900;font-size:28px;line-height:32px;letter-spacing:-.9px;margin:12px 0 0}
+.chi p{color:var(--testo);margin:16px 0 0}
+.griglia{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;text-align:left}
+.caso{border:1px solid var(--bordo);border-radius:16px;padding:28px;background:var(--s3)}
+.caso h3{font-size:19px;line-height:24px;letter-spacing:-.38px;margin:8px 0 0}
+.caso .testa{display:flex;align-items:center;gap:16px}
+.caso .testa img{flex:0 0 72px;width:72px;height:72px;border-radius:14px;
+  object-fit:cover;border:1px solid var(--bordo)}
+.caso .testa h3{margin-top:4px}
+.caso p{color:var(--testo);font-size:15px;line-height:24px;margin:12px 0 0}
+.impact{margin:20px 0 8px;color:var(--fioco);font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+.caso ul{margin:0;padding:0;list-style:none}
+.caso ul li{display:flex;gap:10px;padding:4px 0;color:var(--testo);font-size:15px;line-height:24px}
+.caso ul li::before{content:"";flex:0 0 6px;height:6px;margin-top:9px;border-radius:50%;background:var(--accent)}
+.chiusura{border:1px solid var(--bordo);border-radius:24px;padding:48px 40px;margin-top:64px;
+  background:var(--s3);text-align:center}
+.chiusura h2{font-size:28px;line-height:38px;letter-spacing:-.6px;text-wrap:balance}
+.chiusura p{max-width:34rem;margin:16px auto 0;color:var(--testo);line-height:28px}
+.bottone{display:inline-block;margin-top:32px;border-radius:12px;padding:16px 32px;
+  background:var(--accent);color:var(--bg);font-weight:700;font-size:15px;text-decoration:none}
+footer{border-top:1px solid var(--bordo)}
+footer .wide{padding:48px 20px}
+footer p{max-width:42rem;color:var(--fioco);font-size:13px;line-height:20px}
+footer .link{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:28px;font-size:13px}
+footer .link a{color:var(--testo)}
+
+/* ---- desktop: due colonne ----
+   Sotto i 1025px la colonna singola va bene. Sopra, una striscia da 41rem in
+   mezzo a uno schermo da 1440 lascia 400px di vuoto per lato e il modulo
+   finisce sotto la piega: qui il testo sta a sinistra e il modulo a destra,
+   già visibile senza scorrere. */
+@media (min-width:1025px){
+  .wrap{max-width:76rem;padding:80px 40px;display:grid;
+    grid-template-columns:minmax(0,1fr) 25rem;gap:64px;align-items:start;text-align:left}
+  .col-modulo{position:sticky;top:40px}
+  .chips,.occhiello{justify-content:flex-start}
+  .chips{margin-top:32px}
+  h1{font-size:44px;line-height:58px;margin-top:24px}
+  .sub{margin:24px 0 0;max-width:36rem}
+  .punti{margin:28px 0 0;max-width:none}
+  .scheda{margin:0;max-width:none;padding:32px}
+  .nota{margin:14px 0 0;max-width:none;text-align:center}
+  .wide{max-width:76rem;padding:0 40px 96px}
+  .ritratto{flex-basis:220px;width:220px}
+  .ritratto img{height:293px}
+  .chiusura{padding:56px 48px}
+  .chiusura h2{font-size:34px;line-height:46px}
+}
+@media (min-width:1600px){
+  .wrap{max-width:84rem;gap:80px;grid-template-columns:minmax(0,1fr) 27rem}
+  .wide{max-width:84rem}
+  h1{font-size:52px;line-height:68px}
+}
+@media (max-width:571px){
+  h1{font-size:28px;line-height:40px;letter-spacing:-.5px}
+  .wrap{padding:48px 20px}
+  .chi{flex-direction:column;gap:24px}
+  .ritratto{width:140px;flex-basis:auto}
+  .ritratto img{height:187px}
+  .ritratto::before{inset:10px -10px -10px 10px}
+  .griglia{grid-template-columns:1fr}
+  .caso,.scheda{padding:20px}
+  .chiusura{padding:36px 24px}
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+ <div class="col-testo">
+  <p class="marchio">profitOS</p>
+
+  <div class="chips">
+    <span class="chip">Personal brand</span><span class="chip">Coach</span>
+    <span class="chip">Consulenti</span><span class="chip">Agenzie</span>
+  </div>
+
+  <p class="occhiello"><i class="punto"></i> Video gratuito · 15 minuti</p>
+
+  <h1>Costruiamo un sistema che ti porta <mark>clienti altospendenti</mark> che hanno già deciso.</h1>
+
+  <p class="sub">Senza aggiungere un'altra persona da formare e controllare. È lo stesso sistema che ha
+  portato <b>tutti e 4 i miei business oltre i 50.000€ al mese</b>. Ti mando il video, sono quindici
+  minuti su una mappa.</p>
+
+  <ul class="punti">
+    <li><i>1</i>Perché parte ancora tutto da te, anche dopo che hai delegato</li>
+    <li><i>2</i>I punti dove si inceppa l'acquisizione, visti sulla mappa</li>
+    <li><i>3</i>Cosa serve perché in call arrivi solo gente che ha già deciso</li>
+  </ul>
+
+ </div>
+
+ <div class="col-modulo">
+  <form class="scheda" id="modulo" novalidate>
+    <div class="riga">
+      <label class="et" for="nome">Nome</label>
+      <div class="campo"><input id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Come ti chiami"></div>
+    </div>
+    <div class="riga">
+      <label class="et" for="email">Email</label>
+      <div class="campo"><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="nome@esempio.it"></div>
+    </div>
+    <div class="riga">
+      <label class="et" for="tel">Cellulare</label>
+      <div class="campo"><span class="pref">+39</span><input id="tel" name="cellulare" type="tel" inputmode="tel" autocomplete="tel" placeholder="333 123 4567" maxlength="13"></div>
+    </div>
+    <input type="text" name="azienda" id="trappola" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+    <label class="consenso" for="consenso">
+      <input id="consenso" name="consenso" type="checkbox">
+      <span>Ho letto l'<a href="#" id="link-privacy">informativa privacy</a> e acconsento a essere ricontattato via email e messaggio.</span>
+    </label>
+    <button type="submit" id="invia">Guardalo adesso →</button>
+  </form>
+
+  <p class="nota">Ti arriva il video e qualche email di approfondimento. Ti cancelli con un click,
+  e non giro la tua email a nessuno.</p>
+ </div>
+</main>
+
+<section class="wide">
+  <div class="divisorio">
+    <div class="chi">
+      <div class="ritratto"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9accb74b83b18bcfad9701.jpeg" alt="Andrea Audisio"></div>
+      <div>
+        <p class="et-arancio">Chi sono</p>
+        <h2>Andrea Audisio</h2>
+        <p>Faccio l'imprenditore da più di 19 anni e ho costruito quattro business. Tutte e quattro
+        le volte è finita allo stesso modo: numeri buoni, e io dentro fino alle undici di sera a fare
+        cose che avrebbe potuto fare qualcun altro.</p>
+        <p>La quarta volta ho smesso di aggiungere persone e ho messo giù una mappa. È quella che
+        trovi nel video. Oggi la disegno insieme a chi si è incastrato allo stesso modo, e poi la
+        costruiamo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:64px">
+    <p class="et-arancio">Casi studio</p>
+    <h2>Chi ci è passato prima di te</h2>
+    <div class="griglia">
+
+      <article class="caso">
+        <div class="testa"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19a2eb1d7808531db.jpeg" alt="Investitore Efficace"><div><p class="et-arancio">Investitore Efficace</p><h3>Da zero a 4 milioni all'anno</h3></div></div>
+        <p>Abbiamo conosciuto Felipe Orrego quando aveva solo l'idea. Insieme abbiamo costruito il
+        brand da zero, impostato le basi per un'azienda vera e lanciato il progetto sul mercato. Oggi
+        Investitore Efficace è una delle realtà leader in Italia sulla finanza personale, con un
+        fatturato di oltre 4 milioni l'anno.</p>
+        <p class="impact">Impact</p>
+        <ul>
+          <li>Creato e lanciato il brand da zero</li>
+          <li>Strutturato community funnel e prime campagne advertising</li>
+          <li>Installate SOP e procedure di gestione team e processi</li>
+          <li>Portato il business da startup a brand leader di nicchia</li>
+        </ul>
+      </article>
+
+      <article class="caso">
+        <div class="testa"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab92280583b8e7057a1c0.jpg" alt="SalesValley"><div><p class="et-arancio">SalesValley</p><h3>+70 clienti B2B in 12 mesi</h3></div></div>
+        <p>SalesValley è un progetto nostro, nato da zero e diventato in meno di un anno il punto di
+        riferimento in Italia per hiring di sales e setter. In una nicchia iper-competitiva siamo
+        riusciti a costruire un'azienda solida, con un posizionamento forte e clienti tra le aziende
+        più importanti del Paese.</p>
+        <p class="impact">Impact</p>
+        <ul>
+          <li>Creato l'azienda e il brand da zero</li>
+          <li>Scalati a quasi 80 clienti in meno di un anno</li>
+          <li>Posizionamento come leader nazionale in Sales Recruitment</li>
+          <li>Team, procedure e academy interna costruite da zero</li>
+        </ul>
+      </article>
+
+      <article class="caso">
+        <div class="testa"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19fa5199bb3253687.jpg" alt="Evolutia"><div><p class="et-arancio">Evolutia</p><h3>Da 6K a oltre 30/40K al mese in pochi mesi</h3></div></div>
+        <p>Evolutia (Andrea Finotti e Selene Barletta) nasce come progetto da liberi professionisti,
+        fermo a circa 6.000€ al mese. Con profitOS abbiamo trasformato la realtà in un'azienda
+        strutturata, con team, procedure e KPI chiari, portandola stabilmente sopra i 30/40K al mese.</p>
+        <p class="impact">Impact</p>
+        <ul>
+          <li>Partenza da 6K/mese, oggi 30-40K/mese ricorrenti</li>
+          <li>Creazione di procedure interne e dashboard KPI</li>
+          <li>Scalato il team operativo, inserendo nuove figure chiave</li>
+          <li>Lanci gestiti e ottimizzati, con aumento dei margini e stabilità</li>
+        </ul>
+      </article>
+
+      <article class="caso">
+        <p class="et-arancio">Personal brand</p>
+        <h3>Da 10k€/m a 50k€/m con sistemi installati, non con l'hype</h3>
+        <p>Negli ultimi anni abbiamo preso profili già competenti e li abbiamo trasformati in business
+        con entrate mensili stabili. Non “contenuti virali”, ma offerte chiare, funnel puliti, CRM,
+        processo vendite e delivery.</p>
+        <p class="impact">Impact</p>
+        <ul>
+          <li>Financial Elite – Lorenzo Bignami → stabilizzato a 20k/mese.</li>
+          <li>100k SalesTraining – Ivan Greppi → scalato a 20k/mese.</li>
+          <li>Evolutia → stabilizzato a +30k/mese.</li>
+          <li>Growlancer → lanciato e portato a 600K in 6 mesi.</li>
+          <li>Digital Product Mastery → oltre 500K in 6 mesi.</li>
+          <li>E molti altri che trovi cliccando qui…</li>
+        </ul>
+        <p style="text-align:center;margin-top:24px">
+          <a class="bottone" style="margin:0" href="#" id="link-testimonianze">Altre testimonianze ↗</a>
+        </p>
+      </article>
+
+    </div>
+
+    <div class="chiusura">
+      <h2>Quindici minuti, e vedi dove ti sei incastrato.</h2>
+      <p>Non serve prendere appunti. Guardi la mappa, riconosci il punto in cui il tuo business si
+      ferma, e alla fine sai anche cosa succede se decidiamo di lavorare insieme.</p>
+      <a class="bottone" href="#modulo">Guarda il video →</a>
+      <p class="nota">Nome, email e cellulare. Il video ti arriva subito.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wide">
+    <p class="marchio" style="font-size:22px;letter-spacing:-.8px">profitOS</p>
+    <p style="margin-top:20px">I risultati riportati in questa pagina sono casi reali di clienti e
+    progetti nostri. Non sono una promessa: quello che ottieni dipende dal tuo mercato, dalla tua
+    offerta e dal lavoro che ci metti.</p>
+    <p style="margin-top:16px">Questo sito non fa parte di Facebook o di Meta Platforms, Inc. e non è
+    approvato da Meta in alcun modo. Facebook e Instagram sono marchi registrati di Meta Platforms, Inc.</p>
+    <div class="link">
+      <a href="#">Privacy policy</a><a href="#">Cookie policy</a><a href="#">Termini e condizioni</a>
+    </div>
+    <p style="margin-top:20px">© 2026 profitOS · P.IVA da inserire · Sede legale da inserire</p>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------------------------------
+   Da riempire prima di pubblicare:
+   ENDPOINT  URL che riceve { nome, email, cellulare } in JSON
+             (webhook Make/Zapier, form endpoint di Brevo, Klaviyo…)
+   REDIRECT  dove va la persona dopo l'invio: la pagina della VSL
+   --------------------------------------------------------------- */
+var ENDPOINT = "";
+var REDIRECT = "/";
+
+(function () {
+  var form = document.getElementById("modulo");
+  var nome = document.getElementById("nome");
+  var email = document.getElementById("email");
+  var tel = document.getElementById("tel");
+  var consenso = document.getElementById("consenso");
+  var bottone = document.getElementById("invia");
+  var trappola = document.getElementById("trappola");
+
+  /* +39 è fisso fuori dal campo: se uno incolla il numero intero lo ripulisco */
+  tel.addEventListener("input", function () {
+    tel.value = tel.value.replace(/[^\d\s]/g, "").replace(/^(?:0039|39)\s*/, "").replace(/^0+/, "");
+  });
+
+  function segna(campo, testo) {
+    var riga = campo.closest(".riga") || campo.closest("form");
+    var box = campo.closest(".campo");
+    if (box) box.classList.toggle("ko", !!testo);
+    var vecchio = riga.querySelector(":scope > .errore");
+    if (vecchio) vecchio.remove();
+    if (!testo) return;
+    var p = document.createElement("p");
+    p.className = "errore";
+    p.textContent = testo;
+    riga.appendChild(p);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (trappola.value) return;               /* bot */
+
+    var cifre = tel.value.replace(/\D/g, "");
+    var prove = [
+      [nome, nome.value.trim().length >= 2, "Scrivi il tuo nome."],
+      [email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()), "Questa email non sembra giusta."],
+      [tel, cifre.length >= 9 && cifre.length <= 11, "Serve un cellulare dove possiamo scriverti."],
+      [consenso, consenso.checked, "Serve il consenso per poterti mandare il video."]
+    ];
+
+    var primo = null;
+    prove.forEach(function (p) {
+      segna(p[0], p[1] ? "" : p[2]);
+      if (!p[1] && !primo) primo = p[0];
+    });
+    if (primo) return primo.focus();
+
+    bottone.disabled = true;
+    bottone.textContent = "Un attimo…";
+
+    var dati = {
+      nome: nome.value.trim(),
+      email: email.value.trim().toLowerCase(),
+      cellulare: "+39" + cifre
+    };
+    function vai() { window.location.href = REDIRECT; }
+
+    if (!ENDPOINT) return vai();
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dati)
+    }).then(vai).catch(function () {
+      bottone.disabled = false;
+      bottone.textContent = "Guardalo adesso →";
+      segna(consenso, "Non è partito l'invio. Riprova tra un attimo.");
+    });
+  });
+})();
+</script>
+</body>
+</html>

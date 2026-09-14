@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cruscotto funnel · profitOS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;800&display=swap">
+<style>
+:root{
+  --acc:#FF6B00; --acc2:#FFA24D; --bg:#0C0908; --s1:#0F0B09; --s2:#110C0A; --s3:rgba(15,11,9,.88);
+  --txt:rgba(240,232,226,.8); --dim:rgba(240,232,226,.6); --bor:rgba(255,107,0,.15);
+  --ok:#5BD98A; --ko:#F0766B; --neutro:rgb(158,145,138);
+  --black:'Arial Black','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;
+  font:15px/1.6 'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wide{max-width:84rem;margin:0 auto;padding:0 28px}
+h2{font-family:var(--black);font-weight:900;font-size:26px;line-height:32px;letter-spacing:-.9px;margin:0}
+.et{color:var(--acc);font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;
+  margin:0 0 9px;display:flex;align-items:center;gap:9px}
+.et::before{content:"";width:6px;height:6px;background:var(--acc);border-radius:2px 50% 50% 50%}
+.dim{color:var(--dim)}
+
+/* ---- barra periodo ---- */
+header{position:sticky;top:0;z-index:20;background:rgba(12,9,8,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--bor)}
+header .wide{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px}
+.marchio{font-family:Figtree,'Helvetica Neue',Arial,sans-serif;font-weight:800;
+  font-size:23px;line-height:1;letter-spacing:-.9px;margin:0;white-space:nowrap}
+.marchio span{color:var(--dim);font-weight:600;font-size:14px;letter-spacing:0;margin-left:10px}
+.preset{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.preset button{border:1px solid var(--bor);border-radius:99px;padding:8px 15px;background:transparent;
+  color:var(--txt);font:600 13px/1 inherit;cursor:pointer;transition:.15s}
+.preset button:hover{border-color:rgba(255,107,0,.45);color:#fff}
+.preset button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+.date{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:13px}
+.date input{border:1px solid var(--bor);border-radius:10px;padding:8px 11px;background:var(--s1);
+  color:#fff;font:600 13px/1 inherit;color-scheme:dark;cursor:pointer}
+.confronto{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:13px;white-space:nowrap}
+.confronto input{accent-color:var(--acc);width:15px;height:15px;cursor:pointer}
+
+section{padding:38px 0}
+.riga2{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+
+/* ---- inserimento ---- */
+.dati{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:20px}
+.campo{border:1px solid var(--bor);border-radius:12px;padding:13px 14px;background:var(--s2)}
+.campo label{display:block;color:var(--dim);font-size:10px;font-weight:700;letter-spacing:1.1px;
+  text-transform:uppercase;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.campo input{width:100%;border:0;outline:0;background:transparent;color:#fff;
+  font:800 20px/1.1 inherit;letter-spacing:-.4px;padding:0}
+.campo input::-webkit-outer-spin-button,.campo input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.campo input[type=number]{-moz-appearance:textfield}
+.campo:focus-within{border-color:var(--acc)}
+
+/* ---- imbuto ---- */
+.imbuto{border:1px solid var(--bor);border-radius:18px;padding:24px;background:var(--s3)}
+.gradino{padding:13px 0;border-bottom:1px solid rgba(255,107,0,.07)}
+.gradino:last-child{border-bottom:0}
+.gradino .su{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.gradino .nome{font-weight:600;font-size:14px}
+.gradino .conta{margin-left:auto;font-size:19px;font-weight:800;letter-spacing:-.4px}
+.gradino .delta{font-size:12px;font-weight:700}
+.traccia{height:26px;border-radius:8px;background:rgba(255,107,0,.07);overflow:hidden;margin-top:9px;position:relative}
+.traccia i{display:block;height:100%;border-radius:8px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.traccia b{position:absolute;top:0;right:10px;line-height:26px;font-size:12px;font-weight:700;color:var(--dim)}
+.giu{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:3px 9px;font-weight:700}
+.pill i{width:7px;height:7px;border-radius:50%}
+.buono{background:rgba(91,217,138,.12);color:var(--ok)} .buono i{background:var(--ok)}
+.medio{background:rgba(255,107,0,.12);color:var(--acc)} .medio i{background:var(--acc)}
+.male{background:rgba(240,118,107,.12);color:var(--ko)} .male i{background:var(--ko)}
+.vuoto{background:rgba(158,145,138,.12);color:var(--neutro)} .vuoto i{background:var(--neutro)}
+.persi{color:var(--dim)}
+
+/* ---- tessere ---- */
+.tessere{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tessera{border:1px solid var(--bor);border-radius:16px;padding:18px;background:var(--s3)}
+.tessera p{margin:0;color:var(--dim);font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+.tessera b{display:block;margin-top:9px;font-size:30px;font-weight:800;line-height:1;letter-spacing:-1.1px}
+.tessera b.arancio{color:var(--acc)}
+.tessera .sotto{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--dim)}
+.su-verde{color:var(--ok);font-weight:700} .giu-rosso{color:var(--ko);font-weight:700}
+
+/* ---- priorità ---- */
+.collo{border:1px solid var(--bor);border-radius:18px;padding:28px;background:var(--s3);margin-top:20px}
+.collo h3{font-family:var(--black);font-weight:900;font-size:23px;line-height:29px;letter-spacing:-.7px;margin:9px 0 0}
+.collo h3 span{color:var(--acc)}
+.collo>p{color:var(--txt);margin:12px 0 0;max-width:54rem}
+.leve{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.leva{border:1px solid rgba(255,107,0,.1);border-radius:13px;padding:16px;background:rgba(255,107,0,.04)}
+.leva p{margin:0;color:var(--dim);font-size:12px;font-weight:600}
+.leva b{display:block;margin-top:7px;font-size:22px;font-weight:800;letter-spacing:-.5px;color:var(--acc)}
+.leva em{display:block;margin-top:5px;color:var(--dim);font-size:11px;font-style:normal}
+
+/* ---- storico ---- */
+.storico{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.storico button{border:1px solid var(--bor);border-radius:10px;padding:9px 13px;background:var(--s2);
+  color:var(--txt);font:600 12px/1.3 inherit;cursor:pointer;text-align:left}
+.storico button:hover{border-color:var(--acc)}
+.storico button b{display:block;color:#fff;font-size:13px}
+.storico .vuoto-msg{color:var(--dim);font-size:13px}
+
+.nota{color:var(--dim);font-size:12px;line-height:19px;margin-top:18px;max-width:54rem}
+footer{border-top:1px solid var(--bor);padding:26px 0 36px;color:var(--dim);font-size:12px}
+
+@media (max-width:1100px){
+  .riga2{grid-template-columns:1fr}
+  .dati{grid-template-columns:repeat(3,1fr)}
+  .leve{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wide{padding:0 18px}
+  .dati{grid-template-columns:repeat(2,1fr)}
+  .tessere{grid-template-columns:1fr}
+  .preset{margin-left:0;width:100%}
+  h2{font-size:21px;line-height:27px}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wide">
+  <p class="marchio">profitOS<span>Cruscotto funnel</span></p>
+  <div class="date">
+    <input type="date" id="da"> <span>→</span> <input type="date" id="a">
+  </div>
+  <label class="confronto"><input type="checkbox" id="confronta" checked> confronta col periodo prima</label>
+  <div class="preset" id="preset"></div>
+</div></header>
+
+<section><div class="wide">
+  <p class="et">I numeri del periodo</p>
+  <h2 id="titolo-periodo">—</h2>
+  <p class="dim" style="margin:8px 0 0">Scrivi solo quello che hai. I campi vuoti restano fuori dal
+  conto e i passaggi che dipendono da loro restano grigi, non a zero. Ogni periodo si salva da solo
+  su questo computer.</p>
+  <div class="dati" id="dati"></div>
+  <div class="storico" id="storico"></div>
+</div></section>
+
+<section><div class="wide riga2">
+  <div>
+    <p class="et">L'imbuto</p>
+    <h2>Dove si perde la gente.</h2>
+    <div class="imbuto" id="imbuto" style="margin-top:18px"></div>
+  </div>
+  <div>
+    <p class="et">In fondo</p>
+    <h2>Quanto torna indietro.</h2>
+    <div class="tessere" id="tessere" style="margin-top:18px"></div>
+    <div class="collo" id="collo"></div>
+  </div>
+</div></section>
+
+<footer><div class="wide">
+  Cruscotto interno profitOS. I numeri li scrivi tu e restano nel browser di questo computer:
+  non vengono inviati da nessuna parte, e se svuoti i dati del sito spariscono.
+</div></footer>
+
+<script>
+/* =================================================================
+   Riferimenti: intervalli indicativi per un funnel VSL con call su
+   traffico freddo Meta. Non sono legge: dopo il lancio sostituiscili
+   con i tuoi, che sono gli unici che contano. [minimo, buono]
+   ================================================================= */
+var PASSI = [
+  { nome: "Click → visita",     da: "click",  a: "visite",  rif: [70, 90] },
+  { nome: "Visita → lead",      da: "visite", a: "lead",    rif: [25, 40] },
+  { nome: "Lead → apre la VSL", da: "lead",   a: "vsl",     rif: [60, 80] },
+  { nome: "VSL → candidatura",  da: "vsl",    a: "cand",    rif: [8, 18] },
+  { nome: "Candidatura → call", da: "cand",   a: "pren",    rif: [50, 75] },
+  { nome: "Prenotata → fatta",  da: "pren",   a: "fatte",   rif: [50, 70] },
+  { nome: "Call → cliente",     da: "fatte",  a: "clienti", rif: [15, 30] }
+];
+var CAMPI = [
+  { k: "spesa",     l: "Spesa ads €" },
+  { k: "impr",      l: "Impressioni" },
+  { k: "click",     l: "Click" },
+  { k: "visite",    l: "Visite opt-in" },
+  { k: "lead",      l: "Lead" },
+  { k: "vsl",       l: "Aperture VSL" },
+  { k: "cand",      l: "Candidature" },
+  { k: "pren",      l: "Call prenotate" },
+  { k: "fatte",     l: "Call fatte" },
+  { k: "clienti",   l: "Clienti" },
+  { k: "incasso",   l: "Incassato €" },
+  { k: "scontrino", l: "Scontrino medio €" }
+];
+
+var CHIAVE = "profitos-cruscotto-v2";
+var DB = {};
+try { DB = JSON.parse(localStorage.getItem(CHIAVE) || "{}"); } catch (e) { DB = {}; }
+var salva = function () { try { localStorage.setItem(CHIAVE, JSON.stringify(DB)); } catch (e) {} };
+
+/* --- date --- */
+var iso = function (d) { return d.toISOString().slice(0, 10); };
+var oggi = new Date();
+var meno = function (g) { var d = new Date(oggi); d.setDate(d.getDate() - g); return d; };
+var leggibile = function (s) {
+  var d = new Date(s + "T12:00:00");
+  return d.toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" });
+};
+var giorni = function (a, b) {
+  return Math.round((new Date(b) - new Date(a)) / 86400000) + 1;
+};
+var spostaIndietro = function (a, b) {
+  var n = giorni(a, b);
+  var fine = new Date(a); fine.setDate(fine.getDate() - 1);
+  var inizio = new Date(fine); inizio.setDate(inizio.getDate() - (n - 1));
+  return [iso(inizio), iso(fine)];
+};
+
+var PRESET = [
+  ["Ieri",        function () { return [iso(meno(1)), iso(meno(1))]; }],
+  ["7 giorni",    function () { return [iso(meno(6)), iso(oggi)]; }],
+  ["14 giorni",   function () { return [iso(meno(13)), iso(oggi)]; }],
+  ["30 giorni",   function () { return [iso(meno(29)), iso(oggi)]; }],
+  ["Questo mese", function () {
+      var p = new Date(oggi.getFullYear(), oggi.getMonth(), 1);
+      return [iso(p), iso(oggi)];
+  }]
+];
+
+var inDa = document.getElementById("da"), inA = document.getElementById("a");
+var iniziale = PRESET[3][1]();
+inDa.value = iniziale[0]; inA.value = iniziale[1];
+
+document.getElementById("preset").innerHTML = PRESET.map(function (p, i) {
+  return '<button type="button" data-i="' + i + '">' + p[0] + "</button>";
+}).join("");
+document.getElementById("preset").addEventListener("click", function (e) {
+  var b = e.target.closest("button"); if (!b) return;
+  var r = PRESET[+b.dataset.i][1]();
+  inDa.value = r[0]; inA.value = r[1];
+  disegna();
+});
+inDa.onchange = inA.onchange = disegna;
+document.getElementById("confronta").onchange = disegna;
+
+var chiave = function (a, b) { return a + "_" + b; };
+var periodo = function () { return DB[chiave(inDa.value, inA.value)] || {}; };
+
+/* --- campi --- */
+document.getElementById("dati").innerHTML = CAMPI.map(function (c) {
+  return '<div class="campo"><label for="c-' + c.k + '">' + c.l + '</label>' +
+    '<input id="c-' + c.k + '" type="number" min="0" inputmode="decimal" placeholder="—"></div>';
+}).join("");
+
+document.getElementById("dati").addEventListener("input", function (e) {
+  if (e.target.tagName !== "INPUT") return;
+  var ch = chiave(inDa.value, inA.value);
+  DB[ch] = DB[ch] || {};
+  var val = e.target.value;
+  if (val === "") delete DB[ch][e.target.id.slice(2)];
+  else DB[ch][e.target.id.slice(2)] = Number(val);
+  if (!Object.keys(DB[ch]).length) delete DB[ch];
+  salva(); disegna(true);
+});
+
+/* --- formattazione --- */
+var euro = function (n) {
+  if (n === null) return "—";
+  return "€" + (n >= 1000 ? Math.round(n).toLocaleString("it-IT")
+                          : (Math.round(n * 100) / 100).toLocaleString("it-IT"));
+};
+var pct = function (n) { return n === null ? "—" : (Math.round(n * 10) / 10).toLocaleString("it-IT") + "%"; };
+var num = function (n) { return n === null ? "—" : Math.round(n).toLocaleString("it-IT"); };
+
+function calcola(p) {
+  var v = function (k) { return (p[k] === undefined || p[k] === "" || isNaN(p[k])) ? null : Number(p[k]); };
+  var r = { v: v };
+  r.clienti = v("clienti");
+  r.scontrino = v("scontrino");
+  r.incasso = v("incasso") !== null ? v("incasso")
+            : (r.clienti !== null && r.scontrino !== null ? r.clienti * r.scontrino : null);
+  if (r.scontrino === null && r.incasso !== null && r.clienti) r.scontrino = r.incasso / r.clienti;
+  var s = v("spesa");
+  r.spesa = s;
+  r.cpl = (s !== null && v("lead")) ? s / v("lead") : null;
+  r.perCall = (s !== null && v("pren")) ? s / v("pren") : null;
+  r.cac = (s !== null && r.clienti) ? s / r.clienti : null;
+  r.roas = (s && r.incasso !== null) ? r.incasso / s : null;
+  return r;
+}
+
+function variazione(ora, prima, alContrario) {
+  if (ora === null || prima === null || prima === 0) return "";
+  var d = ((ora - prima) / prima) * 100;
+  if (Math.abs(d) < 0.5) return '<span class="dim">= al periodo prima</span>';
+  var meglio = alContrario ? d < 0 : d > 0;
+  return '<span class="' + (meglio ? "su-verde" : "giu-rosso") + '">' +
+    (d > 0 ? "▲" : "▼") + " " + Math.abs(Math.round(d)) + "%</span> <span class=\"dim\">vs prima</span>";
+}
+
+function giudizio(t, rif) {
+  if (t === null) return ["vuoto", "dati mancanti"];
+  if (t >= rif[1]) return ["buono", "sopra il riferimento"];
+  if (t >= rif[0]) return ["medio", "nella norma"];
+  return ["male", "sotto il riferimento"];
+}
+
+function disegna(soloCalcolo) {
+  var ch = chiave(inDa.value, inA.value);
+  var p = periodo();
+
+  if (!soloCalcolo) {
+    CAMPI.forEach(function (c) {
+      document.getElementById("c-" + c.k).value = p[c.k] !== undefined ? p[c.k] : "";
+    });
+  }
+
+  var n = giorni(inDa.value, inA.value);
+  document.getElementById("titolo-periodo").textContent =
+    leggibile(inDa.value) + " → " + leggibile(inA.value) +
+    "  ·  " + n + (n === 1 ? " giorno" : " giorni");
+  document.querySelectorAll("#preset button").forEach(function (b) {
+    var r = PRESET[+b.dataset.i][1]();
+    b.setAttribute("aria-pressed", r[0] === inDa.value && r[1] === inA.value);
+  });
+
+  var conf = document.getElementById("confronta").checked;
+  var pre = spostaIndietro(inDa.value, inA.value);
+  var pp = conf ? (DB[chiave(pre[0], pre[1])] || null) : null;
+  var C = calcola(p), P = pp ? calcola(pp) : null;
+
+  /* --- imbuto --- */
+  var base = C.v("visite") || C.v("click") || C.v("lead") || 1;
+  var peggiore = null;
+  document.getElementById("imbuto").innerHTML = PASSI.map(function (q) {
+    var da = C.v(q.da), a = C.v(q.a);
+    var t = (da && a !== null && da > 0) ? (a / da) * 100 : null;
+    var g = giudizio(t, q.rif);
+    if (t !== null && t < q.rif[0]) {
+      var sc = (q.rif[0] - t) / q.rif[0];
+      if (!peggiore || sc > peggiore.sc) peggiore = { q: q, t: t, sc: sc };
+    }
+    var tPre = null;
+    if (P) { var dp = P.v(q.da), ap = P.v(q.a); if (dp && ap !== null && dp > 0) tPre = (ap / dp) * 100; }
+    var persi = (da !== null && a !== null) ? da - a : null;
+    return '<div class="gradino"><div class="su"><span class="nome">' + q.nome + "</span>" +
+      '<span class="conta">' + num(a) + "</span></div>" +
+      '<div class="traccia"><i style="width:' + Math.max(2, Math.min(100, (a || 0) / base * 100)) + '%"></i>' +
+      "<b>" + pct(t) + "</b></div>" +
+      '<div class="giu"><span class="pill ' + g[0] + '"><i></i>' + g[1] + "</span>" +
+      '<span class="dim">rif. ' + q.rif[0] + "–" + q.rif[1] + "%</span>" +
+      (persi !== null && persi > 0 ? '<span class="persi">· persi ' + num(persi) + "</span>" : "") +
+      (tPre !== null ? '<span style="margin-left:auto">' + variazione(t, tPre) + "</span>" : "") +
+      "</div></div>";
+  }).join("");
+
+  /* --- tessere --- */
+  document.getElementById("tessere").innerHTML = [
+    ["Costo per lead", euro(C.cpl), P ? variazione(C.cpl, P.cpl, true) : "spesa ÷ lead", false],
+    ["Costo per call prenotata", euro(C.perCall), P ? variazione(C.perCall, P.perCall, true) : "il numero da guardare per primo", false],
+    ["Costo per cliente", euro(C.cac), P ? variazione(C.cac, P.cac, true) : "spesa ÷ clienti", false],
+    ["ROAS", C.roas === null ? "—" : (Math.round(C.roas * 100) / 100).toLocaleString("it-IT") + "×",
+     P ? variazione(C.roas, P.roas) : "incassato ÷ speso", true]
+  ].map(function (t) {
+    return '<div class="tessera"><p>' + t[0] + "</p><b" + (t[3] ? ' class="arancio"' : "") + ">" +
+      t[1] + '</b><div class="sotto">' + t[2] + "</div></div>";
+  }).join("");
+
+  /* --- priorità --- */
+  var box = document.getElementById("collo");
+  if (!peggiore) {
+    var mancano = PASSI.some(function (q) { return C.v(q.da) === null || C.v(q.a) === null; });
+    box.innerHTML = '<p class="et">La priorità</p><h3>' +
+      (mancano ? "Mancano dei numeri." : "Nessun passaggio sotto il riferimento.") + "</h3><p>" +
+      (mancano
+        ? "Riempi almeno spesa, visite, lead, call prenotate, call fatte e clienti: con quelli il collo di bottiglia si vede da solo."
+        : "Tutti i passaggi sono almeno nella norma. Qui la leva non è sistemare, è alzare la spesa e vedere quale si rompe per primo.") +
+      "</p>";
+    return;
+  }
+  var q = peggiore.q;
+  var leve = PASSI.map(function (x) {
+    var da = C.v(x.da), a = C.v(x.a);
+    if (!da || !a || !C.clienti || !C.scontrino) return null;
+    var t = (a / da) * 100;
+    if (t >= x.rif[1]) return null;
+    return { nome: x.nome, da: t, a: x.rif[1],
+             delta: C.clienti * (x.rif[1] / t - 1) * C.scontrino };
+  }).filter(Boolean).sort(function (x, y) { return y.delta - x.delta; });
+
+  box.innerHTML = '<p class="et">La priorità</p><h3>Il collo di bottiglia è <span>' +
+    q.nome.toLowerCase() + "</span>: " + pct(peggiore.t) + " contro un riferimento di " +
+    q.rif[0] + "–" + q.rif[1] + "%.</h3>" +
+    "<p>È il passaggio più lontano dal minimo, quindi è lì che stai perdendo più gente di quanto " +
+    "sia normale perderne. Tutto quello che viene dopo lavora sui numeri che escono da qui.</p>" +
+    (leve.length ? '<div class="leve">' + leve.slice(0, 3).map(function (l) {
+      return '<div class="leva"><p>' + l.nome + ": da " + pct(l.da) + " a " + l.a + "%</p>" +
+        "<b>+" + euro(l.delta) + "</b><em>incassato in più, fermo il resto</em></div>";
+    }).join("") + "</div>" : "");
+}
+
+/* --- periodi salvati --- */
+function storico() {
+  var ch = Object.keys(DB).sort().reverse();
+  var s = document.getElementById("storico");
+  if (!ch.length) { s.innerHTML = '<span class="vuoto-msg">Nessun periodo salvato: appena scrivi un numero, questo periodo compare qui.</span>'; return; }
+  s.innerHTML = ch.slice(0, 8).map(function (k) {
+    var p = k.split("_"), d = DB[k];
+    var etichetta = d.clienti !== undefined ? d.clienti + " clienti"
+                  : (d.lead !== undefined ? d.lead + " lead" : Object.keys(d).length + " campi");
+    return '<button type="button" data-da="' + p[0] + '" data-a="' + p[1] + '"><b>' +
+      leggibile(p[0]) + " → " + leggibile(p[1]) + "</b>" + etichetta + "</button>";
+  }).join("");
+}
+document.getElementById("storico").addEventListener("click", function (e) {
+  var b = e.target.closest("button"); if (!b) return;
+  inDa.value = b.dataset.da; inA.value = b.dataset.a; disegna();
+});
+
+var disegnaOrig = disegna;
+disegna = function (solo) { disegnaOrig(solo); storico(); };
+disegna();
+</script>
+</body>
+</html>
