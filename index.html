@@ -221,22 +221,20 @@
   box-shadow:0 0 10px rgba(255,107,0,.9);animation:pos-pulsa 2.2s ease-out infinite}
 
 /* chi sono */
-.pos .chi{display:flex;gap:44px;align-items:flex-start}
-/* la foto è verticale 720x1280: in un quadrato tagliava testa e gambe,
-   quindi il riquadro è 3:4 con l'inquadratura tenuta in alto.
-   Dietro, un pannello arancione sfalsato fa da cornice. */
-.pos .ritratto{position:relative;flex:0 0 320px;width:320px;perspective:900px}
-.pos .ritratto::before{content:"";position:absolute;inset:18px -18px -18px 18px;
-  border-radius:22px;background:linear-gradient(150deg,var(--acc),rgba(255,107,0,.28));
-  box-shadow:0 30px 70px rgba(255,107,0,.18)}
-.pos .ritratto img{position:relative;display:block;width:100%;height:auto;aspect-ratio:4/5;
-  border-radius:20px;object-fit:cover;object-position:center 20%;
-  border:1px solid rgba(255,107,0,.35);will-change:transform;transition:transform .12s linear}
-.pos .ritratto .respiro{display:none;position:relative;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
-  border-radius:20px;border:1px solid rgba(255,107,0,.35)}
+/* chi e' Andrea: il ritratto a tutta sezione, dietro; il testo a sinistra sopra */
+.pos #pos-andrea{position:relative;padding:0}
+.pos #pos-andrea > .wide{position:relative;z-index:1;margin-top:-100vh;padding:14vh 0 10vh}
+.pos .chi{display:block;max-width:600px}
+.pos .ritratto{position:sticky;top:0;height:100vh;width:100%;z-index:0;overflow:hidden;pointer-events:none}
+.pos .ritratto img,.pos .ritratto .respiro{position:absolute;top:-4%;right:-2%;height:108%;width:min(66vw,1200px);object-fit:cover;object-position:62% 0;
+  display:block;border:0;border-radius:0;will-change:transform;transition:transform .12s linear}
+.pos .ritratto::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,#0C0908 0%,rgba(12,9,8,.92) 18%,rgba(12,9,8,.35) 42%,rgba(12,9,8,0) 62%),
+             linear-gradient(180deg,rgba(12,9,8,.35) 0%,rgba(12,9,8,0) 22%,rgba(12,9,8,0) 70%,#0C0908 100%)}
+.pos .ritratto .respiro{display:none}
 .pos .ritratto.tocco .quadro{display:none}
 .pos .ritratto.tocco .respiro{display:block}
-.pos .ritratto .didascalia{position:absolute;left:0;right:0;bottom:-30px;text-align:center;font-size:10.5px;letter-spacing:2px;
+.pos .ritratto .didascalia{position:absolute;right:28px;bottom:22px;z-index:1;font-size:10.5px;letter-spacing:2px;
   text-transform:uppercase;color:rgba(240,232,226,.38);opacity:0;transition:opacity .6s}
 .pos .ritratto.pronto .didascalia{opacity:1}
 .pos .chi p{color:var(--txt);font-size:17px;line-height:29px;margin-top:16px}
@@ -429,16 +427,16 @@
 .pos .menu{position:sticky;top:0;z-index:60;background:rgba(12,9,8,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border-top:1px solid rgba(255,107,0,.12);border-bottom:1px solid rgba(255,107,0,.12);transition:background .3s,box-shadow .3s}
 .pos .menu.fissa{background:rgba(12,9,8,.92);box-shadow:0 12px 32px rgba(0,0,0,.45)}
-.pos .menu .wide{display:flex;align-items:center;gap:22px;height:58px}
+.pos .menu .wide{display:flex;align-items:center;gap:16px;height:58px}
 .pos .menu .marca{flex:0 0 auto;color:#fff;font-size:17px;font-weight:700;letter-spacing:-.4px;text-decoration:none}
 .pos .menu .marca b{color:var(--acc)}
 .pos .menu .voci{flex:1 1 auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;white-space:nowrap;
   -webkit-mask:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
 .pos .menu .voci::-webkit-scrollbar{display:none}
-.pos .menu .voci a{position:relative;display:inline-block;padding:10px 11px;color:var(--dim);font-size:11px;font-weight:700;
-  letter-spacing:1.8px;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:color .25s}
+.pos .menu .voci a{position:relative;display:inline-block;padding:10px 9px;color:var(--dim);font-size:10.5px;font-weight:700;
+  letter-spacing:1.4px;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:color .25s}
 .pos .menu .voci a:hover{color:#fff}
-.pos .menu .voci a::after{content:"";position:absolute;left:11px;right:11px;bottom:4px;height:2px;border-radius:2px;background:var(--acc);
+.pos .menu .voci a::after{content:"";position:absolute;left:9px;right:9px;bottom:4px;height:2px;border-radius:2px;background:var(--acc);
   transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.16,1,.3,1)}
 .pos .menu .voci a.attiva{color:var(--acc)}
 .pos .menu .voci a.attiva::after{transform:scaleX(1)}
@@ -577,9 +575,12 @@
   .pos .col2{border-left:0;border-top:1px solid rgba(255,107,0,.08);
     flex-direction:row;flex-wrap:wrap;gap:24px 40px}
   .pos .cifrona{font-size:92px;line-height:92px;letter-spacing:-3.7px}
-  .pos .chi{flex-direction:column;gap:24px}
-  .pos .ritratto{flex-basis:auto;width:min(100%,360px)}
-  .pos .ritratto::before{inset:14px -14px -14px 14px}
+  .pos #pos-andrea{padding:0 0 40px}
+  .pos #pos-andrea > .wide{margin-top:0;padding:22px 0 0}
+  .pos .ritratto{position:relative;width:100%;height:auto;aspect-ratio:4/3;border-radius:20px;overflow:hidden}
+  .pos .ritratto img,.pos .ritratto .respiro{top:0;right:0;width:100%;height:100%;object-position:50% 0}
+  .pos .ritratto::after{background:linear-gradient(180deg,rgba(12,9,8,0) 60%,rgba(12,9,8,.85))}
+  .pos .ritratto .didascalia{display:none}
   .pos .fasi,.pos .griglia,.pos .due{grid-template-columns:1fr}
   .pos .filo{padding:32px}
   .pos .filo p{font-size:24px;line-height:36px}
@@ -643,7 +644,8 @@
       <a href="#pos-strumenti" data-sez>Strumenti</a>
       <a href="#pos-percorso" data-sez>Percorso</a>
       <a href="#pos-risultati" data-sez>Risultati</a>
-      <a href="#pos-martedi" data-sez>Il tuo martedì</a>
+      <a href="#pos-andrea" data-sez>Chi sono</a>
+      <a href="#pos-martedi" data-sez>Il tuo futuro</a>
       <a href="#pos-garanzia" data-sez>Garanzia</a>
       <a href="#pos-faq" data-sez>FAQ</a>
     </div>
@@ -1046,12 +1048,13 @@
   </div>
 </div></div>
 
-<div class="sez" id="pos-andrea"><div class="wide"><div class="chi">
+<div class="sez" id="pos-andrea">
   <div class="ritratto vivo" id="pos-ritratto" data-base="https://kelevraweb.github.io/profitos-vsl/img/andrea/f" data-frames="21" data-centro="13">
-    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f13.jpg" width="720" height="900" alt="Andrea Audisio" loading="lazy">
+    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f13.jpg" width="1000" height="1250" alt="Andrea Audisio" loading="lazy">
     <video class="respiro" muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/andrea-testa.mp4" aria-hidden="true"></video>
     <span class="didascalia">muovi il mouse: ti segue</span>
   </div>
+<div class="wide"><div class="chi">
   <div>
     <p class="et">Chi è Andrea</p>
     <h2>Ho aperto partita IVA a 18 anni. Allora bastavano <span style="color:var(--acc)">50€</span>
@@ -1127,13 +1130,13 @@
 </div></div>
 
 <div class="sez" id="pos-martedi"><div class="wide">
-  <p class="et">Immaginati il tuo martedì</p>
-  <h2>Oggi. E fra sei mesi.</h2>
+  <p class="et">Il tuo futuro</p>
+  <h2>Com&rsquo;è oggi. E come sarà.</h2>
   <p class="intro">Stessa persona, stesso business, stesse ventiquattro ore. Cambia solo chi fa la fatica.</p>
   <div class="martedi">
     <div class="giorno prima"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.mp4"></video></div><div class="testo"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div></div>
     <div class="freccia" aria-hidden="true">↓</div>
-    <div class="giorno poi"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.mp4"></video></div><div class="testo"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
+    <div class="giorno poi"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.mp4"></video></div><div class="testo"><p class="bl-quando">Il tuo futuro</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
   </div>
 </div></div>
 
@@ -1681,7 +1684,7 @@
         ora += (meta - ora) * 0.14; vx += (tx - vx) * 0.12; vy += (ty - vy) * 0.12;
         var k = Math.max(0, Math.min(N - 1, Math.round(ora)));
         if (pronti[k] && pronti[k].complete && quadro.src !== pronti[k].src) quadro.src = pronti[k].src;
-        quadro.style.transform = "rotateY(" + (vx * 7) + "deg) rotateX(" + (-vy * 5) + "deg) translate(" + (vx * 6) + "px," + (vy * 4) + "px)";
+        quadro.style.transform = "translate(" + (vx * -14) + "px," + (vy * -10) + "px)";
         if (Math.abs(meta - ora) > 0.05 || Math.abs(tx - vx) > 0.005 || Math.abs(ty - vy) > 0.005) requestAnimationFrame(passo); else gira = false;
       }
       function muovi() { if (!gira) { gira = true; requestAnimationFrame(passo); } }
