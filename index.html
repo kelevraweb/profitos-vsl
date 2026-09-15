@@ -404,9 +404,10 @@
              linear-gradient(180deg,rgba(12,9,8,0) 55%,rgba(12,9,8,.55))}
 .pos .martedi .poi .scena::after{background:linear-gradient(90deg,rgba(12,9,8,.94) 0%,rgba(12,9,8,.78) 34%,rgba(12,9,8,.18) 62%,rgba(12,9,8,0) 100%),
              linear-gradient(180deg,rgba(255,107,0,0) 60%,rgba(255,107,0,.10))}
-.pos .martedi .testo{position:relative;z-index:1;padding:34px 40px 36px;max-width:560px}
-.pos .martedi .bl-quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--dim);margin:0 0 12px}
-.pos .martedi .poi .bl-quando{color:var(--acc)}
+.pos .martedi .testo{position:relative;z-index:1;padding:34px 40px 36px;max-width:640px}
+.pos .martedi .bl-quando{font-size:clamp(42px,6.4vw,84px);font-weight:800;line-height:.95;letter-spacing:-1.5px;text-transform:uppercase;
+  color:rgba(255,107,0,.16);-webkit-text-stroke:1.5px var(--acc);paint-order:stroke fill;margin:0 0 16px}
+.pos .martedi .poi .bl-quando{color:rgba(255,107,0,.26)}
 .pos .martedi ul{list-style:none;margin:0;padding:0}
 .pos .martedi li{font-size:19px;line-height:28px;padding:8px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--neg)}
 .pos .martedi .poi li{color:#fff}
@@ -420,6 +421,7 @@
   .pos .bl-conto .oggi::before{content:"Oggi, tutto tu";display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
   .pos .martedi .giorno{min-height:300px}
   .pos .martedi .testo{padding:24px 24px 26px}
+  .pos .martedi .bl-quando{-webkit-text-stroke-width:1px}
   .pos .martedi li{font-size:16px;line-height:24px}
 }
 
@@ -637,11 +639,11 @@
     <a class="marca" href="#pos-problema">profit<b>OS</b></a>
     <div class="voci">
       <a href="#pos-problema" data-sez>Il problema</a>
-      <a href="#pos-martedi" data-sez>Il martedì</a>
       <a href="#pos-cosa" data-sez>Cos'è profitOS</a>
       <a href="#pos-strumenti" data-sez>Strumenti</a>
       <a href="#pos-percorso" data-sez>Percorso</a>
       <a href="#pos-risultati" data-sez>Risultati</a>
+      <a href="#pos-martedi" data-sez>Il tuo martedì</a>
       <a href="#pos-garanzia" data-sez>Garanzia</a>
       <a href="#pos-faq" data-sez>FAQ</a>
     </div>
@@ -744,17 +746,6 @@
   <text class="didascalia" x="260" y="700">STESSE PERSONE. RISULTATI DIVERSI.</text>
 </svg>
     </div>
-  </div>
-</div></div>
-
-<div class="sez" id="pos-martedi"><div class="wide">
-  <p class="et">Immaginati il tuo martedì</p>
-  <h2>Oggi. E fra sei mesi.</h2>
-  <p class="intro">Stessa persona, stesso business, stesse ventiquattro ore. Cambia solo chi fa la fatica.</p>
-  <div class="martedi">
-    <div class="giorno prima"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.mp4"></video></div><div class="testo"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div></div>
-    <div class="freccia" aria-hidden="true">↓</div>
-    <div class="giorno poi"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.mp4"></video></div><div class="testo"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
   </div>
 </div></div>
 
@@ -1132,6 +1123,17 @@
         <li><span class="segno">✕</span><span><b>La colpa è sempre di altri.</b> Con quella premessa non si costruisce niente.</span></li>
       </ul>
     </div>
+  </div>
+</div></div>
+
+<div class="sez" id="pos-martedi"><div class="wide">
+  <p class="et">Immaginati il tuo martedì</p>
+  <h2>Oggi. E fra sei mesi.</h2>
+  <p class="intro">Stessa persona, stesso business, stesse ventiquattro ore. Cambia solo chi fa la fatica.</p>
+  <div class="martedi">
+    <div class="giorno prima"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.mp4"></video></div><div class="testo"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div></div>
+    <div class="freccia" aria-hidden="true">↓</div>
+    <div class="giorno poi"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.mp4"></video></div><div class="testo"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
   </div>
 </div></div>
 
