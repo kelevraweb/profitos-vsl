@@ -316,12 +316,13 @@
 .pos .schema .nodo.dim rect{stroke:rgba(240,232,226,.16);fill:rgba(15,11,9,.7)}
 .pos .schema .linee.dim path{stroke:rgba(240,232,226,.22)}
 
-/* i numeri di Setti */
-.pos .numeri{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
-.pos .numeri>div{border:1px solid var(--bor);border-radius:18px;padding:26px 22px;background:var(--s3)}
-.pos .numeri b{display:block;font-size:44px;line-height:1;font-weight:800;letter-spacing:-1.6px;color:var(--acc);
-  font-variant-numeric:tabular-nums}
-.pos .numeri span{display:block;margin-top:10px;color:var(--dim);font-size:13px;line-height:19px}
+/* strumenti: icona in testa, fondo caldo che li distingue dalle altre card */
+.pos .strumenti .fase{
+  background:radial-gradient(120% 85% at 0% 0%,rgba(255,107,0,.14),rgba(255,107,0,0) 58%),
+             linear-gradient(165deg,rgba(30,20,13,.96),rgba(15,11,9,.94));
+  border-color:rgba(255,107,0,.2)}
+.pos .strumenti .fase .icona{margin-bottom:18px}
+.pos .strumenti .fase:hover .icona{background:rgba(255,107,0,.2);box-shadow:0 0 28px rgba(255,107,0,.28)}
 
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
@@ -341,7 +342,6 @@
 
 @media (max-width:1024px){
   .pos .affianco{grid-template-columns:1fr}
-  .pos .numeri{grid-template-columns:1fr 1fr}
   .pos .faq{grid-template-columns:1fr}
   .pos .tappe::before,.pos .tappe .fase::before{display:none}
   .pos .tappe{padding-top:0}
@@ -501,36 +501,13 @@
 </header>
 
 <div class="striscia">
-  <p class="titolo">Alcuni di quelli che ce l'hanno già fatta</p>
+  <p class="titolo">Lavorano già con profitOS</p>
   <div class="pista" id="pos-pista"></div>
 </div>
 
 <div class="sez"><div class="wide">
-  <div class="grande">
-    <div>
-      <p class="et">Il caso più grande</p>
-      <p class="cifrona">+4<span>M€</span></p>
-      <p class="intro">Investitore Efficace. L'abbiamo conosciuto quando aveva solo l'idea: brand,
-      funnel e procedure costruiti da zero. Oggi fattura <b>oltre 4 milioni l'anno.</b></p>
-    </div>
-    <div class="col2">
-      <div><p>È partito da</p><b>Zero<em>aveva solo l'idea</em></b></div>
-      <div><p>È arrivato a</p><b class="arancio">Leader<em>in Italia sulla finanza personale</em></b></div>
-    </div>
-  </div>
-</div></div>
-
-<div class="sez"><div class="wide">
-  <p class="et">La community</p>
-  <h2>Chi c'è dentro profitOS.</h2>
-  <p class="intro">Non un elenco di loghi: le persone che stiamo seguendo adesso, con i loro
-  contenuti e i loro profili.</p>
-  <div class="storie"><div class="rullo" id="pos-storie"></div></div>
-</div></div>
-
-<div class="sez"><div class="wide">
-  <p class="et">Perché non converti</p>
-  <h2>E allora perché non succede già?</h2>
+  <p class="et">Il problema</p>
+  <h2>Perché non converti, anche se stai facendo tutto giusto.</h2>
   <p class="intro">Ti hanno detto che è la nicchia. Che è il target, o l'offerta, o che non parli bene
   al tuo pubblico. Non è niente di tutto questo. <b>Sono successe due cose insieme, e insieme fanno
   un disastro.</b></p>
@@ -627,7 +604,7 @@
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">Le tre strade</p>
+  <p class="et">Cosa hai già provato</p>
   <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
   <p class="intro">A questo punto ti sei accorto che da solo non ce la fai. Le porte che il mercato
   ti apre sono tre, e ognuna ti lascia esattamente dove eri.</p>
@@ -657,7 +634,7 @@
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">La quarta porta</p>
+  <p class="et">La quarta strada</p>
   <h2>Cos&rsquo;è profitOS.</h2>
   <div class="affianco">
     <div>
@@ -706,7 +683,7 @@
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">Il giro</p>
+  <p class="et">Come funziona</p>
   <h2>Ogni pezzo sa cosa ha fatto quello prima.</h2>
   <p class="intro">Non sono tool comprati separatamente: è un ecosistema. L'offerta decide i
   contenuti, i contenuti generano le conversazioni, le conversazioni entrano nel CRM, la vendita sa
@@ -715,13 +692,14 @@
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">Cosa c'è dentro</p>
+  <p class="et">Gli strumenti</p>
   <h2>Gli strumenti, nell'ordine in cui li usi.</h2>
   <p class="intro">Non è un prompt trovato online: dentro ci sono diciannove anni di lavoro su
   offerte, acquisizione, funnel e vendita. <b>L'AI non sostituisce l'esperienza: è l'esperienza che
   ci abbiamo messo dentro a fare la differenza.</b></p>
-  <div class="fasi">
+  <div class="fasi strumenti">
     <div class="fase">
+      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
       <div class="testa"><p class="ordinale">01</p><p class="quale">Offerta</p></div>
       <h3>Una settimana in poche ore</h3>
       <p>Ti porta dentro i passaggi e ti dice, con dei numeri sopra, quanto dolore risolve la tua
@@ -729,6 +707,7 @@
       <ul><li>Offerta scritta e posizionamento</li><li>Promessa unica e base del metodo</li><li>Brand book: colori e tono di voce</li></ul>
     </div>
     <div class="fase">
+      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
       <div class="testa"><p class="ordinale">02</p><p class="quale">Contenuti</p></div>
       <h3>Piani interi in una passata</h3>
       <p>Guarda cosa succede nel tuo settore, le notizie, i competitor, e scrive piani editoriali di
@@ -736,7 +715,8 @@
       <ul><li>Gobbo mentre giri</li><li>Storie caricate e tagliate da sole</li><li>Montaggio in blocco, copertine incluse</li></ul>
     </div>
     <div class="fase">
-      <div class="testa"><p class="ordinale">03</p><p class="quale">Setti</p></div>
+      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+      <div class="testa"><p class="ordinale">03</p><p class="quale">Setty</p></div>
       <h3>I DM non si perdono più</h3>
       <p>Aggancia un lead magnet a ogni contenuto, risponde in pubblico, scrive in privato, consegna
       il materiale e continua la conversazione. Recupera chi sparisce e prenota le call da solo,
@@ -744,6 +724,7 @@
       <ul><li>Niente link inventati</li><li>Niente appuntamenti che non esistono</li><li>Non si ripete</li></ul>
     </div>
     <div class="fase">
+      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg></span>
       <div class="testa"><p class="ordinale">04</p><p class="quale">Funnel Builder</p></div>
       <h3>Non ti richiede quello che hai già dato</h3>
       <p>Eredita tutto dall'analisi iniziale: l'unica domanda nuova è come si chiama il tuo metodo.
@@ -751,6 +732,7 @@
       <ul><li>Pagine pubblicate online, senza codice</li><li>Ganci per le inserzioni e sequenze mail</li><li>Script della call e della VSL</li></ul>
     </div>
     <div class="fase">
+      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
       <div class="testa"><p class="ordinale">05</p><p class="quale">Vendita</p></div>
       <h3>Il suggeritore in call</h3>
       <p>Legge la candidatura e tutto il contesto della persona con cui stai parlando, e mentre sei
@@ -758,26 +740,94 @@
       più dall'avere in casa qualcuno bravo a vendere.</p>
     </div>
     <div class="fase">
+      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4M22 5h-4"/></svg></span>
       <div class="testa"><p class="ordinale">06</p><p class="quale">Nova</p></div>
       <h3>Ventiquattro ore su ventiquattro</h3>
       <p>Tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di
       lavoro. Se sei sveglio di notte e vuoi andare avanti, c'è comunque qualcuno che ti risponde.</p>
     </div>
   </div>
-  <p class="et" style="margin-top:40px">Setti, in questo momento</p>
-  <div class="numeri">
-    <div><b data-fino="12000">0</b><span>conversazioni gestite</span></div>
-    <div><b data-fino="74000">0</b><span>messaggi scambiati</span></div>
-    <div><b data-fino="500" data-pre="200–">0</b><span>messaggi al giorno, senza nessuno in chat</span></div>
-    <div><b data-fino="673">0</b><span>lead fermi recuperati in un solo giorno</span></div>
-  </div>
-  <p class="intro" style="margin-top:28px">Sul mio profilo, con un lead magnet agganciato a ogni
-  contenuto: <b>quasi 7.000 contatti in tre mesi, a costo zero</b>. A 2€ a lead sarebbero stati
-  14.000€ di pubblicità. E tre mesi fa quel profilo aveva 5.000 follower.</p>
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">Clienti</p>
+  <p class="et">Il percorso</p>
+  <h2>Le cose pratiche, quelle che di solito si scoprono dopo.</h2>
+  <p class="intro">Il percorso dura <b>tre o sei mesi secondo da dove parti</b>. Non sono pacchetti
+  diversi: cambia quanto ci sono io. Quello che segue è l'ordine, e non si salta.</p>
+  <div class="fasi tappe">
+    <div class="fase">
+      <div class="testa"><p class="ordinale">01</p><p class="quale">I primi sette giorni</p></div>
+      <h3>L'offerta, e nient'altro</h3>
+      <p class="quando">Uguali per tutti</p>
+      <p>Si definisce l'offerta e la si valida insieme in call: è l'unico punto del percorso dove
+      sbagliare costa mesi. Prima di averla chiusa <b>non si tocca né un contenuto né un funnel</b>,
+      perché se l'offerta è sbagliata tutto il resto amplifica un errore.</p>
+      <ul><li>Offerta scritta, con i punteggi</li><li>Posizionamento e promessa unica</li><li>Validata insieme prima di partire</li></ul>
+    </div>
+    <div class="fase">
+      <div class="testa"><p class="ordinale">02</p><p class="quale">Poi</p></div>
+      <h3>Il sistema si installa</h3>
+      <p class="quando">Le tue due o tre ore al giorno</p>
+      <p>Contenuti, conversazioni e funnel entrano in funzione uno dopo l'altro. A te restano
+      <b>due o tre ore al giorno</b>: se non le hai, te lo dico adesso, lascia perdere. In quelle
+      ore fai le uniche tre cose che non si possono delegare.</p>
+      <ul><li>Ci metti la faccia</li><li>Vendi, finché non hai un team</li><li>Giudichi quello che esce</li></ul>
+    </div>
+    <div class="fase">
+      <div class="testa"><p class="ordinale">03</p><p class="quale">A tre o sei mesi</p></div>
+      <h3>Il tempo che serve davvero</h3>
+      <p class="quando">E se non basta, si continua</p>
+      <p>Gli altri ti danno tre o sei mesi perché oltre gli costa margine. Per me è il tempo tecnico
+      che serve, non una scadenza: <b>se alla fine non sei arrivato a nulla, il percorso non
+      finisce.</b> Se invece cerchi clienti la settimana prossima, non possiamo aiutarti.</p>
+      <ul><li>Volumi più grandi, stesso carico</li><li>Semmai togli figure, non le aggiungi</li><li>Non aumenti i costi: aumenti il margine</li></ul>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Dentro la piattaforma</p>
+  <h2>Nove pezzi, uno dietro l'altro.</h2>
+  <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
+  dell'onboarding — più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
+  la community. Così eviti la paralisi da corsi che uccide la maggior parte dei programmi.</p>
+  <div class="cielo">
+    <div id="pos-cielo-largo"></div><div id="pos-cielo-stretto"></div>
+    <p class="didascalia">Nove livelli, uno dietro l'altro. Tocca una stella per isolarla.</p>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">I risultati</p>
+  <h2>Alcuni di quelli che ce l'hanno già fatta.</h2>
+  <div class="griglia" id="pos-casi"></div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <div class="grande">
+    <div>
+      <p class="et">Il caso più grande</p>
+      <p class="cifrona">+4<span>M€</span></p>
+      <p class="intro">Investitore Efficace. L'abbiamo conosciuto quando aveva solo l'idea: brand,
+      funnel e procedure costruiti da zero. Oggi fattura <b>oltre 4 milioni l'anno.</b></p>
+    </div>
+    <div class="col2">
+      <div><p>È partito da</p><b>Zero<em>aveva solo l'idea</em></b></div>
+      <div><p>È arrivato a</p><b class="arancio">Leader<em>in Italia sulla finanza personale</em></b></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">La community</p>
+  <h2>Chi c'è dentro profitOS, adesso.</h2>
+  <p class="intro">Non un elenco di loghi: le persone che stiamo seguendo adesso, con i loro
+  contenuti e i loro profili.</p>
+  <div class="storie"><div class="rullo" id="pos-storie"></div></div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Dove siamo</p>
   <h2>Dove lavoriamo</h2>
   <p class="intro">Non siamo un'agenzia locale: i progetti che seguiamo stanno in cinque Paesi.</p>
   <div class="mappa" id="pos-mappa"></div>
@@ -826,55 +876,18 @@
 </div></div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">Come funziona davvero</p>
-  <h2>Le cose pratiche, quelle che di solito si scoprono dopo.</h2>
-  <p class="intro">Il percorso dura <b>tre o sei mesi secondo da dove parti</b>. Non sono pacchetti
-  diversi: cambia quanto ci sono io. Quello che segue è l'ordine, e non si salta.</p>
-  <div class="fasi tappe">
-    <div class="fase">
-      <div class="testa"><p class="ordinale">01</p><p class="quale">I primi sette giorni</p></div>
-      <h3>L'offerta, e nient'altro</h3>
-      <p class="quando">Uguali per tutti</p>
-      <p>Si definisce l'offerta e la si valida insieme in call: è l'unico punto del percorso dove
-      sbagliare costa mesi. Prima di averla chiusa <b>non si tocca né un contenuto né un funnel</b>,
-      perché se l'offerta è sbagliata tutto il resto amplifica un errore.</p>
-      <ul><li>Offerta scritta, con i punteggi</li><li>Posizionamento e promessa unica</li><li>Validata insieme prima di partire</li></ul>
-    </div>
-    <div class="fase">
-      <div class="testa"><p class="ordinale">02</p><p class="quale">Poi</p></div>
-      <h3>Il sistema si installa</h3>
-      <p class="quando">Le tue due o tre ore al giorno</p>
-      <p>Contenuti, conversazioni e funnel entrano in funzione uno dopo l'altro. A te restano
-      <b>due o tre ore al giorno</b>: se non le hai, te lo dico adesso, lascia perdere. In quelle
-      ore fai le uniche tre cose che non si possono delegare.</p>
-      <ul><li>Ci metti la faccia</li><li>Vendi, finché non hai un team</li><li>Giudichi quello che esce</li></ul>
-    </div>
-    <div class="fase">
-      <div class="testa"><p class="ordinale">03</p><p class="quale">A tre o sei mesi</p></div>
-      <h3>Il tempo che serve davvero</h3>
-      <p class="quando">E se non basta, si continua</p>
-      <p>Gli altri ti danno tre o sei mesi perché oltre gli costa margine. Per me è il tempo tecnico
-      che serve, non una scadenza: <b>se alla fine non sei arrivato a nulla, il percorso non
-      finisce.</b> Se invece cerchi clienti la settimana prossima, non possiamo aiutarti.</p>
-      <ul><li>Volumi più grandi, stesso carico</li><li>Semmai togli figure, non le aggiungi</li><li>Non aumenti i costi: aumenti il margine</li></ul>
-    </div>
+  <p class="et">Come la penso</p>
+  <h2>La nostra filosofia</h2>
+  <div class="filo">
+    <p>Il punto dell'AI è che dovrebbe <span>toglierti il lavoro</span>, non creartene altro. Io non
+    credo che sostituirà le persone: credo che se un lavoro lo fa male, <span>è giusto che lo faccia
+    un sistema fatto bene</span>. Quello che resta a te è la faccia, il giudizio e le decisioni.</p>
+    <p class="firma">Andrea Audisio</p>
   </div>
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">La piattaforma</p>
-  <h2>Nove pezzi, uno dietro l'altro.</h2>
-  <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
-  dell'onboarding — più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
-  la community. Così eviti la paralisi da corsi che uccide la maggior parte dei programmi.</p>
-  <div class="cielo">
-    <div id="pos-cielo-largo"></div><div id="pos-cielo-stretto"></div>
-    <p class="didascalia">Nove livelli, uno dietro l'altro. Tocca una stella per isolarla.</p>
-  </div>
-</div></div>
-
-<div class="sez"><div class="wide">
-  <p class="et">Selezione</p>
+  <p class="et">Per chi è</p>
   <h2>Per chi è, e per chi no.</h2>
   <div class="due">
     <div class="colonna si">
@@ -898,29 +911,6 @@
         <li><span class="segno">✕</span><span><b>La colpa è sempre di altri.</b> Con quella premessa non si costruisce niente.</span></li>
       </ul>
     </div>
-  </div>
-</div></div>
-
-<div class="sez"><div class="wide">
-  <p class="et">Casi studio</p>
-  <h2>Alcuni di quelli che ce l'hanno già fatta</h2>
-  <div class="griglia" id="pos-casi"></div>
-</div></div>
-
-<div class="sez"><div class="wide">
-  <p class="et">FAQ</p>
-  <h2>Risposte oneste. Senza giri di parole.</h2>
-  <div class="faq" id="pos-faq"></div>
-</div></div>
-
-<div class="sez"><div class="wide">
-  <p class="et">Come la vediamo</p>
-  <h2>La nostra filosofia</h2>
-  <div class="filo">
-    <p>Il punto dell'AI è che dovrebbe <span>toglierti il lavoro</span>, non creartene altro. Io non
-    credo che sostituirà le persone: credo che se un lavoro lo fa male, <span>è giusto che lo faccia
-    un sistema fatto bene</span>. Quello che resta a te è la faccia, il giudizio e le decisioni.</p>
-    <p class="firma">Andrea Audisio</p>
   </div>
 </div></div>
 
@@ -950,6 +940,12 @@
   </div>
   <p class="intro" style="margin-top:28px">Quello che invece non ti garantisco è il successo. Chi te
   lo garantisce ti sta mentendo: dipende anche da te.</p>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">FAQ</p>
+  <h2>Risposte oneste. Senza giri di parole.</h2>
+  <div class="faq" id="pos-faq"></div>
 </div></div>
 
 <div class="sez centro" id="pos-chiusura"><div class="wide">
@@ -1140,7 +1136,7 @@
   var NODI = [
     ["Offerta","Scritta e validata nei primi 7 giorni"],
     ["Contenuti","Piani interi, nel tuo tono di voce"],
-    ["Conversazioni","Setti risponde, segue e prenota"],
+    ["Conversazioni","Setty risponde, segue e prenota"],
     ["Vendita","Arrivano in call già decisi"],
     ["Caso studio","Torna dentro e riparte il giro"]
   ];
@@ -1187,7 +1183,7 @@
 
   /* --- costellazione dei 9 livelli, due disposizioni --- */
   var LIV = [["01","Onboarding","i primi 7 giorni",15],["02","Offerta","scoring e brand book",9],
-    ["03","Contenuti","piani, gobbo, montaggio",10],["04","Setti","DM, follow-up, calendario",8],
+    ["03","Contenuti","piani, gobbo, montaggio",10],["04","Setty","DM, follow-up, calendario",8],
     ["05","Funnel Builder","dieci funnel, pagine online",11],["06","Vendita","AI in live sulle call",8],
     ["07","Nova","l'assistente, 24 ore su 24",10],["08","Live settimanali","con Andrea",9],
     ["09","Community","gli altri che stanno costruendo",13]];
@@ -1353,7 +1349,7 @@
   var SEL = ".sez > .wide > .et, .sez > .wide > h2, .sez > .wide > .intro," +
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
-            ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema, .numeri";
+            ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
@@ -1370,7 +1366,6 @@
     if (el.classList.contains("et")) scrivi(el);
     var num = el.querySelector ? el.querySelector(".cifrona") : null;
     if (num) sali(num);
-    if (el.classList.contains("numeri")) el.querySelectorAll("b[data-fino]").forEach(contaSu);
   }
 
   var io = new IntersectionObserver(function (voci) {
@@ -1420,18 +1415,6 @@
       var k = Math.min(1, (t - t0) / durata);
       var v = (meta * (1 - Math.pow(1 - k, 3)));
       el.innerHTML = pre + (meta % 1 ? v.toFixed(1) : Math.round(v)) + coda;
-      if (k < 1) requestAnimationFrame(tic);
-    })(t0);
-  }
-
-  /* i numeri di Setti salgono da zero, con il punto delle migliaia */
-  function contaSu(b) {
-    var fine = parseInt(b.getAttribute("data-fino"), 10), pre = b.getAttribute("data-pre") || "";
-    if (lento || !isFinite(fine)) { b.textContent = pre + fine.toLocaleString("it-IT"); return; }
-    var t0 = performance.now(), durata = 1400;
-    (function tic(t) {
-      var k = Math.min(1, (t - t0) / durata), v = Math.round(fine * (1 - Math.pow(1 - k, 3)));
-      b.textContent = pre + v.toLocaleString("it-IT");
       if (k < 1) requestAnimationFrame(tic);
     })(t0);
   }
