@@ -491,6 +491,7 @@
 .pos .avviso{margin:28px 0 0;padding:16px 22px;border:1px solid rgba(255,107,0,.4);border-radius:14px;
   background:linear-gradient(90deg,rgba(255,107,0,.14),rgba(255,107,0,.04));color:var(--txt);font-size:17px;line-height:26px}
 .pos .avviso b{color:#fff}
+.pos h2 .os{color:var(--acc)}
 .pos .postilla.ps{margin-top:10px;color:var(--acc)}
 @media (min-width:1025px){.pos .avviso{white-space:nowrap}}
 @media (max-width:1024px){.pos .strati{grid-template-columns:1fr}.pos .schema.scudo{max-width:360px;margin:0 auto}}
@@ -503,15 +504,14 @@
 
 /* le tre porte: la scena e' lo sfondo del box, il testo ci sta sopra e la foto sfuma nel nero */
 .pos .porte .fase.porta{position:relative;overflow:hidden;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;
-  background:#0a0705;border-color:rgba(255,107,0,.22)}
-.pos .porta .fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block;
-  filter:saturate(.9);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  padding-top:345px;background:#0C0908;border-color:rgba(255,107,0,.22)}
+.pos .porta .fondo{position:absolute;left:0;right:0;top:0;width:100%;height:60%;object-fit:cover;object-position:50% 0;display:block;
+  filter:saturate(.9);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+  -webkit-mask:linear-gradient(180deg,#000 32%,rgba(0,0,0,.6) 60%,transparent 90%);mask:linear-gradient(180deg,#000 32%,rgba(0,0,0,.6) 60%,transparent 90%)}
 .pos .porta:hover .fondo{transform:scale(1.04)}
-.pos .porta::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(12,9,8,.10) 0%,rgba(12,9,8,0) 30%,rgba(12,9,8,.6) 54%,rgba(12,9,8,.97) 68%,#0C0908 100%)}
 .pos .porta .testa,.pos .porta h3,.pos .porta p:not(.ordinale):not(.quale){position:relative;z-index:1}
 .pos .porta .testa{margin-top:0}
-@media (max-width:1024px){.pos .porte .fase.porta{min-height:560px}}
+@media (max-width:1024px){.pos .porte .fase.porta{min-height:600px;padding-top:320px}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -701,7 +701,7 @@
     <a class="marca" href="#pos-problema">profit<b>OS</b></a>
     <div class="voci">
       <a href="#pos-problema" data-sez>Il problema</a>
-      <a href="#pos-cosa" data-sez>Cos'è profitOS</a>
+      <a href="#pos-cosa" data-sez>profitOS</a>
       <a href="#pos-strumenti" data-sez>Strumenti</a>
       <a href="#pos-percorso" data-sez>Percorso</a>
       <a href="#pos-risultati" data-sez>Risultati</a>
@@ -740,7 +740,7 @@
       <p class="intro" style="margin-top:28px">Cosa fa? Ci pensa, chiede più prove, rimanda. Poi dice
       “ci penso” e sparisce. <b>Non hai un problema di vendita o di marketing: hai un problema di
       fiducia, che si presenta in vendita ma nasce molto prima.</b></p>
-      <p class="intro">I funnel e i contenuti funzionano ancora — ma <b>funzionano dopo</b>. Dopo che
+      <p class="intro">I funnel e i contenuti funzionano ancora. Ma <b>funzionano dopo</b>. Dopo che
       sanno chi sei, dopo che ti hanno visto trenta volte. Nessuno di quelli che vedi là fuori mette nel
       proprio funnel gente che non lo conosce: chi entra va solo accompagnato alla cassa. Senza quella
       fiducia costruita prima, il funnel è un imbuto vuoto.</p>
@@ -824,7 +824,7 @@
       <h3>Ti toglie il controllo</h3>
       <p>Il problema non è che lavori male: è che <b>ha un interesse opposto al tuo</b>, e fa <u>un pezzo
       solo</u>. Il resto resta comunque a te, e il giorno che smetti di pagare <mark>torni al punto di
-      partenza</mark> — <i>con qualche mese in meno e il conto pagato.</i></p>
+      partenza</mark>, <i>con qualche mese in meno e il conto pagato</i>.</p>
     </div>
     <div class="fase porta">
       <img class="fondo" src="https://kelevraweb.github.io/profitos-vsl/img/porte/affiancamento.jpg" width="800" height="1000" alt="" loading="lazy">
@@ -848,17 +848,17 @@
 
 <div class="sez" id="pos-cosa"><div class="wide">
   <p class="et">La quarta strada</p>
-  <h2>Cos&rsquo;è profitOS.</h2>
+  <h2>Perché nasce profit<span class="os">OS</span>.</h2>
   <div class="affianco">
     <div>
-  <p class="intro"><b>Tutta la parte operativa — quella che ti tiene occupato tutto il giorno — non
+  <p class="intro"><b>Tutta la parte operativa, quella che ti tiene occupato tutto il giorno, non
   la fai più tu.</b> Le decisioni restano tue: tieni la testa e deleghi la fatica. Non è
   un&rsquo;agenzia che lavora al posto tuo, e non è un corso che ti insegna a lavorare di più: è un
   insieme di strumenti collegati fra loro, costruiti sul tuo posizionamento, che <b>producono la
   prima versione di tutto quello che oggi fai a mano</b>. A te resta correggere.</p>
   <p class="intro">Il modo in cui funziona ha un nome: <mark>delega inversa</mark>. Di solito deleghi la testa e ti tieni la fatica. Qui è il contrario: <b>deleghi la
   fatica e ti tieni la testa</b>. In ogni altro modello la prima versione la produci tu e l'esperto
-  corregge. Qui <u>la prima versione la produce il sistema</u>, e correggi tu — perché <i>non impari facendo,
+  corregge. Qui <u>la prima versione la produce il sistema</u>, e correggi tu: perché <i>non impari facendo,
   impari correggendo</i>, e correggere costa <b>un decimo del tempo</b>.</p>
   <p class="intro">Non sei dipendente come con l'agenzia, perché <u>le decisioni restano tue</u>. E non sei
   solo come con l'affiancamento, perché <u>l'operativo non lo fai tu</u>. <b>Nel 2019 non si poteva fare</b>: per
@@ -901,11 +901,11 @@
 </div></div>
 
 <div class="sez" id="pos-giro"><div class="wide">
-  <p class="et">Come funziona</p>
+  <p class="et">Il metodo</p>
   <h2>Ogni pezzo sa cosa ha fatto quello prima.</h2>
   <p class="intro">Non sono tool comprati separatamente: è un ecosistema. L'offerta decide i
-  contenuti, i contenuti generano le conversazioni, le conversazioni entrano nel CRM, la vendita sa
-  già cos'è successo. <b>E la delivery torna dentro come caso studio: il giro riparte.</b></p>
+  contenuti, i contenuti portano al funnel, il funnel genera le conversazioni, le conversazioni entrano
+  nel CRM, la vendita sa già cos'è successo. <b>E la delivery torna dentro come caso studio: il giro riparte.</b></p>
   <div class="eco"><div id="pos-eco-largo"></div><div id="pos-eco-stretto"></div></div>
 </div></div>
 
@@ -977,7 +977,7 @@
   <p class="et">Il conto</p>
   <h2>Le cose che servono oggi per vendere. E chi le fa.</h2>
   <p class="intro">Non è che sei pigro: <b>umanamente non c'è il tempo</b>. Questo è l'elenco di quello che
-  serve davvero, ogni settimana, per far funzionare un business sui social nel 2026 — e cosa resta
+  serve davvero, ogni settimana, per far funzionare un business sui social nel 2026, e cosa resta
   da fare a te quando gli strumenti di sopra lavorano. Le ore sono quelle di chi fa tutto da solo: le tue le conosci già.</p>
   <div class="bl-conto">
     <div class="testata"><span>Cosa serve</span><span>Oggi, tutto tu</span><span>Con profitOS</span></div>
@@ -1064,7 +1064,7 @@
   <p class="et">Dentro la piattaforma</p>
   <h2>Nove pezzi, uno dietro l'altro.</h2>
   <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
-  dell'onboarding — più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
+  dell'onboarding, più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
   la community. Così eviti la paralisi da corsi che uccide la maggior parte dei programmi.</p>
   <div class="cielo">
     <div id="pos-cielo-largo"></div><div id="pos-cielo-stretto"></div>
@@ -1129,7 +1129,7 @@
     e più fiducia. Eri uno dei pochi a fare quella cosa lì, la gente vedeva la tua pubblicità e non
     ne aveva già viste altre dodici quella mattina. Quindi ti lasciava il numero. E quando chiamavi,
     rispondeva.</p>
-    <p><u>Quel mondo non esiste più</u> — ma i funnel che si vendono oggi sono ancora costruiti per quel
+    <p><u>Quel mondo non esiste più</u>. Ma i funnel che si vendono oggi sono ancora costruiti per quel
     mondo lì. <b>Chi ti vende il metodo è partito quattro o cinque anni fa</b>, quando costruire un
     pubblico costava dieci volte meno in tempo e in denaro: <mark>se ripartisse adesso con lo stesso
     identico metodo non farebbe un euro</mark>.</p>
@@ -1151,7 +1151,7 @@
     </div>
     <p>Non ti sto mostrando screenshot. <b>Sono cariche e quote pubbliche: ci metti venti minuti a
     verificarle.</b> Chi ti mostra screenshot lo fa perché non ha altro. E guarda che SalesValley su
-    Instagram ha tremila follower — rileggilo, perché è già mezza risposta al “ma io un pubblico non
+    Instagram ha tremila follower: rileggilo, perché è già mezza risposta al “ma io un pubblico non
     ce l&rsquo;ho”.</p>
   </div>
 </div></div></div>
@@ -1189,7 +1189,7 @@
     un pezzo, e il resto resta a te. Io credo un'altra cosa: nel 2026 il business non si fa
     aggiungendo, <span>si fa togliendo</span>. Meno cose, fatte bene da un sistema, e il tuo tempo che
     torna tuo. 5.000€ in quattro ore al giorno <span>valgono il doppio</span> di 10.000€ in otto:
-    all'ora sono gli stessi soldi, ma ti restano quattro ore — e la tua capacità è molto più grande di
+    all'ora sono gli stessi soldi, ma ti restano quattro ore. E la tua capacità è molto più grande di
     quello che oggi ti tiene occupato. La vita viene prima. Poi, nel tempo che ti resta, se vuoi fare
     altri soldi: ben per te.</p>
     <p class="firma">Andrea Audisio</p>
@@ -1336,7 +1336,7 @@
   /* ============ CONFIG · le uniche righe da toccare ============ */
   var URL_CHIAMATA = "#";    /* calendario, quiz o candidatura */
   /* Nessun countdown: nella VSL dici esplicitamente di non usare il contatore
-     fake. La scarsità dichiarata in pagina è quella vera — poche call a
+     fake. La scarsità dichiarata in pagina è quella vera: poche call a
      settimana, fatte da te e da due del team. */
   /* ============================================================ */
 
@@ -1468,13 +1468,13 @@
 
   /* --- FAQ --- */
   var FAQ = [
-    ["Per chi è profitOS?","Per chi vende già e si è incastrato nell'operativo: personal brand, coach, consulenti e agenzie con un'offerta che regge e clienti che pagano. Servono tre cose: <b>qualcosa che già gira</b>, competenze confermate, e la disponibilità a mettere per iscritto come lavori. <b>Se parti da zero non è il posto giusto</b> — il sistema amplifica quello che sai fare, non inventa una professione."],
-    ["Quanto dura il percorso?","<b>Tre o sei mesi, secondo da dove parti.</b> Non sono pacchetti diversi: cambia la mia presenza e il nostro impegno. I primi sette giorni però sono uguali per tutti — si definisce l'offerta e la si valida insieme, e prima di quello non si tocca né un contenuto né un funnel. Se l'offerta è sbagliata, tutto il resto amplifica un errore."],
+    ["Per chi è profitOS?","Per chi vende già e si è incastrato nell'operativo: personal brand, coach, consulenti e agenzie con un'offerta che regge e clienti che pagano. Servono tre cose: <b>qualcosa che già gira</b>, competenze confermate, e la disponibilità a mettere per iscritto come lavori. <b>Se parti da zero non è il posto giusto</b>: il sistema amplifica quello che sai fare, non inventa una professione."],
+    ["Quanto dura il percorso?","<b>Tre o sei mesi, secondo da dove parti.</b> Non sono pacchetti diversi: cambia la mia presenza e il nostro impegno. I primi sette giorni però sono uguali per tutti: si definisce l'offerta e la si valida insieme, e prima di quello non si tocca né un contenuto né un funnel. Se l'offerta è sbagliata, tutto il resto amplifica un errore."],
     ["Quelle non sono le solite scadenze che ti mettono i corsi?","No, ed è il contrario. Loro ti danno tre o sei mesi perché oltre gli costa margine. Io ti dico che <b>quello è il tempo che serve davvero</b>: sono i tempi tecnici di chi ci è passato. E infatti se a tre o sei mesi non sei arrivato a nulla, il percorso non finisce: si continua."],
-    ["Io cosa devo fare?","<b>Due o tre ore al giorno</b>, e se non le hai lascia perdere. In quelle ore fai le uniche tre cose che non si possono delegare: <b>ci metti la faccia</b> nei contenuti, <b>vendi</b> all'inizio finché non hai un team, e <b>giudichi</b> quello che il sistema produce. Se speravi che ci fosse un modo per non fare nemmeno queste, non esiste — né da noi né da nessun altro."],
+    ["Io cosa devo fare?","<b>Due o tre ore al giorno</b>, e se non le hai lascia perdere. In quelle ore fai le uniche tre cose che non si possono delegare: <b>ci metti la faccia</b> nei contenuti, <b>vendi</b> all'inizio finché non hai un team, e <b>giudichi</b> quello che il sistema produce. Se speravi che ci fosse un modo per non fare nemmeno queste, non esiste, né da noi né da nessun altro."],
     ["C'è una garanzia?","<b>Sì, e te la leggo qui invece che in chiamata</b>, perché una garanzia che ti spiegano in call non è una garanzia: è un motivo per farti fare quella call.<br><br><b>Primo strato.</b> Entro i primi giorni hai in mano la tua offerta smontata e rimessa in piedi, nera su bianco, senza averla scritta tu. Se dopo averla vista insieme non ti convince, ci scrivi una mail e ti restituiamo tutti i soldi. Non ti chiedo nulla e non ti metto al telefono con qualcuno che prova a farti cambiare idea.<br><br><b>Secondo strato.</b> Se hai messo le tue ore, hai fatto quello che c'era da fare e alla fine dei mesi non ti sei almeno ripagato l'investimento, <b>resti dentro finché non te lo sei ripagato</b>. Il rischio deve stare da questa parte del tavolo: se il sistema funziona non mi costa niente, se non funziona è giusto che costi a me."],
     ["Servono competenze tecniche?","No. Non devi diventare bravo con le ads o con i CRM, e non è il tuo mestiere costruirti un sistema. Il lavoro nostro è consegnarti i pezzi già montati."],
-    ["Ho già un team: devo aggiungere persone?","Al contrario, di solito se ne tolgono. Quello che pagavi lo fa il sistema, quindi per crescere non aumenti i costi: aumenti il margine. E se un giorno il business chiude solo quando c'è uno bravo a vendere, non hai un sistema — hai una dipendenza."],
+    ["Ho già un team: devo aggiungere persone?","Al contrario, di solito se ne tolgono. Quello che pagavi lo fa il sistema, quindi per crescere non aumenti i costi: aumenti il margine. E se un giorno il business chiude solo quando c'è uno bravo a vendere, non hai un sistema: hai una dipendenza."],
     ["La mia azienda vuole un ecosistema suo, non il vostro.","Si può fare: se sei già strutturato te lo costruiamo su misura. Prenota comunque la chiamata e <b>segnalalo quando ti chiediamo di cosa hai bisogno</b>."],
     ["Quanto costa?","Il prezzo te lo diciamo in chiamata, e non è una furbizia per farti prenotare: a quel punto sai già cosa facciamo e come lavoriamo, perché in questa pagina c&rsquo;è tutto. Resta solo da capire quanto investire."]
   ];  $("pos-faq").innerHTML = FAQ.map(function (f, i) {
@@ -1485,6 +1485,7 @@
   var NODI = [
     ["Offerta","Scritta e validata nei primi 7 giorni"],
     ["Contenuti","Piani interi, nel tuo tono di voce"],
+    ["Funnel","Lead magnet, landing e VSL già scritti"],
     ["Conversazioni","Setty risponde, segue e prenota"],
     ["Vendita","Arrivano in call già decisi"],
     ["Caso studio","Torna dentro e riparte il giro"]
@@ -1496,7 +1497,7 @@
                                              larghezza scriverebbe a 4,8px */
         x = w / 2; y = 95 + i * 178;
       } else {
-        a = (-90 + i * 72) * Math.PI / 180;
+        a = (-90 + i * 360 / NODI.length) * Math.PI / 180;
         x = cx + rr * Math.cos(a); y = cy + rr * Math.sin(a);
       }
       g += '<g class="nodo">' +
@@ -1508,7 +1509,7 @@
         (stretto ? 17 : 13) + '">' + NODI[i][1] + '</text></g>';
     }
     var scheletro = stretto
-      ? '<path d="M' + (w / 2) + ' 95L' + (w / 2) + ' ' + (95 + 4 * 178) + '" fill="none" ' +
+      ? '<path d="M' + (w / 2) + ' 95L' + (w / 2) + ' ' + (95 + (NODI.length - 1) * 178) + '" fill="none" ' +
         'stroke="var(--acc)" stroke-opacity=".3" stroke-width="1.6" stroke-dasharray="10 14"/>' +
         /* ritorno all'inizio: curva cubica, non quadratica. Con una quadratica
            il punto di mezzo resta a x=132 e taglia in mezzo alle didascalie. */
@@ -1528,7 +1529,7 @@
       scheletro + g + '</svg>';
   }
   $("pos-eco-largo").innerHTML = ecosistema(1200, 600, false);
-  $("pos-eco-stretto").innerHTML = ecosistema(500, 880, true);
+  $("pos-eco-stretto").innerHTML = ecosistema(500, 95 + (NODI.length - 1) * 178 + 110, true);
 
   /* --- costellazione dei 9 livelli, due disposizioni --- */
   var LIV = [["01","Onboarding","i primi 7 giorni",15],["02","Offerta","scoring e brand book",9],
