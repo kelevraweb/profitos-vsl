@@ -533,60 +533,6 @@
 
 .pos .filo p + p{margin-top:18px}
 
-/* il percorso: la mappa stellare. Nove tappe, la rotta si accende scorrendo, la scheda cambia */
-.pos #pos-percorso{padding-bottom:0}
-.pos .viaggio{position:relative;height:calc(9 * 80vh);margin-top:24px}
-.pos .palco{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:420px 1fr;gap:28px;align-items:center;padding:70px 24px 24px}
-.pos .spazio{position:relative;height:min(78vh,720px);border:1px solid rgba(255,107,0,.22);border-radius:28px;overflow:hidden;background:#070504;
-  box-shadow:0 40px 90px rgba(0,0,0,.5),inset 0 0 120px rgba(255,107,0,.06)}
-.pos .spazio .nebulosa{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.85;display:block;
-  animation:pos-deriva 60s ease-in-out infinite alternate;will-change:transform}
-@keyframes pos-deriva{from{transform:translate(0,0) scale(1)}to{transform:translate(-2.5%,1.5%) scale(1.06)}}
-.pos .spazio svg{position:absolute;inset:0;width:100%;height:100%}
-.pos .spazio .stellina{fill:#fff;animation:pos-tw 4s ease-in-out infinite}
-@keyframes pos-tw{0%,100%{opacity:.12}50%{opacity:.75}}
-.pos .spazio .rotta{fill:none;stroke:rgba(255,160,90,.22);stroke-width:1.5;stroke-dasharray:3 8;stroke-linecap:round}
-.pos .spazio .rottaViva{fill:none;stroke:var(--acc);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(255,107,0,.75))}
-.pos .spazio .scia{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.55;filter:blur(1px)}
-.pos .astro .alone{fill:rgba(255,107,0,.10);r:26;transition:r .5s,fill .5s}
-.pos .astro .punto{fill:rgba(255,255,255,.35);r:4;transition:fill .4s,r .4s}
-.pos .astro .icona-astro{fill:none;stroke:rgba(255,255,255,.35);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s,opacity .4s;opacity:0}
-.pos .astro text{fill:rgba(240,232,226,.45);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:fill .4s}
-.pos .astro.fatta .punto{fill:var(--acc)}
-.pos .astro.fatta text{fill:rgba(240,232,226,.8)}
-.pos .astro.fatta .icona-astro{opacity:1;stroke:rgba(255,190,140,.9)}
-.pos .astro.viva .punto{fill:#fff;r:0}
-.pos .astro.viva .alone{r:44;fill:rgba(255,107,0,.24);animation:pos-respiro 2.6s ease-in-out infinite}
-.pos .astro.viva .icona-astro{opacity:1;stroke:#fff}
-.pos .astro.viva text{fill:#fff}
-@keyframes pos-respiro{0%,100%{r:40}50%{r:50}}
-.pos .viaggiatore{fill:#fff;filter:drop-shadow(0 0 10px #fff) drop-shadow(0 0 24px var(--acc))}
-.pos .binario{position:absolute;left:22px;right:22px;bottom:44px;display:flex;justify-content:space-between;gap:6px}
-.pos .binario b{flex:1;height:3px;border-radius:3px;background:rgba(255,107,0,.16);cursor:pointer;position:relative;transition:background .3s}
-.pos .binario b.fatta{background:rgba(255,107,0,.55)}
-.pos .binario b.viva{background:var(--acc);box-shadow:0 0 12px rgba(255,107,0,.7)}
-.pos .binario b span{position:absolute;left:0;top:-18px;font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(240,232,226,.45);white-space:nowrap;opacity:0;transition:opacity .3s}
-.pos .binario b.viva span{opacity:1;color:#fff}
-.pos .spazio .suggerimento{position:absolute;left:0;right:0;bottom:18px;margin:0;text-align:center;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.38)}
-.pos .scheda .quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);margin:0}
-.pos .scheda .n{font-size:64px;font-weight:800;letter-spacing:-3px;line-height:1;color:rgba(255,107,0,.32);margin:6px 0 0}
-.pos .scheda h3{color:#fff;font-size:34px;letter-spacing:-1px;line-height:1.05;margin:6px 0 20px}
-.pos .scheda dl{margin:0;display:grid;gap:12px}
-.pos .scheda dt{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
-.pos .scheda dd{margin:3px 0 0;color:var(--txt);font-size:15.5px;line-height:24px}
-.pos .scheda dd b{color:#fff}
-.pos .scheda .voce{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
-.pos .scheda.dentro .voce{opacity:1;transform:none}
-.pos .scheda.dentro .voce:nth-child(2){transition-delay:.08s}.pos .scheda.dentro .voce:nth-child(3){transition-delay:.16s}.pos .scheda.dentro .voce:nth-child(4){transition-delay:.24s}
-@media (max-width:900px){
-  .pos .viaggio{height:calc(9 * 100vh)}
-  .pos .palco{grid-template-columns:1fr;align-items:start;gap:14px;padding:66px 16px 16px}
-  .pos .spazio{height:40vh;border-radius:20px}
-  .pos .scheda h3{font-size:24px;margin-bottom:12px}.pos .scheda .n{font-size:40px}.pos .scheda dd{font-size:14px;line-height:21px}
-  .pos .binario{bottom:30px}.pos .spazio .suggerimento{display:none}
-}
-@media (prefers-reduced-motion:reduce){.pos .spazio .nebulosa,.pos .spazio .stellina,.pos .astro.viva .alone{animation:none}}
-
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -1100,30 +1046,49 @@
 
 <div class="sez" id="pos-percorso"><div class="wide">
   <p class="et">Il percorso</p>
-  <h2>Da quando entri a quando il giro riparte.</h2>
-  <p class="intro">Dura <b>tre o sei mesi secondo da dove parti</b>: cambia quanto ci sono io, non il
-  percorso. Nove tappe, in quest'ordine, e <u>non si salta</u>. Scorri: la rotta si accende una tappa
-  alla volta.</p>
-</div>
-<div class="viaggio" id="pos-viaggio">
-  <div class="wide palco">
-    <div class="scheda" id="pos-scheda">
-      <p class="quando" id="pv-quando"></p>
-      <p class="n" id="pv-n"></p>
-      <h3 id="pv-titolo"></h3>
-      <dl>
-        <div class="voce"><dt>Cosa succede</dt><dd id="pv-succede"></dd></div>
-        <div class="voce"><dt>Cosa ottieni</dt><dd id="pv-ottieni"></dd></div>
-        <div class="voce"><dt>Che problema risolve</dt><dd id="pv-problema"></dd></div>
-        <div class="voce"><dt>Dove arrivi</dt><dd id="pv-arrivi"></dd></div>
-      </dl>
+  <h2>Le cose pratiche, quelle che di solito si scoprono dopo.</h2>
+  <p class="intro">Il percorso dura <b>tre o sei mesi secondo da dove parti</b>. Non sono pacchetti
+  diversi: cambia quanto ci sono io. Quello che segue è l'ordine, e non si salta.</p>
+  <div class="fasi tappe">
+    <div class="fase">
+      <div class="testa"><p class="ordinale">01</p><p class="quale">I primi sette giorni</p></div>
+      <h3>L'offerta, e nient'altro</h3>
+      <p class="quando">Uguali per tutti</p>
+      <p>Si definisce l'offerta e la si valida insieme in call: è l'unico punto del percorso dove
+      sbagliare costa mesi. Prima di averla chiusa <b>non si tocca né un contenuto né un funnel</b>,
+      perché se l'offerta è sbagliata tutto il resto amplifica un errore.</p>
+      <ul><li>Offerta scritta, con i punteggi</li><li>Posizionamento e promessa unica</li><li>Validata insieme prima di partire</li></ul>
     </div>
-    <div class="spazio">
-      <img class="nebulosa" src="https://kelevraweb.github.io/profitos-vsl/img/spazio.jpg" width="1600" height="900" alt="" loading="lazy">
-      <svg id="pos-astri" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice"></svg>
-      <div class="binario" id="pos-binario"></div>
-      <p class="suggerimento">scorri per viaggiare</p>
+    <div class="fase">
+      <div class="testa"><p class="ordinale">02</p><p class="quale">Poi</p></div>
+      <h3>Il sistema si installa</h3>
+      <p class="quando">Le tue due o tre ore al giorno</p>
+      <p>Contenuti, conversazioni e funnel entrano in funzione uno dopo l'altro. A te restano
+      <b>due o tre ore al giorno</b>: se non le hai, te lo dico adesso, lascia perdere. In quelle
+      ore fai le uniche tre cose che non si possono delegare.</p>
+      <ul><li>Ci metti la faccia</li><li>Vendi, finché non hai un team</li><li>Giudichi quello che esce</li></ul>
     </div>
+    <div class="fase">
+      <div class="testa"><p class="ordinale">03</p><p class="quale">A tre o sei mesi</p></div>
+      <h3>Il tempo che serve davvero</h3>
+      <p class="quando">E se non basta, si continua</p>
+      <p>Gli altri ti danno tre o sei mesi perché oltre gli costa margine. Per me è il tempo tecnico
+      che serve, non una scadenza: <b>se alla fine non sei arrivato a nulla, il percorso non
+      finisce.</b> Se invece cerchi clienti la settimana prossima, non possiamo aiutarti.</p>
+      <ul><li>Volumi più grandi, stesso carico</li><li>Semmai togli figure, non le aggiungi</li><li>Non aumenti i costi: aumenti il margine</li></ul>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez" id="pos-piattaforma"><div class="wide">
+  <p class="et">Dentro la piattaforma</p>
+  <h2>Nove pezzi, uno dietro l'altro.</h2>
+  <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
+  dell'onboarding, più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
+  la community. Così eviti la paralisi da corsi che uccide la maggior parte dei programmi.</p>
+  <div class="cielo">
+    <div id="pos-cielo-largo"></div><div id="pos-cielo-stretto"></div>
+    <p class="didascalia">Nove livelli, uno dietro l'altro. Tocca una stella per isolarla.</p>
   </div>
 </div></div>
 
@@ -1589,6 +1554,51 @@
   $("pos-eco-largo").innerHTML = ecosistema(1200, 600, false);
   $("pos-eco-stretto").innerHTML = ecosistema(500, 95 + (NODI.length - 1) * 178 + 110, true);
 
+  /* --- costellazione dei 9 livelli, due disposizioni --- */
+  var LIV = [["01","Onboarding","i primi 7 giorni",15],["02","Offerta","scoring e brand book",9],
+    ["03","Contenuti","piani, gobbo, montaggio",10],["04","Setty","DM, follow-up, calendario",8],
+    ["05","Funnel Builder","dieci funnel, pagine online",11],["06","SalesCoach AI","in live sulle call",13],
+    ["07","Nova","l'assistente, 24 ore su 24",10],["08","Live settimanali","con Andrea",9],
+    ["09","Community","gli altri che stanno costruendo",13]];
+  var LARGO = [[105,395],[255,185],[400,300],[535,130],[630,385],[775,225],[890,415],[1020,200],[1125,330]];
+  var STRETTO = [[140,70],[330,175],[165,290],[345,400],[150,510],[340,615],[170,725],[345,830],[190,940]];
+
+  function cielo(pos, w, h, corpo, dida, id) {
+    var pol = "", i, a, x, y;
+    for (i = 0; i < Math.round(w * h / 7000); i++) {
+      a = i * 137.508 * Math.PI / 180;
+      x = (w * .03 + (Math.sin(a) * .5 + .5) * w * .94).toFixed(2);
+      y = (h * .03 + (Math.cos(a * 1.7) * .5 + .5) * h * .94).toFixed(2);
+      pol += '<circle cx="' + x + '" cy="' + y + '" r="' + (.6 + i % 5 * .25).toFixed(2) +
+        '" fill="#F0E8E2" opacity="' + (.12 + i % 7 * .045).toFixed(3) + '"/>';
+    }
+    var rotta = pos.map(function (p, k) { return (k ? "L" : "M") + p[0] + " " + p[1]; }).join("");
+    var st = LIV.map(function (s, k) {
+      var px = pos[k][0], py = pos[k][1], r = s[3];
+      return '<g class="stella" style="cursor:pointer;transition:opacity .25s">' +
+        '<circle cx="' + px + '" cy="' + py + '" r="' + r * 4.5 + '" fill="url(#pos-alone-' + id + ')"/>' +
+        '<circle cx="' + px + '" cy="' + py + '" r="' + r * .42 + '" fill="#FFF4EC"/>' +
+        '<path fill="var(--acc)" d="M' + px + " " + (py - r) + "L" + (px + r * .22) + " " + (py - r * .22) +
+        "L" + (px + r) + " " + py + "L" + (px + r * .22) + " " + (py + r * .22) + "L" + px + " " + (py + r) +
+        "L" + (px - r * .22) + " " + (py + r * .22) + "L" + (px - r) + " " + py + "L" + (px - r * .22) + " " + (py - r * .22) + 'z"/>' +
+        '<text x="' + px + '" y="' + (py + r * 2.2 + corpo) + '" text-anchor="middle" fill="#fff" font-size="' + corpo + '" font-weight="700">' + s[1] + "</text>" +
+        '<text x="' + px + '" y="' + (py + r * 2.2 + corpo + dida + 5) + '" text-anchor="middle" fill="var(--acc)" font-size="' + dida +
+        '" font-weight="700" letter-spacing="1.4">' + s[0] + (s[2] ? " · " + s[2].toUpperCase() : "") + "</text></g>";
+    }).join("");
+    return '<svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="I 9 livelli come costellazione">' +
+      '<defs><radialGradient id="pos-alone-' + id + '">' +
+      '<stop offset="0%" stop-color="var(--acc)" stop-opacity=".55"/>' +
+      '<stop offset="55%" stop-color="var(--acc)" stop-opacity=".12"/>' +
+      '<stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="pos-nebbia-' + id + '" cx="18%" cy="80%">' +
+      '<stop offset="0%" stop-color="var(--acc)" stop-opacity=".16"/>' +
+      '<stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient></defs>' +
+      '<rect width="' + w + '" height="' + h + '" fill="url(#pos-nebbia-' + id + ')"/>' + pol +
+      '<path d="' + rotta + '" fill="none" stroke="var(--acc)" stroke-opacity=".28" stroke-width="1.2" stroke-dasharray="4 7"/>' +
+      st + "</svg>";
+  }
+  $("pos-cielo-largo").innerHTML = cielo(LARGO, 1200, 520, 15, 11, "l");
+  $("pos-cielo-stretto").innerHTML = cielo(STRETTO, 500, 1030, 17, 12, "s");
 
   R.querySelectorAll(".cielo svg").forEach(function (svg) {
     var g = svg.querySelectorAll(".stella");
@@ -1859,116 +1869,6 @@
     });
     v.addEventListener("mouseleave", function () { v.classList.remove("vivo"); setTimeout(function () { if (!v.classList.contains("vivo")) vid.pause(); }, 450); });
   });
-
-  /* il percorso: la mappa stellare (nove tappe, scroll-driven) */
-  var $ = function (id) { return document.getElementById(id); };
-  var TAPPE = [
-    {q:"Giorno 0", t:"Entri, e parti lo stesso giorno", n:"Onboarding", ic:"chiave",
-     s:"Accessi alla piattaforma, roadmap su misura costruita sul punto da cui parti, prima call fissata.",
-     o:"Sai esattamente cosa fare nei primi sette giorni, e con chi.",
-     p:"La paralisi da corso: mille video e nessun ordine.",
-     a:"Hai un ordine. Non si salta."},
-    {q:"Giorni 1\u20137", t:"L'offerta, e nient'altro", n:"Offerta", ic:"mirino",
-     s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca n\u00e9 un contenuto n\u00e9 un funnel.",
-     o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.",
-     p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.",
-     a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
-    {q:"Settimane 2\u20133", t:"I contenuti escono da soli", n:"Contenuti \u00b7 Peddy", ic:"penna",
-     s:"Dal posizionamento nascono idee, script e calendario. Le stories con lo script sul teleprompter, i post programmati da dentro.",
-     o:"Piani interi in una passata. A te resta girare.",
-     p:"Non sapere cosa dire ogni giorno, e le stories che non fai.",
-     a:"Pubblichi tutti i giorni senza inventare niente."},
-    {q:"Settimana 3", t:"I DM non si perdono pi\u00f9", n:"Setting \u00b7 Setty", ic:"chat",
-     s:"I messaggi entrano in un CRM che risponde, segue e prenota. Un lead magnet agganciato a ogni contenuto, consegnato in automatico.",
-     o:"Follow-up che non dimentichi, calendario che si riempie da solo.",
-     p:"La finestra di 24 ore, i messaggi persi, il setter che se ne sbatte.",
-     a:"Nessuno in chat. Nessun lead fermo."},
-    {q:"Settimana 4", t:"Un funnel che parla come te", n:"Funnel Builder", ic:"imbuto",
-     s:"VSL, copy e landing prodotti dalla carta dell'offerta: la prima versione la fa il sistema, tu correggi.",
-     o:"Dieci funnel, pagine online, dati da guardare.",
-     p:"Pagare un'agenzia per un pezzo solo, e il resto a te.",
-     a:"Un funnel tuo, coerente con tutto il resto."},
-    {q:"Mese 2", t:"Arrivano gi\u00e0 decisi", n:"SalesCoach AI", ic:"telefono",
-     s:"Role play con clienti simulati, plugin live in call, analisi delle chiamate vere.",
-     o:"Il suggeritore che ti dice cosa non hai chiesto. Due call, gi\u00e0 decise.",
-     p:"O sei bravo tu, o paghi qualcuno che lo sia.",
-     a:"Chiudi tu, senza closer. Finch\u00e9 non hai un team."},
-    {q:"Sempre", t:"Non sei mai fermo", n:"Nova", ic:"stella",
-     s:"L'assistente che tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di lavoro.",
-     o:"Risposte sul tuo caso, 24 ore su 24.",
-     p:"Bloccarsi alle 23 senza nessuno a cui chiedere.",
-     a:"Vai avanti anche quando noi dormiamo."},
-    {q:"Ogni settimana", t:"Correggi con me", n:"Live con Andrea", ic:"video",
-     s:"Live settimanali sul tuo materiale, supporto sulle piattaforme e sull'offerta.",
-     o:"La testa dell'esperto sulla tua prima versione.",
-     p:"Correggere da solo, senza sapere dove guardare.",
-     a:"Non impari facendo: impari correggendo, a un decimo del tempo."},
-    {q:"Mese 3\u20136", t:"Il giro riparte", n:"Community \u00b7 Delivery", ic:"persone",
-     s:"Volumi pi\u00f9 grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.",
-     o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.",
-     p:"Essere solo, e un tetto che non rompi pi\u00f9.",
-     a:"Ti sei ripagato. Se no, <b>resti dentro finch\u00e9 non ti ripaghi</b>: secondo strato di garanzia."}
-  ];
-  var ICONE = {
-    chiave:'<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/>',
-    mirino:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
-    penna:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/>',
-    chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/>',
-    imbuto:'<path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>',
-    telefono:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>',
-    stella:'<path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/>',
-    video:'<path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/>',
-    persone:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>'
-  };
-  (function () {
-    var svg = $("pos-astri"), viaggio = $("pos-viaggio"), scheda = $("pos-scheda"), binario = $("pos-binario");
-    if (!svg || !viaggio) return;
-    var NS = "http://www.w3.org/2000/svg";
-    var P = [[110,540],[250,420],[330,220],[520,170],[640,330],[800,250],[930,420],[1000,200],[1110,560]];
-    function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
-    for (var i = 0; i < 110; i++) { var st = el("circle", { cx: Math.random() * 1200, cy: Math.random() * 700, r: Math.random() * 1.6 + .3, "class": "stellina" }); st.style.animationDelay = (Math.random() * 4) + "s"; st.style.animationDuration = (3 + Math.random() * 4) + "s"; svg.appendChild(st); }
-    var d = "M" + P[0].join(",");
-    for (var i = 1; i < P.length; i++) { var a = P[i - 1], b = P[i], mx = (a[0] + b[0]) / 2; d += " C" + mx + "," + a[1] + " " + mx + "," + b[1] + " " + b[0] + "," + b[1]; }
-    svg.appendChild(el("path", { d: d, "class": "rotta" }));
-    var viva = el("path", { d: d, "class": "rottaViva" }); svg.appendChild(viva);
-    var scia = el("path", { d: d, "class": "scia" }); svg.appendChild(scia);
-    var L = viva.getTotalLength();
-    viva.style.strokeDasharray = L; viva.style.strokeDashoffset = L;
-    scia.style.strokeDasharray = "70 " + L; scia.style.strokeDashoffset = 70;
-    var astri = P.map(function (p, i) {
-      var g = el("g", { "class": "astro" });
-      g.appendChild(el("circle", { cx: p[0], cy: p[1], "class": "alone" }));
-      g.appendChild(el("circle", { cx: p[0], cy: p[1], "class": "punto" }));
-      var ic = el("g", { "class": "icona-astro", transform: "translate(" + (p[0] - 10) + "," + (p[1] - 10) + ") scale(.85)" }); ic.innerHTML = ICONE[TAPPE[i].ic]; g.appendChild(ic);
-      var t = el("text", { x: p[0], y: p[1] + (p[1] > 350 ? -40 : 50), "text-anchor": "middle" }); t.textContent = "0" + (i + 1) + " \u00b7 " + TAPPE[i].n; g.appendChild(t);
-      svg.appendChild(g); return g;
-    });
-    var tu = el("circle", { r: 7, "class": "viaggiatore" }); svg.appendChild(tu);
-    var punti = []; for (var i = 0; i < P.length; i++) { var best = 0, bd = 1e9; for (var l = 0; l <= L; l += 4) { var q = viva.getPointAtLength(l); var dd = (q.x - P[i][0]) * (q.x - P[i][0]) + (q.y - P[i][1]) * (q.y - P[i][1]); if (dd < bd) { bd = dd; best = l; } } punti.push(best); }
-    var tacche = TAPPE.map(function (T, i) { var b = document.createElement("b"); b.innerHTML = "<span>0" + (i + 1) + " \u00b7 " + T.n + "</span>"; b.addEventListener("click", function () { var r = viaggio.getBoundingClientRect(); var tot = r.height - innerHeight; window.scrollTo({ top: r.top + window.scrollY + tot * ((i + .5) / P.length), behavior: "smooth" }); }); binario.appendChild(b); return b; });
-    var ultima = -1;
-    function mostra(k) {
-      if (k === ultima) return; ultima = k; var T = TAPPE[k]; scheda.classList.remove("dentro");
-      setTimeout(function () {
-        $("pv-quando").textContent = T.q; $("pv-n").textContent = "0" + (k + 1); $("pv-titolo").textContent = T.t;
-        $("pv-succede").innerHTML = T.s; $("pv-ottieni").innerHTML = T.o; $("pv-problema").innerHTML = T.p; $("pv-arrivi").innerHTML = T.a;
-        scheda.classList.add("dentro");
-      }, 120);
-      astri.forEach(function (s, i) { s.classList.toggle("fatta", i < k); s.classList.toggle("viva", i === k); });
-      tacche.forEach(function (b, i) { b.classList.toggle("fatta", i < k); b.classList.toggle("viva", i === k); });
-    }
-    function passo() {
-      var r = viaggio.getBoundingClientRect(); var tot = r.height - innerHeight; if (tot <= 0) return;
-      var p = Math.min(1, Math.max(0, -r.top / tot));
-      var k = Math.min(P.length - 1, Math.floor(p * P.length));
-      var l = punti[k] + (p * P.length - k) * ((punti[k + 1] || L) - punti[k]); l = Math.min(L, l);
-      viva.style.strokeDashoffset = L - l; scia.style.strokeDashoffset = 70 - l;
-      var q = viva.getPointAtLength(l); tu.setAttribute("cx", q.x); tu.setAttribute("cy", q.y);
-      var neb = viaggio.querySelector(".nebulosa"); if (neb) neb.style.translate = (-(p * 3)) + "% " + (p * 2) + "%";
-      mostra(k);
-    }
-    addEventListener("scroll", passo, { passive: true }); addEventListener("resize", passo); passo();
-  })();
 
   /* menu delle sezioni: voce attiva, ombra quando e' appiccicato, scorrimento morbido con l'offset */
   var menu = document.getElementById("pos-menu");
