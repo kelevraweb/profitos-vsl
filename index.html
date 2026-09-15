@@ -331,19 +331,19 @@
 .pos .schema.piatto .eti{font-size:10.5px}
 
 /* strumenti: icona in testa, fondo caldo che li distingue dalle altre card */
-.pos .strumenti .fase,.pos .porte .fase{
+.pos .strumenti .fase{
   background:radial-gradient(120% 85% at 0% 0%,rgba(255,107,0,.14),rgba(255,107,0,0) 58%),
              linear-gradient(165deg,rgba(30,20,13,.96),rgba(15,11,9,.94));
   border-color:rgba(255,107,0,.2)}
 .pos .strumenti .fase .icona{margin-bottom:18px}
 .pos .strumenti .fase:hover .icona{background:rgba(255,107,0,.2);box-shadow:0 0 28px rgba(255,107,0,.28)}
-.pos .strumenti .fase,.pos .porte .fase{padding-top:0;overflow:hidden}
-.pos .strumenti .schermo,.pos .porte .schermo{margin:0 -32px;aspect-ratio:16/10;position:relative;overflow:hidden;
+.pos .strumenti .fase{padding-top:0;overflow:hidden}
+.pos .strumenti .schermo{margin:0 -32px;aspect-ratio:16/10;position:relative;overflow:hidden;
   border-bottom:1px solid rgba(255,107,0,.18);background:#0a0705}
-.pos .strumenti .schermo img,.pos .porte .schermo img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
+.pos .strumenti .schermo img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
   opacity:0;transform:scale(.42);filter:saturate(.92) blur(14px);
   transition:transform .75s cubic-bezier(.6,0,.2,1),opacity .5s ease-out,filter .75s cubic-bezier(.6,0,.2,1)}
-.pos .strumenti .schermo img.attiva,.pos .porte .schermo img{opacity:1;transform:scale(1);filter:saturate(.92) blur(0)}
+.pos .strumenti .schermo img.attiva{opacity:1;transform:scale(1);filter:saturate(.92) blur(0)}
 .pos .strumenti .schermo img.via{opacity:0;transform:scale(2.6);filter:saturate(1.1) blur(12px);transition-duration:.7s,.45s,.7s}
 .pos .strumenti .schermo::before{content:"";position:absolute;inset:-30%;z-index:2;pointer-events:none;opacity:0;
   background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0 2.6deg,rgba(255,196,150,.16) 2.6deg 3.2deg);
@@ -351,9 +351,8 @@
 .pos .strumenti .schermo.warp::before{animation:posWarp .7s cubic-bezier(.5,0,.3,1)}
 @keyframes posWarp{0%{opacity:0;transform:scale(.35)}25%{opacity:.95}100%{opacity:0;transform:scale(1.9)}}
 @media(prefers-reduced-motion:reduce){.pos .strumenti .schermo img,.pos .strumenti .schermo::before{transition:none;animation:none}}
-.pos .strumenti .schermo::after,.pos .porte .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;
+.pos .strumenti .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(15,11,9,0) 50%,rgba(15,11,9,.9))}
-.pos .porte .fase .testa{margin-top:22px}
 .pos .strumenti .fase .icona,.pos .strumenti .fase .marchio{position:relative;z-index:1;margin:-23px 0 16px;
   background:rgba(12,9,8,.94)}
 .pos .strumenti .fase .marchio{display:inline-flex;align-items:center;height:46px;padding:0 16px;border-radius:13px;
@@ -501,6 +500,29 @@
 .pos p i,.pos li i{font-style:italic;color:rgba(255,222,200,.95)}
 .pos p u,.pos li u{text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:4px;color:#fff}
 .pos p mark,.pos li mark{background:linear-gradient(180deg,transparent 55%,rgba(255,107,0,.42) 55%);color:#fff;padding:0 3px;border-radius:2px}
+
+/* le tre porte: tre scene separate sopra alle card, che sfumano nel nero della pagina */
+.pos .scene-porte{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.pos .scena-porta{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#0a0705}
+.pos .scena-porta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9);
+  transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.pos .scena-porta:hover img{transform:scale(1.05)}
+.pos .scena-porta::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,9,8,.25) 0%,rgba(12,9,8,0) 30%,rgba(12,9,8,0) 55%,rgba(12,9,8,.96) 100%),
+             linear-gradient(90deg,rgba(12,9,8,.35),rgba(12,9,8,0) 25%,rgba(12,9,8,0) 75%,rgba(12,9,8,.35))}
+.pos .scena-porta span{position:absolute;left:20px;bottom:16px;z-index:1;font-size:11px;font-weight:700;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--acc)}
+.pos .porte{margin-top:16px}
+@media (max-width:820px){.pos .scene-porte{grid-template-columns:1fr;gap:12px}}
+
+/* un'altra cosa: riquadro finale, piccolo, caldo */
+.pos #pos-ps{padding-top:0}
+.pos .ps-box{border:1px solid rgba(255,107,0,.3);border-radius:24px;padding:36px 40px;
+  background:radial-gradient(120% 90% at 0% 0%,rgba(255,107,0,.16),rgba(255,107,0,0) 60%),linear-gradient(160deg,rgba(38,24,14,.96),rgba(15,11,9,.94))}
+.pos .ps-box h2{font-size:clamp(26px,3vw,36px);margin-top:8px}
+.pos .ps-box .intro{margin-top:12px}
+.pos .ps-box .credenziali{margin-top:18px}
+@media (max-width:820px){.pos .ps-box{padding:26px 22px}}
 
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
@@ -807,9 +829,13 @@
   <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
   <p class="intro">A questo punto ti sei accorto che <b>da solo non ce la fai</b>. Le porte che il mercato
   ti apre sono tre, e <u>ognuna ti lascia esattamente dove eri</u>.</p>
+  <div class="scene-porte">
+    <div class="scena-porta"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/agenzia.jpg" width="760" height="475" alt="" loading="lazy"><span>01 · L'agenzia</span></div>
+    <div class="scena-porta"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/affiancamento.jpg" width="760" height="475" alt="" loading="lazy"><span>02 · L'affiancamento</span></div>
+    <div class="scena-porta"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/ai.jpg" width="760" height="475" alt="" loading="lazy"><span>03 · L'AI generica</span></div>
+  </div>
   <div class="fasi porte">
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/agenzia.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <div class="testa"><p class="ordinale">01</p><p class="quale">L'agenzia</p></div>
       <h3>Ti toglie il controllo</h3>
       <p>Il problema non è che lavori male: è che <b>ha un interesse opposto al tuo</b>, e fa <u>un pezzo
@@ -817,7 +843,6 @@
       partenza</mark> — <i>con qualche mese in meno e il conto pagato.</i></p>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/affiancamento.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <div class="testa"><p class="ordinale">02</p><p class="quale">L'affiancamento</p></div>
       <h3>Ti lascia tutto il lavoro</h3>
       <p>Ti frega in modo più sottile, perché <i>sembra</i> che funzioni: hai capito, bravo. Ma
@@ -826,7 +851,6 @@
       stesse 24 ore e in più <u>la lista di tutto quello che manca</u>.</p>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/ai.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <div class="testa"><p class="ordinale">03</p><p class="quale">L'AI generica</p></div>
       <h3>Ti dà pezzi scollegati</h3>
       <p>Un modello generico non ha criterio: <i>è uno specchio che ti dà ragione</i>. Chiunque può fare
@@ -1287,7 +1311,22 @@
   </div>
   <a class="bottone" href="#" id="pos-cta">Prenota la tua chiamata →</a>
   <p class="postilla">Se non ha senso te lo dico in call, e ce ne andiamo a casa tutti e due contenti.</p>
-  <p class="postilla ps">Un'altra cosa: se questa landing ti è piaciuta, è il genere di cose che implementiamo anche nei business degli altri.</p>
+</div></div>
+
+<div class="sez" id="pos-ps"><div class="wide">
+  <div class="ps-box">
+    <p class="et">Un'altra cosa</p>
+    <h2>Se questa landing ti è piaciuta.</h2>
+    <p class="intro">È il genere di cose che implementiamo anche <b>nei business degli altri</b>: le scene generate
+    dal tuo volto, i video in loop, il ritratto che segue il mouse, le schermate vere dei tuoi strumenti.
+    <i>Niente di quello che hai visto qui è stato fatto a mano.</i></p>
+    <div class="paesi credenziali">
+      <span class="paese"><i></i>Scene generate dal tuo volto</span>
+      <span class="paese"><i></i>Video in loop</span>
+      <span class="paese"><i></i>Ritratto che segue il mouse</span>
+      <span class="paese"><i></i>Schermate vere, animate</span>
+    </div>
+  </div>
 </div></div>
 
 <div class="dock" id="pos-dock"><div class="wide">
@@ -1674,7 +1713,7 @@
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
             ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema," +
-            ".avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
+            ".ps-box, .scena-porta, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
