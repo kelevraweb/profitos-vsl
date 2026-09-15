@@ -254,6 +254,42 @@
 .pos .didascalia{padding:0 16px 18px;color:var(--dim);font-size:11px;text-align:center}
 .pos #pos-cielo-stretto,.pos #pos-eco-stretto{display:none}
 
+/* schema "dal problema al cliente" */
+.pos .perche{display:grid;grid-template-columns:1fr 440px;gap:48px;align-items:start;margin-top:40px}
+.pos .perche .due{grid-template-columns:1fr;margin-top:0}
+.pos .perche .intro{max-width:none}
+.pos .schema{position:sticky;top:32px;border:1px solid var(--bor);border-radius:24px;padding:22px 10px 8px;
+  background:radial-gradient(90% 60% at 50% 22%,rgba(255,107,0,.10),transparent 70%),rgba(17,12,10,.5)}
+.pos .schema svg{display:block;width:100%;height:auto;overflow:visible;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+.pos .schema .linee path{fill:none;stroke:rgba(255,107,0,.32);stroke-width:1.5;stroke-linecap:round;
+  stroke-dasharray:100;stroke-dashoffset:100}
+.pos .schema .impulso path{fill:none;stroke:var(--acc);stroke-width:2.5;stroke-linecap:round;
+  stroke-dasharray:4 96;stroke-dashoffset:100;opacity:0}
+.pos .schema .nodo{opacity:0;transform:translateY(10px)}
+.pos .schema .nodo rect{fill:rgba(15,11,9,.92);stroke:rgba(255,107,0,.28);stroke-width:1}
+.pos .schema .nodo .t{fill:#fff;font-size:12.5px;font-weight:700;letter-spacing:2.2px;text-anchor:middle}
+.pos .schema .nodo .s{fill:rgba(240,232,226,.55);font-size:10px;letter-spacing:1px;text-anchor:middle}
+.pos .schema .fulcro rect{stroke:var(--acc);stroke-width:1.5;filter:drop-shadow(0 0 14px rgba(255,107,0,.45))}
+.pos .schema .fulcro .s{fill:rgba(255,107,0,.8)}
+.pos .schema .esito rect{stroke:var(--acc);stroke-width:1.5;fill:rgba(255,107,0,.10);
+  filter:drop-shadow(0 0 16px rgba(255,107,0,.55))}
+.pos .schema .esito .t{fill:var(--acc)}
+.pos .schema .didascalia{fill:rgba(240,232,226,.45);font-size:10px;letter-spacing:3px;text-anchor:middle}
+.pos .schema.dentro .linee path{animation:pos-traccia 1s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
+.pos .schema.dentro .nodo{animation:pos-nodo .8s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
+.pos .schema.dentro .impulso path{animation:pos-impulso 5.5s linear 4.2s infinite}
+.pos .schema.dentro .fulcro rect,.pos .schema.dentro .esito rect{animation:pos-respira 3.2s ease-in-out 4.5s infinite}
+@keyframes pos-traccia{to{stroke-dashoffset:0}}
+@keyframes pos-nodo{to{opacity:1;transform:none}}
+@keyframes pos-impulso{0%{stroke-dashoffset:100;opacity:0}6%{opacity:1}90%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes pos-respira{0%,100%{filter:drop-shadow(0 0 14px rgba(255,107,0,.45))}50%{filter:drop-shadow(0 0 26px rgba(255,107,0,.85))}}
+@media (prefers-reduced-motion:reduce){
+  .pos .schema .linee path{stroke-dashoffset:0}.pos .schema .nodo{opacity:1;transform:none}
+  .pos .schema .impulso{display:none}
+  .pos .schema.dentro .fulcro rect,.pos .schema.dentro .esito rect{animation:none}}
+@media (max-width:1024px){.pos .perche{grid-template-columns:1fr}.pos .schema{position:static;max-width:520px}}
+
 /* per chi è */
 .pos .due{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
 .pos .colonna{border:1px solid var(--bor);border-radius:20px;padding:32px;background:var(--s3)}
@@ -424,31 +460,96 @@
   <p class="intro">Ti hanno detto che è la nicchia. Che è il target, o l'offerta, o che non parli bene
   al tuo pubblico. Non è niente di tutto questo. <b>Sono successe due cose insieme, e insieme fanno
   un disastro.</b></p>
-  <div class="due">
-    <div class="colonna">
-      <h3>La fiducia è crollata</h3>
-      <p style="color:var(--txt);font-size:16px;line-height:26px">In sette anni la fiducia media dei
-      consumatori è scesa di circa il <b>20%</b>. Chiunque può suonarsela e cantarsela: tu adesso non
-      mi conosci, potrei raccontarti quello che voglio e non avresti modo di saperlo se non andando a
-      controllare.</p>
+  <div class="perche">
+    <div>
+      <div class="due">
+        <div class="colonna">
+          <h3>La fiducia è crollata</h3>
+          <p style="color:var(--txt);font-size:16px;line-height:26px">In sette anni la fiducia media dei
+          consumatori è scesa di circa il <b>20%</b>. Chiunque può suonarsela e cantarsela: tu adesso non
+          mi conosci, potrei raccontarti quello che voglio e non avresti modo di saperlo se non andando a
+          controllare.</p>
+        </div>
+        <div class="colonna">
+          <h3>La barriera è sparita</h3>
+          <p style="color:var(--txt);font-size:16px;line-height:26px">Una volta fare business online era
+          complesso. Oggi bastano un telefono e un'idea, quindi <b>entrano tutti</b>. Il tuo cliente apre
+          Instagram e vede quindici persone che dicono le tue stesse parole, con le tue stesse promesse.</p>
+        </div>
+      </div>
+      <p class="intro" style="margin-top:28px">Cosa fa? Ci pensa, chiede più prove, rimanda. Poi dice
+      “ci penso” e sparisce. <b>Non hai un problema di vendita o di marketing: hai un problema di
+      fiducia, che si presenta in vendita ma nasce molto prima.</b></p>
+      <p class="intro">I funnel e i contenuti funzionano ancora — ma <b>funzionano dopo</b>. Dopo che
+      sanno chi sei, dopo che ti hanno visto trenta volte. Nessuno di quelli che vedi là fuori mette nel
+      proprio funnel gente che non lo conosce: chi entra va solo accompagnato alla cassa. Senza quella
+      fiducia costruita prima, il funnel è un imbuto vuoto.</p>
+      <p class="intro">Ed è qui il punto: clienti in target, già convinti, essere il riferimento del tuo
+      mercato. <b>Non sono obiettivi diversi e non sono il problema: sono quello che succede quando il
+      problema è risolto.</b></p>
     </div>
-    <div class="colonna">
-      <h3>La barriera è sparita</h3>
-      <p style="color:var(--txt);font-size:16px;line-height:26px">Una volta fare business online era
-      complesso. Oggi bastano un telefono e un'idea, quindi <b>entrano tutti</b>. Il tuo cliente apre
-      Instagram e vede quindici persone che dicono le tue stesse parole, con le tue stesse promesse.</p>
+    <div class="schema">
+<svg viewBox="0 0 520 720" role="img" aria-label="Dal problema reale al cliente: contenuti, ripetizione, prove, fiducia, funnel">
+  <defs>
+    <filter id="pos-bagliore" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g class="linee">
+    <path pathLength="100" style="--d:.9s"  d="M112,78 C112,118 150,140 215,143"/>
+    <path pathLength="100" style="--d:.9s"  d="M408,78 C408,118 370,140 305,143"/>
+    <path pathLength="100" style="--d:1.5s" d="M260,206 V250"/>
+    <path pathLength="100" style="--d:1.9s" d="M260,312 V346"/>
+    <path pathLength="100" style="--d:2.3s" d="M260,408 V442"/>
+    <path pathLength="100" style="--d:2.7s" d="M260,504 V532"/>
+    <path pathLength="100" style="--d:3s"   d="M260,532 H115 Q95,532 95,552 V590"/>
+    <path pathLength="100" style="--d:3s"   d="M260,532 V590"/>
+    <path pathLength="100" style="--d:3.4s" d="M170,621 H185"/>
+    <path pathLength="100" style="--d:3.6s" d="M335,621 H350"/>
+  </g>
+  <g class="impulso" filter="url(#pos-bagliore)">
+    <path pathLength="100" d="M112,78 C112,118 150,140 215,143 L260,206 V532 H115 Q95,532 95,552 V621 H350"/>
+  </g>
+  <g class="nodo" style="--d:.2s">
+    <rect x="14" y="16" width="196" height="62" rx="14"/>
+    <text class="t" x="112" y="43">FIDUCIA</text><text class="s" x="112" y="62">è crollata</text>
+  </g>
+  <g class="nodo" style="--d:.35s">
+    <rect x="310" y="16" width="196" height="62" rx="14"/>
+    <text class="t" x="408" y="43">BARRIERA</text><text class="s" x="408" y="62">è sparita</text>
+  </g>
+  <g class="nodo fulcro" style="--d:1.2s">
+    <rect x="150" y="140" width="220" height="66" rx="33"/>
+    <text class="t" x="260" y="170">PROBLEMA REALE</text><text class="s" x="260" y="190">stesso mercato, altra strategia</text>
+  </g>
+  <g class="nodo" style="--d:1.7s">
+    <rect x="160" y="250" width="200" height="62" rx="14"/>
+    <text class="t" x="260" y="277">CONTENUTI</text><text class="s" x="260" y="296">educano e ispirano</text>
+  </g>
+  <g class="nodo" style="--d:2.1s">
+    <rect x="160" y="346" width="200" height="62" rx="14"/>
+    <text class="t" x="260" y="373">RIPETIZIONE</text><text class="s" x="260" y="392">diventi familiare</text>
+  </g>
+  <g class="nodo" style="--d:2.5s">
+    <rect x="160" y="442" width="200" height="62" rx="14"/>
+    <text class="t" x="260" y="469">PROVE</text><text class="s" x="260" y="488">mostri i risultati</text>
+  </g>
+  <g class="nodo" style="--d:3.2s">
+    <rect x="20" y="590" width="150" height="62" rx="14"/>
+    <text class="t" x="95" y="617">FIDUCIA</text><text class="s" x="95" y="636">si ricostruisce</text>
+  </g>
+  <g class="nodo" style="--d:3.4s">
+    <rect x="185" y="590" width="150" height="62" rx="14"/>
+    <text class="t" x="260" y="617">FUNNEL</text><text class="s" x="260" y="636">ora converte</text>
+  </g>
+  <g class="nodo esito" style="--d:3.7s">
+    <rect x="350" y="590" width="150" height="62" rx="14"/>
+    <text class="t" x="425" y="617">CLIENTE</text><text class="s" x="425" y="636">il risultato</text>
+  </g>
+  <text class="didascalia" x="260" y="700">STESSE PERSONE. RISULTATI DIVERSI.</text>
+</svg>
     </div>
   </div>
-  <p class="intro" style="margin-top:28px">Cosa fa? Ci pensa, chiede più prove, rimanda. Poi dice
-  “ci penso” e sparisce. <b>Non hai un problema di vendita o di marketing: hai un problema di
-  fiducia, che si presenta in vendita ma nasce molto prima.</b></p>
-  <p class="intro">I funnel e i contenuti funzionano ancora — ma <b>funzionano dopo</b>. Dopo che
-  sanno chi sei, dopo che ti hanno visto trenta volte. Nessuno di quelli che vedi là fuori mette nel
-  proprio funnel gente che non lo conosce: chi entra va solo accompagnato alla cassa. Senza quella
-  fiducia costruita prima, il funnel è un imbuto vuoto.</p>
-  <p class="intro">Ed è qui il punto: clienti in target, già convinti, essere il riferimento del tuo
-  mercato. <b>Non sono obiettivi diversi e non sono il problema: sono quello che succede quando il
-  problema è risolto.</b></p>
 </div></div>
 
 <div class="sez"><div class="wide">
@@ -1151,7 +1252,7 @@
   var SEL = ".sez > .wide > .et, .sez > .wide > h2, .sez > .wide > .intro," +
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
-            ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla";
+            ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
