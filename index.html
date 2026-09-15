@@ -228,6 +228,7 @@
 .pos .ritratto{position:sticky;top:0;height:100vh;width:100%;z-index:0;overflow:hidden;pointer-events:none}
 .pos .ritratto img,.pos .ritratto .respiro,.pos .ritratto .palpebre{position:absolute;top:-4%;right:-2%;height:108%;width:min(66vw,1200px);object-fit:cover;object-position:62% 0;
   display:block;border:0;border-radius:0;will-change:transform;transition:transform .12s linear}
+.pos .ritratto .quadro2{opacity:0;transition:none}
 .pos .ritratto .palpebre{opacity:0;transition:opacity .45s,transform .12s linear;pointer-events:none}
 .pos .ritratto.fermo .palpebre{opacity:1}
 .pos .ritratto.tocco .palpebre{display:none}
@@ -235,7 +236,7 @@
   background:linear-gradient(90deg,#0C0908 0%,rgba(12,9,8,.92) 18%,rgba(12,9,8,.35) 42%,rgba(12,9,8,0) 62%),
              linear-gradient(180deg,rgba(12,9,8,.35) 0%,rgba(12,9,8,0) 22%,rgba(12,9,8,0) 70%,#0C0908 100%)}
 .pos .ritratto .respiro{display:none}
-.pos .ritratto.tocco .quadro{display:none}
+.pos .ritratto.tocco .quadro,.pos .ritratto.tocco .quadro2{display:none}
 .pos .ritratto.tocco .respiro{display:block}
 .pos .ritratto .didascalia{position:absolute;right:28px;bottom:22px;z-index:1;font-size:10.5px;letter-spacing:2px;
   text-transform:uppercase;color:rgba(240,232,226,.38);opacity:0;transition:opacity .6s}
@@ -373,7 +374,8 @@
 /* scorrendo, la testata e ogni riga si fermano in alto e le righe dopo ci si impilano sopra, a fisarmonica */
 .pos .bl-conto .testata{position:sticky;top:58px;z-index:2;background:#120D0A}
 .pos .bl-conto .voce,.pos .bl-conto .totale{position:sticky;top:calc(58px + 46px + var(--r,1) * 12px);z-index:calc(2 + var(--r,1));
-  background:#120D0A;box-shadow:0 -14px 30px rgba(0,0,0,.45)}
+  background:#120D0A;box-shadow:0 -14px 30px rgba(0,0,0,.55)}
+.pos .bl-conto .totale{border-top:1px solid rgba(255,107,0,.35)}
 .pos .bl-conto .totale{background:#1A110B}
 .pos .bl-conto .testata,.pos .bl-conto .voce,.pos .bl-conto .totale{display:grid;grid-template-columns:1.15fr .9fr 1.45fr}
 .pos .bl-conto .testata span{padding:16px 26px;font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;
@@ -391,11 +393,11 @@
 .pos .bl-conto .dopo{background:linear-gradient(90deg,rgba(255,107,0,.08),rgba(255,107,0,.02))}
 .pos .bl-conto .dopo i{display:block;font-style:normal;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
   color:var(--acc);margin-bottom:10px}
-.pos .bl-conto .totale{background:rgba(255,107,0,.05)}
+.pos .bl-conto .totale{background:#1A110B}
 .pos .bl-conto .totale>div{border-bottom:0;padding:28px 26px}
 .pos .bl-conto .totale .cosa b{font-size:20px}
 .pos .bl-conto .totale b.cifrona{font-size:52px;line-height:1;letter-spacing:-2px;margin:0;font-weight:800}
-.pos .bl-conto .totale b.cifrona span{font-size:20px;letter-spacing:0;margin-left:3px}
+.pos .bl-conto .totale b.cifrona span{display:inline;font-size:20px;letter-spacing:0;margin-left:3px}
 .pos .bl-conto .totale .oggi .cifrona,.pos .bl-conto .totale .oggi .cifrona span{color:var(--neg)}
 .pos .bl-conto .totale .dopo .cifrona,.pos .bl-conto .totale .dopo .cifrona span{color:var(--acc)}
 .pos .martedi{margin-top:40px;display:grid;grid-template-columns:1fr;gap:14px}
@@ -1074,8 +1076,8 @@
 </div></div>
 
 <div class="sez" id="pos-andrea">
-  <div class="ritratto vivo" id="pos-ritratto" data-base="https://kelevraweb.github.io/profitos-vsl/img/andrea/f" data-frames="30" data-centro="17">
-    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f17.jpg" width="1000" height="1250" alt="Andrea Audisio" loading="lazy">
+  <div class="ritratto vivo" id="pos-ritratto" data-base="https://kelevraweb.github.io/profitos-vsl/img/andrea/f" data-frames="38" data-centro="17">
+    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f17.jpg" width="900" height="1125" alt="Andrea Audisio" loading="lazy"><img class="quadro quadro2" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f17.jpg" width="900" height="1125" alt="" aria-hidden="true" loading="lazy">
     <video class="respiro" muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/andrea-testa.mp4" aria-hidden="true"></video>
     <video class="palpebre" muted loop playsinline preload="none" data-src="https://kelevraweb.github.io/profitos-vsl/img/andrea-fermo.mp4" aria-hidden="true"></video>
     <span class="didascalia">muovi il mouse: ti segue</span>
@@ -1144,9 +1146,11 @@
   <p class="et">Come la penso</p>
   <h2>La nostra filosofia</h2>
   <div class="filo">
-    <p>Il punto dell'AI è che dovrebbe <span>toglierti il lavoro</span>, non creartene altro. Io non
-    credo che sostituirà le persone: credo che se un lavoro lo fa male, <span>è giusto che lo faccia
-    un sistema fatto bene</span>. Quello che resta a te è la faccia, il giudizio e le decisioni.</p>
+    <p>Il punto di un percorso, o di un'agenzia, dovrebbe essere <span>toglierti lavoro</span>: non
+    lasciartene addosso altro. Il corso ti insegna a fare tutto tu. L'agenzia fa un pezzo, e il resto
+    resta a te. Io credo un'altra cosa: se un lavoro lo fai male perché non è il tuo mestiere,
+    <span>è giusto che lo faccia un sistema fatto bene</span>. Quello che resta a te è la faccia, il
+    giudizio e le decisioni.</p>
     <p class="firma">Andrea Audisio</p>
   </div>
 </div></div>
@@ -1722,7 +1726,7 @@
         if (x.isIntersecting) { if (!vr.src) vr.src = vr.getAttribute("data-src"); vr.play().catch(function(){}); } else if (vr.src) vr.pause(); });
       }, { rootMargin: "200px 0px" }).observe(vr);
     } else {
-      var N = +rit.getAttribute("data-frames"), C = +rit.getAttribute("data-centro"), base = rit.getAttribute("data-base"), quadro = rit.querySelector(".quadro");
+      var N = +rit.getAttribute("data-frames"), C = +rit.getAttribute("data-centro"), base = rit.getAttribute("data-base"), quadro = rit.querySelector(".quadro"), quadro2 = rit.querySelector(".quadro2");
       var pronti = [], caricati = 0, meta = C, ora = C, tx = 0, ty = 0, vx = 0, vy = 0, gira = false;
       var palp = rit.querySelector(".palpebre"), tFermo = null;
       function sveglia() { rit.classList.remove("fermo"); clearTimeout(tFermo); tFermo = null; }
@@ -1741,11 +1745,13 @@
       }
       new IntersectionObserver(function (e) { e.forEach(function (x) { if (x.isIntersecting) carica(); }); }, { rootMargin: "400px 0px" }).observe(rit);
       function passo() {
-        ora += (meta - ora) * 0.14; vx += (tx - vx) * 0.12; vy += (ty - vy) * 0.12;
-        var k = Math.max(0, Math.min(N - 1, Math.round(ora)));
+        ora += (meta - ora) * 0.11; vx += (tx - vx) * 0.12; vy += (ty - vy) * 0.12;
+        var pos = Math.max(0, Math.min(N - 1, ora)), k = Math.floor(pos), k2 = Math.min(N - 1, k + 1), fr = pos - k;
         if (pronti[k] && pronti[k].complete && quadro.src !== pronti[k].src) quadro.src = pronti[k].src;
-        quadro.style.transform = palp.style.transform = "translate(" + (vx * -14) + "px," + (vy * -10) + "px)";
-        if (Math.abs(meta - ora) > 0.05 || Math.abs(tx - vx) > 0.005 || Math.abs(ty - vy) > 0.005) requestAnimationFrame(passo); else gira = false;
+        if (pronti[k2] && pronti[k2].complete && quadro2.src !== pronti[k2].src) quadro2.src = pronti[k2].src;
+        quadro2.style.opacity = (pronti[k2] && pronti[k2].complete) ? fr.toFixed(3) : 0;
+        quadro.style.transform = quadro2.style.transform = palp.style.transform = "translate(" + (vx * -14) + "px," + (vy * -10) + "px)";
+        if (Math.abs(meta - ora) > 0.01 || Math.abs(tx - vx) > 0.005 || Math.abs(ty - vy) > 0.005) requestAnimationFrame(passo); else gira = false;
       }
       function muovi() { if (!gira) { gira = true; requestAnimationFrame(passo); } }
       sezChi.addEventListener("mousemove", function (e) {
