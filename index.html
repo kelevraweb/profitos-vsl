@@ -384,31 +384,64 @@
 .pos .bl-conto .totale b.cifrona span{font-size:20px;letter-spacing:0;margin-left:3px}
 .pos .bl-conto .totale .oggi .cifrona,.pos .bl-conto .totale .oggi .cifrona span{color:var(--neg)}
 .pos .bl-conto .totale .dopo .cifrona,.pos .bl-conto .totale .dopo .cifrona span{color:var(--acc)}
-.pos .martedi{margin-top:40px;display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch}
-.pos .martedi .et{grid-column:1/-1;margin:0 0 -4px}
-.pos .martedi .giorno{border:1px solid var(--bor);border-radius:20px;padding:0;overflow:hidden;background:var(--s3)}
-.pos .martedi .scena{position:relative;aspect-ratio:3/2;background:#0a0705}
-.pos .martedi .scena img{display:block;width:100%;height:100%;object-fit:cover}
-.pos .martedi .scena::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,11,9,0) 58%,rgba(15,11,9,.94))}
-.pos .martedi .prima .scena img{filter:saturate(.75) contrast(1.06)}
-.pos .martedi .testo{padding:18px 30px 28px}
-.pos .martedi .giorno.poi{border-color:rgba(255,107,0,.32);
-  background:radial-gradient(130% 95% at 0% 0%,rgba(255,107,0,.20),rgba(255,107,0,0) 60%),linear-gradient(160deg,rgba(38,24,14,.96),rgba(15,11,9,.94))}
-.pos .martedi .bl-quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+.pos .martedi{margin-top:40px;display:grid;grid-template-columns:1fr;gap:14px}
+.pos .martedi .et{margin:0 0 -2px}
+.pos .martedi .giorno{position:relative;border:1px solid var(--bor);border-radius:24px;overflow:hidden;background:#0a0705;min-height:340px;
+  display:flex;align-items:flex-end}
+.pos .martedi .giorno.poi{border-color:rgba(255,107,0,.36)}
+.pos .martedi .scena{position:absolute;inset:0}
+.pos .martedi .scena video,.pos .martedi .scena img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block}
+.pos .martedi .prima .scena video{filter:saturate(.72) contrast(1.06)}
+.pos .martedi .scena::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(12,9,8,.94) 0%,rgba(12,9,8,.78) 34%,rgba(12,9,8,.18) 62%,rgba(12,9,8,0) 100%),
+             linear-gradient(180deg,rgba(12,9,8,0) 55%,rgba(12,9,8,.55))}
+.pos .martedi .poi .scena::after{background:linear-gradient(90deg,rgba(12,9,8,.94) 0%,rgba(12,9,8,.78) 34%,rgba(12,9,8,.18) 62%,rgba(12,9,8,0) 100%),
+             linear-gradient(180deg,rgba(255,107,0,0) 60%,rgba(255,107,0,.10))}
+.pos .martedi .testo{position:relative;z-index:1;padding:34px 40px 36px;max-width:560px}
+.pos .martedi .bl-quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--dim);margin:0 0 12px}
 .pos .martedi .poi .bl-quando{color:var(--acc)}
 .pos .martedi ul{list-style:none;margin:0;padding:0}
-.pos .martedi li{font-size:17px;line-height:26px;padding:9px 0;border-top:1px solid var(--bor);color:var(--neg)}
+.pos .martedi li{font-size:19px;line-height:28px;padding:8px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--neg)}
 .pos .martedi .poi li{color:#fff}
 .pos .martedi .poi li::before{content:"✓ ";color:var(--acc);font-weight:700}
-.pos .martedi .freccia{align-self:center;font-size:36px;line-height:1;color:var(--acc)}
+.pos .martedi .freccia{justify-self:center;font-size:30px;line-height:1;color:var(--acc);margin:-2px 0}
 @media (max-width:820px){
   .pos .bl-conto .testata{display:none}
   .pos .bl-conto .voce,.pos .bl-conto .totale{grid-template-columns:1fr}
   .pos .bl-conto .voce>div+div,.pos .bl-conto .totale>div+div{border-left:0;border-top:1px solid var(--bor)}
   .pos .bl-conto .voce>div,.pos .bl-conto .totale>div{padding:18px 22px}
   .pos .bl-conto .oggi::before{content:"Oggi, tutto tu";display:block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
-  .pos .martedi{grid-template-columns:1fr}
-  .pos .martedi .freccia{justify-self:center;transform:rotate(90deg)}
+  .pos .martedi .giorno{min-height:300px}
+  .pos .martedi .testo{padding:24px 24px 26px}
+  .pos .martedi li{font-size:16px;line-height:24px}
+}
+
+/* menu delle sezioni: parte sopra al problema e resta appiccicato in alto */
+.pos .menu{position:sticky;top:0;z-index:60;background:rgba(12,9,8,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,107,0,.12);border-bottom:1px solid rgba(255,107,0,.12);transition:background .3s,box-shadow .3s}
+.pos .menu.fissa{background:rgba(12,9,8,.92);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.pos .menu .wide{display:flex;align-items:center;gap:22px;height:58px}
+.pos .menu .marca{flex:0 0 auto;color:#fff;font-size:17px;font-weight:700;letter-spacing:-.4px;text-decoration:none}
+.pos .menu .marca b{color:var(--acc)}
+.pos .menu .voci{flex:1 1 auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;white-space:nowrap;
+  -webkit-mask:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+.pos .menu .voci::-webkit-scrollbar{display:none}
+.pos .menu .voci a{position:relative;display:inline-block;padding:10px 11px;color:var(--dim);font-size:11px;font-weight:700;
+  letter-spacing:1.8px;text-transform:uppercase;text-decoration:none;border-radius:8px;transition:color .25s}
+.pos .menu .voci a:hover{color:#fff}
+.pos .menu .voci a::after{content:"";position:absolute;left:11px;right:11px;bottom:4px;height:2px;border-radius:2px;background:var(--acc);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.pos .menu .voci a.attiva{color:var(--acc)}
+.pos .menu .voci a.attiva::after{transform:scaleX(1)}
+.pos .menu .vai{flex:0 0 auto;padding:9px 16px;border-radius:999px;background:var(--acc);color:#0C0908;font-size:12px;font-weight:700;
+  letter-spacing:.2px;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.pos .menu .vai:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(255,107,0,.35)}
+.pos .sez[id]{scroll-margin-top:72px}
+@media (max-width:820px){
+  .pos .menu .wide{gap:12px;height:52px}
+  .pos .menu .marca{display:none}
+  .pos .menu .voci a{padding:9px 9px;font-size:10.5px;letter-spacing:1.5px}
+  .pos .menu .vai{padding:8px 12px;font-size:11px}
 }
 
 /* le tre tappe del percorso: una linea, tre punti */
@@ -593,7 +626,24 @@
   <div class="pista" id="pos-pista"></div>
 </div>
 
-<div class="sez"><div class="wide">
+<nav class="menu" id="pos-menu" aria-label="Sezioni della pagina">
+  <div class="wide">
+    <a class="marca" href="#pos-problema">profit<b>OS</b></a>
+    <div class="voci">
+      <a href="#pos-problema" data-sez>Il problema</a>
+      <a href="#pos-martedi" data-sez>Il martedì</a>
+      <a href="#pos-cosa" data-sez>Cos'è profitOS</a>
+      <a href="#pos-strumenti" data-sez>Strumenti</a>
+      <a href="#pos-percorso" data-sez>Percorso</a>
+      <a href="#pos-risultati" data-sez>Risultati</a>
+      <a href="#pos-garanzia" data-sez>Garanzia</a>
+      <a href="#pos-faq" data-sez>FAQ</a>
+    </div>
+    <a class="vai" href="#pos-chiusura">Prenota la chiamata →</a>
+  </div>
+</nav>
+
+<div class="sez" id="pos-problema"><div class="wide">
   <p class="et">Il problema</p>
   <h2>Perché non converti, anche se stai facendo tutto giusto.</h2>
   <p class="intro">Ti hanno detto che è la nicchia. Che è il target, o l'offerta, o che non parli bene
@@ -691,18 +741,18 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-martedi"><div class="wide">
   <p class="et">Immaginati il tuo martedì</p>
   <h2>Oggi. E fra sei mesi.</h2>
   <p class="intro">Stessa persona, stesso business, stesse ventiquattro ore. Cambia solo chi fa la fatica.</p>
   <div class="martedi">
-    <div class="giorno prima"><div class="scena"><img src="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.jpg" width="1200" height="800" alt="" loading="lazy"></div><div class="testo"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div></div>
-    <div class="freccia" aria-hidden="true">→</div>
-    <div class="giorno poi"><div class="scena"><img src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" width="1200" height="800" alt="" loading="lazy"></div><div class="testo"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
+    <div class="giorno prima"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.mp4"></video></div><div class="testo"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div></div>
+    <div class="freccia" aria-hidden="true">↓</div>
+    <div class="giorno poi"><div class="scena"><video muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.mp4"></video></div><div class="testo"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-strade"><div class="wide">
   <p class="et">Cosa hai già provato</p>
   <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
   <p class="intro">A questo punto ti sei accorto che da solo non ce la fai. Le porte che il mercato
@@ -732,7 +782,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-cosa"><div class="wide">
   <p class="et">La quarta strada</p>
   <h2>Cos&rsquo;è profitOS.</h2>
   <div class="affianco">
@@ -786,7 +836,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-giro"><div class="wide">
   <p class="et">Come funziona</p>
   <h2>Ogni pezzo sa cosa ha fatto quello prima.</h2>
   <p class="intro">Non sono tool comprati separatamente: è un ecosistema. L'offerta decide i
@@ -795,7 +845,7 @@
   <div class="eco"><div id="pos-eco-largo"></div><div id="pos-eco-stretto"></div></div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-strumenti"><div class="wide">
   <p class="et">Gli strumenti</p>
   <h2>Gli strumenti, nell'ordine in cui li usi.</h2>
   <p class="intro">Non è un prompt trovato online: dentro ci sono diciannove anni di lavoro su
@@ -859,7 +909,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-conto"><div class="wide">
   <p class="et">Il conto</p>
   <h2>Le cose che servono oggi per vendere. E chi le fa.</h2>
   <p class="intro">Non è che sei pigro: <b>umanamente non c'è il tempo</b>. Questo è l'elenco di quello che
@@ -910,7 +960,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-percorso"><div class="wide">
   <p class="et">Il percorso</p>
   <h2>Le cose pratiche, quelle che di solito si scoprono dopo.</h2>
   <p class="intro">Il percorso dura <b>tre o sei mesi secondo da dove parti</b>. Non sono pacchetti
@@ -946,7 +996,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-piattaforma"><div class="wide">
   <p class="et">Dentro la piattaforma</p>
   <h2>Nove pezzi, uno dietro l'altro.</h2>
   <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
@@ -958,7 +1008,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-risultati"><div class="wide">
   <p class="et">I risultati</p>
   <h2>Alcuni di quelli che ce l'hanno già fatta.</h2>
   <div class="griglia" id="pos-casi"></div>
@@ -979,7 +1029,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-community"><div class="wide">
   <p class="et">La community</p>
   <h2>Chi c'è dentro profitOS, adesso.</h2>
   <p class="intro">Non un elenco di loghi: le persone che stiamo seguendo adesso, con i loro
@@ -987,7 +1037,7 @@
   <div class="storie"><div class="rullo" id="pos-storie"></div></div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-dove"><div class="wide">
   <p class="et">Dove siamo</p>
   <h2>Dove lavoriamo</h2>
   <p class="intro">Non siamo un'agenzia locale: i progetti che seguiamo stanno in cinque Paesi.</p>
@@ -999,7 +1049,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide"><div class="chi">
+<div class="sez" id="pos-andrea"><div class="wide"><div class="chi">
   <div class="ritratto"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9accb74b83b18bcfad9701.jpeg" alt="Andrea Audisio"></div>
   <div>
     <p class="et">Chi è Andrea</p>
@@ -1036,7 +1086,7 @@
   </div>
 </div></div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-filosofia"><div class="wide">
   <p class="et">Come la penso</p>
   <h2>La nostra filosofia</h2>
   <div class="filo">
@@ -1047,7 +1097,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-perchi"><div class="wide">
   <p class="et">Per chi è</p>
   <h2>Per chi è, e per chi no.</h2>
   <div class="due">
@@ -1075,7 +1125,7 @@
   </div>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-garanzia"><div class="wide">
   <p class="et">La garanzia</p>
   <h2>Te la leggo qui, non in chiamata.</h2>
   <p class="intro">Una garanzia che ti spiegano in call non è una garanzia: <b>è un motivo per farti
@@ -1103,7 +1153,7 @@
   lo garantisce ti sta mentendo: dipende anche da te.</p>
 </div></div>
 
-<div class="sez"><div class="wide">
+<div class="sez" id="pos-faq"><div class="wide">
   <p class="et">FAQ</p>
   <h2>Risposte oneste. Senza giri di parole.</h2>
   <div class="faq" id="pos-faq"></div>
@@ -1579,6 +1629,46 @@
       el.innerHTML = pre + (meta % 1 ? v.toFixed(1) : Math.round(v)) + coda;
       if (k < 1) requestAnimationFrame(tic);
     })(t0);
+  }
+
+  /* martedì: i due video di sfondo partono solo quando il box e' in vista */
+  var scene = [].slice.call(document.querySelectorAll(".martedi video[data-src]"));
+  if (scene.length && "IntersectionObserver" in window) {
+    var occhio = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) {
+        var vid = v.target;
+        if (v.isIntersecting) { if (!vid.src) vid.src = vid.getAttribute("data-src"); vid.play().catch(function () {}); }
+        else if (vid.src) vid.pause();
+      });
+    }, { rootMargin: "200px 0px" });
+    scene.forEach(function (v) { occhio.observe(v); });
+  }
+
+  /* menu delle sezioni: voce attiva, ombra quando e' appiccicato, scorrimento morbido con l'offset */
+  var menu = document.getElementById("pos-menu");
+  if (menu) {
+    var voci = [].slice.call(menu.querySelectorAll("a[data-sez]"));
+    var mete = voci.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+    var ultima = -1;
+    function segna() {
+      var y = window.scrollY + menu.offsetHeight + 90, k = -1;
+      mete.forEach(function (m, i) { if (m && m.offsetTop <= y) k = i; });
+      menu.classList.toggle("fissa", menu.getBoundingClientRect().top <= 0 && window.scrollY > 10);
+      if (k === ultima) return;
+      ultima = k;
+      voci.forEach(function (a, i) { a.classList.toggle("attiva", i === k); });
+      if (k >= 0) { var v = voci[k], box = menu.querySelector(".voci");
+        var sx = v.offsetLeft - (box.clientWidth - v.offsetWidth) / 2;
+        if (box.scrollWidth > box.clientWidth) box.scrollTo({ left: sx, behavior: "smooth" }); }
+    }
+    addEventListener("scroll", segna, { passive: true }); addEventListener("resize", segna); segna();
+    [].slice.call(menu.querySelectorAll("a[href^='#']")).forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var t = document.getElementById(a.getAttribute("href").slice(1)); if (!t) return;
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - menu.offsetHeight - 10, behavior: "smooth" });
+      });
+    });
   }
 
   /* strumenti: passando sull'immagine, le altre schermate arrivano una dietro l'altra (salto nell'iperspazio) */
