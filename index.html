@@ -21,7 +21,7 @@
      Incollalo in un elemento "Custom Code / HTML" a piena larghezza.
      Niente doctype, html, head o body: li mette GHL.
      Tutto il CSS è agganciato a .pos, gli id sono prefissati pos-.
-     Da riempire: URL_CHIAMATA, nel blocco CONFIG in fondo.
+     Da riempire: URL_CHIAMATA e URL_CANDIDATURA, nel blocco CONFIG in fondo.
      ================================================================ -->
 
 <!-- ================================================================
@@ -512,6 +512,25 @@
 .pos .porta .testa,.pos .porta h3,.pos .porta p:not(.ordinale):not(.quale){position:relative;z-index:1}
 .pos .porta .testa{margin-top:0}
 @media (max-width:1024px){.pos .porte .fase.porta{min-height:600px;padding-top:320px}}
+/* un'altra cosa: riquadro finale, testo e candidatura a sinistra, schermate a ventaglio a destra */
+.pos #pos-ps{padding-top:0}
+.pos .ps-box{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;border:1px solid rgba(255,107,0,.3);border-radius:24px;padding:36px 40px;
+  background:radial-gradient(120% 90% at 0% 0%,rgba(255,107,0,.16),rgba(255,107,0,0) 60%),linear-gradient(160deg,rgba(38,24,14,.96),rgba(15,11,9,.94))}
+.pos .ps-box h2{font-size:clamp(26px,3vw,36px);margin-top:8px}
+.pos .ps-box .intro{margin-top:12px;max-width:none}
+.pos .ps-box .bottone{margin-top:22px}
+.pos .ventaglio{position:relative;aspect-ratio:16/11;perspective:1200px}
+.pos .ventaglio img{position:absolute;left:8%;top:12%;width:76%;height:auto;border-radius:14px;border:1px solid rgba(255,107,0,.35);
+  box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 40px rgba(255,107,0,.12);transform-origin:50% 100%;transform:translateY(20px);opacity:0;
+  transition:transform 1s cubic-bezier(.16,1,.3,1),opacity .6s}
+.pos .ps-box.dentro .ventaglio img:nth-child(1){transform:rotate(-9deg) translate(-6%,4%);opacity:1;transition-delay:.15s}
+.pos .ps-box.dentro .ventaglio img:nth-child(2){transform:rotate(1deg) translate(0,-2%);opacity:1;transition-delay:.35s}
+.pos .ps-box.dentro .ventaglio img:nth-child(3){transform:rotate(9deg) translate(7%,6%);opacity:1;transition-delay:.55s}
+.pos .ps-box.dentro .ventaglio:hover img:nth-child(1){transform:rotate(-14deg) translate(-12%,6%)}
+.pos .ps-box.dentro .ventaglio:hover img:nth-child(2){transform:rotate(0deg) translate(0,-6%)}
+.pos .ps-box.dentro .ventaglio:hover img:nth-child(3){transform:rotate(14deg) translate(13%,8%)}
+@media (max-width:820px){.pos .ps-box{grid-template-columns:1fr;padding:26px 22px}.pos .ventaglio{max-width:420px;margin:8px auto 0}}
+
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -852,17 +871,16 @@
   <div class="affianco">
     <div>
   <p class="intro"><b>Tutta la parte operativa, quella che ti tiene occupato tutto il giorno, non
-  la fai più tu.</b> Le decisioni restano tue: tieni la testa e deleghi la fatica. Non è
-  un&rsquo;agenzia che lavora al posto tuo, e non è un corso che ti insegna a lavorare di più: è un
-  insieme di strumenti collegati fra loro, costruiti sul tuo posizionamento, che <b>producono la
-  prima versione di tutto quello che oggi fai a mano</b>. A te resta correggere.</p>
-  <p class="intro">Il modo in cui funziona ha un nome: <mark>delega inversa</mark>. Di solito deleghi la testa e ti tieni la fatica. Qui è il contrario: <b>deleghi la
-  fatica e ti tieni la testa</b>. In ogni altro modello la prima versione la produci tu e l'esperto
-  corregge. Qui <u>la prima versione la produce il sistema</u>, e correggi tu: perché <i>non impari facendo,
+  la fai più tu.</b> Non è un&rsquo;agenzia che lavora al posto tuo, e non è un corso che ti insegna a
+  lavorare di più: è un insieme di strumenti collegati fra loro, costruiti sul tuo posizionamento, che
+  <u>producono la prima versione di tutto quello che oggi fai a mano</u>. <i>A te resta correggere.</i></p>
+  <p class="intro">Il modo in cui funziona ha un nome: <mark>delega inversa</mark>. Di solito deleghi la
+  testa e ti tieni la fatica. Qui è il contrario: <b>deleghi la fatica e ti tieni la testa</b>. In ogni
+  altro modello la prima versione la produci tu e l'esperto corregge. Qui <u>la prima versione la
+  produce il sistema</u>, e correggi tu con il nostro supporto. Questo perché <i>non impari facendo,
   impari correggendo</i>, e correggere costa <b>un decimo del tempo</b>.</p>
-  <p class="intro">Non sei dipendente come con l'agenzia, perché <u>le decisioni restano tue</u>. E non sei
-  solo come con l'affiancamento, perché <u>l'operativo non lo fai tu</u>. <b>Nel 2019 non si poteva fare</b>: per
-  toglierti l'esecuzione serviva qualcuno che la facesse, e <i>quel qualcuno costava come un'agenzia</i>.</p>
+  <p class="intro">Non sei dipendente come con l'agenzia, perché <u>le decisioni restano tue</u>. E non
+  sei solo come con l'affiancamento, perché <u>l'operativo non lo fai tu</u>.</p>
     </div>
     <div class="schema piatto">
 <svg viewBox="0 0 460 600" role="img" aria-label="Delega classica: tu produci e l'esperto corregge. Delega inversa: il sistema produce, tu e l'esperto correggete.">
@@ -1301,16 +1319,18 @@
 
 <div class="sez" id="pos-ps"><div class="wide">
   <div class="ps-box">
-    <p class="et">Un'altra cosa</p>
-    <h2>Se questa landing ti è piaciuta.</h2>
-    <p class="intro">È il genere di cose che implementiamo anche <b>nei business degli altri</b>: le scene generate
-    dal tuo volto, i video in loop, il ritratto che segue il mouse, le schermate vere dei tuoi strumenti.
-    <i>Niente di quello che hai visto qui è stato fatto a mano.</i></p>
-    <div class="paesi credenziali">
-      <span class="paese"><i></i>Scene generate dal tuo volto</span>
-      <span class="paese"><i></i>Video in loop</span>
-      <span class="paese"><i></i>Ritratto che segue il mouse</span>
-      <span class="paese"><i></i>Schermate vere, animate</span>
+    <div>
+      <p class="et">Un'altra cosa</p>
+      <h2>Se questa landing ti è piaciuta.</h2>
+      <p class="intro">È il genere di cose che implementiamo anche <b>nei business dei nostri clienti</b>: le scene
+      generate dal tuo volto, i video in loop, il ritratto che segue il mouse, le schermate vere dei tuoi strumenti.</p>
+      <p class="intro">Se ti interessa costruire <b>strumenti tuoi</b>, compila la candidatura.</p>
+      <a class="bottone" href="#" id="pos-cta-candidatura">Compila la candidatura →</a>
+    </div>
+    <div class="ventaglio" aria-hidden="true">
+      <img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti.jpg" width="760" height="475" alt="" loading="lazy">
+      <img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty.jpg" width="760" height="475" alt="" loading="lazy">
+      <img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel.jpg" width="760" height="475" alt="" loading="lazy">
     </div>
   </div>
 </div></div>
@@ -1335,6 +1355,7 @@
 (function () {
   /* ============ CONFIG · le uniche righe da toccare ============ */
   var URL_CHIAMATA = "#";    /* calendario, quiz o candidatura */
+  var URL_CANDIDATURA = "#"; /* il modulo di candidatura per chi vuole strumenti suoi */
   /* Nessun countdown: nella VSL dici esplicitamente di non usare il contatore
      fake. La scarsità dichiarata in pagina è quella vera: poche call a
      settimana, fatte da te e da due del team. */
@@ -1415,6 +1436,7 @@
 
   $("pos-cta").href = URL_CHIAMATA;
   $("pos-cta-dock").href = URL_CHIAMATA;
+  $("pos-cta-candidatura").href = URL_CANDIDATURA;
 
   /* --- striscia: lista stampata due volte, l'animazione trasla di -50% --- */
   var RAIL = [
