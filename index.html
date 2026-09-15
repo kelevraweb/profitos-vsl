@@ -308,6 +308,14 @@
 .pos .icona svg{width:23px;height:23px;fill:none;stroke:var(--acc);stroke-width:1.8;
   stroke-linecap:round;stroke-linejoin:round}
 
+/* le tre porte: nome grande accanto al numero, la frase sotto in arancio */
+.pos .porte .testa{display:flex;align-items:baseline;gap:14px}
+.pos .porte .ordinale{font-size:46px;line-height:1;letter-spacing:-1.5px;color:rgba(255,107,0,.32)}
+.pos .porte .quale{margin:0;color:#fff;font-size:27px;line-height:32px;font-weight:700;
+  letter-spacing:-.7px;text-transform:none}
+.pos .porte h3{margin-top:12px;color:var(--acc);font-size:16px;line-height:22px;font-weight:600;letter-spacing:0}
+.pos .porte p:not(.ordinale):not(.quale){margin-top:12px}
+
 /* per chi è */
 .pos .due{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
 .pos .colonna{border:1px solid var(--bor);border-radius:20px;padding:32px;background:var(--s3)}
@@ -575,26 +583,23 @@
   <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
   <p class="intro">A questo punto ti sei accorto che da solo non ce la fai. Le porte che il mercato
   ti apre sono tre, e ognuna ti lascia esattamente dove eri.</p>
-  <div class="fasi">
+  <div class="fasi porte">
     <div class="fase">
-      <p class="ordinale">01</p>
-      <p class="quale">L'agenzia</p>
+      <div class="testa"><p class="ordinale">01</p><p class="quale">L'agenzia</p></div>
       <h3>Ti toglie il controllo</h3>
       <p>Il problema non è che lavori male: è che ha un interesse opposto al tuo, e fa un pezzo solo.
       Il resto resta comunque a te, e il giorno che smetti di pagare torni al punto di partenza —
       con qualche mese in meno e il conto pagato.</p>
     </div>
     <div class="fase">
-      <p class="ordinale">02</p>
-      <p class="quale">Il corso</p>
+      <div class="testa"><p class="ordinale">02</p><p class="quale">Il corso</p></div>
       <h3>Ti lascia tutto il lavoro</h3>
       <p>Ti frega in modo più sottile, perché sembra che funzioni: hai capito, bravo. Ma capire e
       fare sono due mestieri diversi e te ne hanno venduto uno. Finiti i video ti ritrovi davanti
       allo stesso foglio bianco, con le stesse 24 ore e in più la lista di tutto quello che manca.</p>
     </div>
     <div class="fase">
-      <p class="ordinale">03</p>
-      <p class="quale">L'AI generica</p>
+      <div class="testa"><p class="ordinale">03</p><p class="quale">L'AI generica</p></div>
       <h3>Ti dà pezzi scollegati</h3>
       <p>Un modello generico non ha criterio: è uno specchio che ti dà ragione. Chiunque può fare una
       cosa buona una volta, nessuno la fa venti volte coerente col mese prima. E resti tu a fare da
