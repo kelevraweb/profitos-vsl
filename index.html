@@ -336,6 +336,16 @@
 .pos .strumenti .fase .marchio{display:inline-flex;align-items:center;height:46px;padding:0 16px;border-radius:13px;
   border:1px solid rgba(255,107,0,.28);box-shadow:0 8px 24px rgba(0,0,0,.45)}
 .pos .strumenti .fase .marchio img{display:block;height:26px;width:auto}
+.pos .strumenti .stella-nova{background:radial-gradient(circle,rgba(210,78,224,.30),rgba(12,9,8,.94) 72%);
+  border-color:rgba(210,78,224,.45);box-shadow:0 0 26px rgba(210,78,224,.35)}
+.pos .strumenti .fase:hover .stella-nova{background:radial-gradient(circle,rgba(210,78,224,.42),rgba(12,9,8,.94) 74%);
+  box-shadow:0 0 36px rgba(210,78,224,.55)}
+.pos .strumenti .stella-nova svg{width:46px;height:46px;overflow:visible;stroke:none;fill:none}
+.pos .stella-alone{animation:posStAlone 3.4s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+.pos .stella-raggi{animation:posStRuota 46s linear infinite;transform-origin:center;transform-box:fill-box}
+@keyframes posStAlone{0%,100%{transform:scale(.82);opacity:.75}50%{transform:scale(1.28);opacity:1}}
+@keyframes posStRuota{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.pos .stella-alone,.pos .stella-raggi{animation:none}}
 
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
@@ -714,7 +724,7 @@
     <div class="fase">
       <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
-      <div class="testa"><p class="ordinale">01</p><p class="quale">Offerta</p></div>
+      <div class="testa"><p class="ordinale">01</p><p class="quale">Analisi offerta</p></div>
       <h3>Una settimana in poche ore</h3>
       <p>Ti porta dentro i passaggi e ti dice, con dei numeri sopra, quanto dolore risolve la tua
       offerta, quanto valore percepito ha e quanto costa erogarla. Non consigli: un documento.</p>
@@ -723,7 +733,7 @@
     <div class="fase">
       <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="marchio"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/logo-peddy.png" alt="Peddy" height="26" loading="lazy"></span>
-      <div class="testa"><p class="ordinale">02</p><p class="quale">Contenuti</p></div>
+      <div class="testa"><p class="ordinale">02</p><p class="quale">Contenuti (Peddy)</p></div>
       <h3>Piani interi in una passata</h3>
       <p>Guarda cosa succede nel tuo settore, le notizie, i competitor, e scrive piani editoriali di
       settimane: post, caroselli, storie e reel già nel tuo tono e impaginati per il tuo brand.</p>
@@ -732,7 +742,7 @@
     <div class="fase">
       <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="marchio"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/logo-setty.png" alt="Setty" height="26" loading="lazy"></span>
-      <div class="testa"><p class="ordinale">03</p><p class="quale">Setty</p></div>
+      <div class="testa"><p class="ordinale">03</p><p class="quale">Setting (Setty)</p></div>
       <h3>I DM non si perdono più</h3>
       <p>Aggancia un lead magnet a ogni contenuto, risponde in pubblico, scrive in privato, consegna
       il materiale e continua la conversazione. Recupera chi sparisce e prenota le call da solo,
@@ -759,7 +769,7 @@
     </div>
     <div class="fase">
       <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova.jpg" width="760" height="475" alt="" loading="lazy"></div>
-      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4M22 5h-4"/></svg></span>
+      <span class="icona stella-nova" aria-hidden="true"><svg viewBox="-80 -80 160 160"><defs><radialGradient id="pos-st-alone"><stop offset="0%" stop-color="#fff" stop-opacity=".55"/><stop offset="30%" stop-color="#d24ee0" stop-opacity=".3"/><stop offset="70%" stop-color="#d24ee0" stop-opacity=".08"/><stop offset="100%" stop-color="#d24ee0" stop-opacity="0"/></radialGradient><radialGradient id="pos-st-raggio" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="76"><stop offset="0%" stop-color="#fff" stop-opacity=".8"/><stop offset="35%" stop-color="#d24ee0" stop-opacity=".38"/><stop offset="100%" stop-color="#d24ee0" stop-opacity="0"/></radialGradient><radialGradient id="pos-st-cuore"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="55%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#d24ee0" stop-opacity="0"/></radialGradient><filter id="pos-st-soffio" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6"/></filter></defs><circle class="stella-alone" r="72" fill="url(#pos-st-alone)"/><g class="stella-raggi" fill="url(#pos-st-raggio)" filter="url(#pos-st-soffio)"><path d="M -6 0 L 0 -74 L 6 0 Z" transform="rotate(10)"/><path d="M -4 0 L 0 -46 L 4 0 Z" transform="rotate(55)"/><path d="M -7 0 L 0 -68 L 7 0 Z" transform="rotate(95)"/><path d="M -4.5 0 L 0 -42 L 4.5 0 Z" transform="rotate(140)"/><path d="M -6 0 L 0 -70 L 6 0 Z" transform="rotate(185)"/><path d="M -4 0 L 0 -44 L 4 0 Z" transform="rotate(230)"/><path d="M -6.5 0 L 0 -64 L 6.5 0 Z" transform="rotate(275)"/><path d="M -4 0 L 0 -40 L 4 0 Z" transform="rotate(320)"/></g><circle r="20" fill="url(#pos-st-cuore)"/><circle r="7" fill="#fff"/></svg></span>
       <div class="testa"><p class="ordinale">06</p><p class="quale">Nova</p></div>
       <h3>Ventiquattro ore su ventiquattro</h3>
       <p>Tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di
