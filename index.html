@@ -331,19 +331,19 @@
 .pos .schema.piatto .eti{font-size:10.5px}
 
 /* strumenti: icona in testa, fondo caldo che li distingue dalle altre card */
-.pos .strumenti .fase{
+.pos .strumenti .fase,.pos .porte .fase{
   background:radial-gradient(120% 85% at 0% 0%,rgba(255,107,0,.14),rgba(255,107,0,0) 58%),
              linear-gradient(165deg,rgba(30,20,13,.96),rgba(15,11,9,.94));
   border-color:rgba(255,107,0,.2)}
 .pos .strumenti .fase .icona{margin-bottom:18px}
 .pos .strumenti .fase:hover .icona{background:rgba(255,107,0,.2);box-shadow:0 0 28px rgba(255,107,0,.28)}
-.pos .strumenti .fase{padding-top:0;overflow:hidden}
-.pos .strumenti .schermo{margin:0 -32px;aspect-ratio:16/10;position:relative;overflow:hidden;
+.pos .strumenti .fase,.pos .porte .fase{padding-top:0;overflow:hidden}
+.pos .strumenti .schermo,.pos .porte .schermo{margin:0 -32px;aspect-ratio:16/10;position:relative;overflow:hidden;
   border-bottom:1px solid rgba(255,107,0,.18);background:#0a0705}
-.pos .strumenti .schermo img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
+.pos .strumenti .schermo img,.pos .porte .schermo img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
   opacity:0;transform:scale(.42);filter:saturate(.92) blur(14px);
   transition:transform .75s cubic-bezier(.6,0,.2,1),opacity .5s ease-out,filter .75s cubic-bezier(.6,0,.2,1)}
-.pos .strumenti .schermo img.attiva{opacity:1;transform:scale(1);filter:saturate(.92) blur(0)}
+.pos .strumenti .schermo img.attiva,.pos .porte .schermo img{opacity:1;transform:scale(1);filter:saturate(.92) blur(0)}
 .pos .strumenti .schermo img.via{opacity:0;transform:scale(2.6);filter:saturate(1.1) blur(12px);transition-duration:.7s,.45s,.7s}
 .pos .strumenti .schermo::before{content:"";position:absolute;inset:-30%;z-index:2;pointer-events:none;opacity:0;
   background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0 2.6deg,rgba(255,196,150,.16) 2.6deg 3.2deg);
@@ -351,8 +351,9 @@
 .pos .strumenti .schermo.warp::before{animation:posWarp .7s cubic-bezier(.5,0,.3,1)}
 @keyframes posWarp{0%{opacity:0;transform:scale(.35)}25%{opacity:.95}100%{opacity:0;transform:scale(1.9)}}
 @media(prefers-reduced-motion:reduce){.pos .strumenti .schermo img,.pos .strumenti .schermo::before{transition:none;animation:none}}
-.pos .strumenti .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;
+.pos .strumenti .schermo::after,.pos .porte .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(15,11,9,0) 50%,rgba(15,11,9,.9))}
+.pos .porte .fase .testa{margin-top:22px}
 .pos .strumenti .fase .icona,.pos .strumenti .fase .marchio{position:relative;z-index:1;margin:-23px 0 16px;
   background:rgba(12,9,8,.94)}
 .pos .strumenti .fase .marchio{display:inline-flex;align-items:center;height:46px;padding:0 16px;border-radius:13px;
@@ -478,6 +479,29 @@
 .pos .persona .ruolo::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc);margin:0 10px 2px 0}
 @media (max-width:1024px){.pos .team{grid-template-columns:repeat(2,1fr);gap:14px}}
 
+/* garanzia: i due strati e lo scudo a fianco */
+.pos .strati{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:stretch;margin-top:8px}
+.pos .strati .due{margin-top:0}
+.pos .schema.scudo{padding:18px 10px 6px;display:flex;align-items:center}
+.pos .schema.scudo .fondo{opacity:0;transition:opacity 1.2s ease 1s}
+.pos .schema.scudo.dentro .fondo{opacity:1}
+.pos .schema.scudo .strato rect{fill:rgba(15,11,9,.94);stroke:rgba(255,107,0,.4)}
+.pos .schema.scudo .strato .t{font-size:11px;letter-spacing:1.6px}
+.pos .schema.scudo .strato .s{font-size:9.5px;letter-spacing:.4px}
+.pos .schema.scudo .nota{font-size:10.5px}
+.pos .avviso{margin:28px 0 0;padding:16px 22px;border:1px solid rgba(255,107,0,.4);border-radius:14px;
+  background:linear-gradient(90deg,rgba(255,107,0,.14),rgba(255,107,0,.04));color:var(--txt);font-size:17px;line-height:26px}
+.pos .avviso b{color:#fff}
+.pos .postilla.ps{margin-top:10px;color:var(--acc)}
+@media (min-width:1025px){.pos .avviso{white-space:nowrap}}
+@media (max-width:1024px){.pos .strati{grid-template-columns:1fr}.pos .schema.scudo{max-width:360px;margin:0 auto}}
+
+/* evidenziazioni nel testo: grassetto bianco, corsivo caldo, sottolineato e marcatore arancio */
+.pos p b,.pos li b{color:#fff}
+.pos p i,.pos li i{font-style:italic;color:rgba(255,222,200,.95)}
+.pos p u,.pos li u{text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:4px;color:#fff}
+.pos p mark,.pos li mark{background:linear-gradient(180deg,transparent 55%,rgba(255,107,0,.42) 55%);color:#fff;padding:0 3px;border-radius:2px}
+
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -547,7 +571,7 @@
 .pos .caso li::before{content:"";flex:0 0 6px;height:6px;margin-top:9px;border-radius:50%;background:var(--acc)}
 
 /* faq */
-.pos .faq{max-width:52rem;margin-top:40px}
+.pos .faq{max-width:none;margin-top:40px}
 .pos details{border:1px solid var(--bor);border-radius:16px;padding:22px 26px;
   background:var(--s3);margin-bottom:12px}
 .pos summary{cursor:pointer;list-style:none;font-size:19px;font-weight:600;
@@ -674,7 +698,7 @@
       <a href="#pos-andrea" data-sez>Chi siamo</a>
       <a href="#pos-martedi" data-sez>Il tuo futuro</a>
       <a href="#pos-garanzia" data-sez>Garanzia</a>
-      <a href="#pos-faq" data-sez>FAQ</a>
+      <a href="#pos-domande" data-sez>FAQ</a>
     </div>
     <a class="vai" href="#pos-chiusura">Prenota la chiamata →</a>
   </div>
@@ -684,7 +708,7 @@
   <p class="et">Il problema</p>
   <h2>Perché non converti, anche se stai facendo tutto giusto.</h2>
   <p class="intro">Ti hanno detto che è la nicchia. Che è il target, o l'offerta, o che non parli bene
-  al tuo pubblico. Non è niente di tutto questo. <b>Sono successe due cose insieme, e insieme fanno
+  al tuo pubblico. <u>Non è niente di tutto questo.</u> <b>Sono successe due cose insieme, e insieme fanno
   un disastro.</b></p>
   <div class="perche">
     <div>
@@ -781,29 +805,33 @@
 <div class="sez" id="pos-strade"><div class="wide">
   <p class="et">Cosa hai già provato</p>
   <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
-  <p class="intro">A questo punto ti sei accorto che da solo non ce la fai. Le porte che il mercato
-  ti apre sono tre, e ognuna ti lascia esattamente dove eri.</p>
+  <p class="intro">A questo punto ti sei accorto che <b>da solo non ce la fai</b>. Le porte che il mercato
+  ti apre sono tre, e <u>ognuna ti lascia esattamente dove eri</u>.</p>
   <div class="fasi porte">
     <div class="fase">
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/agenzia.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <div class="testa"><p class="ordinale">01</p><p class="quale">L'agenzia</p></div>
       <h3>Ti toglie il controllo</h3>
-      <p>Il problema non è che lavori male: è che ha un interesse opposto al tuo, e fa un pezzo solo.
-      Il resto resta comunque a te, e il giorno che smetti di pagare torni al punto di partenza —
-      con qualche mese in meno e il conto pagato.</p>
+      <p>Il problema non è che lavori male: è che <b>ha un interesse opposto al tuo</b>, e fa <u>un pezzo
+      solo</u>. Il resto resta comunque a te, e il giorno che smetti di pagare <mark>torni al punto di
+      partenza</mark> — <i>con qualche mese in meno e il conto pagato.</i></p>
     </div>
     <div class="fase">
-      <div class="testa"><p class="ordinale">02</p><p class="quale">Il corso</p></div>
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/affiancamento.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="testa"><p class="ordinale">02</p><p class="quale">L'affiancamento</p></div>
       <h3>Ti lascia tutto il lavoro</h3>
-      <p>Ti frega in modo più sottile, perché sembra che funzioni: hai capito, bravo. Ma capire e
-      fare sono due mestieri diversi e te ne hanno venduto uno. Finiti i video ti ritrovi davanti
-      allo stesso foglio bianco, con le stesse 24 ore e in più la lista di tutto quello che manca.</p>
+      <p>Ti frega in modo più sottile, perché <i>sembra</i> che funzioni: hai capito, bravo. Ma
+      <b>capire e fare sono due mestieri diversi</b>, e te ne hanno venduto uno. <mark>Finiti i video e
+      le ore in call di affiancamento</mark>, ti ritrovi davanti allo stesso foglio bianco, con le
+      stesse 24 ore e in più <u>la lista di tutto quello che manca</u>.</p>
     </div>
     <div class="fase">
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/ai.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <div class="testa"><p class="ordinale">03</p><p class="quale">L'AI generica</p></div>
       <h3>Ti dà pezzi scollegati</h3>
-      <p>Un modello generico non ha criterio: è uno specchio che ti dà ragione. Chiunque può fare una
-      cosa buona una volta, nessuno la fa venti volte coerente col mese prima. E resti tu a fare da
-      colla fra quindici strumenti che non si parlano.</p>
+      <p>Un modello generico non ha criterio: <i>è uno specchio che ti dà ragione</i>. Chiunque può fare
+      una cosa buona una volta, <b>nessuno la fa venti volte coerente col mese prima</b>. E resti tu a
+      fare da colla fra <mark>quindici strumenti che non si parlano</mark>.</p>
     </div>
   </div>
 </div></div>
@@ -818,13 +846,13 @@
   un&rsquo;agenzia che lavora al posto tuo, e non è un corso che ti insegna a lavorare di più: è un
   insieme di strumenti collegati fra loro, costruiti sul tuo posizionamento, che <b>producono la
   prima versione di tutto quello che oggi fai a mano</b>. A te resta correggere.</p>
-  <p class="intro">Il modo in cui funziona ha un nome: <b>delega inversa</b>. Di solito deleghi la testa e ti tieni la fatica. Qui è il contrario: <b>deleghi la
+  <p class="intro">Il modo in cui funziona ha un nome: <mark>delega inversa</mark>. Di solito deleghi la testa e ti tieni la fatica. Qui è il contrario: <b>deleghi la
   fatica e ti tieni la testa</b>. In ogni altro modello la prima versione la produci tu e l'esperto
-  corregge. Qui la prima versione la produce il sistema, e correggi tu — perché non impari facendo,
-  impari correggendo, e correggere costa un decimo del tempo.</p>
-  <p class="intro">Non sei dipendente come con l'agenzia, perché le decisioni restano tue. E non sei
-  solo come col corso, perché l'operativo non lo fai tu. <b>Nel 2019 non si poteva fare</b>: per
-  toglierti l'esecuzione serviva qualcuno che la facesse, e quel qualcuno costava come un'agenzia.</p>
+  corregge. Qui <u>la prima versione la produce il sistema</u>, e correggi tu — perché <i>non impari facendo,
+  impari correggendo</i>, e correggere costa <b>un decimo del tempo</b>.</p>
+  <p class="intro">Non sei dipendente come con l'agenzia, perché <u>le decisioni restano tue</u>. E non sei
+  solo come con l'affiancamento, perché <u>l'operativo non lo fai tu</u>. <b>Nel 2019 non si poteva fare</b>: per
+  toglierti l'esecuzione serviva qualcuno che la facesse, e <i>quel qualcuno costava come un'agenzia</i>.</p>
     </div>
     <div class="schema piatto">
 <svg viewBox="0 0 460 600" role="img" aria-label="Delega classica: tu produci e l'esperto corregge. Delega inversa: il sistema produce, tu e l'esperto correggete.">
@@ -1091,15 +1119,15 @@
     e più fiducia. Eri uno dei pochi a fare quella cosa lì, la gente vedeva la tua pubblicità e non
     ne aveva già viste altre dodici quella mattina. Quindi ti lasciava il numero. E quando chiamavi,
     rispondeva.</p>
-    <p>Quel mondo non esiste più — ma i funnel che si vendono oggi sono ancora costruiti per quel
+    <p><u>Quel mondo non esiste più</u> — ma i funnel che si vendono oggi sono ancora costruiti per quel
     mondo lì. <b>Chi ti vende il metodo è partito quattro o cinque anni fa</b>, quando costruire un
-    pubblico costava dieci volte meno in tempo e in denaro: se ripartisse adesso con lo stesso
-    identico metodo non farebbe un euro.</p>
+    pubblico costava dieci volte meno in tempo e in denaro: <mark>se ripartisse adesso con lo stesso
+    identico metodo non farebbe un euro</mark>.</p>
     <p><b>E attenzione, vale anche per me.</b> Se dovessi ricominciare oggi facendo le cose come le
     facevo allora, non ce la farei nemmeno io. È per questo che a febbraio ho ricostruito tutto da
     zero con un modello diverso, e la prima cavia sono stato io: i <b>100.000€ del mese scorso, con
     quattro persone di cui tre part-time</b>, sono usciti da qui dentro.</p>
-    <p>Il modello però ha diciannove anni. È lo stesso con cui ho lavorato per <b>Lego, BMW e
+    <p><i>Il modello però ha diciannove anni.</i> È lo stesso con cui ho lavorato per <b>Lego, BMW e
     Ducati</b> dentro un gruppo da 20 milioni; quello con cui ho portato Investitore Efficace da
     un&rsquo;idea a 4 milioni l&rsquo;anno, e oggi sono nel loro board; quello con cui ho fondato
     <b>SalesValley</b> da zero, che in meno di due anni sta per essere comprata da un gruppo da 200
@@ -1200,29 +1228,41 @@
   <p class="intro">Una garanzia che ti spiegano in call non è una garanzia: <b>è un motivo per farti
   fare quella call.</b> Quindi eccola per intero, prima che tu parli con chiunque. Non è il
   “soddisfatto o rimborsato” legato a mille clausole scritte al rovescio: è legata al meccanismo.</p>
+  <div class="strati">
   <div class="due">
     <div class="colonna calda">
       <h3><span class="num">01</span>Primo strato</h3>
       <p style="color:var(--txt);font-size:16px;line-height:26px">Entro i primi giorni hai in mano la
       tua offerta smontata e rimessa in piedi, nera su bianco, <b>senza averla scritta tu</b>. Se
-      dopo che l'abbiamo vista insieme non ti torna, ci scrivi una mail e ti restituiamo tutti i
-      soldi. Non ti chiedo nulla, e non ti metto al telefono con qualcuno che prova a farti cambiare
+      dopo che l'abbiamo vista insieme non ti torna, ci scrivi una mail e <mark>ti restituiamo tutti i
+      soldi</mark>. <i>Non ti chiedo nulla</i>, e non ti metto al telefono con qualcuno che prova a farti cambiare
       idea.</p>
     </div>
     <div class="colonna calda">
       <h3><span class="num">02</span>Secondo strato</h3>
       <p style="color:var(--txt);font-size:16px;line-height:26px">Se hai messo le tue ore, hai fatto
       quello che c'era da fare e alla fine dei mesi non ti sei almeno ripagato l'investimento,
-      <b>resti dentro finché non te lo sei ripagato</b>. Il rischio deve stare da questa parte del
-      tavolo: se il sistema funziona a me non costa niente, se non funziona è giusto
-      che costi a me.</p>
+      <mark>resti dentro finché non te lo sei ripagato</mark>. <u>Il rischio deve stare da questa parte del
+      tavolo</u>: se il sistema funziona a me non costa niente, <i>se non funziona è giusto
+      che costi a me</i>.</p>
     </div>
   </div>
-  <p class="intro" style="margin-top:28px">Quello che invece non ti garantisco è il successo. Chi te
-  lo garantisce ti sta mentendo: dipende anche da te.</p>
+  <div class="schema piatto scudo">
+<svg viewBox="0 0 300 330" role="img" aria-label="Due strati di garanzia: rimborso totale nei primi giorni, poi resti dentro finché non ti sei ripagato.">
+  <defs><linearGradient id="pos-scudo-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6B00" stop-opacity=".22"/><stop offset="1" stop-color="#FF6B00" stop-opacity="0"/></linearGradient></defs>
+  <g class="linee"><path pathLength="100" style="--d:.2s" d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></g>
+  <path class="fondo" d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z" fill="url(#pos-scudo-g)"/>
+  <g class="nodo strato" style="--d:.9s"><rect x="78" y="86" width="144" height="58" rx="12"/><text class="t" x="150" y="110">01 · PRIMI GIORNI</text><text class="s" x="150" y="130">ti restituiamo tutto</text></g>
+  <g class="nodo strato esito" style="--d:1.4s"><rect x="78" y="160" width="144" height="58" rx="12"/><text class="t" x="150" y="184">02 · A FINE MESI</text><text class="s" x="150" y="204">resti dentro finché non ti ripaghi</text></g>
+  <g class="impulso"><path pathLength="100" d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></g>
+  <text class="nota" x="150" y="320" text-anchor="middle">Il rischio sta da questa parte del tavolo.</text>
+</svg>
+  </div>
+  </div>
+  <p class="avviso"><b>Quello che invece non ti garantisco è il successo.</b> Chi te lo garantisce ti sta mentendo: dipende anche da te.</p>
 </div></div>
 
-<div class="sez" id="pos-faq"><div class="wide">
+<div class="sez" id="pos-domande"><div class="wide">
   <p class="et">FAQ</p>
   <h2>Risposte oneste. Senza giri di parole.</h2>
   <div class="faq" id="pos-faq"></div>
@@ -1231,9 +1271,9 @@
 <div class="sez centro" id="pos-chiusura"><div class="wide">
   <p class="et">Posti limitati</p>
   <h2>Se ti sei riconosciuto, il passo dopo è una chiamata.</h2>
-  <p class="intro">Ti faccio qualche domanda prima. Non servono a profilarti: se non hai voglia si
+  <p class="intro">Ti faccio qualche domanda prima. <i>Non servono a profilarti</i>: se non hai voglia si
   capisce da come rispondi, e ci siamo risparmiati tempo tutti e due. Chi arriva in call <b>sa già cosa
-  facciamo e come lavoriamo, e deve solo capire quanto investire.</b></p>
+  facciamo e come lavoriamo</b>, e deve solo capire <mark>quanto investire</mark>.</p>
   <div class="bonus">
     <p class="et">Perché adesso, e non fra sei mesi</p>
     <ul>
@@ -1244,6 +1284,7 @@
   </div>
   <a class="bottone" href="#" id="pos-cta">Prenota la tua chiamata →</a>
   <p class="postilla">Se non ha senso te lo dico in call, e ce ne andiamo a casa tutti e due contenti.</p>
+  <p class="postilla ps">Un'altra cosa: se questa landing ti è piaciuta, è il genere di cose che implementiamo anche nei business degli altri.</p>
 </div></div>
 
 <div class="dock" id="pos-dock"><div class="wide">
@@ -1630,7 +1671,7 @@
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
             ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema," +
-            ".team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
+            ".avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
