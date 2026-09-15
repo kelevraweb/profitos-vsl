@@ -384,9 +384,14 @@
 .pos .bl-conto .totale b.cifrona span{font-size:20px;letter-spacing:0;margin-left:3px}
 .pos .bl-conto .totale .oggi .cifrona,.pos .bl-conto .totale .oggi .cifrona span{color:var(--neg)}
 .pos .bl-conto .totale .dopo .cifrona,.pos .bl-conto .totale .dopo .cifrona span{color:var(--acc)}
-.pos .martedi{margin-top:44px;display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch}
+.pos .martedi{margin-top:40px;display:grid;grid-template-columns:1fr auto 1fr;gap:22px;align-items:stretch}
 .pos .martedi .et{grid-column:1/-1;margin:0 0 -4px}
-.pos .martedi .giorno{border:1px solid var(--bor);border-radius:20px;padding:26px 30px;background:var(--s3)}
+.pos .martedi .giorno{border:1px solid var(--bor);border-radius:20px;padding:0;overflow:hidden;background:var(--s3)}
+.pos .martedi .scena{position:relative;aspect-ratio:3/2;background:#0a0705}
+.pos .martedi .scena img{display:block;width:100%;height:100%;object-fit:cover}
+.pos .martedi .scena::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,11,9,0) 58%,rgba(15,11,9,.94))}
+.pos .martedi .prima .scena img{filter:saturate(.75) contrast(1.06)}
+.pos .martedi .testo{padding:18px 30px 28px}
 .pos .martedi .giorno.poi{border-color:rgba(255,107,0,.32);
   background:radial-gradient(130% 95% at 0% 0%,rgba(255,107,0,.20),rgba(255,107,0,0) 60%),linear-gradient(160deg,rgba(38,24,14,.96),rgba(15,11,9,.94))}
 .pos .martedi .bl-quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
@@ -687,59 +692,13 @@
 </div></div>
 
 <div class="sez"><div class="wide">
-  <p class="et">Il conto</p>
-  <h2>Le cose che servono oggi per vendere. E chi le fa.</h2>
-  <p class="intro">Non è che sei pigro: <b>umanamente non c'è il tempo</b>. Questo è l'elenco di quello che
-  serve davvero, ogni settimana, per far funzionare un business sui social nel 2026 — e cosa cambia
-  quando l'operativo non lo fai più tu. Le ore sono quelle di chi fa tutto da solo: le tue le conosci già.</p>
-  <div class="bl-conto">
-    <div class="testata"><span>Cosa serve</span><span>Oggi, tutto tu</span><span>Con profitOS</span></div>
-    <div class="voce">
-      <div class="cosa"><b>Rivedere l'offerta</b><span>posizionamento, promessa, prezzo, garanzia</span></div>
-      <div class="oggi"><b>giorni</b><span>di lavoro, da solo, senza un metodo che ti dica dove sbagli</span></div>
-      <div class="dopo"><i>Analisi offerta</i><b>poche ore</b><span>sei passaggi guidati con i punteggi: esce la carta dell'offerta, e i lead magnet proposti</span></div>
-    </div>
-    <div class="voce">
-      <div class="cosa"><b>Idea, script, girato, editing, calendario</b><span>4–5 contenuti a settimana, che vengano bene</span></div>
-      <div class="oggi"><b>10<em>h</em></b><span>a settimana, e la metà a inventare cosa dire</span></div>
-      <div class="dopo"><i>Contenuti (Peddy)</i><b>3<em>h</em></b><span>idee dai trend e dai competitor, script e calendario già scritti: a te resta girare</span></div>
-    </div>
-    <div class="voce">
-      <div class="cosa"><b>Contenuti ogni giorno. E le stories.</b><span>tutti i giorni, non quando ti va</span></div>
-      <div class="oggi"><b>5<em>h</em></b><span>a settimana, davanti al telefono a improvvisare</span></div>
-      <div class="dopo"><i>Contenuti (Peddy)</i><b>1<em>h</em></b><span>stories con lo script sul teleprompter, post programmati da dentro</span></div>
-    </div>
-    <div class="voce">
-      <div class="cosa"><b>Un lead magnet per ogni argomento</b><span>altrimenti il contenuto non porta contatti</span></div>
-      <div class="oggi"><b>3<em>h</em></b><span>a settimana a creare e consegnare a mano</span></div>
-      <div class="dopo"><i>Setting (Setty)</i><b>0<em>h</em></b><span>agganciato a ogni contenuto, consegnato in automatico nei DM</span></div>
-    </div>
-    <div class="voce">
-      <div class="cosa"><b>Gestire i DM e i follow-up</b><span>senza un CRM: i messaggi si perdono, la finestra è 24 ore</span></div>
-      <div class="oggi"><b>8<em>h</em></b><span>a settimana in chat, e i follow-up non te li ricordi</span></div>
-      <div class="dopo"><i>Setting (Setty)</i><b>0<em>h</em></b><span>risponde, segue e prenota; nessuno in chat</span></div>
-    </div>
-    <div class="voce">
-      <div class="cosa"><b>VSL, copy, landing, dati, iterazioni</b><span>un contenuto lungo, e tutto quello che ci sta intorno</span></div>
-      <div class="oggi"><b>6<em>h</em></b><span>a settimana, o un'agenzia che ne fa un pezzo solo</span></div>
-      <div class="dopo"><i>Funnel Builder</i><b>1<em>h</em></b><span>produce la prima versione da quello che gli hai già dato: correggi tu</span></div>
-    </div>
-    <div class="voce">
-      <div class="cosa"><b>Portare in call e chiudere</b><span>o sei bravo tu, o paghi qualcuno che lo sia</span></div>
-      <div class="oggi"><b>6<em>h</em></b><span>a settimana: nove call, da convincere</span></div>
-      <div class="dopo"><i>Vendita</i><b>3<em>h</em></b><span>due call, già decise, col suggeritore che ti dice cosa non hai chiesto</span></div>
-    </div>
-    <div class="totale">
-      <div class="cosa"><b>In una settimana</b><span>solo per queste cose, senza contare la delivery</span></div>
-      <div class="oggi"><b class="cifrona">38<span>h</span></b><span>a fare tutto tu. O non le fai, e non funziona.</span></div>
-      <div class="dopo"><i>Con profitOS</i><b class="cifrona">8<span>h</span></b><span>a correggere, girare e fare le call che contano</span></div>
-    </div>
-  </div>
+  <p class="et">Immaginati il tuo martedì</p>
+  <h2>Oggi. E fra sei mesi.</h2>
+  <p class="intro">Stessa persona, stesso business, stesse ventiquattro ore. Cambia solo chi fa la fatica.</p>
   <div class="martedi">
-    <p class="et">Immaginati il tuo martedì</p>
-    <div class="giorno prima"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div>
+    <div class="giorno prima"><div class="scena"><img src="https://kelevraweb.github.io/profitos-vsl/img/martedi-oggi.jpg" width="1200" height="800" alt="" loading="lazy"></div><div class="testo"><p class="bl-quando">Oggi</p><ul><li>Un contenuto da inventare</li><li>Quaranta messaggi da gestire</li><li>Nove call, da convincere</li></ul></div></div>
     <div class="freccia" aria-hidden="true">→</div>
-    <div class="giorno poi"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div>
+    <div class="giorno poi"><div class="scena"><img src="https://kelevraweb.github.io/profitos-vsl/img/martedi-dopo.jpg" width="1200" height="800" alt="" loading="lazy"></div><div class="testo"><p class="bl-quando">Fra sei mesi</p><ul><li>Il contenuto è già scritto</li><li>I messaggi sono già gestiti</li><li>Due call, già decise</li></ul></div></div>
   </div>
 </div></div>
 
@@ -792,7 +751,7 @@
   toglierti l'esecuzione serviva qualcuno che la facesse, e quel qualcuno costava come un'agenzia.</p>
     </div>
     <div class="schema piatto">
-<svg viewBox="0 0 460 600" role="img" aria-label="Delega classica: tu produci e l'esperto corregge. Delega inversa: il sistema produce e tu correggi.">
+<svg viewBox="0 0 460 600" role="img" aria-label="Delega classica: tu produci e l'esperto corregge. Delega inversa: il sistema produce, tu e l'esperto correggete.">
   <text class="riga dim" x="20" y="30">DELEGA CLASSICA</text>
   <text class="nota dim" x="20" y="48">come fanno tutti</text>
   <g class="linee dim">
@@ -815,10 +774,10 @@
     <path pathLength="100" style="--d:2.3s" d="M340,322 V432 M334,426 L340,432 L346,426"/>
   </g>
   <g class="nodo fulcro" style="--d:1.6s"><rect x="240" y="78" width="200" height="64" rx="14"/><text class="t" x="340" y="116">IL SISTEMA</text></g>
-  <g class="nodo" style="--d:2.1s"><rect x="240" y="258" width="200" height="64" rx="14"/><text class="t" x="340" y="296">TU</text></g>
+  <g class="nodo" style="--d:2.1s"><rect x="240" y="258" width="200" height="64" rx="14"/><text class="t" x="340" y="296">TU + L'ESPERTO</text></g>
   <g class="nodo esito" style="--d:2.5s"><rect x="240" y="438" width="200" height="64" rx="14"/><text class="t" x="340" y="476">RISULTATO</text></g>
   <g class="nodo" style="--d:1.9s"><rect class="pill" x="296" y="186" width="88" height="24" rx="12"/><text class="eti" x="340" y="202">produce</text></g>
-  <g class="nodo" style="--d:2.3s"><rect class="pill" x="296" y="366" width="88" height="24" rx="12"/><text class="eti" x="340" y="382">correggi</text></g>
+  <g class="nodo" style="--d:2.3s"><rect class="pill" x="292" y="366" width="96" height="24" rx="12"/><text class="eti" x="340" y="382">correggete</text></g>
   <text class="nota" x="240" y="540">Tieni la testa, deleghi la fatica.</text>
   <text class="nota" x="240" y="558">Impari correggendo,</text>
   <text class="nota" x="240" y="576">a un decimo del tempo.</text>
@@ -896,6 +855,57 @@
       <h3>Ventiquattro ore su ventiquattro</h3>
       <p>Tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di
       lavoro. Se sei sveglio di notte e vuoi andare avanti, c'è comunque qualcuno che ti risponde.</p>
+    </div>
+  </div>
+</div></div>
+
+<div class="sez"><div class="wide">
+  <p class="et">Il conto</p>
+  <h2>Le cose che servono oggi per vendere. E chi le fa.</h2>
+  <p class="intro">Non è che sei pigro: <b>umanamente non c'è il tempo</b>. Questo è l'elenco di quello che
+  serve davvero, ogni settimana, per far funzionare un business sui social nel 2026 — e cosa resta
+  da fare a te quando gli strumenti di sopra lavorano. Le ore sono quelle di chi fa tutto da solo: le tue le conosci già.</p>
+  <div class="bl-conto">
+    <div class="testata"><span>Cosa serve</span><span>Oggi, tutto tu</span><span>Con profitOS</span></div>
+    <div class="voce">
+      <div class="cosa"><b>Rivedere l'offerta</b><span>posizionamento, promessa, prezzo, garanzia</span></div>
+      <div class="oggi"><b>giorni</b><span>di lavoro, da solo, senza un metodo che ti dica dove sbagli</span></div>
+      <div class="dopo"><i>Analisi offerta</i><b>poche ore</b><span>sei passaggi guidati con i punteggi: esce la carta dell'offerta, e i lead magnet proposti</span></div>
+    </div>
+    <div class="voce">
+      <div class="cosa"><b>Idea, script, girato, editing, calendario</b><span>4–5 contenuti a settimana, che vengano bene</span></div>
+      <div class="oggi"><b>10<em>h</em></b><span>a settimana, e la metà a inventare cosa dire</span></div>
+      <div class="dopo"><i>Contenuti (Peddy)</i><b>3<em>h</em></b><span>idee dai trend e dai competitor, script e calendario già scritti: a te resta girare</span></div>
+    </div>
+    <div class="voce">
+      <div class="cosa"><b>Contenuti ogni giorno. E le stories.</b><span>tutti i giorni, non quando ti va</span></div>
+      <div class="oggi"><b>5<em>h</em></b><span>a settimana, davanti al telefono a improvvisare</span></div>
+      <div class="dopo"><i>Contenuti (Peddy)</i><b>1<em>h</em></b><span>stories con lo script sul teleprompter, post programmati da dentro</span></div>
+    </div>
+    <div class="voce">
+      <div class="cosa"><b>Un lead magnet per ogni argomento</b><span>altrimenti il contenuto non porta contatti</span></div>
+      <div class="oggi"><b>3<em>h</em></b><span>a settimana a creare e consegnare a mano</span></div>
+      <div class="dopo"><i>Setting (Setty)</i><b>0<em>h</em></b><span>agganciato a ogni contenuto, consegnato in automatico nei DM</span></div>
+    </div>
+    <div class="voce">
+      <div class="cosa"><b>Gestire i DM e i follow-up</b><span>senza un CRM: i messaggi si perdono, la finestra è 24 ore</span></div>
+      <div class="oggi"><b>8<em>h</em></b><span>a settimana in chat, e i follow-up non te li ricordi</span></div>
+      <div class="dopo"><i>Setting (Setty)</i><b>0<em>h</em></b><span>risponde, segue e prenota; nessuno in chat</span></div>
+    </div>
+    <div class="voce">
+      <div class="cosa"><b>VSL, copy, landing, dati, iterazioni</b><span>un contenuto lungo, e tutto quello che ci sta intorno</span></div>
+      <div class="oggi"><b>6<em>h</em></b><span>a settimana, o un'agenzia che ne fa un pezzo solo</span></div>
+      <div class="dopo"><i>Funnel Builder</i><b>1<em>h</em></b><span>produce la prima versione da quello che gli hai già dato: correggi tu</span></div>
+    </div>
+    <div class="voce">
+      <div class="cosa"><b>Portare in call e chiudere</b><span>o sei bravo tu, o paghi qualcuno che lo sia</span></div>
+      <div class="oggi"><b>6<em>h</em></b><span>a settimana: nove call, da convincere</span></div>
+      <div class="dopo"><i>Vendita</i><b>3<em>h</em></b><span>due call, già decise, col suggeritore che ti dice cosa non hai chiesto</span></div>
+    </div>
+    <div class="totale">
+      <div class="cosa"><b>In una settimana</b><span>solo per queste cose, senza contare la delivery</span></div>
+      <div class="oggi"><b class="cifrona">38<span>h</span></b><span>a fare tutto tu. O non le fai, e non funziona.</span></div>
+      <div class="dopo"><i>Con profitOS</i><b class="cifrona">8<span>h</span></b><span>a correggere, girare e fare le call che contano</span></div>
     </div>
   </div>
 </div></div>
