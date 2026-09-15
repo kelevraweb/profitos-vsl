@@ -1286,6 +1286,12 @@
     });
   }
   addEventListener("scroll", spazzola, { passive: true });
+  addEventListener("resize", spazzola);
+  /* Spazzola anche a tempo, non solo allo scroll: il player, caricandosi,
+     sposta la pagina; un link diretto atterra a meta'; uno scrollIntoView non
+     emette eventi di scroll. In tutti questi casi un elemento entra in vista
+     senza che nessuno abbia scrollato, e resterebbe invisibile. */
+  [300, 900, 1800, 3200, 5000, 8000, 12000].forEach(function (t) { setTimeout(spazzola, t); });
 
   /* --- occhielli scritti a caratteri ------------------------------------ */
   function scrivi(el) {
