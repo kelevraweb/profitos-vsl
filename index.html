@@ -290,6 +290,15 @@
   .pos .schema.dentro .fulcro rect,.pos .schema.dentro .esito rect{animation:none}}
 @media (max-width:1024px){.pos .perche{grid-template-columns:1fr}.pos .schema{position:static;max-width:520px}}
 
+/* le due card di questa sezione: sfondo caldo, un bagliore dall'angolo dell'icona */
+.pos .perche .colonna{
+  background:
+    radial-gradient(130% 95% at 0% 0%,rgba(255,107,0,.20),rgba(255,107,0,0) 58%),
+    linear-gradient(160deg,rgba(38,24,14,.96) 0%,rgba(22,15,11,.94) 55%,rgba(15,11,9,.94) 100%);
+  border-color:rgba(255,107,0,.26);
+  box-shadow:inset 0 1px 0 rgba(255,140,60,.10),0 18px 44px rgba(0,0,0,.35)}
+.pos .perche .colonna:hover{border-color:rgba(255,107,0,.42)}
+
 /* icone accanto ai titoli delle due card */
 .pos .perche .colonna h3{display:flex;align-items:center;gap:14px}
 .pos .icona{flex:0 0 46px;width:46px;height:46px;border-radius:13px;
