@@ -225,13 +225,20 @@
 /* la foto è verticale 720x1280: in un quadrato tagliava testa e gambe,
    quindi il riquadro è 3:4 con l'inquadratura tenuta in alto.
    Dietro, un pannello arancione sfalsato fa da cornice. */
-.pos .ritratto{position:relative;flex:0 0 260px;width:260px}
+.pos .ritratto{position:relative;flex:0 0 320px;width:320px;perspective:900px}
 .pos .ritratto::before{content:"";position:absolute;inset:18px -18px -18px 18px;
   border-radius:22px;background:linear-gradient(150deg,var(--acc),rgba(255,107,0,.28));
   box-shadow:0 30px 70px rgba(255,107,0,.18)}
-.pos .ritratto img{position:relative;display:block;width:100%;height:347px;
+.pos .ritratto img{position:relative;display:block;width:100%;height:auto;aspect-ratio:4/5;
   border-radius:20px;object-fit:cover;object-position:center 20%;
-  border:1px solid rgba(255,107,0,.35)}
+  border:1px solid rgba(255,107,0,.35);will-change:transform;transition:transform .12s linear}
+.pos .ritratto .respiro{display:none;position:relative;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  border-radius:20px;border:1px solid rgba(255,107,0,.35)}
+.pos .ritratto.tocco .quadro{display:none}
+.pos .ritratto.tocco .respiro{display:block}
+.pos .ritratto .didascalia{position:absolute;left:0;right:0;bottom:-30px;text-align:center;font-size:10.5px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(240,232,226,.38);opacity:0;transition:opacity .6s}
+.pos .ritratto.pronto .didascalia{opacity:1}
 .pos .chi p{color:var(--txt);font-size:17px;line-height:29px;margin-top:16px}
 
 /* fasi */
@@ -569,8 +576,7 @@
     flex-direction:row;flex-wrap:wrap;gap:24px 40px}
   .pos .cifrona{font-size:92px;line-height:92px;letter-spacing:-3.7px}
   .pos .chi{flex-direction:column;gap:24px}
-  .pos .ritratto{flex-basis:auto;width:200px}
-  .pos .ritratto img{height:267px}
+  .pos .ritratto{flex-basis:auto;width:min(100%,360px)}
   .pos .ritratto::before{inset:14px -14px -14px 14px}
   .pos .fasi,.pos .griglia,.pos .due{grid-template-columns:1fr}
   .pos .filo{padding:32px}
@@ -1050,7 +1056,11 @@
 </div></div>
 
 <div class="sez" id="pos-andrea"><div class="wide"><div class="chi">
-  <div class="ritratto"><img src="https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9accb74b83b18bcfad9701.jpeg" alt="Andrea Audisio"></div>
+  <div class="ritratto vivo" id="pos-ritratto" data-base="https://kelevraweb.github.io/profitos-vsl/img/andrea/f" data-frames="21" data-centro="13">
+    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f13.jpg" width="720" height="900" alt="Andrea Audisio" loading="lazy">
+    <video class="respiro" muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.jpg" data-src="https://kelevraweb.github.io/profitos-vsl/img/andrea-testa.mp4" aria-hidden="true"></video>
+    <span class="didascalia">muovi il mouse: ti segue</span>
+  </div>
   <div>
     <p class="et">Chi è Andrea</p>
     <h2>Ho aperto partita IVA a 18 anni. Allora bastavano <span style="color:var(--acc)">50€</span>
@@ -1644,6 +1654,45 @@
     scene.forEach(function (v) { occhio.observe(v); });
   }
 
+  var calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* ritratto vivo: 21 fotogrammi della testa che gira (sinistra, frontale, destra); il mouse sulla sezione sceglie il fotogramma,
+     e il riquadro si inclina un filo verso il puntatore. Senza mouse (touch) parte il video in loop. */
+  var rit = document.getElementById("pos-ritratto");
+  if (rit) {
+    var senzaMouse = matchMedia("(hover: none)").matches, sezChi = rit.closest(".sez");
+    if (senzaMouse || calmo) {
+      rit.classList.add("tocco");
+      var vr = rit.querySelector(".respiro");
+      new IntersectionObserver(function (e) { e.forEach(function (x) {
+        if (x.isIntersecting) { if (!vr.src) vr.src = vr.getAttribute("data-src"); vr.play().catch(function(){}); } else if (vr.src) vr.pause(); });
+      }, { rootMargin: "200px 0px" }).observe(vr);
+    } else {
+      var N = +rit.getAttribute("data-frames"), C = +rit.getAttribute("data-centro"), base = rit.getAttribute("data-base"), quadro = rit.querySelector(".quadro");
+      var pronti = [], caricati = 0, meta = C, ora = C, tx = 0, ty = 0, vx = 0, vy = 0, gira = false;
+      function nome(i) { return base + (i < 10 ? "0" + i : i) + ".jpg"; }
+      function carica() {
+        if (pronti.length) return;
+        for (var i = 0; i < N; i++) { var im = new Image(); im.src = nome(i); im.onload = function () { if (++caricati === N) rit.classList.add("pronto"); }; pronti.push(im); }
+      }
+      new IntersectionObserver(function (e) { e.forEach(function (x) { if (x.isIntersecting) carica(); }); }, { rootMargin: "400px 0px" }).observe(rit);
+      function passo() {
+        ora += (meta - ora) * 0.14; vx += (tx - vx) * 0.12; vy += (ty - vy) * 0.12;
+        var k = Math.max(0, Math.min(N - 1, Math.round(ora)));
+        if (pronti[k] && pronti[k].complete && quadro.src !== pronti[k].src) quadro.src = pronti[k].src;
+        quadro.style.transform = "rotateY(" + (vx * 7) + "deg) rotateX(" + (-vy * 5) + "deg) translate(" + (vx * 6) + "px," + (vy * 4) + "px)";
+        if (Math.abs(meta - ora) > 0.05 || Math.abs(tx - vx) > 0.005 || Math.abs(ty - vy) > 0.005) requestAnimationFrame(passo); else gira = false;
+      }
+      function muovi() { if (!gira) { gira = true; requestAnimationFrame(passo); } }
+      sezChi.addEventListener("mousemove", function (e) {
+        carica();
+        var r = sezChi.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        meta = x < 0.5 ? x * 2 * C : C + (x - 0.5) * 2 * (N - 1 - C); tx = x * 2 - 1; ty = Math.max(-1, Math.min(1, y * 2 - 1)); muovi();
+      });
+      sezChi.addEventListener("mouseleave", function () { meta = C; tx = 0; ty = 0; muovi(); });
+    }
+  }
+
   /* menu delle sezioni: voce attiva, ombra quando e' appiccicato, scorrimento morbido con l'offset */
   var menu = document.getElementById("pos-menu");
   if (menu) {
@@ -1672,7 +1721,6 @@
   }
 
   /* strumenti: passando sull'immagine, le altre schermate arrivano una dietro l'altra (salto nell'iperspazio) */
-  var calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll(".strumenti .schermo").forEach(function (sc) {
     var imgs = sc.querySelectorAll("img"), i = 0, t = null;
     if (imgs.length < 2 || calmo) return;
