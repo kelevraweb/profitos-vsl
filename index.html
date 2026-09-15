@@ -501,29 +501,17 @@
 .pos p u,.pos li u{text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:4px;color:#fff}
 .pos p mark,.pos li mark{background:linear-gradient(180deg,transparent 55%,rgba(255,107,0,.42) 55%);color:#fff;padding:0 3px;border-radius:2px}
 
-/* le tre porte: tre scene separate sopra alle card, che sfumano nel nero della pagina */
-.pos .scene-porte{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.pos .scena-porta{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#0a0705}
-.pos .scena-porta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9);
-  transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.pos .scena-porta:hover img{transform:scale(1.05)}
-.pos .scena-porta::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(12,9,8,.25) 0%,rgba(12,9,8,0) 30%,rgba(12,9,8,0) 55%,rgba(12,9,8,.96) 100%),
-             linear-gradient(90deg,rgba(12,9,8,.35),rgba(12,9,8,0) 25%,rgba(12,9,8,0) 75%,rgba(12,9,8,.35))}
-.pos .scena-porta span{position:absolute;left:20px;bottom:16px;z-index:1;font-size:11px;font-weight:700;letter-spacing:2.2px;
-  text-transform:uppercase;color:var(--acc)}
-.pos .porte{margin-top:16px}
-@media (max-width:820px){.pos .scene-porte{grid-template-columns:1fr;gap:12px}}
-
-/* un'altra cosa: riquadro finale, piccolo, caldo */
-.pos #pos-ps{padding-top:0}
-.pos .ps-box{border:1px solid rgba(255,107,0,.3);border-radius:24px;padding:36px 40px;
-  background:radial-gradient(120% 90% at 0% 0%,rgba(255,107,0,.16),rgba(255,107,0,0) 60%),linear-gradient(160deg,rgba(38,24,14,.96),rgba(15,11,9,.94))}
-.pos .ps-box h2{font-size:clamp(26px,3vw,36px);margin-top:8px}
-.pos .ps-box .intro{margin-top:12px}
-.pos .ps-box .credenziali{margin-top:18px}
-@media (max-width:820px){.pos .ps-box{padding:26px 22px}}
-
+/* le tre porte: la scena e' lo sfondo del box, il testo ci sta sopra e la foto sfuma nel nero */
+.pos .porte .fase.porta{position:relative;overflow:hidden;min-height:640px;display:flex;flex-direction:column;justify-content:flex-end;
+  background:#0a0705;border-color:rgba(255,107,0,.22)}
+.pos .porta .fondo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block;
+  filter:saturate(.9);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.pos .porta:hover .fondo{transform:scale(1.04)}
+.pos .porta::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(12,9,8,.10) 0%,rgba(12,9,8,0) 30%,rgba(12,9,8,.6) 54%,rgba(12,9,8,.97) 68%,#0C0908 100%)}
+.pos .porta .testa,.pos .porta h3,.pos .porta p:not(.ordinale):not(.quale){position:relative;z-index:1}
+.pos .porta .testa{margin-top:0}
+@media (max-width:1024px){.pos .porte .fase.porta{min-height:560px}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -829,20 +817,17 @@
   <h2>Le hai già provate tutte e tre, e sono chiuse.</h2>
   <p class="intro">A questo punto ti sei accorto che <b>da solo non ce la fai</b>. Le porte che il mercato
   ti apre sono tre, e <u>ognuna ti lascia esattamente dove eri</u>.</p>
-  <div class="scene-porte">
-    <div class="scena-porta"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/agenzia.jpg" width="760" height="475" alt="" loading="lazy"><span>01 · L'agenzia</span></div>
-    <div class="scena-porta"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/affiancamento.jpg" width="760" height="475" alt="" loading="lazy"><span>02 · L'affiancamento</span></div>
-    <div class="scena-porta"><img src="https://kelevraweb.github.io/profitos-vsl/img/porte/ai.jpg" width="760" height="475" alt="" loading="lazy"><span>03 · L'AI generica</span></div>
-  </div>
   <div class="fasi porte">
-    <div class="fase">
+    <div class="fase porta">
+      <img class="fondo" src="https://kelevraweb.github.io/profitos-vsl/img/porte/agenzia.jpg" width="800" height="1000" alt="" loading="lazy">
       <div class="testa"><p class="ordinale">01</p><p class="quale">L'agenzia</p></div>
       <h3>Ti toglie il controllo</h3>
       <p>Il problema non è che lavori male: è che <b>ha un interesse opposto al tuo</b>, e fa <u>un pezzo
       solo</u>. Il resto resta comunque a te, e il giorno che smetti di pagare <mark>torni al punto di
       partenza</mark> — <i>con qualche mese in meno e il conto pagato.</i></p>
     </div>
-    <div class="fase">
+    <div class="fase porta">
+      <img class="fondo" src="https://kelevraweb.github.io/profitos-vsl/img/porte/affiancamento.jpg" width="800" height="1000" alt="" loading="lazy">
       <div class="testa"><p class="ordinale">02</p><p class="quale">L'affiancamento</p></div>
       <h3>Ti lascia tutto il lavoro</h3>
       <p>Ti frega in modo più sottile, perché <i>sembra</i> che funzioni: hai capito, bravo. Ma
@@ -850,7 +835,8 @@
       le ore in call di affiancamento</mark>, ti ritrovi davanti allo stesso foglio bianco, con le
       stesse 24 ore e in più <u>la lista di tutto quello che manca</u>.</p>
     </div>
-    <div class="fase">
+    <div class="fase porta">
+      <img class="fondo" src="https://kelevraweb.github.io/profitos-vsl/img/porte/ai.jpg" width="800" height="1000" alt="" loading="lazy">
       <div class="testa"><p class="ordinale">03</p><p class="quale">L'AI generica</p></div>
       <h3>Ti dà pezzi scollegati</h3>
       <p>Un modello generico non ha criterio: <i>è uno specchio che ti dà ragione</i>. Chiunque può fare
@@ -1713,7 +1699,7 @@
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
             ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema," +
-            ".ps-box, .scena-porta, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
+            ".ps-box, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
