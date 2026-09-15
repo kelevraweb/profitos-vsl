@@ -323,6 +323,19 @@
   border-color:rgba(255,107,0,.2)}
 .pos .strumenti .fase .icona{margin-bottom:18px}
 .pos .strumenti .fase:hover .icona{background:rgba(255,107,0,.2);box-shadow:0 0 28px rgba(255,107,0,.28)}
+.pos .strumenti .fase{padding-top:0;overflow:hidden}
+.pos .strumenti .schermo{margin:0 -32px;aspect-ratio:16/10;position:relative;overflow:hidden;
+  border-bottom:1px solid rgba(255,107,0,.18);background:#0a0705}
+.pos .strumenti .schermo img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;
+  filter:saturate(.92);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pos .strumenti .fase:hover .schermo img{transform:scale(1.04)}
+.pos .strumenti .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,11,9,0) 50%,rgba(15,11,9,.9))}
+.pos .strumenti .fase .icona,.pos .strumenti .fase .marchio{position:relative;z-index:1;margin:-23px 0 16px;
+  background:rgba(12,9,8,.94)}
+.pos .strumenti .fase .marchio{display:inline-flex;align-items:center;height:46px;padding:0 16px;border-radius:13px;
+  border:1px solid rgba(255,107,0,.28);box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.pos .strumenti .fase .marchio img{display:block;height:26px;width:auto}
 
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
@@ -699,6 +712,7 @@
   ci abbiamo messo dentro a fare la differenza.</b></p>
   <div class="fasi strumenti">
     <div class="fase">
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
       <div class="testa"><p class="ordinale">01</p><p class="quale">Offerta</p></div>
       <h3>Una settimana in poche ore</h3>
@@ -707,7 +721,8 @@
       <ul><li>Offerta scritta e posizionamento</li><li>Promessa unica e base del metodo</li><li>Brand book: colori e tono di voce</li></ul>
     </div>
     <div class="fase">
-      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <span class="marchio"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/logo-peddy.png" alt="Peddy" height="26" loading="lazy"></span>
       <div class="testa"><p class="ordinale">02</p><p class="quale">Contenuti</p></div>
       <h3>Piani interi in una passata</h3>
       <p>Guarda cosa succede nel tuo settore, le notizie, i competitor, e scrive piani editoriali di
@@ -715,7 +730,8 @@
       <ul><li>Gobbo mentre giri</li><li>Storie caricate e tagliate da sole</li><li>Montaggio in blocco, copertine incluse</li></ul>
     </div>
     <div class="fase">
-      <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span>
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <span class="marchio"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/logo-setty.png" alt="Setty" height="26" loading="lazy"></span>
       <div class="testa"><p class="ordinale">03</p><p class="quale">Setty</p></div>
       <h3>I DM non si perdono più</h3>
       <p>Aggancia un lead magnet a ogni contenuto, risponde in pubblico, scrive in privato, consegna
@@ -724,6 +740,7 @@
       <ul><li>Niente link inventati</li><li>Niente appuntamenti che non esistono</li><li>Non si ripete</li></ul>
     </div>
     <div class="fase">
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg></span>
       <div class="testa"><p class="ordinale">04</p><p class="quale">Funnel Builder</p></div>
       <h3>Non ti richiede quello che hai già dato</h3>
@@ -732,6 +749,7 @@
       <ul><li>Pagine pubblicate online, senza codice</li><li>Ganci per le inserzioni e sequenze mail</li><li>Script della call e della VSL</li></ul>
     </div>
     <div class="fase">
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/vendita.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
       <div class="testa"><p class="ordinale">05</p><p class="quale">Vendita</p></div>
       <h3>Il suggeritore in call</h3>
@@ -740,6 +758,7 @@
       più dall'avere in casa qualcuno bravo a vendere.</p>
     </div>
     <div class="fase">
+      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4M22 5h-4"/></svg></span>
       <div class="testa"><p class="ordinale">06</p><p class="quale">Nova</p></div>
       <h3>Ventiquattro ore su ventiquattro</h3>
