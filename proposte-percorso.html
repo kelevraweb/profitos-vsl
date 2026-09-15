@@ -4,226 +4,183 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Il percorso · due proposte</title>
+<title>Il percorso · mappa stellare v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#FF6B00;--bg:#0C0908;--s3:rgba(15,11,9,.88);--txt:rgba(240,232,226,.8);--dim:rgba(240,232,226,.62);--bor:rgba(255,107,0,.15)}
+:root{--acc:#FF6B00;--bg:#0C0908;--txt:rgba(240,232,226,.8);--dim:rgba(240,232,226,.62);--bor:rgba(255,107,0,.15)}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--txt);font-family:Figtree,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
 .wide{max-width:1136px;margin:0 auto;padding:0 24px}
 .et{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);margin:0 0 12px}
-h1,h2{color:#fff;letter-spacing:-1px;line-height:1.05;margin:0}
-h1{font-size:clamp(30px,4vw,52px)}h2{font-size:clamp(28px,3.4vw,44px)}
-.intro{font-size:18px;line-height:29px;max-width:700px;margin:18px 0 0}
-.intro b{color:#fff}
-.testata{padding:64px 0 28px;border-bottom:1px solid var(--bor)}
+h1,h2{color:#fff;letter-spacing:-1px;line-height:1.05;margin:0}h1{font-size:clamp(30px,4vw,52px)}h2{font-size:clamp(28px,3.4vw,44px)}
+.intro{font-size:18px;line-height:29px;max-width:720px;margin:18px 0 0}.intro b{color:#fff}
+.testata{padding:64px 0 36px}
 .scelta{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 .scelta a{padding:10px 16px;border:1px solid rgba(255,107,0,.35);border-radius:999px;color:#fff;text-decoration:none;font-weight:700;font-size:13px}
-.scelta a:hover{background:rgba(255,107,0,.12)}
-.nota{margin-top:14px;font-size:14px;color:var(--dim)}
-.nota b{color:#fff}
-.sez{padding:88px 0}
-.sez + .sez{border-top:1px solid var(--bor)}
-mark{background:linear-gradient(180deg,transparent 55%,rgba(255,107,0,.42) 55%);color:#fff;padding:0 3px}
+.nota{margin-top:14px;font-size:14px;color:var(--dim)}.nota b{color:#fff}
+.sez{padding:80px 0 0}
 
-/* ---------- A · MAPPA STELLARE ---------- */
-.mappa{position:relative;height:calc(9 * 78vh)}
-.palco{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:440px 1fr;gap:28px;align-items:center;padding:24px 0}
-.cielo{position:relative;height:min(78vh,700px);border:1px solid var(--bor);border-radius:28px;overflow:hidden;
-  background:radial-gradient(120% 90% at 70% 30%,rgba(255,107,0,.10),rgba(12,9,8,0) 60%),#0a0705}
-.cielo svg{position:absolute;inset:0;width:100%;height:100%}
-.stellina{fill:#fff;animation:tw 4s ease-in-out infinite}
-@keyframes tw{0%,100%{opacity:.15}50%{opacity:.7}}
-.rotta{fill:none;stroke:rgba(255,107,0,.18);stroke-width:1.5;stroke-dasharray:4 7}
-.rottaViva{fill:none;stroke:var(--acc);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(255,107,0,.7))}
-.stella circle.alone{fill:rgba(255,107,0,.12);r:26;transition:r .5s,fill .5s}
-.stella circle.punto{fill:rgba(255,255,255,.35);r:4;transition:fill .4s,r .4s}
-.stella text{fill:rgba(240,232,226,.45);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:fill .4s}
-.stella.fatta circle.punto{fill:var(--acc)}
-.stella.fatta text{fill:rgba(240,232,226,.8)}
-.stella.viva circle.punto{fill:#fff;r:6}
-.stella.viva circle.alone{r:40;fill:rgba(255,107,0,.22);animation:resp 2.6s ease-in-out infinite}
-.stella.viva text{fill:#fff}
-@keyframes resp{0%,100%{r:36}50%{r:46}}
-.tu{fill:#fff;filter:drop-shadow(0 0 10px #fff) drop-shadow(0 0 22px var(--acc))}
-.scheda{position:relative}
-.scheda .quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc)}
-.scheda .n{font-size:64px;font-weight:800;letter-spacing:-3px;line-height:1;color:rgba(255,107,0,.32);margin-top:6px}
-.scheda h3{color:#fff;font-size:34px;letter-spacing:-1px;line-height:1.05;margin:6px 0 20px}
-.scheda dl{margin:0;display:grid;gap:12px}
+/* ---------- la mappa ---------- */
+.viaggio{position:relative;height:calc(9 * 85vh)}
+.palco{position:sticky;top:0;height:100vh;overflow:hidden;background:#070504}
+.palco .nebulosa{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.9;will-change:transform;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.palco canvas,.palco svg.novae{position:absolute;inset:0;width:100%;height:100%}
+.palco .velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,5,4,.92) 0%,rgba(7,5,4,.72) 30%,rgba(7,5,4,.15) 52%,rgba(7,5,4,0) 70%),linear-gradient(180deg,rgba(7,5,4,.6),rgba(7,5,4,0) 18%,rgba(7,5,4,0) 80%,rgba(7,5,4,.85))}
+.fasci{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fasci i{position:absolute;top:-30%;height:160%;width:22%;transform:rotate(18deg);background:linear-gradient(90deg,rgba(255,150,80,0),rgba(255,150,80,.07) 45%,rgba(255,150,80,0));filter:blur(14px);animation:fascio 14s ease-in-out infinite alternate}
+.fasci i:nth-child(1){left:38%}.fasci i:nth-child(2){left:58%;width:14%;animation-duration:19s;animation-delay:-6s}.fasci i:nth-child(3){left:76%;width:26%;animation-duration:23s;animation-delay:-11s}
+@keyframes fascio{from{transform:rotate(18deg) translateX(-6%);opacity:.6}to{transform:rotate(18deg) translateX(8%);opacity:1}}
+
+/* la nova: nucleo che brucia, alone, raggi (come sulla mappa di Academy) */
+.nova{transform-box:fill-box;transform-origin:center}
+.nova .alone{animation:respiro 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes respiro{0%,100%{transform:scale(.82);opacity:.75}50%{transform:scale(1.28);opacity:1}}
+.nova .raggi{animation:ruota 46s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ruota{to{transform:rotate(360deg)}}
+.nova .corpo{transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .6s;transform-box:fill-box;transform-origin:center}
+.nova.futura .corpo{transform:scale(.28);opacity:.45}
+.nova.fatta .corpo{transform:scale(.55);opacity:.9}
+.nova.viva .corpo{transform:scale(1);opacity:1}
+.nova text{fill:rgba(240,232,226,.5);font-size:12px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;transition:fill .4s,opacity .4s;opacity:.7}
+.nova.viva text{fill:#fff;opacity:1}.nova.fatta text{fill:rgba(255,200,150,.85);opacity:1}
+
+/* la scheda, vetro a sinistra */
+.scheda{position:absolute;left:max(24px,calc((100vw - 1136px)/2 + 24px));top:50%;transform:translateY(-50%);width:430px;padding:30px 32px;border-radius:24px;
+  background:linear-gradient(160deg,rgba(20,13,9,.72),rgba(12,9,8,.55));border:1px solid rgba(255,107,0,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.scheda .quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);margin:0}
+.scheda .n{font-size:58px;font-weight:800;letter-spacing:-3px;line-height:1;color:rgba(255,107,0,.35);margin:6px 0 0}
+.scheda h3{color:#fff;font-size:30px;letter-spacing:-1px;line-height:1.05;margin:6px 0 18px}
+.scheda dl{margin:0;display:grid;gap:11px}
 .scheda dt{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
-.scheda dd{margin:3px 0 0;color:var(--txt);font-size:15.5px;line-height:24px}
-.scheda dd b{color:#fff}
+.scheda dd{margin:3px 0 0;color:var(--txt);font-size:15px;line-height:23px}.scheda dd b{color:#fff}
 .scheda .voce{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
 .scheda.dentro .voce{opacity:1;transform:none}
 .scheda.dentro .voce:nth-child(2){transition-delay:.08s}.scheda.dentro .voce:nth-child(3){transition-delay:.16s}.scheda.dentro .voce:nth-child(4){transition-delay:.24s}
-.barra{position:absolute;left:0;right:0;bottom:-40px;height:3px;background:rgba(255,107,0,.15);border-radius:3px}
-.barra i{display:block;height:100%;background:var(--acc);border-radius:3px;width:0;transition:width .3s}
-.suggerimento{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.38)}
-@media (max-width:900px){.palco{grid-template-columns:1fr;align-items:start;padding-top:12px}.cielo{height:44vh}.scheda h3{font-size:26px}.scheda .n{font-size:44px}.mappa{height:calc(9 * 95vh)}}
-
-/* ---------- B · SENTIERO ---------- */
-.sentiero{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start;margin-top:40px}
-.lato{position:sticky;top:24px}
-.lato .grande{font-size:clamp(44px,5vw,72px);font-weight:800;letter-spacing:-3px;line-height:1;color:#fff}
-.lato .grande span{color:var(--acc)}
-.lato p{color:var(--dim);font-size:14px;margin:12px 0 22px}
-.lato ol{list-style:none;margin:0;padding:0;border-left:2px solid rgba(255,107,0,.18)}
-.lato li{padding:6px 0 6px 16px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(240,232,226,.4);position:relative;transition:color .3s}
-.lato li::before{content:"";position:absolute;left:-6px;top:11px;width:10px;height:10px;border-radius:50%;background:#0C0908;border:2px solid rgba(255,107,0,.3);transition:.3s}
-.lato li.fatto{color:rgba(240,232,226,.75)}.lato li.fatto::before{background:var(--acc);border-color:var(--acc)}
-.lato li.vivo{color:#fff}.lato li.vivo::before{background:#fff;border-color:#fff;box-shadow:0 0 14px var(--acc)}
-.tappa{position:relative;border:1px solid var(--bor);border-radius:20px;padding:28px 30px;background:var(--s3);margin-bottom:16px;
-  opacity:.35;transform:translateY(16px);transition:opacity .6s,transform .6s,border-color .4s}
-.tappa.dentro{opacity:1;transform:none}
-.tappa.vivo{border-color:rgba(255,107,0,.45);background:radial-gradient(120% 90% at 0% 0%,rgba(255,107,0,.16),rgba(255,107,0,0) 60%),linear-gradient(160deg,rgba(38,24,14,.96),rgba(15,11,9,.94))}
-.tappa .testa{display:flex;align-items:baseline;gap:14px}
-.tappa .ordinale{font-size:40px;font-weight:800;letter-spacing:-1.5px;color:rgba(255,107,0,.32);margin:0}
-.tappa .quale{font-size:24px;font-weight:700;color:#fff;margin:0}
-.tappa .quando{margin:4px 0 0;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--acc)}
-.tappa .griglia{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin-top:16px}
-.tappa dt{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
-.tappa dd{margin:3px 0 0;font-size:15px;line-height:23px;color:var(--txt)}
-.tappa dd b{color:#fff}
-@media (max-width:900px){.sentiero{grid-template-columns:1fr}.lato{position:static}.lato ol{display:none}.tappa .griglia{grid-template-columns:1fr}}
+.binario{position:absolute;left:max(24px,calc((100vw - 1136px)/2 + 24px));right:max(24px,calc((100vw - 1136px)/2 + 24px));bottom:34px;display:flex;gap:6px}
+.binario b{flex:1;height:3px;border-radius:3px;background:rgba(255,107,0,.16);cursor:pointer;position:relative;transition:background .3s}
+.binario b.fatta{background:rgba(255,107,0,.55)}.binario b.viva{background:var(--acc);box-shadow:0 0 12px rgba(255,107,0,.7)}
+.binario b span{position:absolute;left:0;top:-18px;font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(240,232,226,.45);white-space:nowrap;opacity:0;transition:opacity .3s}
+.binario b.viva span{opacity:1;color:#fff}
+.suggerimento{position:absolute;right:max(24px,calc((100vw - 1136px)/2 + 24px));bottom:52px;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.4)}
+@media (max-width:900px){
+  .scheda{left:16px;right:16px;width:auto;top:auto;bottom:70px;transform:none;padding:20px 20px}
+  .scheda h3{font-size:22px;margin-bottom:10px}.scheda .n{font-size:38px}.scheda dd{font-size:13.5px;line-height:20px}
+  .binario{left:16px;right:16px;bottom:26px}.suggerimento{display:none}.palco .velo{background:linear-gradient(180deg,rgba(7,5,4,.5),rgba(7,5,4,0) 20%,rgba(7,5,4,.2) 50%,rgba(7,5,4,.92) 75%)}
+}
 </style>
 </head>
 <body>
 <div class="testata"><div class="wide">
-  <p class="et">Proposta · Il percorso + Dentro la piattaforma, unificati</p>
-  <h1>Un solo percorso: da quando entri a quando il giro riparte.</h1>
-  <p class="intro">Le due sezioni di oggi ("Le cose pratiche" e "Nove pezzi") dicono la stessa cosa due volte e i nove pezzi ripetono gli strumenti. Qui sotto <b>due modi</b> di fonderle in un'unica esperienza a tappe: per ogni tappa, <b>cosa succede, cosa ottieni, che problema risolve, dove arrivi</b>. I testi sono una bozza sui contenuti del video: si correggono in due minuti.</p>
-  <div class="scelta"><a href="#a">A · Mappa stellare (scorri e viaggi)</a><a href="#b">B · Sentiero verticale (più sobrio)</a></div>
-  <p class="nota"><b>A</b> è quella che chiedevi: le nove tappe sono stelle, la rotta si disegna mentre scorri e la tua posizione viaggia lungo la rotta; a sinistra la scheda della tappa in cui sei. <b>B</b> è la stessa struttura ma lineare, più leggibile da telefono. Si può anche usare A da desktop e B da mobile.</p>
+  <p class="et">Proposta · Il percorso, mappa stellare v2</p>
+  <h1>Nove novae. Un fascio di luce. Niente tagli.</h1>
+  <p class="intro">Rifatta sul riferimento della mappa di Academy: le tappe sono <b>novae</b> (nucleo bianco che brucia, alone che respira, raggiera che ruota piano), la rotta è un <b>fascio di luce morbido</b> con impulsi che corrono, non una linea; il cielo è a tutto schermo con nebulosa, fasci di luce e stelle su tre piani che si muovono col mouse. Scorri per viaggiare.</p>
+  <div class="scelta"><a href="#v1">V1 · Fascio di luce</a><a href="#v2">V2 · Solo la cometa (niente rotta)</a></div>
+  <p class="nota"><b>V1</b>: la rotta percorsa resta come un fascio tenue, quella futura è appena un punteggio. <b>V2</b>: nessuna rotta, solo la cometa che viaggia da una nova all'altra e le novae raggiunte che restano accese.</p>
 </div></div>
 
-<!-- ===================== A ===================== -->
-<div class="sez" id="a"><div class="wide">
-  <p class="et">Proposta A</p>
-  <h2>La mappa stellare.</h2>
-  <p class="intro">Scorri: la rotta si accende una tappa alla volta e la scheda a sinistra cambia con te.</p>
-</div>
-<div class="mappa" id="mappa"><div class="wide palco">
-  <div class="scheda" id="scheda">
-    <p class="quando" id="s-quando"></p>
-    <p class="n" id="s-n"></p>
-    <h3 id="s-titolo"></h3>
-    <dl>
-      <div class="voce"><dt>Cosa succede</dt><dd id="s-succede"></dd></div>
-      <div class="voce"><dt>Cosa ottieni</dt><dd id="s-ottieni"></dd></div>
-      <div class="voce"><dt>Che problema risolve</dt><dd id="s-problema"></dd></div>
-      <div class="voce"><dt>Dove arrivi</dt><dd id="s-arrivi"></dd></div>
-    </dl>
-    <div class="barra"><i id="s-barra"></i></div>
-  </div>
-  <div class="cielo"><svg id="cielo" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice"></svg><p class="suggerimento">scorri per viaggiare</p></div>
-</div></div>
-</div>
+<div class="sez" id="v1"><div class="wide"><p class="et">V1</p><h2>Fascio di luce.</h2></div>
+<div class="viaggio" data-modo="fascio"></div></div>
 
-<!-- ===================== B ===================== -->
-<div class="sez" id="b"><div class="wide">
-  <p class="et">Proposta B</p>
-  <h2>Il sentiero.</h2>
-  <p class="intro">Stesse nove tappe, in verticale: a sinistra il punto in cui sei, a destra la tappa che si accende quando la raggiungi.</p>
-  <div class="sentiero">
-    <div class="lato">
-      <div class="grande" id="b-quando">Giorno <span>0</span></div>
-      <p id="b-sub">Da quando entri a quando il giro riparte.</p>
-      <ol id="b-lista"></ol>
-    </div>
-    <div id="b-tappe"></div>
-  </div>
-</div></div>
+<div class="sez" id="v2"><div class="wide"><p class="et">V2</p><h2>Solo la cometa.</h2></div>
+<div class="viaggio" data-modo="cometa"></div></div>
+<div style="height:20vh"></div>
 
 <script>
 var TAPPE = [
-  {q:"Giorno 0", t:"Entri, e parti lo stesso giorno", n:"Onboarding",
-   s:"Accessi alla piattaforma, roadmap su misura costruita sul punto da cui parti, prima call fissata.",
-   o:"Sai esattamente cosa fare nei primi sette giorni, e con chi.",
-   p:"La paralisi da corso: mille video e nessun ordine.",
-   a:"Hai un ordine. Non si salta."},
-  {q:"Giorni 1–7", t:"L'offerta, e nient'altro", n:"Offerta",
-   s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca né un contenuto né un funnel.",
-   o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.",
-   p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.",
-   a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
-  {q:"Settimane 2–3", t:"I contenuti escono da soli", n:"Contenuti · Peddy",
-   s:"Dal posizionamento nascono idee, script e calendario. Le stories con lo script sul teleprompter, i post programmati da dentro.",
-   o:"Piani interi in una passata. A te resta girare.",
-   p:"Non sapere cosa dire ogni giorno, e le stories che non fai.",
-   a:"Pubblichi tutti i giorni senza inventare niente."},
-  {q:"Settimana 3", t:"I DM non si perdono più", n:"Setting · Setty",
-   s:"I messaggi entrano in un CRM che risponde, segue e prenota. Un lead magnet agganciato a ogni contenuto, consegnato in automatico.",
-   o:"Follow-up che non dimentichi, calendario che si riempie da solo.",
-   p:"La finestra di 24 ore, i messaggi persi, il setter che se ne sbatte.",
-   a:"Nessuno in chat. Nessun lead fermo."},
-  {q:"Settimana 4", t:"Un funnel che parla come te", n:"Funnel Builder",
-   s:"VSL, copy e landing prodotti dalla carta dell'offerta: la prima versione la fa il sistema, tu correggi.",
-   o:"Dieci funnel, pagine online, dati da guardare.",
-   p:"Pagare un'agenzia per un pezzo solo, e il resto a te.",
-   a:"Un funnel tuo, coerente con tutto il resto."},
-  {q:"Mese 2", t:"Arrivano già decisi", n:"SalesCoach AI",
-   s:"Role play con clienti simulati, plugin live in call, analisi delle chiamate vere.",
-   o:"Il suggeritore che ti dice cosa non hai chiesto. Due call, già decise.",
-   p:"O sei bravo tu, o paghi qualcuno che lo sia.",
-   a:"Chiudi tu, senza closer. Finché non hai un team."},
-  {q:"Sempre", t:"Non sei mai fermo", n:"Nova",
-   s:"L'assistente che tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di lavoro.",
-   o:"Risposte sul tuo caso, 24 ore su 24.",
-   p:"Bloccarsi alle 23 senza nessuno a cui chiedere.",
-   a:"Vai avanti anche quando noi dormiamo."},
-  {q:"Ogni settimana", t:"Correggi con me", n:"Live con Andrea",
-   s:"Live settimanali sul tuo materiale, supporto sulle piattaforme e sull'offerta.",
-   o:"La testa dell'esperto sulla tua prima versione.",
-   p:"Correggere da solo, senza sapere dove guardare.",
-   a:"Non impari facendo: impari correggendo, a un decimo del tempo."},
-  {q:"Mese 3–6", t:"Il giro riparte", n:"Community · Delivery",
-   s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.",
-   o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.",
-   p:"Essere solo, e un tetto che non rompi più.",
-   a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
+  {q:"Giorno 0", t:"Entri, e parti lo stesso giorno", n:"Onboarding", s:"Accessi alla piattaforma, roadmap su misura costruita sul punto da cui parti, prima call fissata.", o:"Sai esattamente cosa fare nei primi sette giorni, e con chi.", p:"La paralisi da corso: mille video e nessun ordine.", a:"Hai un ordine. Non si salta."},
+  {q:"Giorni 1–7", t:"L'offerta, e nient'altro", n:"Offerta", s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca né un contenuto né un funnel.", o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.", p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.", a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
+  {q:"Settimane 2–3", t:"I contenuti escono da soli", n:"Contenuti · Peddy", s:"Dal posizionamento nascono idee, script e calendario. Le stories con lo script sul teleprompter, i post programmati da dentro.", o:"Piani interi in una passata. A te resta girare.", p:"Non sapere cosa dire ogni giorno, e le stories che non fai.", a:"Pubblichi tutti i giorni senza inventare niente."},
+  {q:"Settimana 3", t:"I DM non si perdono più", n:"Setting · Setty", s:"I messaggi entrano in un CRM che risponde, segue e prenota. Un lead magnet agganciato a ogni contenuto, consegnato in automatico.", o:"Follow-up che non dimentichi, calendario che si riempie da solo.", p:"La finestra di 24 ore, i messaggi persi, il setter che se ne sbatte.", a:"Nessuno in chat. Nessun lead fermo."},
+  {q:"Settimana 4", t:"Un funnel che parla come te", n:"Funnel Builder", s:"VSL, copy e landing prodotti dalla carta dell'offerta: la prima versione la fa il sistema, tu correggi.", o:"Dieci funnel, pagine online, dati da guardare.", p:"Pagare un'agenzia per un pezzo solo, e il resto a te.", a:"Un funnel tuo, coerente con tutto il resto."},
+  {q:"Mese 2", t:"Arrivano già decisi", n:"SalesCoach AI", s:"Role play con clienti simulati, plugin live in call, analisi delle chiamate vere.", o:"Il suggeritore che ti dice cosa non hai chiesto. Due call, già decise.", p:"O sei bravo tu, o paghi qualcuno che lo sia.", a:"Chiudi tu, senza closer. Finché non hai un team."},
+  {q:"Sempre", t:"Non sei mai fermo", n:"Nova", s:"L'assistente che tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di lavoro.", o:"Risposte sul tuo caso, 24 ore su 24.", p:"Bloccarsi alle 23 senza nessuno a cui chiedere.", a:"Vai avanti anche quando noi dormiamo."},
+  {q:"Ogni settimana", t:"Correggi con me", n:"Live con Andrea", s:"Live settimanali sul tuo materiale, supporto sulle piattaforme e sull'offerta.", o:"La testa dell'esperto sulla tua prima versione.", p:"Correggere da solo, senza sapere dove guardare.", a:"Non impari facendo: impari correggendo, a un decimo del tempo."},
+  {q:"Mese 3–6", t:"Il giro riparte", n:"Community · Delivery", s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.", o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.", p:"Essere solo, e un tetto che non rompi più.", a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
 ];
+/* posizioni nel mondo 1600x900: la rotta sale da sinistra in basso e finisce in alto a destra, lasciando libera la scheda a sinistra */
+var P = [[620,700],[760,560],[820,330],[1000,250],[1080,470],[1240,380],[1380,560],[1440,250],[1560,120]];
+var RAGGI = [[10,74,6],[55,46,4],[95,68,7],[140,42,4.5],[185,70,6],[230,44,4],[275,64,6.5],[320,40,4]];
 
-/* ---------- A ---------- */
-(function(){
-  var svg=document.getElementById("cielo"), NS="http://www.w3.org/2000/svg";
-  var P=[[110,540],[250,420],[330,220],[520,170],[640,330],[800,250],[930,420],[1000,200],[1110,560]];
+function costruisci(viaggio){
+  var modo = viaggio.getAttribute("data-modo");
+  viaggio.innerHTML = '<div class="palco">'+
+    '<img class="nebulosa" src="img/spazio.jpg" alt="">'+
+    '<div class="fasci"><i></i><i></i><i></i></div>'+
+    '<canvas class="stelle"></canvas><canvas class="fascio"></canvas>'+
+    '<svg class="novae" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"></svg>'+
+    '<div class="velo"></div>'+
+    '<div class="scheda"><p class="quando"></p><p class="n"></p><h3></h3><dl>'+
+    '<div class="voce"><dt>Cosa succede</dt><dd class="d-s"></dd></div><div class="voce"><dt>Cosa ottieni</dt><dd class="d-o"></dd></div>'+
+    '<div class="voce"><dt>Che problema risolve</dt><dd class="d-p"></dd></div><div class="voce"><dt>Dove arrivi</dt><dd class="d-a"></dd></div></dl></div>'+
+    '<div class="binario"></div><p class="suggerimento">scorri per viaggiare</p></div>';
+  var palco = viaggio.querySelector(".palco"), svg = viaggio.querySelector("svg.novae"), cvS = viaggio.querySelector("canvas.stelle"), cvF = viaggio.querySelector("canvas.fascio");
+  var scheda = viaggio.querySelector(".scheda"), binario = viaggio.querySelector(".binario"), neb = viaggio.querySelector(".nebulosa");
+  var NS = "http://www.w3.org/2000/svg";
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
-  var g="";
-  for(var i=0;i<90;i++){var s=el("circle",{cx:Math.random()*1200,cy:Math.random()*700,r:Math.random()*1.6+.4,class:"stellina"});s.style.animationDelay=(Math.random()*4)+"s";svg.appendChild(s)}
-  var d="M"+P[0].join(",");
-  for(var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2;d+=" C"+mx+","+a[1]+" "+mx+","+b[1]+" "+b[0]+","+b[1]}
-  svg.appendChild(el("path",{d:d,class:"rotta"}));
-  var viva=el("path",{d:d,class:"rottaViva"});svg.appendChild(viva);
-  var L=viva.getTotalLength();viva.style.strokeDasharray=L;viva.style.strokeDashoffset=L;
-  var stelle=P.map(function(p,i){var gg=el("g",{class:"stella"});gg.appendChild(el("circle",{cx:p[0],cy:p[1],class:"alone"}));gg.appendChild(el("circle",{cx:p[0],cy:p[1],class:"punto"}));
-    var t=el("text",{x:p[0],y:p[1]+(p[1]>350?-34:44),"text-anchor":"middle"});t.textContent=("0"+(i+1))+" · "+TAPPE[i].n;gg.appendChild(t);svg.appendChild(gg);return gg});
-  var tu=el("circle",{r:7,class:"tu"});svg.appendChild(tu);
-  var mappa=document.getElementById("mappa"),scheda=document.getElementById("scheda"),ultima=-1,barra=document.getElementById("s-barra");
-  var punti=[];for(var i=0;i<P.length;i++){/* lunghezza lungo la rotta di ogni stella */
-    var best=0,bd=1e9;for(var l=0;l<=L;l+=4){var q=viva.getPointAtLength(l);var dd=(q.x-P[i][0])*(q.x-P[i][0])+(q.y-P[i][1])*(q.y-P[i][1]);if(dd<bd){bd=dd;best=l}}punti.push(best)}
-  function mostra(k){if(k===ultima)return;ultima=k;var T=TAPPE[k];scheda.classList.remove("dentro");
-    setTimeout(function(){document.getElementById("s-quando").textContent=T.q;document.getElementById("s-n").textContent="0"+(k+1);document.getElementById("s-titolo").textContent=T.t;
-      document.getElementById("s-succede").innerHTML=T.s;document.getElementById("s-ottieni").innerHTML=T.o;document.getElementById("s-problema").innerHTML=T.p;document.getElementById("s-arrivi").innerHTML=T.a;scheda.classList.add("dentro")},120);
-    stelle.forEach(function(s,i){s.classList.toggle("fatta",i<k);s.classList.toggle("viva",i===k)})}
-  function passo(){var r=mappa.getBoundingClientRect();var tot=r.height-innerHeight;var p=Math.min(1,Math.max(0,-r.top/tot));
-    var k=Math.min(P.length-1,Math.floor(p*P.length));var l=punti[k]+(p*P.length-k)*((punti[k+1]||L)-punti[k]);l=Math.min(L,l);
-    viva.style.strokeDashoffset=L-l;var q=viva.getPointAtLength(l);tu.setAttribute("cx",q.x);tu.setAttribute("cy",q.y);barra.style.width=(p*100)+"%";mostra(k)}
-  addEventListener("scroll",passo,{passive:true});addEventListener("resize",passo);passo();
-})();
-
-/* ---------- B ---------- */
-(function(){
-  var lista=document.getElementById("b-lista"),box=document.getElementById("b-tappe");
-  TAPPE.forEach(function(T,i){var li=document.createElement("li");li.textContent="0"+(i+1)+" · "+T.n;lista.appendChild(li);
-    var t=document.createElement("div");t.className="tappa";t.innerHTML='<div class="testa"><p class="ordinale">0'+(i+1)+'</p><p class="quale">'+T.t+'</p></div><p class="quando">'+T.q+' · '+T.n+'</p>'+
-      '<dl class="griglia"><div><dt>Cosa succede</dt><dd>'+T.s+'</dd></div><div><dt>Cosa ottieni</dt><dd>'+T.o+'</dd></div><div><dt>Che problema risolve</dt><dd>'+T.p+'</dd></div><div><dt>Dove arrivi</dt><dd>'+T.a+'</dd></div></dl>';box.appendChild(t)});
-  var tappe=[].slice.call(box.children),lis=[].slice.call(lista.children),q=document.getElementById("b-quando");
-  function passo(){var vivo=-1;tappe.forEach(function(t,i){var r=t.getBoundingClientRect();if(r.top<innerHeight*.8)t.classList.add("dentro");if(r.top<innerHeight*.5)vivo=i});
-    tappe.forEach(function(t,i){t.classList.toggle("vivo",i===vivo)});lis.forEach(function(l,i){l.classList.toggle("fatto",i<vivo);l.classList.toggle("vivo",i===vivo)});
-    if(vivo>=0){var parts=TAPPE[vivo].q.split(" ");q.innerHTML=parts.length>1?parts[0]+' <span>'+parts.slice(1).join(" ")+'</span>':'<span>'+parts[0]+'</span>'}}
-  addEventListener("scroll",passo,{passive:true});passo();
-})();
+  var defs = el("defs",{}); var uid = modo;
+  defs.innerHTML = '<radialGradient id="'+uid+'-alone"><stop offset="0%" stop-color="#fff" stop-opacity=".55"/><stop offset="30%" stop-color="#FF6B00" stop-opacity=".30"/><stop offset="70%" stop-color="#FF6B00" stop-opacity=".08"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="'+uid+'-raggio" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="76"><stop offset="0%" stop-color="#fff" stop-opacity=".8"/><stop offset="35%" stop-color="#FF6B00" stop-opacity=".38"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="'+uid+'-cuore"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="55%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
+    '<filter id="'+uid+'-soffio" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6"/></filter>';
+  svg.appendChild(defs);
+  var novae = P.map(function(p,i){
+    var g = el("g",{"class":"nova futura"});
+    var corpo = el("g",{"class":"corpo",transform:"translate("+p[0]+","+p[1]+")"});
+    corpo.appendChild(el("circle",{"class":"alone",r:72,fill:"url(#"+uid+"-alone)"}));
+    var rg = el("g",{"class":"raggi",fill:"url(#"+uid+"-raggio)",filter:"url(#"+uid+"-soffio)"});
+    RAGGI.forEach(function(r){rg.appendChild(el("path",{d:"M "+(-r[2])+" 0 L 0 "+(-r[1])+" L "+r[2]+" 0 Z",transform:"rotate("+r[0]+")"}))});
+    corpo.appendChild(rg); corpo.appendChild(el("circle",{r:20,fill:"url(#"+uid+"-cuore)"})); corpo.appendChild(el("circle",{r:7,fill:"#fff"}));
+    g.appendChild(corpo);
+    var t = el("text",{x:p[0],y:p[1]+(p[1]>400?-58:66),"text-anchor":"middle"}); t.textContent = "0"+(i+1)+" · "+TAPPE[i].n; g.appendChild(t);
+    svg.appendChild(g); return g;
+  });
+  /* rotta campionata (curva morbida per le stelle) */
+  var ROTTA = []; for (var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2; for(var s=0;s<=40;s++){var u=s/40,iu=1-u; var x=iu*iu*iu*a[0]+3*iu*iu*u*mx+3*iu*u*u*mx+u*u*u*b[0], y=iu*iu*iu*a[1]+3*iu*iu*u*a[1]+3*iu*u*u*b[1]+u*u*u*b[1]; ROTTA.push([x,y])}}
+  var PASSI = 41;
+  /* campo stellare su tre piani + meteore */
+  var W=0,H=0,k=1,ox=0,oy=0, piani=[], meteore=[], mx=0,my=0, tx=0,ty=0;
+  function misura(){W=palco.clientWidth;H=palco.clientHeight;cvS.width=cvF.width=W;cvS.height=cvF.height=H;k=Math.max(W/1600,H/900);ox=(W-1600*k)/2;oy=(H-900*k)/2}
+  for (var pi=0;pi<3;pi++){var arr=[];for(var i=0;i<(pi===0?160:pi===1?90:40);i++)arr.push({x:Math.random()*1600,y:Math.random()*900,r:(pi+1)*0.55+Math.random()*0.9,f:Math.random()*6.28,v:0.6+Math.random()*1.4});piani.push(arr)}
+  var ctxS=cvS.getContext("2d"), ctxF=cvF.getContext("2d"), progresso=0, fino=0, ultima=-1, vivo=true;
+  function wx(x){return ox+x*k} function wy(y){return oy+y*k}
+  function disegnaStelle(t){
+    ctxS.clearRect(0,0,W,H); tx+=(mx-tx)*.05; ty+=(my-ty)*.05;
+    piani.forEach(function(arr,pi){var par=(pi+1)*9; arr.forEach(function(s){var al=.35+.55*Math.abs(Math.sin(t/1000*s.v+s.f)); ctxS.fillStyle="rgba(255,244,230,"+al+")"; ctxS.beginPath(); ctxS.arc(wx(s.x)+tx*par,wy(s.y)+ty*par,s.r*k,0,6.28); ctxS.fill()})});
+    if (Math.random()<0.012 && meteore.length<2) meteore.push({x:Math.random()*W*.8+W*.2,y:Math.random()*H*.4,vx:-(6+Math.random()*5),vy:3+Math.random()*3,vita:1});
+    meteore.forEach(function(m){ctxS.strokeStyle="rgba(255,230,200,"+(0.7*m.vita)+")";ctxS.lineWidth=1.4;ctxS.beginPath();ctxS.moveTo(m.x,m.y);ctxS.lineTo(m.x-m.vx*9,m.y-m.vy*9);ctxS.stroke();m.x+=m.vx;m.y+=m.vy;m.vita-=0.02});
+    meteore=meteore.filter(function(m){return m.vita>0});
+  }
+  function disegnaFascio(t){
+    ctxF.clearRect(0,0,W,H); var ora=t/1000;
+    if (modo==="fascio"){
+      ctxF.setLineDash([2,14]); ctxF.strokeStyle="rgba(255,170,110,.13)"; ctxF.lineWidth=1.5; ctxF.beginPath();
+      for (var i=fino;i<ROTTA.length;i++) ctxF.lineTo(wx(ROTTA[i][0]),wy(ROTTA[i][1])); ctxF.stroke(); ctxF.setLineDash([]);
+      if (fino>1){ ctxF.lineCap="round"; ctxF.lineJoin="round";
+        var traccia=function(){ctxF.beginPath();for(var i=0;i<=fino;i++)ctxF.lineTo(wx(ROTTA[i][0]),wy(ROTTA[i][1]))};
+        ctxF.shadowColor="rgba(255,120,40,.45)"; ctxF.shadowBlur=18; ctxF.strokeStyle="rgba(255,120,40,.12)"; ctxF.lineWidth=6; traccia(); ctxF.stroke();
+        ctxF.shadowBlur=6; ctxF.strokeStyle="rgba(255,190,130,.45)"; ctxF.lineWidth=1; traccia(); ctxF.stroke();
+        for (var s=0;s<2;s++){var testa=Math.floor((ora*26+s*(fino/2))%fino), CODA=44; for(var c=0;c<CODA;c++){var i=testa-c; if(i<1)break; var v=1-c/CODA; ctxF.shadowColor="rgba(255,240,220,.5)"; ctxF.shadowBlur=24*v; ctxF.strokeStyle="rgba(255,250,240,"+(0.22*v)+")"; ctxF.lineWidth=1.3*v+.3; ctxF.beginPath(); ctxF.moveTo(wx(ROTTA[i-1][0]),wy(ROTTA[i-1][1])); ctxF.lineTo(wx(ROTTA[i][0]),wy(ROTTA[i][1])); ctxF.stroke()}}
+        ctxF.shadowBlur=0;
+      }
+    }
+    /* la cometa (tu): testa bianca e coda che si assottiglia lungo la rotta */
+    var CODA=60; for(var c=0;c<CODA;c++){var i=fino-c; if(i<1)break; var v=1-c/CODA; ctxF.shadowColor="rgba(255,107,0,.6)"; ctxF.shadowBlur=20*v; ctxF.strokeStyle="rgba(255,235,210,"+(0.75*v)+")"; ctxF.lineWidth=3.2*v+.4; ctxF.lineCap="round"; ctxF.beginPath(); ctxF.moveTo(wx(ROTTA[i-1][0]),wy(ROTTA[i-1][1])); ctxF.lineTo(wx(ROTTA[i][0]),wy(ROTTA[i][1])); ctxF.stroke()}
+    var q=ROTTA[Math.max(0,Math.min(ROTTA.length-1,fino))]; ctxF.shadowColor="#fff"; ctxF.shadowBlur=22; ctxF.fillStyle="#fff"; ctxF.beginPath(); ctxF.arc(wx(q[0]),wy(q[1]),4.5,0,6.28); ctxF.fill(); ctxF.shadowBlur=0;
+  }
+  function ciclo(t){ if(!vivo)return; disegnaStelle(t); disegnaFascio(t); requestAnimationFrame(ciclo) }
+  var tacche=TAPPE.map(function(T,i){var b=document.createElement("b");b.innerHTML="<span>0"+(i+1)+" · "+T.n+"</span>";b.addEventListener("click",function(){var r=viaggio.getBoundingClientRect();var tot=r.height-innerHeight;window.scrollTo({top:r.top+scrollY+tot*((i+.5)/P.length),behavior:"smooth"})});binario.appendChild(b);return b});
+  function mostra(kk){ if(kk===ultima)return; ultima=kk; var T=TAPPE[kk]; scheda.classList.remove("dentro");
+    setTimeout(function(){scheda.querySelector(".quando").textContent=T.q;scheda.querySelector(".n").textContent="0"+(kk+1);scheda.querySelector("h3").textContent=T.t;scheda.querySelector(".d-s").innerHTML=T.s;scheda.querySelector(".d-o").innerHTML=T.o;scheda.querySelector(".d-p").innerHTML=T.p;scheda.querySelector(".d-a").innerHTML=T.a;scheda.classList.add("dentro")},120);
+    novae.forEach(function(n,i){n.setAttribute("class","nova "+(i<kk?"fatta":i===kk?"viva":"futura"))}); tacche.forEach(function(b,i){b.classList.toggle("fatta",i<kk);b.classList.toggle("viva",i===kk)}) }
+  function passo(){ var r=viaggio.getBoundingClientRect(); var tot=r.height-innerHeight; if(tot<=0)return; var p=Math.min(1,Math.max(0,-r.top/tot)); progresso=p;
+    var kk=Math.min(P.length-1,Math.floor(p*P.length)); var frac=p*P.length-kk; fino=Math.round(Math.min(ROTTA.length-1,(kk+frac)*PASSI)); if(kk===P.length-1)fino=ROTTA.length-1;
+    neb.style.transform="translate("+(-p*3+tx*1.2)+"%,"+(p*2+ty*1.2)+"%) scale(1.04)"; mostra(kk) }
+  palco.addEventListener("mousemove",function(e){var r=palco.getBoundingClientRect();mx=(e.clientX-r.left)/r.width*2-1;my=(e.clientY-r.top)/r.height*2-1});
+  palco.addEventListener("mouseleave",function(){mx=0;my=0});
+  misura(); addEventListener("resize",function(){misura();passo()}); addEventListener("scroll",passo,{passive:true}); passo(); requestAnimationFrame(ciclo);
+}
+document.querySelectorAll(".viaggio").forEach(costruisci);
 </script>
 </body>
 </html>
