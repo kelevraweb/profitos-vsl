@@ -326,9 +326,17 @@
 .pos .strumenti .fase{padding-top:0;overflow:hidden}
 .pos .strumenti .schermo{margin:0 -32px;aspect-ratio:16/10;position:relative;overflow:hidden;
   border-bottom:1px solid rgba(255,107,0,.18);background:#0a0705}
-.pos .strumenti .schermo img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;
-  filter:saturate(.92);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.pos .strumenti .fase:hover .schermo img{transform:scale(1.04)}
+.pos .strumenti .schermo img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
+  opacity:0;transform:scale(.42);filter:saturate(.92) blur(14px);
+  transition:transform .75s cubic-bezier(.6,0,.2,1),opacity .5s ease-out,filter .75s cubic-bezier(.6,0,.2,1)}
+.pos .strumenti .schermo img.attiva{opacity:1;transform:scale(1);filter:saturate(.92) blur(0)}
+.pos .strumenti .schermo img.via{opacity:0;transform:scale(2.6);filter:saturate(1.1) blur(12px);transition-duration:.7s,.45s,.7s}
+.pos .strumenti .schermo::before{content:"";position:absolute;inset:-30%;z-index:2;pointer-events:none;opacity:0;
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0 2.6deg,rgba(255,196,150,.16) 2.6deg 3.2deg);
+  -webkit-mask:radial-gradient(circle,transparent 18%,#000 62%);mask:radial-gradient(circle,transparent 18%,#000 62%)}
+.pos .strumenti .schermo.warp::before{animation:posWarp .7s cubic-bezier(.5,0,.3,1)}
+@keyframes posWarp{0%{opacity:0;transform:scale(.35)}25%{opacity:.95}100%{opacity:0;transform:scale(1.9)}}
+@media(prefers-reduced-motion:reduce){.pos .strumenti .schermo img,.pos .strumenti .schermo::before{transition:none;animation:none}}
 .pos .strumenti .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(15,11,9,0) 50%,rgba(15,11,9,.9))}
 .pos .strumenti .fase .icona,.pos .strumenti .fase .marchio{position:relative;z-index:1;margin:-23px 0 16px;
@@ -722,7 +730,7 @@
   ci abbiamo messo dentro a fare la differenza.</b></p>
   <div class="fasi strumenti">
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="schermo"><img class="attiva" src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta-2.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta-3.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/offerta-4.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
       <div class="testa"><p class="ordinale">01</p><p class="quale">Analisi offerta</p></div>
       <h3>Una settimana in poche ore</h3>
@@ -731,7 +739,7 @@
       <ul><li>Offerta scritta e posizionamento</li><li>Promessa unica e base del metodo</li><li>Brand book: colori e tono di voce</li></ul>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="schermo"><img class="attiva" src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti-2.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti-3.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/contenuti-4.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="marchio"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/logo-peddy.png" alt="Peddy" height="26" loading="lazy"></span>
       <div class="testa"><p class="ordinale">02</p><p class="quale">Contenuti (Peddy)</p></div>
       <h3>Piani interi in una passata</h3>
@@ -740,7 +748,7 @@
       <ul><li>Gobbo mentre giri</li><li>Storie caricate e tagliate da sole</li><li>Montaggio in blocco, copertine incluse</li></ul>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="schermo"><img class="attiva" src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty-2.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty-3.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/setty-4.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="marchio"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/logo-setty.png" alt="Setty" height="26" loading="lazy"></span>
       <div class="testa"><p class="ordinale">03</p><p class="quale">Setting (Setty)</p></div>
       <h3>I DM non si perdono più</h3>
@@ -750,7 +758,7 @@
       <ul><li>Niente link inventati</li><li>Niente appuntamenti che non esistono</li><li>Non si ripete</li></ul>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="schermo"><img class="attiva" src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel-2.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel-3.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/funnel-4.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg></span>
       <div class="testa"><p class="ordinale">04</p><p class="quale">Funnel Builder</p></div>
       <h3>Non ti richiede quello che hai già dato</h3>
@@ -759,7 +767,7 @@
       <ul><li>Pagine pubblicate online, senza codice</li><li>Ganci per le inserzioni e sequenze mail</li><li>Script della call e della VSL</li></ul>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/vendita.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="schermo"><img class="attiva" src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/vendita.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/vendita-2.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/vendita-3.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/vendita-4.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
       <div class="testa"><p class="ordinale">05</p><p class="quale">Vendita</p></div>
       <h3>Il suggeritore in call</h3>
@@ -768,7 +776,7 @@
       più dall'avere in casa qualcuno bravo a vendere.</p>
     </div>
     <div class="fase">
-      <div class="schermo"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova.jpg" width="760" height="475" alt="" loading="lazy"></div>
+      <div class="schermo"><img class="attiva" src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova-2.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova-3.jpg" width="760" height="475" alt="" loading="lazy"><img src="https://kelevraweb.github.io/profitos-vsl/img/strumenti/nova-4.jpg" width="760" height="475" alt="" loading="lazy"></div>
       <span class="icona stella-nova" aria-hidden="true"><svg viewBox="-80 -80 160 160"><defs><radialGradient id="pos-st-alone"><stop offset="0%" stop-color="#fff" stop-opacity=".55"/><stop offset="30%" stop-color="#d24ee0" stop-opacity=".3"/><stop offset="70%" stop-color="#d24ee0" stop-opacity=".08"/><stop offset="100%" stop-color="#d24ee0" stop-opacity="0"/></radialGradient><radialGradient id="pos-st-raggio" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="76"><stop offset="0%" stop-color="#fff" stop-opacity=".8"/><stop offset="35%" stop-color="#d24ee0" stop-opacity=".38"/><stop offset="100%" stop-color="#d24ee0" stop-opacity="0"/></radialGradient><radialGradient id="pos-st-cuore"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="55%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#d24ee0" stop-opacity="0"/></radialGradient><filter id="pos-st-soffio" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6"/></filter></defs><circle class="stella-alone" r="72" fill="url(#pos-st-alone)"/><g class="stella-raggi" fill="url(#pos-st-raggio)" filter="url(#pos-st-soffio)"><path d="M -6 0 L 0 -74 L 6 0 Z" transform="rotate(10)"/><path d="M -4 0 L 0 -46 L 4 0 Z" transform="rotate(55)"/><path d="M -7 0 L 0 -68 L 7 0 Z" transform="rotate(95)"/><path d="M -4.5 0 L 0 -42 L 4.5 0 Z" transform="rotate(140)"/><path d="M -6 0 L 0 -70 L 6 0 Z" transform="rotate(185)"/><path d="M -4 0 L 0 -44 L 4 0 Z" transform="rotate(230)"/><path d="M -6.5 0 L 0 -64 L 6.5 0 Z" transform="rotate(275)"/><path d="M -4 0 L 0 -40 L 4 0 Z" transform="rotate(320)"/></g><circle r="20" fill="url(#pos-st-cuore)"/><circle r="7" fill="#fff"/></svg></span>
       <div class="testa"><p class="ordinale">06</p><p class="quale">Nova</p></div>
       <h3>Ventiquattro ore su ventiquattro</h3>
@@ -1447,6 +1455,30 @@
       if (k < 1) requestAnimationFrame(tic);
     })(t0);
   }
+
+  /* strumenti: passando sull'immagine, le altre schermate arrivano una dietro l'altra (salto nell'iperspazio) */
+  var calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".strumenti .schermo").forEach(function (sc) {
+    var imgs = sc.querySelectorAll("img"), i = 0, t = null;
+    if (imgs.length < 2 || calmo) return;
+    function azzera(im) { im.style.transition = "none"; im.classList.remove("via", "attiva"); void im.offsetWidth; im.style.transition = ""; }
+    function vai(n) {
+      var cur = imgs[i];
+      cur.classList.remove("attiva"); cur.classList.add("via");
+      setTimeout(function () { if (!cur.classList.contains("attiva")) azzera(cur); }, 760);
+      i = n; imgs[i].classList.remove("via"); imgs[i].classList.add("attiva");
+      sc.classList.remove("warp"); void sc.offsetWidth; sc.classList.add("warp");
+    }
+    function ciclo() { t = setTimeout(function () { vai((i + 1) % imgs.length); ciclo(); }, 1150); }
+    sc.addEventListener("mouseenter", function () {
+      imgs.forEach(function (im) { im.loading = "eager"; });
+      clearTimeout(t); vai((i + 1) % imgs.length); ciclo();
+    });
+    sc.addEventListener("mouseleave", function () {
+      clearTimeout(t); t = null;
+      if (i !== 0) vai(0);
+    });
+  });
 
   requestAnimationFrame(function () {
     requestAnimationFrame(function () { R.classList.add("pronta"); spazzola(); });
