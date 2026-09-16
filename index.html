@@ -31,6 +31,7 @@
      Spostandoli li' il player parte prima, perche' il browser li vede
      mentre sta ancora scaricando il resto della pagina.
      ================================================================ -->
+
 <div class="pos" id="pos-vsl">
 
 <style>
@@ -786,6 +787,13 @@
 
 /* casi */
 .pos .griglia{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.pos .griglia.con-rit{margin-top:100px;row-gap:90px}
+/* caso con ritratto scontornato: la persona esce dal bordo in alto, il testo sta a sinistra */
+.pos .caso.rit{position:relative;padding-right:44%;min-height:420px;background:radial-gradient(55% 70% at 100% 60%,rgba(255,107,0,.16),transparent 70%),var(--s3)}
+.pos .caso.rit .rit-box{position:absolute;right:0;top:-72px;bottom:0;width:48%;overflow:hidden;border-radius:0 0 20px 0;pointer-events:none;-webkit-mask:linear-gradient(90deg,transparent,#000 42%);mask:linear-gradient(90deg,transparent,#000 42%)}
+.pos .caso.rit .rit-box img{position:absolute;right:-8%;bottom:0;height:100%;width:auto;max-width:none;filter:saturate(.85) contrast(1.05)}
+.pos .caso.rit .et,.pos .caso.rit h3,.pos .caso.rit p,.pos .caso.rit ul{position:relative;z-index:1}
+@media (max-width:900px){.pos .caso.rit{padding-right:36px;padding-top:0;min-height:0}.pos .caso.rit .rit-box{position:relative;top:0;bottom:auto;right:auto;width:100%;height:280px;margin:-60px 0 6px;border-radius:0;-webkit-mask:linear-gradient(180deg,#000 58%,transparent);mask:linear-gradient(180deg,#000 58%,transparent)}.pos .caso.rit .rit-box img{right:auto;left:50%;transform:translateX(-50%)}.pos .griglia.con-rit{margin-top:110px;row-gap:84px}}
 .pos .caso{border:1px solid var(--bor);border-radius:20px;padding:36px;background:var(--s3)}
 .pos .caso h3{font-size:19px;line-height:24px;letter-spacing:-.38px;margin-top:8px}
 .pos .caso .testa{display:flex;align-items:center;gap:16px}
@@ -1852,7 +1860,8 @@
     ["Investitore Efficace","Da zero a 4 milioni all'anno",
      "Abbiamo conosciuto Felipe Orrego quando aveva solo l'idea. Insieme abbiamo costruito il brand da zero, impostato le basi per un'azienda vera e lanciato il progetto sul mercato. Oggi Investitore Efficace è una delle realtà leader in Italia sulla finanza personale, con un fatturato di oltre 4 milioni l'anno.",
      ["Creato e lanciato il brand da zero","Strutturato community funnel e prime campagne advertising","Installate SOP e procedure di gestione team e processi","Portato il business da startup a brand leader di nicchia"],
-     "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19a2eb1d7808531db.jpeg"],
+     "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19a2eb1d7808531db.jpeg",
+     "https://kelevraweb.github.io/profitos-vsl/img/casi/felipe.webp"],
     ["SalesValley","+70 clienti B2B in 12 mesi",
      "SalesValley è un progetto nostro, nato da zero e diventato in meno di un anno il punto di riferimento in Italia per hiring di sales e setter. In una nicchia iper-competitiva siamo riusciti a costruire un'azienda solida, con un posizionamento forte e clienti tra le aziende più importanti del Paese.",
      ["Creato l'azienda e il brand da zero","Scalati a quasi 80 clienti in meno di un anno","Posizionamento come leader nazionale in Sales Recruitment","Team, procedure e academy interna costruite da zero"],
@@ -1872,9 +1881,11 @@
       ? '<div class="testa"><img src="' + c[4] + '" alt="' + c[0] + '">' +
         '<div><p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3></div></div>"
       : '<p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3>";
-    return '<article class="caso">' + testa + "<p>" + c[2] +
+    if (c[5]) testa = '<div class="rit-box"><img src="' + c[5] + '" alt="' + c[0] + '" loading="lazy"></div><p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3>";
+    return '<article class="caso' + (c[5] ? " rit" : "") + '">' + testa + "<p>" + c[2] +
       '</p><p class="impact">Impact</p><ul>' + c[3].map(function (r) { return "<li>" + r + "</li>"; }).join("") + "</ul></article>";
   }).join("");
+  if (CASI.some(function (c) { return c[5]; })) $("pos-casi").classList.add("con-rit");
 
   /* testimonianze video: [id Vimeo, file copertina, nome, cosa e' successo] */
   var TESTI = [
@@ -2591,6 +2602,5 @@ function costruisci(viaggio){
 </script>
 
 </div>
-
 </body>
 </html>
