@@ -1606,13 +1606,24 @@
     ["alessio.borromeo","8hr","Istruttore Cinofilo Online","0bUSJ73tk9TKXmGQIo4M12gQf0.jpg","SdcHUtk2pAvUFYOBtNF8TRHtLw.mp4","EZ8gIkkdmONpkRG1A1hGOTXISc.jpeg"],
     ["andreafinotti_time","7hr","Formazione per Freelancer","v4QDF79tw2TTa37EKPkZB9BT7o.jpg","1otNci5LRUDK4M4I5Nt8j61aTc.mp4","4oTuPfXEbHqvoKc2OzYOpspdsro.jpeg"],
     ["dott_giacomo_lucchesi","7hr","Biohacking e nutrizione","z1pIO9kj8y1h0u19LoPJtY9zii4.jpg","pHLyCm3MAaWp19JRbIhDgEWZE0.mp4","tynXDsKaEZy6rXoQsVxWgVR63w.jpg"],
-    ["salesvalley_it","7hr","HR e formazione sales","s4dYcDSDi3wHGbXVdBy3Pe9liM.jpg","4n18qZ4WEvZPZ5rPsut9hxqjo.mp4","z8duWPQBYT0Da3IYaPLkvD2Epg.png"]
+    ["salesvalley_it","7hr","HR e formazione sales","s4dYcDSDi3wHGbXVdBy3Pe9liM.jpg","4n18qZ4WEvZPZ5rPsut9hxqjo.mp4","z8duWPQBYT0Da3IYaPLkvD2Epg.png"],
+    ["abbracciointeriore","5hr","Life & Business Coach","https://kelevraweb.github.io/profitos-vsl/img/community/labadini-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/labadini.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/labadini-poster.webp"],
+    ["coach_lucacenci","6hr","Coach fitness online","https://kelevraweb.github.io/profitos-vsl/img/community/cenci-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/cenci.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/cenci-poster.webp"],
+    ["degrandis.coach","6hr","Fitness coach","https://kelevraweb.github.io/profitos-vsl/img/community/degrandis-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/degrandis.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/degrandis-poster.webp"],
+    ["financialelite_official","7hr","Marketing per consulenti finanziari","https://kelevraweb.github.io/profitos-vsl/img/community/bignami-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/bignami.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/bignami-poster.webp"],
+    ["francescobarbero.am","7hr","Coach mindfulness","https://kelevraweb.github.io/profitos-vsl/img/community/barbero-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/barbero.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/barbero-poster.webp"],
+    ["massimiliano_trainer_pt","8hr","Personal trainer al femminile","https://kelevraweb.github.io/profitos-vsl/img/community/tallarico-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/tallarico.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/tallarico-poster.webp"],
+    ["galvagnotrading","8hr","Day trading","https://kelevraweb.github.io/profitos-vsl/img/community/galvagno-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/galvagno.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/galvagno-poster.webp"],
+    ["edoardospaggiari_balbuzie","9hr","Balbuzie","https://kelevraweb.github.io/profitos-vsl/img/community/spaggiari-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/spaggiari.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/spaggiari-poster.webp"],
+    ["dott._giovanni_isabella","9hr","Dimagrimento e sport nutrition","https://kelevraweb.github.io/profitos-vsl/img/community/isabella-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/isabella.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/isabella-poster.webp"],
+    ["foodisgoodif","10hr","Nutrizione ormonale","https://kelevraweb.github.io/profitos-vsl/img/community/bonfigli-avatar.webp","https://kelevraweb.github.io/profitos-vsl/img/community/bonfigli.mp4","https://kelevraweb.github.io/profitos-vsl/img/community/bonfigli-poster.webp"]
   ];
+  var via = function (x, dir) { return /^https?:/.test(x) ? x : FR + dir + x; };
   var carta = function (s) {
     return '<article class="storia">' +
-      '<video src="' + FR + "assets/" + s[4] + '" poster="' + FR + "images/" + s[5] +
+      '<video src="' + via(s[4], "assets/") + '" poster="' + via(s[5], "images/") +
       '" muted loop playsinline preload="none"></video>' +
-      '<div class="capo"><img src="' + FR + "images/" + s[3] + '" alt="">' +
+      '<div class="capo"><img src="' + via(s[3], "images/") + '" alt="">' +
       '<span class="chi"><span>' + s[0] + '</span><i class="spunta">✓</i></span>' +
       '<span class="ora">' + s[1] + "</span></div>" +
       '<div class="piede"><a href="https://www.instagram.com/' + s[0] +
