@@ -535,26 +535,110 @@
 
 .pos .filo p + p{margin-top:18px}
 
-/* lo scudo in 3D: gira piano, una faccia per strato */
+/* lo scudo in 3D: ha spessore, gira come un pianeta sull'asse inclinato, col mouse sopra segue il puntatore */
 .pos .scudo3d{position:relative;perspective:1100px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 0 0}
 .pos .scudo3d .asse{transform:rotateX(14deg) rotateZ(-8deg);transform-style:preserve-3d}
-.pos .scudo3d .corpo{position:relative;width:300px;height:330px;transform-style:preserve-3d;animation:pos-scudo-gira 16s linear infinite}
+.pos .scudo3d .corpo{position:relative;width:300px;height:330px;transform-style:preserve-3d;animation:pos-scudo-gira 16s linear infinite;transition:transform .15s linear}
 @keyframes pos-scudo-gira{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
-.pos .scudo3d .faccia{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 34px 0}
-.pos .scudo3d .faccia.retro{transform:rotateY(180deg)}
+.pos .scudo3d.manuale .corpo{animation:none}
+.pos .scudo3d .strato-3d{position:absolute;inset:0;transform:translateZ(calc(var(--z) * 1px))}
+.pos .scudo3d .strato-3d svg{width:100%;height:100%;display:block}
+.pos .scudo3d .strato-3d path{fill:#7a3300;stroke:#a84a08;stroke-width:1}
+.pos .scudo3d .faccia{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:56px 44px 0;transform:translateZ(11px)}
+.pos .scudo3d .faccia.retro{transform:rotateY(180deg) translateZ(11px)}
 .pos .scudo3d .faccia svg{position:absolute;inset:0;width:100%;height:100%}
 .pos .scudo3d .faccia svg path{fill:url(#pos-scudo-g);stroke:var(--acc);stroke-width:2;filter:drop-shadow(0 0 18px rgba(255,107,0,.45))}
-.pos .scudo3d .faccia.retro svg path{fill:rgba(255,107,0,.16)}
-.pos .scudo3d .faccia .et{position:relative;margin:0 0 10px;font-size:11px}
-.pos .scudo3d .faccia .titolone{position:relative;margin:0;color:#fff;font-size:30px;line-height:32px;font-weight:800;letter-spacing:-1px}
-.pos .scudo3d .faccia .sotto{position:relative;margin:12px 0 0;color:var(--txt);font-size:14px;line-height:21px;max-width:200px}
+.pos .scudo3d .faccia.retro svg path{fill:url(#pos-scudo-g2)}
+.pos .scudo3d .faccia p{position:relative;margin:0}
+.pos .scudo3d .faccia .num{font-size:54px;line-height:1;font-weight:800;letter-spacing:-2px;color:rgba(255,107,0,.5)}
+.pos .scudo3d .faccia .et{margin:8px 0 10px;font-size:11px}
+.pos .scudo3d .faccia .titolone{color:#fff;font-size:27px;line-height:29px;font-weight:800;letter-spacing:-1px;max-width:200px}
+.pos .scudo3d .faccia .sotto{margin-top:10px;color:var(--txt);font-size:13.5px;line-height:19px;max-width:180px}
 .pos .scudo3d .didascalia{margin-top:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.45)}
-.pos .scudo3d:hover .corpo{animation-play-state:paused}
+/* il percorso: la cometa. Nove novae nel cielo, tu sei la cometa che vola da una all'altra scorrendo */
+.pos #pos-percorso{padding-bottom:0}
+.pos .mp-viaggio{position:relative;height:calc(9 * 85vh);margin-top:24px}
+.pos .mp-palco{position:sticky;top:0;height:100vh;overflow:hidden;background:#070504}
+.pos .mp-nebulosa{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.9;will-change:transform;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pos .mp-palco canvas,.pos .mp-novae{position:absolute;inset:0;width:100%;height:100%}
+.pos .mp-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,5,4,.92) 0%,rgba(7,5,4,.72) 30%,rgba(7,5,4,.15) 52%,rgba(7,5,4,0) 70%),linear-gradient(180deg,rgba(7,5,4,.6),rgba(7,5,4,0) 18%,rgba(7,5,4,0) 80%,rgba(7,5,4,.85))}
+.pos .mp-fasci{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.pos .mp-fasci i{position:absolute;top:-30%;height:160%;width:22%;transform:rotate(18deg);background:linear-gradient(90deg,rgba(255,150,80,0),rgba(255,150,80,.07) 45%,rgba(255,150,80,0));filter:blur(14px);animation:pos-fascio 14s ease-in-out infinite alternate}
+.pos .mp-fasci i:nth-child(1){left:38%}.pos .mp-fasci i:nth-child(2){left:58%;width:14%;animation-duration:19s;animation-delay:-6s}.pos .mp-fasci i:nth-child(3){left:76%;width:26%;animation-duration:23s;animation-delay:-11s}
+@keyframes pos-fascio{from{transform:rotate(18deg) translateX(-6%);opacity:.6}to{transform:rotate(18deg) translateX(8%);opacity:1}}
+.pos .mp-nova{transform-box:fill-box;transform-origin:center}
+.pos .mp-nova .alone{animation:pos-mp-respiro 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pos-mp-respiro{0%,100%{transform:scale(.82);opacity:.75}50%{transform:scale(1.28);opacity:1}}
+.pos .mp-nova .raggi{animation:pos-mp-ruota 46s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pos-mp-ruota{to{transform:rotate(360deg)}}
+.pos .mp-nova .corpo{transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .6s;transform-box:fill-box;transform-origin:center}
+.pos .mp-nova.futura .corpo{transform:scale(.28);opacity:.45}
+.pos .mp-nova.fatta .corpo{transform:scale(.55);opacity:.9}
+.pos .mp-nova.viva .corpo{transform:scale(1);opacity:1}
+.pos .mp-nova text{fill:rgba(240,232,226,.5);font-size:12px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;transition:fill .4s,opacity .4s;opacity:.7}
+.pos .mp-nova.viva text{fill:#fff;opacity:1}.pos .mp-nova.fatta text{fill:rgba(255,200,150,.85);opacity:1}
+.pos .mp-cometa{transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 14px rgba(255,200,150,.9)) drop-shadow(0 0 40px rgba(255,107,0,.7))}
+.pos .mp-cometa .raggi{animation:pos-mp-ruota 9s linear infinite;transform-box:fill-box;transform-origin:center}
+.pos .mp-cometa .alone{animation:pos-mp-respiro 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.pos .mp-onda{fill:none;stroke:rgba(255,190,130,.85);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}
+.pos .mp-onda.via{animation:pos-mp-onda 1.1s ease-out forwards}
+@keyframes pos-mp-onda{0%{opacity:.9;transform:scale(.2)}100%{opacity:0;transform:scale(1.6)}}
+.pos .mp-scheda{position:absolute;left:max(24px,calc((100vw - 1136px)/2 + 24px));top:50%;transform:translateY(-50%);width:430px;padding:30px 32px;border-radius:24px;
+  background:linear-gradient(160deg,rgba(20,13,9,.72),rgba(12,9,8,.55));border:1px solid rgba(255,107,0,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.pos .mp-scheda .quando{font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);margin:0}
+.pos .mp-scheda .n{font-size:58px;font-weight:800;letter-spacing:-3px;line-height:1;color:rgba(255,107,0,.35);margin:6px 0 0}
+.pos .mp-scheda h3{color:#fff;font-size:30px;letter-spacing:-1px;line-height:1.05;margin:6px 0 18px}
+.pos .mp-scheda dl{margin:0;display:grid;gap:11px}
+.pos .mp-scheda dt{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pos .mp-scheda dd{margin:3px 0 0;color:var(--txt);font-size:15px;line-height:23px}.pos .mp-scheda dd b{color:#fff}
+.pos .mp-scheda .voce{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
+.pos .mp-scheda.dentro .voce{opacity:1;transform:none}
+.pos .mp-scheda.dentro .voce:nth-child(2){transition-delay:.08s}.pos .mp-scheda.dentro .voce:nth-child(3){transition-delay:.16s}.pos .mp-scheda.dentro .voce:nth-child(4){transition-delay:.24s}
+.pos .mp-binario{position:absolute;left:max(24px,calc((100vw - 1136px)/2 + 24px));right:max(24px,calc((100vw - 1136px)/2 + 24px));bottom:34px;display:flex;gap:6px}
+.pos .mp-binario b{flex:1;height:3px;border-radius:3px;background:rgba(255,107,0,.16);cursor:pointer;position:relative;transition:background .3s}
+.pos .mp-binario b.fatta{background:rgba(255,107,0,.55)}.pos .mp-binario b.viva{background:var(--acc);box-shadow:0 0 12px rgba(255,107,0,.7)}
+.pos .mp-binario b span{position:absolute;left:0;top:-18px;font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(240,232,226,.45);white-space:nowrap;opacity:0;transition:opacity .3s}
+.pos .mp-binario b.viva span{opacity:1;color:#fff}
+.pos .mp-suggerimento{position:absolute;right:max(24px,calc((100vw - 1136px)/2 + 24px));bottom:52px;margin:0;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.4)}
+@media (max-width:900px){
+  .pos .mp-scheda{left:16px;right:16px;width:auto;top:auto;bottom:70px;transform:none;padding:20px}
+  .pos .mp-scheda h3{font-size:22px;margin-bottom:10px}.pos .mp-scheda .n{font-size:38px}.pos .mp-scheda dd{font-size:13.5px;line-height:20px}
+  .pos .mp-binario{left:16px;right:16px;bottom:26px}.pos .mp-suggerimento{display:none}
+  .pos .mp-velo{background:linear-gradient(180deg,rgba(7,5,4,.5),rgba(7,5,4,0) 20%,rgba(7,5,4,.2) 50%,rgba(7,5,4,.92) 75%)}
+}
+@media (prefers-reduced-motion:reduce){.pos .mp-nova .alone,.pos .mp-nova .raggi,.pos .mp-cometa .raggi,.pos .mp-cometa .alone,.pos .mp-fasci i{animation:none}}
 
-/* "Cosa fa? Ci pensa." grande in testa alla riga, il testo continua di seguito */
-.pos .grido{margin-top:32px}
-.pos .grido .big{font-family:var(--black);font-weight:900;font-size:clamp(30px,3.2vw,44px);line-height:1;letter-spacing:-1.8px;color:#fff;white-space:nowrap;margin-right:10px;vertical-align:-2px}
-.pos .grido .big em{font-style:normal;color:var(--acc)}
+/* dimmi il tuo problema: ricerca nel nostro catalogo di problemi → strumento → delivery */
+.pos .cerca{margin-top:36px;border:1px solid rgba(255,107,0,.3);border-radius:24px;padding:34px 36px;
+  background:radial-gradient(120% 90% at 100% 0%,rgba(255,107,0,.14),rgba(255,107,0,0) 55%),linear-gradient(160deg,rgba(30,20,13,.96),rgba(12,9,8,.96))}
+.pos .cerca h3{margin:0;color:#fff;font-size:clamp(22px,2.4vw,30px);line-height:1.15;letter-spacing:-.6px;max-width:760px}
+.pos .cerca .campo{display:flex;gap:10px;margin-top:20px}
+.pos .cerca input{flex:1;min-width:0;height:54px;padding:0 20px;border-radius:14px;border:1px solid rgba(255,107,0,.35);background:rgba(12,9,8,.7);color:#fff;font:inherit;font-size:16px;outline:none;transition:border-color .2s,box-shadow .2s}
+.pos .cerca input::placeholder{color:rgba(240,232,226,.4)}
+.pos .cerca input:focus{border-color:var(--acc);box-shadow:0 0 0 4px rgba(255,107,0,.15)}
+.pos .cerca button{height:54px;padding:0 22px;border-radius:14px;border:0;background:var(--acc);color:#0C0908;font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.pos .cerca .chip{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pos .cerca .chip button{height:auto;padding:8px 13px;border-radius:999px;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.28);color:var(--txt);font-size:13px;font-weight:600}
+.pos .cerca .chip button:hover{background:rgba(255,107,0,.2);color:#fff}
+.pos .cerca .risposta{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,107,0,.2);animation:pos-cerca-in .5s cubic-bezier(.16,1,.3,1)}
+@keyframes pos-cerca-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pos .cerca .risposta .et{color:#fff;font-size:15px;letter-spacing:0;text-transform:none;font-weight:700;margin-bottom:16px}
+.pos .cerca .tre{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:14px}
+.pos .cerca .tre>div{border:1px solid var(--bor);border-radius:16px;padding:18px 20px;background:rgba(12,9,8,.55)}
+.pos .cerca .tre>div.noi{border-color:rgba(255,107,0,.45);background:rgba(255,107,0,.08)}
+.pos .cerca .lab{margin:0 0 8px;font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.pos .cerca .noi .lab{color:var(--acc)}
+.pos .cerca .lab i{font-style:normal;color:#fff;letter-spacing:0;text-transform:none;font-size:12px;margin-left:6px;padding:2px 8px;border-radius:999px;background:rgba(255,107,0,.2)}
+.pos .cerca .tre p:not(.lab){margin:0;color:var(--txt);font-size:14.5px;line-height:22px}
+.pos .cerca .tre .noi p:not(.lab){color:#fff}
+.pos .cerca .altro{margin:16px 0 0;font-size:13px;color:var(--dim)}
+.pos .cerca .altro a{color:var(--acc);text-decoration:none;font-weight:700}
+@media (max-width:820px){.pos .cerca{padding:24px 20px}.pos .cerca .campo{flex-direction:column}.pos .cerca .tre{grid-template-columns:1fr}}
+
+/* le foto che scorrono (facce sotto il video, storie della community, casi): velate d'arancio, a colori al passaggio */
+.pos .pista img,.pos .rullo img,.pos .griglia img{filter:sepia(1) saturate(2.6) hue-rotate(-16deg) brightness(.82) contrast(1.05);transition:filter .45s ease}
+.pos .pista img:hover,.pos .rullo img:hover,.pos .griglia img:hover,.pos .caso:hover img{filter:none}
+
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -1072,53 +1156,47 @@
       <div class="dopo"><i>Con profitOS</i><b class="cifrona">8<span>h</span></b><span>a correggere, girare e fare le call che contano</span></div>
     </div>
   </div>
-</div></div>
-
-<div class="sez" id="pos-percorso"><div class="wide">
-  <p class="et">Il percorso</p>
-  <h2>Le cose pratiche, quelle che di solito si scoprono dopo.</h2>
-  <p class="intro">Il percorso dura <b>tre o sei mesi secondo da dove parti</b>. Non sono pacchetti
-  diversi: cambia quanto ci sono io. Quello che segue è l'ordine, e non si salta.</p>
-  <div class="fasi tappe">
-    <div class="fase">
-      <div class="testa"><p class="ordinale">01</p><p class="quale">I primi sette giorni</p></div>
-      <h3>L'offerta, e nient'altro</h3>
-      <p class="quando">Uguali per tutti</p>
-      <p>Si definisce l'offerta e la si valida insieme in call: è l'unico punto del percorso dove
-      sbagliare costa mesi. Prima di averla chiusa <b>non si tocca né un contenuto né un funnel</b>,
-      perché se l'offerta è sbagliata tutto il resto amplifica un errore.</p>
-      <ul><li>Offerta scritta, con i punteggi</li><li>Posizionamento e promessa unica</li><li>Validata insieme prima di partire</li></ul>
-    </div>
-    <div class="fase">
-      <div class="testa"><p class="ordinale">02</p><p class="quale">Poi</p></div>
-      <h3>Il sistema si installa</h3>
-      <p class="quando">Le tue due o tre ore al giorno</p>
-      <p>Contenuti, conversazioni e funnel entrano in funzione uno dopo l'altro. A te restano
-      <b>due o tre ore al giorno</b>: se non le hai, te lo dico adesso, lascia perdere. In quelle
-      ore fai le uniche tre cose che non si possono delegare.</p>
-      <ul><li>Ci metti la faccia</li><li>Vendi, finché non hai un team</li><li>Giudichi quello che esce</li></ul>
-    </div>
-    <div class="fase">
-      <div class="testa"><p class="ordinale">03</p><p class="quale">A tre o sei mesi</p></div>
-      <h3>Il tempo che serve davvero</h3>
-      <p class="quando">E se non basta, si continua</p>
-      <p>Gli altri ti danno tre o sei mesi perché oltre gli costa margine. Per me è il tempo tecnico
-      che serve, non una scadenza: <b>se alla fine non sei arrivato a nulla, il percorso non
-      finisce.</b> Se invece cerchi clienti la settimana prossima, non possiamo aiutarti.</p>
-      <ul><li>Volumi più grandi, stesso carico</li><li>Semmai togli figure, non le aggiungi</li><li>Non aumenti i costi: aumenti il margine</li></ul>
+  <div class="cerca" id="pos-cerca">
+    <p class="et">Dimmi il tuo problema</p>
+    <h3>Scrivilo qui, e ti dico come lo risolviamo noi rispetto al tradizionale.</h3>
+    <div class="campo"><input type="text" id="pos-cerca-input" placeholder="Es. i messaggi si perdono, non so cosa pubblicare, in call non chiudo…" autocomplete="off"><button type="button" id="pos-cerca-vai">Dimmi →</button></div>
+    <div class="chip" id="pos-cerca-chip"></div>
+    <div class="risposta" id="pos-cerca-risposta" hidden>
+      <p class="et"><span id="pos-cerca-titolo"></span></p>
+      <div class="tre">
+        <div><p class="lab">Come fanno tutti</p><p id="pos-cerca-trad"></p></div>
+        <div class="noi"><p class="lab">Come lo facciamo noi <i id="pos-cerca-tool"></i></p><p id="pos-cerca-noi"></p></div>
+        <div><p class="lab">Come lo eroghiamo</p><p id="pos-cerca-delivery"></p></div>
+      </div>
+      <p class="altro" id="pos-cerca-altro"></p>
     </div>
   </div>
 </div></div>
 
-<div class="sez" id="pos-piattaforma"><div class="wide">
-  <p class="et">Dentro la piattaforma</p>
-  <h2>Nove pezzi, uno dietro l'altro.</h2>
-  <p class="intro">Tutto procede per sequenze, con una <b>roadmap su misura</b> fin dal giorno
-  dell'onboarding, più le live settimanali con me, il supporto sulle piattaforme e sull'offerta, e
-  la community. Così eviti la paralisi da corsi che uccide la maggior parte dei programmi.</p>
-  <div class="cielo">
-    <div id="pos-cielo-largo"></div><div id="pos-cielo-stretto"></div>
-    <p class="didascalia">Nove livelli, uno dietro l'altro. Tocca una stella per isolarla.</p>
+<div class="sez" id="pos-percorso"><div class="wide">
+  <p class="et">Il percorso</p>
+  <h2>Da quando entri a quando il giro riparte.</h2>
+  <p class="intro">Dura <b>tre o sei mesi secondo da dove parti</b>: cambia quanto ci sono io, non il
+  percorso. Nove tappe, in quest'ordine, e <u>non si salta</u>. Scorri: sei tu la cometa.</p>
+</div>
+<div class="mp-viaggio" id="pos-viaggio">
+  <div class="mp-palco">
+    <img class="mp-nebulosa" src="https://kelevraweb.github.io/profitos-vsl/img/spazio.jpg" alt="" loading="lazy">
+    <div class="mp-fasci"><i></i><i></i><i></i></div>
+    <canvas class="mp-stelle"></canvas><canvas class="mp-fascio"></canvas>
+    <svg class="mp-novae" id="pos-novae" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"></svg>
+    <div class="mp-velo"></div>
+    <div class="mp-scheda" id="pos-scheda">
+      <p class="quando"></p><p class="n"></p><h3></h3>
+      <dl>
+        <div class="voce"><dt>Cosa succede</dt><dd class="d-s"></dd></div>
+        <div class="voce"><dt>Cosa ottieni</dt><dd class="d-o"></dd></div>
+        <div class="voce"><dt>Che problema risolve</dt><dd class="d-p"></dd></div>
+        <div class="voce"><dt>Dove arrivi</dt><dd class="d-a"></dd></div>
+      </dl>
+    </div>
+    <div class="mp-binario" id="pos-binario"></div>
+    <p class="mp-suggerimento">scorri per viaggiare</p>
   </div>
 </div></div>
 
@@ -1310,16 +1388,26 @@
       che costi a me</i>.</p>
     </div>
   </div>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pos-scudo-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6B00" stop-opacity=".26"/><stop offset="1" stop-color="#FF6B00" stop-opacity=".04"/></linearGradient></defs></svg>
-  <div class="scudo3d" aria-label="Due strati di garanzia">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pos-scudo-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1608"/><stop offset="1" stop-color="#150d08"/></linearGradient><linearGradient id="pos-scudo-g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1c08"/><stop offset="1" stop-color="#1a0f08"/></linearGradient></defs></svg>
+  <div class="scudo3d" id="pos-scudo" aria-label="Due strati di garanzia">
     <div class="asse"><div class="corpo">
+      <div class="strato-3d" style="--z:-9"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:-7"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:-5"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:-3"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:-1"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:1"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:3"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:5"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:7"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
+      <div class="strato-3d" style="--z:9"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
       <div class="faccia fronte">
         <svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg>
-        <p class="et">01 · Primi giorni</p><p class="titolone">Ti restituiamo tutto</p><p class="sotto">Se l'offerta non ti torna, una mail e sei fuori</p>
+        <p class="num">01</p><p class="et">Primi giorni</p><p class="titolone">Ti restituiamo tutto</p><p class="sotto">Se l'offerta non ti torna: una mail, e sei fuori.</p>
       </div>
       <div class="faccia retro">
         <svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg>
-        <p class="et">02 · A fine mesi</p><p class="titolone">Resti dentro</p><p class="sotto">finché non ti sei ripagato l'investimento</p>
+        <p class="num">02</p><p class="et">A fine mesi</p><p class="titolone">Resti dentro</p><p class="sotto">finché non ti sei ripagato l'investimento.</p>
       </div>
     </div></div>
     <p class="didascalia">Il rischio sta da questa parte del tavolo.</p>
@@ -1527,12 +1615,12 @@
     ["Sono già avanzato, questi strumenti ce li ho anch'io.","Bene: anch'io. E li uso lo stesso, tutti i giorni. Non è arroganza: <b>non sei più avanzato di me</b>, quindi ne hai comunque bisogno. E fidati, <b>sono migliori dei tuoi</b>: sono costruiti sul tuo posizionamento e si parlano fra loro. I tuoi no. Altrimenti sarei un deficiente: ho speso <b>decine di migliaia di euro di sviluppo e mesi di lavoro</b>. Se bastasse ManyChat o qualche prompt per risolvere il problema, li avrei usati anch'io."],
     ["Per chi è profitOS?","Per chi vende già e si è incastrato nell'operativo: personal brand, coach, consulenti e agenzie con un'offerta che regge e clienti che pagano. Servono tre cose: <b>qualcosa che già gira</b>, competenze confermate, e la disponibilità a mettere per iscritto come lavori. <b>Se parti da zero non è il posto giusto</b>: il sistema amplifica quello che sai fare, non inventa una professione."],
     ["Quanto dura il percorso?","<b>Tre o sei mesi, secondo da dove parti.</b> Non sono pacchetti diversi: cambia la mia presenza e il nostro impegno. I primi sette giorni però sono uguali per tutti: si definisce l'offerta e la si valida insieme, e prima di quello non si tocca né un contenuto né un funnel. Se l'offerta è sbagliata, tutto il resto amplifica un errore."],
-    ["Quelle non sono le solite scadenze che ti mettono i corsi?","No, ed è il contrario. Loro ti danno tre o sei mesi perché oltre gli costa margine. Io ti dico che <b>quello è il tempo che serve davvero</b>: sono i tempi tecnici di chi ci è passato. E infatti se a tre o sei mesi non sei arrivato a nulla, il percorso non finisce: si continua."],
+    ["Ma non sono le solite scadenze che usano tutti?","No, ed è il contrario. Loro ti danno tre o sei mesi perché oltre gli costa margine. Io ti dico che <b>quello è il tempo che serve davvero</b>: sono i tempi tecnici di chi ci è passato. E infatti se a tre o sei mesi non sei arrivato a nulla, il percorso non finisce: si continua."],
     ["Io cosa devo fare?","<b>Due o tre ore al giorno</b>, e se non le hai lascia perdere. In quelle ore fai le uniche tre cose che non si possono delegare: <b>ci metti la faccia</b> nei contenuti, <b>vendi</b> all'inizio finché non hai un team, e <b>giudichi</b> quello che il sistema produce. Se speravi che ci fosse un modo per non fare nemmeno queste, non esiste, né da noi né da nessun altro."],
     ["C'è una garanzia?","<b>Sì, e te la leggo qui invece che in chiamata</b>, perché una garanzia che ti spiegano in call non è una garanzia: è un motivo per farti fare quella call.<br><br><b>Primo strato.</b> Entro i primi giorni hai in mano la tua offerta smontata e rimessa in piedi, nera su bianco, senza averla scritta tu. Se dopo averla vista insieme non ti convince, ci scrivi una mail e ti restituiamo tutti i soldi. Non ti chiedo nulla e non ti metto al telefono con qualcuno che prova a farti cambiare idea.<br><br><b>Secondo strato.</b> Se hai messo le tue ore, hai fatto quello che c'era da fare e alla fine dei mesi non ti sei almeno ripagato l'investimento, <b>resti dentro finché non te lo sei ripagato</b>. Il rischio deve stare da questa parte del tavolo: se il sistema funziona non mi costa niente, se non funziona è giusto che costi a me."],
     ["Servono competenze tecniche?","No. Non devi diventare bravo con le ads o con i CRM, e non è il tuo mestiere costruirti un sistema. Il lavoro nostro è consegnarti i pezzi già montati."],
     ["Ho già un team: devo aggiungere persone?","Al contrario, di solito se ne tolgono. Quello che pagavi lo fa il sistema, quindi per crescere non aumenti i costi: aumenti il margine. E se un giorno il business chiude solo quando c'è uno bravo a vendere, non hai un sistema: hai una dipendenza."],
-    ["La mia azienda vuole un ecosistema suo, non il vostro.","Si può fare: se sei già strutturato te lo costruiamo su misura. Prenota comunque la chiamata e <b>segnalalo quando ti chiediamo di cosa hai bisogno</b>."],
+    ["La mia azienda vuole un ecosistema suo.","Si può fare: se sei già strutturato te lo costruiamo su misura. Prenota comunque la chiamata e <b>segnalalo quando ti chiediamo di cosa hai bisogno</b>."],
     ["Quanto costa?","Il prezzo te lo diciamo in chiamata, e non è una furbizia per farti prenotare: a quel punto sai già cosa facciamo e come lavoriamo, perché in questa pagina c&rsquo;è tutto. Resta solo da capire quanto investire."]
   ];  $("pos-faq").innerHTML = FAQ.map(function (f, i) {
     return "<details" + (i ? "" : " open") + "><summary>" + f[0] + "</summary><p>" + f[1] + "</p></details>";
@@ -1588,51 +1676,6 @@
   $("pos-eco-largo").innerHTML = ecosistema(1200, 600, false);
   $("pos-eco-stretto").innerHTML = ecosistema(500, 95 + (NODI.length - 1) * 178 + 110, true);
 
-  /* --- costellazione dei 9 livelli, due disposizioni --- */
-  var LIV = [["01","Onboarding","i primi 7 giorni",15],["02","Offerta","scoring e brand book",9],
-    ["03","Contenuti","piani, gobbo, montaggio",10],["04","Setty","DM, follow-up, calendario",8],
-    ["05","Funnel Builder","dieci funnel, pagine online",11],["06","SalesCoach AI","in live sulle call",13],
-    ["07","Nova","l'assistente, 24 ore su 24",10],["08","Live settimanali","con Andrea",9],
-    ["09","Community","gli altri che stanno costruendo",13]];
-  var LARGO = [[105,395],[255,185],[400,300],[535,130],[630,385],[775,225],[890,415],[1020,200],[1125,330]];
-  var STRETTO = [[140,70],[330,175],[165,290],[345,400],[150,510],[340,615],[170,725],[345,830],[190,940]];
-
-  function cielo(pos, w, h, corpo, dida, id) {
-    var pol = "", i, a, x, y;
-    for (i = 0; i < Math.round(w * h / 7000); i++) {
-      a = i * 137.508 * Math.PI / 180;
-      x = (w * .03 + (Math.sin(a) * .5 + .5) * w * .94).toFixed(2);
-      y = (h * .03 + (Math.cos(a * 1.7) * .5 + .5) * h * .94).toFixed(2);
-      pol += '<circle cx="' + x + '" cy="' + y + '" r="' + (.6 + i % 5 * .25).toFixed(2) +
-        '" fill="#F0E8E2" opacity="' + (.12 + i % 7 * .045).toFixed(3) + '"/>';
-    }
-    var rotta = pos.map(function (p, k) { return (k ? "L" : "M") + p[0] + " " + p[1]; }).join("");
-    var st = LIV.map(function (s, k) {
-      var px = pos[k][0], py = pos[k][1], r = s[3];
-      return '<g class="stella" style="cursor:pointer;transition:opacity .25s">' +
-        '<circle cx="' + px + '" cy="' + py + '" r="' + r * 4.5 + '" fill="url(#pos-alone-' + id + ')"/>' +
-        '<circle cx="' + px + '" cy="' + py + '" r="' + r * .42 + '" fill="#FFF4EC"/>' +
-        '<path fill="var(--acc)" d="M' + px + " " + (py - r) + "L" + (px + r * .22) + " " + (py - r * .22) +
-        "L" + (px + r) + " " + py + "L" + (px + r * .22) + " " + (py + r * .22) + "L" + px + " " + (py + r) +
-        "L" + (px - r * .22) + " " + (py + r * .22) + "L" + (px - r) + " " + py + "L" + (px - r * .22) + " " + (py - r * .22) + 'z"/>' +
-        '<text x="' + px + '" y="' + (py + r * 2.2 + corpo) + '" text-anchor="middle" fill="#fff" font-size="' + corpo + '" font-weight="700">' + s[1] + "</text>" +
-        '<text x="' + px + '" y="' + (py + r * 2.2 + corpo + dida + 5) + '" text-anchor="middle" fill="var(--acc)" font-size="' + dida +
-        '" font-weight="700" letter-spacing="1.4">' + s[0] + (s[2] ? " · " + s[2].toUpperCase() : "") + "</text></g>";
-    }).join("");
-    return '<svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="I 9 livelli come costellazione">' +
-      '<defs><radialGradient id="pos-alone-' + id + '">' +
-      '<stop offset="0%" stop-color="var(--acc)" stop-opacity=".55"/>' +
-      '<stop offset="55%" stop-color="var(--acc)" stop-opacity=".12"/>' +
-      '<stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient>' +
-      '<radialGradient id="pos-nebbia-' + id + '" cx="18%" cy="80%">' +
-      '<stop offset="0%" stop-color="var(--acc)" stop-opacity=".16"/>' +
-      '<stop offset="100%" stop-color="var(--acc)" stop-opacity="0"/></radialGradient></defs>' +
-      '<rect width="' + w + '" height="' + h + '" fill="url(#pos-nebbia-' + id + ')"/>' + pol +
-      '<path d="' + rotta + '" fill="none" stroke="var(--acc)" stroke-opacity=".28" stroke-width="1.2" stroke-dasharray="4 7"/>' +
-      st + "</svg>";
-  }
-  $("pos-cielo-largo").innerHTML = cielo(LARGO, 1200, 520, 15, 11, "l");
-  $("pos-cielo-stretto").innerHTML = cielo(STRETTO, 500, 1030, 17, 12, "s");
 
   R.querySelectorAll(".cielo svg").forEach(function (svg) {
     var g = svg.querySelectorAll(".stella");
@@ -1757,7 +1800,7 @@
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
             ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema," +
-            ".grido, .ps-box, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
+            ".cerca, .grido, .ps-box, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
@@ -1903,6 +1946,205 @@
     });
     v.addEventListener("mouseleave", function () { v.classList.remove("vivo"); setTimeout(function () { if (!v.classList.contains("vivo")) vid.pause(); }, 450); });
   });
+
+  var $ = function (id) { return document.getElementById(id); };
+  /* dimmi il tuo problema: catalogo dei problemi, ricerca per parole e sinonimi, risposta in tre colonne */
+  var PROBLEMI = [
+    {k:"dm messaggi chat instagram whatsapp rispondere risposte lead persi perdo perso finestra 24 ore follow-up followup follow up setter setting inbox direct", t:"I messaggi si perdono e i lead restano fermi", tool:"Setty",
+     trad:"Un setter pagato poco che risponde quando può, o tu di sera con quaranta chat aperte. La finestra di 24 ore passa, il follow-up te lo dimentichi.",
+     noi:"I DM entrano in un CRM che risponde con le tue regole, segue e prenota. Ogni contenuto ha il suo lead magnet agganciato e consegnato in automatico.",
+     del:"Nella settimana 3 colleghiamo Setty ai tuoi profili, scriviamo insieme le cinque regole di risposta e i follow-up; da lì non c'e' piu' nessuno in chat."},
+    {k:"contenuti contenuto post reel video stories storie pubblicare pubblico idee idea cosa dire calendario editoriale script gobbo montaggio peddy ogni giorno", t:"Non so cosa pubblicare, e non ogni giorno", tool:"Peddy",
+     trad:"Un'agenzia che ti manda un piano generico, o tu che inventi la sera cosa dire e le stories non le fai.",
+     noi:"Dal tuo posizionamento escono idee dai trend e dai competitor, script e calendario intero. Le stories con lo script sul teleprompter, i post programmati da dentro.",
+     del:"Nelle settimane 2 e 3 Peddy legge la tua carta dell'offerta e produce il primo mese; tu giri, correggi e pubblichi. Poi ogni settimana lo rifacciamo insieme."},
+    {k:"offerta posizionamento prezzo prezzi vendo vendere cosa vendo promessa nicchia target distinguermi differenza uguale a tutti concorrenza competitor brand", t:"La mia offerta non si distingue", tool:"Analisi offerta",
+     trad:"Un corso che ti fa fare il 'positioning' su un template, o un consulente che ti scrive tre righe e se ne va.",
+     noi:"Sei passaggi guidati con i punteggi: nicchia, problema, promessa, prezzo, garanzia. Esce la carta dell'offerta, il brand book e i lead magnet proposti.",
+     del:"Sono i primi sette giorni, uguali per tutti: la validiamo insieme in call prima di toccare un contenuto o un funnel. Se non ti torna, ti restituiamo tutto."},
+    {k:"funnel landing vsl pagina pagine copy sito webinar lead magnet inserzioni ads pubblicità campagne dati iterare", t:"Mi serve un funnel e non so da dove partire", tool:"Funnel Builder",
+     trad:"Un'agenzia che ti fa un pezzo (la landing) e il resto resta a te, o un template che parla come tutti gli altri.",
+     noi:"VSL, copy e landing prodotti dalla carta dell'offerta: la prima versione la fa il sistema, tu correggi. Dieci funnel, pagine online, dati da guardare.",
+     del:"Settimana 4: costruiamo il primo funnel insieme in live, lo mettiamo online e decidiamo quali dati guardare. Le iterazioni le fai tu, con il suggeritore."},
+    {k:"call chiamata chiudere chiusura closer vendita vendere obiezioni convincere trattativa ci penso prezzo alto", t:"In call non chiudo, o devo convincere", tool:"SalesCoach AI",
+     trad:"O sei bravo tu, o paghi un closer al 10% che sul tuo fatturato non viene. E arrivano in call da convincere.",
+     noi:"Role play con clienti simulati, il plugin live in call che ti dice cosa non hai chiesto, l'analisi delle chiamate vere. E arrivano gia' decisi, perche' il lavoro e' stato fatto prima.",
+     del:"Dal mese 2: prima i role play, poi il plugin live sulle tue call vere, e ogni settimana rivediamo insieme una chiamata."},
+    {k:"tempo ore giornata non ho tempo sempre a lavorare stanco burnout vita famiglia libertà orari", t:"Non ho il tempo per fare tutto", tool:"Delega inversa",
+     trad:"Ti insegnano a fare tutto tu (e non hai le ore), o deleghi la testa a un'agenzia e ti tieni la fatica.",
+     noi:"La prima versione di tutto la produce il sistema; a te restano le tre cose che non si delegano: la faccia, vendere, giudicare. Due o tre ore al giorno.",
+     del:"La roadmap e' costruita sulle tue ore reali fin dall'onboarding: se non hai due o tre ore al giorno te lo diciamo prima, e non parti."},
+    {k:"team collaboratori persone assumere gestire dipendenti margine costi delegare freelance", t:"Ho gia' un team ma il margine se ne va", tool:"Ecosistema",
+     trad:"Aggiungere persone pagate poco che lavorano male, e passare le giornate a rincorrerle.",
+     noi:"Non aggiungi figure: semmai le togli. Gli strumenti fanno l'operativo e il tuo team corregge; volumi piu' grandi, stesso carico.",
+     del:"In onboarding mappiamo chi fa cosa oggi e cosa passa al sistema; il team entra nelle live con te e nella community."},
+    {k:"fiducia sconosciuto non mi conoscono credibilità prove testimonianze casi studio autorevolezza riferimento", t:"Non si fidano: non mi conoscono", tool:"Metodo",
+     trad:"Spingere il funnel su gente che non ti ha mai visto, e spendere in pubblicita' per convincere chi non si fida.",
+     noi:"Il giro: contenuti ogni giorno, prove, ripetizione; il funnel arriva dopo, quando ti hanno visto trenta volte. E la delivery torna dentro come caso studio.",
+     del:"E' l'ordine del percorso: offerta, poi contenuti e lead magnet, poi conversazioni, poi funnel. Non si salta, perche' saltare e' esattamente quello che fanno tutti."},
+    {k:"bloccato blocco notte domanda aiuto supporto risposte da solo solo nessuno assistente nova", t:"Mi blocco e non ho nessuno a cui chiedere", tool:"Nova",
+     trad:"Un gruppo Facebook dove rispondono dopo tre giorni, o una call a settimana in cui non c'e' tempo per il tuo caso.",
+     noi:"Nova tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di lavoro: risponde sul tuo caso, 24 ore su 24.",
+     del:"Dal giorno 0, piu' le live settimanali con Andrea e il supporto sulle piattaforme. Non sei mai fermo."},
+    {k:"clienti pochi clienti nuovi acquisire acquisizione crescere fatturato scalare tetto fermo", t:"Sono fermo allo stesso fatturato", tool:"profitOS",
+     trad:"Fare di piu' delle stesse cose: piu' contenuti, piu' call, piu' ore. Il tetto resta.",
+     noi:"Tutto il giro insieme: offerta, contenuti, setting, funnel, vendita, e la delivery che torna dentro come caso studio. Piu' volume, stesso carico.",
+     del:"Tre o sei mesi secondo da dove parti; se alla fine non ti sei ripagato, resti dentro finche' non lo fai."}
+  ];
+  var SUGG = ["I messaggi si perdono","Non so cosa pubblicare","In call non chiudo","Non ho tempo","La mia offerta non si distingue","Mi serve un funnel","Sono fermo allo stesso fatturato"];
+  (function () {
+    var box = document.getElementById("pos-cerca"); if (!box) return;
+    var inp = $("pos-cerca-input"), chip = $("pos-cerca-chip"), ris = $("pos-cerca-risposta");
+    function norm(t) { return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, " "); }
+    var STOP = /^(il|lo|la|i|gli|le|un|una|uno|di|da|del|della|dei|degli|delle|e|a|in|con|su|per|tra|fra|non|mi|ti|si|ci|che|come|cosa|ho|hai|ha|sono|sei|e'|al|alla|ai|alle|o|ma|piu|meno|molto|troppo|poco|mio|mia|miei|mie|tuo|tua|io|tu|ne|se|dal|dalla)$/;
+    function cerca(q) {
+      var parole = norm(q).split(/\s+/).filter(function (w) { return w.length > 2 && !STOP.test(w); });
+      var best = null, bs = 0;
+      PROBLEMI.forEach(function (P) {
+        var chiavi = norm(P.k + " " + P.t), sc = 0;
+        parole.forEach(function (w) { var stem = w.slice(0, Math.max(4, w.length - 2)); if (chiavi.indexOf(w) >= 0) sc += 2; else if (chiavi.indexOf(stem) >= 0) sc += 1; });
+        if (sc > bs) { bs = sc; best = P; }
+      });
+      return best;
+    }
+    function mostra(q) {
+      var P = cerca(q) || PROBLEMI[PROBLEMI.length - 1];
+      $("pos-cerca-titolo").textContent = P.t; $("pos-cerca-tool").textContent = P.tool;
+      $("pos-cerca-trad").textContent = P.trad; $("pos-cerca-noi").textContent = P.noi; $("pos-cerca-delivery").textContent = P.del;
+      $("pos-cerca-altro").innerHTML = "Non e' il tuo caso? Scrivilo con parole tue, o <a href=\"#pos-chiusura\">raccontamelo in call</a>.";
+      ris.hidden = false; ris.style.animation = "none"; void ris.offsetWidth; ris.style.animation = "";
+    }
+    SUGG.forEach(function (t) { var b = document.createElement("button"); b.type = "button"; b.textContent = t; b.addEventListener("click", function () { inp.value = t; mostra(t); }); chip.appendChild(b); });
+    $("pos-cerca-vai").addEventListener("click", function () { if (inp.value.trim()) mostra(inp.value); });
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter" && inp.value.trim()) mostra(inp.value); });
+  })();
+
+  /* --- il percorso: la cometa (nove novae, scroll-driven) --- */
+  var TAPPE = [
+  {q:"Giorno 0", t:"Entri, e parti lo stesso giorno", n:"Onboarding", s:"Accessi alla piattaforma, roadmap su misura costruita sul punto da cui parti, prima call fissata.", o:"Sai esattamente cosa fare nei primi sette giorni, e con chi.", p:"La paralisi da corso: mille video e nessun ordine.", a:"Hai un ordine. Non si salta."},
+  {q:"Giorni 1–7", t:"L'offerta, e nient'altro", n:"Offerta", s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca né un contenuto né un funnel.", o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.", p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.", a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
+  {q:"Settimane 2–3", t:"I contenuti escono da soli", n:"Contenuti · Peddy", s:"Dal posizionamento nascono idee, script e calendario. Le stories con lo script sul teleprompter, i post programmati da dentro.", o:"Piani interi in una passata. A te resta girare.", p:"Non sapere cosa dire ogni giorno, e le stories che non fai.", a:"Pubblichi tutti i giorni senza inventare niente."},
+  {q:"Settimana 3", t:"I DM non si perdono più", n:"Setting · Setty", s:"I messaggi entrano in un CRM che risponde, segue e prenota. Un lead magnet agganciato a ogni contenuto, consegnato in automatico.", o:"Follow-up che non dimentichi, calendario che si riempie da solo.", p:"La finestra di 24 ore, i messaggi persi, il setter che se ne sbatte.", a:"Nessuno in chat. Nessun lead fermo."},
+  {q:"Settimana 4", t:"Un funnel che parla come te", n:"Funnel Builder", s:"VSL, copy e landing prodotti dalla carta dell'offerta: la prima versione la fa il sistema, tu correggi.", o:"Dieci funnel, pagine online, dati da guardare.", p:"Pagare un'agenzia per un pezzo solo, e il resto a te.", a:"Un funnel tuo, coerente con tutto il resto."},
+  {q:"Mese 2", t:"Arrivano già decisi", n:"SalesCoach AI", s:"Role play con clienti simulati, plugin live in call, analisi delle chiamate vere.", o:"Il suggeritore che ti dice cosa non hai chiesto. Due call, già decise.", p:"O sei bravo tu, o paghi qualcuno che lo sia.", a:"Chiudi tu, senza closer. Finché non hai un team."},
+  {q:"Sempre", t:"Non sei mai fermo", n:"Nova", s:"L'assistente che tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di lavoro.", o:"Risposte sul tuo caso, 24 ore su 24.", p:"Bloccarsi alle 23 senza nessuno a cui chiedere.", a:"Vai avanti anche quando noi dormiamo."},
+  {q:"Ogni settimana", t:"Correggi con me", n:"Live con Andrea", s:"Live settimanali sul tuo materiale, supporto sulle piattaforme e sull'offerta.", o:"La testa dell'esperto sulla tua prima versione.", p:"Correggere da solo, senza sapere dove guardare.", a:"Non impari facendo: impari correggendo, a un decimo del tempo."},
+  {q:"Mese 3–6", t:"Il giro riparte", n:"Community · Delivery", s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.", o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.", p:"Essere solo, e un tetto che non rompi più.", a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
+];
+/* posizioni nel mondo 1600x900: la rotta sale da sinistra in basso e finisce in alto a destra, lasciando libera la scheda a sinistra */
+var P = [[620,700],[760,560],[820,330],[1000,250],[1080,470],[1240,380],[1380,560],[1440,250],[1560,120]];
+var RAGGI = [[10,74,6],[55,46,4],[95,68,7],[140,42,4.5],[185,70,6],[230,44,4],[275,64,6.5],[320,40,4]];
+
+function costruisci(viaggio){
+  var modo = "cometa";
+  /* il palco e' gia' nell'html */
+  var _ignora = '<div class="palco">'+
+    '<img class="nebulosa" src="img/spazio.jpg" alt="">'+
+    '<div class="fasci"><i></i><i></i><i></i></div>'+
+    '<canvas class="stelle"></canvas><canvas class="fascio"></canvas>'+
+    '<svg class="novae" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"></svg>'+
+    '<div class="velo"></div>'+
+    '<div class="scheda"><p class="quando"></p><p class="n"></p><h3></h3><dl>'+
+    '<div class="voce"><dt>Cosa succede</dt><dd class="d-s"></dd></div><div class="voce"><dt>Cosa ottieni</dt><dd class="d-o"></dd></div>'+
+    '<div class="voce"><dt>Che problema risolve</dt><dd class="d-p"></dd></div><div class="voce"><dt>Dove arrivi</dt><dd class="d-a"></dd></div></dl></div>'+
+    '<div class="binario"></div><p class="suggerimento">scorri per viaggiare</p></div>';
+  var palco = viaggio.querySelector(".mp-palco"), svg = viaggio.querySelector("svg.mp-novae"), cvS = viaggio.querySelector("canvas.mp-stelle"), cvF = viaggio.querySelector("canvas.mp-fascio");
+  var scheda = viaggio.querySelector(".mp-scheda"), binario = viaggio.querySelector(".mp-binario"), neb = viaggio.querySelector(".mp-nebulosa");
+  var NS = "http://www.w3.org/2000/svg";
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  var defs = el("defs",{}); var uid = modo;
+  defs.innerHTML = '<radialGradient id="'+uid+'-alone"><stop offset="0%" stop-color="#fff" stop-opacity=".55"/><stop offset="30%" stop-color="#FF6B00" stop-opacity=".30"/><stop offset="70%" stop-color="#FF6B00" stop-opacity=".08"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="'+uid+'-raggio" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="76"><stop offset="0%" stop-color="#fff" stop-opacity=".8"/><stop offset="35%" stop-color="#FF6B00" stop-opacity=".38"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="'+uid+'-cuore"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="55%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
+    '<filter id="'+uid+'-soffio" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6"/></filter>';
+  svg.appendChild(defs);
+  var novae = P.map(function(p,i){
+    var g = el("g",{"class":"mp-nova futura"});
+    var corpo = el("g",{"class":"corpo",transform:"translate("+p[0]+","+p[1]+")"});
+    corpo.appendChild(el("circle",{"class":"alone",r:72,fill:"url(#"+uid+"-alone)"}));
+    var rg = el("g",{"class":"raggi",fill:"url(#"+uid+"-raggio)",filter:"url(#"+uid+"-soffio)"});
+    RAGGI.forEach(function(r){rg.appendChild(el("path",{d:"M "+(-r[2])+" 0 L 0 "+(-r[1])+" L "+r[2]+" 0 Z",transform:"rotate("+r[0]+")"}))});
+    corpo.appendChild(rg); corpo.appendChild(el("circle",{r:20,fill:"url(#"+uid+"-cuore)"})); corpo.appendChild(el("circle",{r:7,fill:"#fff"}));
+    g.appendChild(corpo);
+    var t = el("text",{x:p[0],y:p[1]+(p[1]>400?-58:66),"text-anchor":"middle"}); t.textContent = "0"+(i+1)+" · "+TAPPE[i].n; g.appendChild(t);
+    svg.appendChild(g); return g;
+  });
+  /* rotta campionata (curva morbida per le stelle) */
+  var ROTTA = []; for (var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2; for(var s=0;s<=40;s++){var u=s/40,iu=1-u; var x=iu*iu*iu*a[0]+3*iu*iu*u*mx+3*iu*u*u*mx+u*u*u*b[0], y=iu*iu*iu*a[1]+3*iu*iu*u*a[1]+3*iu*u*u*b[1]+u*u*u*b[1]; ROTTA.push([x,y])}}
+  var PASSI = 41;
+  /* campo stellare su tre piani + meteore */
+  var W=0,H=0,k=1,ox=0,oy=0, piani=[], meteore=[], mx=0,my=0, tx=0,ty=0;
+  function misura(){W=palco.clientWidth;H=palco.clientHeight;cvS.width=cvF.width=W;cvS.height=cvF.height=H;k=Math.max(W/1600,H/900);ox=(W-1600*k)/2;oy=(H-900*k)/2}
+  for (var pi=0;pi<3;pi++){var arr=[];for(var i=0;i<(pi===0?160:pi===1?90:40);i++)arr.push({x:Math.random()*1600,y:Math.random()*900,r:(pi+1)*0.55+Math.random()*0.9,f:Math.random()*6.28,v:0.6+Math.random()*1.4});piani.push(arr)}
+  var ctxS=cvS.getContext("2d"), ctxF=cvF.getContext("2d"), progresso=0, fino=0, finoPrima=0, ultima=-1, vivo=true;
+  function wx(x){return ox+x*k} function wy(y){return oy+y*k}
+  function disegnaStelle(t){
+    ctxS.clearRect(0,0,W,H); tx+=(mx-tx)*.05; ty+=(my-ty)*.05;
+    piani.forEach(function(arr,pi){var par=(pi+1)*9; arr.forEach(function(s){var al=.35+.55*Math.abs(Math.sin(t/1000*s.v+s.f)); ctxS.fillStyle="rgba(255,244,230,"+al+")"; ctxS.beginPath(); ctxS.arc(wx(s.x)+tx*par,wy(s.y)+ty*par,s.r*k,0,6.28); ctxS.fill()})});
+    if (Math.random()<0.012 && meteore.length<2) meteore.push({x:Math.random()*W*.8+W*.2,y:Math.random()*H*.4,vx:-(6+Math.random()*5),vy:3+Math.random()*3,vita:1});
+    meteore.forEach(function(m){ctxS.strokeStyle="rgba(255,230,200,"+(0.7*m.vita)+")";ctxS.lineWidth=1.4;ctxS.beginPath();ctxS.moveTo(m.x,m.y);ctxS.lineTo(m.x-m.vx*9,m.y-m.vy*9);ctxS.stroke();m.x+=m.vx;m.y+=m.vy;m.vita-=0.02});
+    meteore=meteore.filter(function(m){return m.vita>0});
+  }
+  function disegnaFascio(t){
+    ctxF.clearRect(0,0,W,H); var ora=t/1000;
+    /* la coda della cometa: larga e calda vicino alla testa, si assottiglia e sfuma */
+    var CODA=110; ctxF.lineCap="round";
+    for(var c=0;c<CODA;c++){var i=fino-c; if(i<1)break; var v=1-c/CODA;
+      ctxF.shadowColor="rgba(255,107,0,"+(0.7*v)+")"; ctxF.shadowBlur=26*v; ctxF.strokeStyle="rgba(255,120,40,"+(0.28*v)+")"; ctxF.lineWidth=14*v+1; ctxF.beginPath(); ctxF.moveTo(wx(ROTTA[i-1][0]),wy(ROTTA[i-1][1])); ctxF.lineTo(wx(ROTTA[i][0]),wy(ROTTA[i][1])); ctxF.stroke();
+      ctxF.shadowBlur=10*v; ctxF.strokeStyle="rgba(255,240,220,"+(0.75*v*v)+")"; ctxF.lineWidth=3.5*v+.3; ctxF.beginPath(); ctxF.moveTo(wx(ROTTA[i-1][0]),wy(ROTTA[i-1][1])); ctxF.lineTo(wx(ROTTA[i][0]),wy(ROTTA[i][1])); ctxF.stroke()}
+    ctxF.shadowBlur=0;
+    /* scintille che si staccano dalla coda */
+    var q=ROTTA[Math.max(0,Math.min(ROTTA.length-1,fino))];
+    if (Math.abs(fino-finoPrima)>0 && scintille.length<40){ for(var z=0;z<3;z++) scintille.push({x:wx(q[0]),y:wy(q[1]),vx:(Math.random()-.5)*1.6,vy:(Math.random()-.5)*1.6,r:1+Math.random()*1.8,vita:1}); }
+    finoPrima=fino;
+    scintille.forEach(function(sp){ctxF.fillStyle="rgba(255,220,180,"+(0.9*sp.vita)+")";ctxF.beginPath();ctxF.arc(sp.x,sp.y,sp.r*sp.vita,0,6.28);ctxF.fill();sp.x+=sp.vx;sp.y+=sp.vy;sp.vita-=0.02});
+    scintille=scintille.filter(function(sp){return sp.vita>0});
+    /* la stella-cometa: posizione e verso lungo la rotta */
+    var q2=ROTTA[Math.max(0,fino-3)]; var ang=Math.atan2(q[1]-q2[1],q[0]-q2[0])*180/Math.PI;
+    cometa.setAttribute("transform","translate("+q[0]+","+q[1]+") rotate("+ang+") scale("+(0.55+0.15*Math.sin(ora*3))+")");
+  }
+  function ciclo(t){ if(!vivo)return; disegnaStelle(t); disegnaFascio(t); requestAnimationFrame(ciclo) }
+  /* la cometa: la stessa stella delle novae, in bianco caldo, che vola lungo la rotta */
+  var cometa = el("g",{"class":"mp-cometa"});
+  cometa.appendChild(el("circle",{"class":"alone",r:60,fill:"url(#"+uid+"-alone)"}));
+  var cr = el("g",{"class":"raggi",fill:"url(#"+uid+"-raggio)",filter:"url(#"+uid+"-soffio)"});
+  RAGGI.forEach(function(r){cr.appendChild(el("path",{d:"M "+(-r[2]*.8)+" 0 L 0 "+(-r[1]*.8)+" L "+(r[2]*.8)+" 0 Z",transform:"rotate("+r[0]+")"}))});
+  cometa.appendChild(cr); cometa.appendChild(el("circle",{r:16,fill:"url(#"+uid+"-cuore)"})); cometa.appendChild(el("circle",{r:6,fill:"#fff"}));
+  svg.appendChild(cometa);
+  var onde = P.map(function(p){var o=el("circle",{"class":"mp-onda",cx:p[0],cy:p[1],r:70});svg.appendChild(o);return o});
+  var scintille = [];
+  var tacche=TAPPE.map(function(T,i){var b=document.createElement("b");b.innerHTML="<span>0"+(i+1)+" · "+T.n+"</span>";b.addEventListener("click",function(){var r=viaggio.getBoundingClientRect();var tot=r.height-innerHeight;window.scrollTo({top:r.top+scrollY+tot*((i+.5)/P.length),behavior:"smooth"})});binario.appendChild(b);return b});
+  function mostra(kk){ if(kk===ultima)return; ultima=kk; var T=TAPPE[kk]; scheda.classList.remove("dentro");
+    setTimeout(function(){scheda.querySelector(".quando").textContent=T.q;scheda.querySelector(".n").textContent="0"+(kk+1);scheda.querySelector("h3").textContent=T.t;scheda.querySelector(".d-s").innerHTML=T.s;scheda.querySelector(".d-o").innerHTML=T.o;scheda.querySelector(".d-p").innerHTML=T.p;scheda.querySelector(".d-a").innerHTML=T.a;scheda.classList.add("dentro")},120);
+    novae.forEach(function(n,i){n.setAttribute("class","mp-nova "+(i<kk?"fatta":i===kk?"viva":"futura"))});
+    if (kk>0){ var o=onde[kk]; o.classList.remove("via"); void o.getBBox(); o.classList.add("via"); } tacche.forEach(function(b,i){b.classList.toggle("fatta",i<kk);b.classList.toggle("viva",i===kk)}) }
+  function passo(){ var r=viaggio.getBoundingClientRect(); var tot=r.height-innerHeight; if(tot<=0)return; var p=Math.min(1,Math.max(0,-r.top/tot)); progresso=p;
+    var kk=Math.min(P.length-1,Math.floor(p*P.length)); var frac=p*P.length-kk; fino=Math.round(Math.min(ROTTA.length-1,(kk+frac)*PASSI)); if(kk===P.length-1)fino=ROTTA.length-1;
+    neb.style.transform="translate("+(-p*3+tx*1.2)+"%,"+(p*2+ty*1.2)+"%) scale(1.04)"; mostra(kk) }
+  palco.addEventListener("mousemove",function(e){var r=palco.getBoundingClientRect();mx=(e.clientX-r.left)/r.width*2-1;my=(e.clientY-r.top)/r.height*2-1});
+  palco.addEventListener("mouseleave",function(){mx=0;my=0});
+  misura(); addEventListener("resize",function(){misura();passo()}); addEventListener("scroll",passo,{passive:true}); passo(); requestAnimationFrame(ciclo);
+}
+  var _v = document.getElementById("pos-viaggio"); if (_v) costruisci(_v);
+
+  /* scudo: col mouse sopra segue il puntatore, poi riprende a girare da dove era */
+  var scudo = document.getElementById("pos-scudo");
+  if (scudo) {
+    var corpoS = scudo.querySelector(".corpo"), baseY = 0;
+    scudo.addEventListener("mouseenter", function () {
+      try { var m = new DOMMatrix(getComputedStyle(corpoS).transform); baseY = Math.atan2(-m.m13, m.m11) * 180 / Math.PI; } catch (e) { baseY = 0; }
+      scudo.classList.add("manuale");
+    });
+    scudo.addEventListener("mousemove", function (e) {
+      var r = scudo.getBoundingClientRect(); var x = (e.clientX - r.left) / r.width * 2 - 1, y = (e.clientY - r.top) / r.height * 2 - 1;
+      corpoS.style.transform = "rotateY(" + (baseY + x * 45) + "deg) rotateX(" + (-y * 22) + "deg)";
+    });
+    scudo.addEventListener("mouseleave", function () {
+      var ang = baseY; try { var m = new DOMMatrix(getComputedStyle(corpoS).transform); ang = Math.atan2(-m.m13, m.m11) * 180 / Math.PI; } catch (e) {}
+      corpoS.style.transform = ""; corpoS.style.animationDelay = (-(((ang % 360) + 360) % 360) / 360 * 16) + "s";
+      scudo.classList.remove("manuale");
+    });
+  }
 
   /* menu delle sezioni: voce attiva, ombra quando e' appiccicato, scorrimento morbido con l'offset */
   var menu = document.getElementById("pos-menu");
