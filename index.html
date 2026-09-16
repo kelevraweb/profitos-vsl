@@ -710,8 +710,8 @@
 .pos .globo .paese{padding:6px 11px;font-size:12px;background:rgba(15,11,9,.75)}
 .pos .mcolonne{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:520px;overflow:hidden;
   -webkit-mask:linear-gradient(transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(transparent,#000 10%,#000 90%,transparent)}
-.pos .mcol{display:flex;flex-direction:column;gap:12px;animation:pos-sali 34s linear infinite}
-.pos .mcol.giu{animation-direction:reverse;animation-duration:40s}
+.pos .mcol{display:flex;flex-direction:column;gap:12px;animation:pos-sali 120s linear infinite}
+.pos .mcol.giu{animation-direction:reverse;animation-duration:140s}
 .pos .mcolonne:hover .mcol{animation-play-state:paused}
 @keyframes pos-sali{to{transform:translateY(-50%)}}
 .pos .mcarta{border:1px solid var(--bor);border-radius:16px;overflow:hidden;background:var(--s3)}
@@ -1330,11 +1330,11 @@
 <div class="sez" id="pos-dove"><div class="wide">
   <p class="et">Dove siamo</p>
   <h2>Dove lavoriamo</h2>
-  <p class="intro">Non siamo un'agenzia locale: i progetti che seguiamo stanno in cinque Paesi. E dietro ci sono
+  <p class="intro">Non siamo un'agenzia locale: i progetti che seguiamo stanno in nove Paesi. E dietro ci sono
   quindici anni di palchi, aziende ed enti.</p>
   <div class="mondo-due">
     <div class="globo" id="pos-globo"><canvas></canvas>
-      <div class="paesi"><span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span><span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span><span class="paese"><i></i>Emirati · Dubai</span></div>
+      <div class="paesi"><span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span><span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span><span class="paese"><i></i>Emirati · Dubai</span><span class="paese"><i></i>Spagna</span><span class="paese"><i></i>Germania</span><span class="paese"><i></i>Cipro</span><span class="paese"><i></i>Thailandia</span></div>
     </div>
     <div class="mcolonne" id="pos-colonne"><div class="mcol" id="pos-col-a"></div><div class="mcol giu" id="pos-col-b"></div></div>
   </div>
@@ -1591,7 +1591,7 @@
      una griglia 104x48 campionata da quella mappa e impacchettata a due
      bit per cella (0 mare, 1 terra, 2 Paese acceso): 1,6 KB di base64
      invece di 21 KB, e il blocco resta leggibile. */
-  var GRIGLIA = "AAAAAAAAAAQVRVVVUAAUAAAAAFAAAAAAAAAAAAAAAAAAQAUFVVVQABEAAAAAAAAAAAAAAAAAAAAAAAQARQVVVUAAAAAAEAAUAAAAAAAAAAAAAAAAAVEQABVVUAAAAABAAVUABAAAAAAAAAAAAAAAAAAAFVVQAAAAAQAFVAAAAAAAAAAAAAAAAAURQUAVVUAAAAAEABVVVQAAAAAAAAAAAAAABVFVQBVVQAAAAAQEVVVVRUAAAAAAAAAAKqABVEFUBVVAAAEAABVVVVVVVBAAAAAAAACqpVUQVBQFVAAAABRBVVVVVVVVVAAAAAAAFKqlVVVQFQVQAAAQFFVVVVVVVVVUAAAAAAAAKqVVVVRUBUAAAEARVVVVVVVVVVQAAAAAAACqpVVVQEABAAABQBVVVVVVVVVUUAAAAAAAACoFVVUAUAAAAAFAFVVVVVVVVREAAAAAAAAAAABVVVAVAAAAAABVVVVVVVVQBQAAAAAAAAAAAFVVVFVAAAAAABVVVVVVVVAEAAAAAAAAAAAAFVVVVUAAAAAAVVVVVVVVUAAAAAAAAAAAAAAKqoVUEAAAAAEVVVVQABVQAAAAAAAAAAAAAAqqqWkAAAAAgAFEVVUAVUAAAAAAAAAAAAAACqqqoAAAAIAgVAAAVVVUBAAAAAAAAAAAAAAKqqqAAAAAACBVAAFVVUAAAAAAAAAAAAAAAAKqqgAAAAAAAAAAAVVVUEAAAAAAAAAAAAAAAFoCAAAAAAAAAAABVVVQAAAAAAAAAAAAAAAAVQAAAAAAAAAAAAVRVUAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAVFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVQAAAAAAAAAABBBAAAAAAAAAAAAAAAAAAAFVUAAAAAAAAAAAEAQAAAAAAAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAVVAAAAAAAAAAAAAAAAAAUVQAAAAAAAAAAAVVVAAAAAAAAAAAAAAAAABVQAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAABVVQAAAAAAAAAAAAAAAABVAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAVVVVVAAAAAAAAAAAAAAAAAAUAAAAAAAFVUFVVVVVQAAAA";
+  var GRIGLIA = "AAAAAAAAAAQVRVVVUAAUAAAAAFAAAAAAAAAAAAAAAAAAQAUFVVVQABEAAAAAAAAAAAAAAAAAAAAAAAQARQVVVUAAAAAAEAAUAAAAAAAAAAAAAAAAAVEQABVVUAAAAABAAVUABAAAAAAAAAAAAAAAAAAAFVVQAAAAAQAFVAAAAAAAAAAAAAAAAAURQUAVVUAAAAAEABVVVQAAAAAAAAAAAAAABVFVQBVVQAAAAAQEVVVVRUAAAAAAAAAAKqABVEFUBVVAAAEAABVVVVVVVBAAAAAAAACqpVUQVBQFVAAAABRBVVVVVVVVVAAAAAAAFKqlVVVQFQVQAAAQFFVVVVVVVVVUAAAAAAAAKqVVVVRUBUAAAEARVVVVVVVVVVQAAAAAAACqpVVVQEABAAABQBVVVVVVVVVUUAAAAAAAACoFVVUAUAAAAAFAFVVVVVVVVREAAAAAAAAAAABVVVAVAAAAAABVVVVVVVVQBQAAAAAAAAAAAFVVVFVAAAAAChVVVVVVVVAEAAAAAAAAAAAAFVVVVUAAAAAIVVVVVVVVUAAAAAAAAAAAAAAKqoVUEAAAAAEVVVVQABVQAAAAAAAAAAAAAAqqqWkAAAAAgAFEVVUAVUAAAAAAAAAAAAAACqqqoAAAAIogVAAAVVVUBAAAAAAAAAAAAAAKqqqAAAAACCBWAAFVVUAAAAAAAAAAAAAAAAKqqgAAAAAAAAAAAVVVUEAAAAAAAAAAAAAAAFoCAAAAAAAAAAABVVVQAAAAAAAAAAAAAAAAVQAAAAAAAAAAAAVRWkAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAVFIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVQAAAAAAAAAABBBAAAAAAAAAAAAAAAAAAAFVUAAAAAAAAAAAEAQAAAAAAAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAVVAAAAAAAAAAAAAAAAAAUVQAAAAAAAAAAAVVVAAAAAAAAAAAAAAAAABVQAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAABVVQAAAAAAAAAAAAAAAABVAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAVVVVVAAAAAAAAAAAAAAAAAAUAAAAAAAFVUFVVVVVQAAAA";
   var COL = 104, RIG = 48, PASSO = 10;
   var PAESI = [["Italia",57,18],["Portogallo",52,19],["Malta",57,19],
                ["Stati Uniti",31,19],["Dubai",66,22]];
@@ -1631,21 +1631,57 @@
   (function () {
     var A = document.getElementById("pos-col-a"), B = document.getElementById("pos-col-b"); if (!A || !B) return;
     var M = "https://kelevraweb.github.io/profitos-vsl/img/mondo/";
-    var SA = [["foto","foto-bali-fly-to-success.webp","Mastermind","Fly To Success · Bali","Una settimana di lavoro sul business, dall'altra parte del mondo."],
-      ["logo","mono-bebe-vio.webp","Celebrità","Bebe Vio","Campionessa paralimpica"],
-      ["foto","foto-andrea-microfono.webp","Conferenze","Sul palco","Eventi di formazione dal vivo, in Italia e all'estero."],
-      ["logo","mono-msc.webp","Multinazionali","MSC Crociere",""],
+    var SA = [
+      ["foto","foto-bali-fly-to-success.webp","Mastermind","Fly To Success · Bali","Una settimana di lavoro sul business, dall'altra parte del mondo."],
+      ["logo","mono-masters-of-magic.webp","Eventi","Walter Rolfo · Masters of Magic",""],
+      ["logo","mono-gabriele-martelli.webp","Celebrità","Gabriele Martelli",""],
       ["foto","foto-evento-gala.webp","Eventi","Serata di gala con Bebe Vio","Campionessa paralimpica, sul palco insieme."],
-      ["logo","mono-regione-piemonte.webp","Enti","Regione Piemonte","Progetti di formazione"],
-      ["logo","mono-bmw.webp","Multinazionali","BMW",""]];
-    var SB = [["logo","mono-masters-of-magic.webp","Eventi","Walter Rolfo","Masters of Magic"],
-      ["foto","foto-evento-gruppo.webp","Celebrità","I Pampers",""],
-      ["logo","mono-lego.webp","Multinazionali","LEGO",""],
-      ["logo","mono-confesercenti.webp","Enti","Confesercenti","Formazione per le imprese"],
-      ["foto","foto-fts-2022.webp","Mastermind","Fly To Success 2022","La prima edizione."],
-      ["logo","mono-luca-mercatanti.webp","Celebrità","Luca Mercatanti",""],
+      ["logo","mono-bmw.webp","Multinazionali","BMW",""],
       ["logo","mono-porsche.webp","Multinazionali","Porsche",""],
-      ["logo","mono-ducati.webp","Multinazionali","Ducati",""]];
+      ["foto","foto-andrea-microfono.webp","Conferenze","Sul palco","Eventi di formazione dal vivo, in Italia e all'estero."],
+      ["logo","mono-regione-piemonte.webp","Enti","Regione Piemonte",""],
+      ["logo","mono-forte-fenestrelle.webp","Enti","Il Forte di Fenestrelle",""],
+      ["foto","foto-evento-gruppo.webp","Celebrità","I Pampers",""],
+      ["logo","mono-prodea.webp","Agenzie","Prodea Group",""],
+      ["logo","mono-aqua.webp","Agenzie","Aqua",""],
+      ["foto","foto-fts-2022.webp","Mastermind","Fly To Success 2022","La prima edizione."],
+      ["logo","mono-wine-marketing.webp","Agenzie","Wine Marketing Italia",""],
+      ["logo","mono-co2-advertising.webp","Agenzie","CO2 Advertising",""],
+      ["foto","foto-andrea-esterno.webp","Contenuti","Dal vivo e online","Centinaia di migliaia di persone raggiunte con i contenuti."],
+      ["logo","mono-net-work.webp","Startup","Net Work",""],
+      ["logo","mono-epicura.webp","Startup","epiCura",""],
+      ["logo","mono-financial-elite.webp","Formazione","Financial Elite",""],
+      ["logo","mono-dropshipping-keys.webp","Formazione","Dropshipping Keys",""],
+      ["logo","mono-blackship.webp","Formazione","Blackship",""],
+      ["logo","mono-sos-wp.webp","Formazione","SOS WP",""],
+      ["logo","mono-affarimiei.webp","Formazione","AffariMiei",""],
+      ["logo","mono-metodo-immobiliare.webp","Formazione","Metodo Immobiliare",""],
+      ["logo","mono-multycashflow.webp","Formazione","Multycashflow",""]];
+    var SB = [
+      ["logo","mono-bebe-vio.webp","Celebrità","Bebe Vio",""],
+      ["logo","mono-luca-mercatanti.webp","Celebrità","Luca Mercatanti",""],
+      ["logo","mono-msc.webp","Multinazionali","MSC Crociere",""],
+      ["logo","mono-lego.webp","Multinazionali","LEGO",""],
+      ["logo","mono-ducati.webp","Multinazionali","Ducati",""],
+      ["logo","mono-volkswagen.webp","Multinazionali","Volkswagen",""],
+      ["logo","mono-soco.webp","Multinazionali","SOCO",""],
+      ["logo","mono-confesercenti.webp","Enti","Confesercenti",""],
+      ["logo","mono-freelance-day.webp","Eventi","Freelance Day",""],
+      ["logo","mono-stelle-di-lorenzo.webp","Sociale","Le stelle di Lorenzo",""],
+      ["logo","mono-world-comm.webp","Agenzie","World Comm",""],
+      ["logo","mono-to-be.webp","Agenzie","To-be",""],
+      ["logo","mono-powerlogo.webp","Agenzie","PowerLogo",""],
+      ["logo","mono-marketing-consulting.webp","Agenzie","Marketing Consulting",""],
+      ["logo","mono-marketeen.webp","Agenzie","Marketeen",""],
+      ["logo","mono-growlancer.webp","Startup","Growlancer",""],
+      ["logo","mono-verum.webp","Startup","Verum",""],
+      ["logo","mono-investitore-efficace.webp","Formazione","Investitore Efficace",""],
+      ["logo","mono-studente-felice.webp","Formazione","Studente Felice",""],
+      ["logo","mono-rqi.webp","Formazione","RQI.me",""],
+      ["logo","mono-fabio-bussacchini.webp","Formazione","Fabio Bussacchini",""],
+      ["logo","mono-cama.webp","Formazione","CAMA · Accademia Marketing Digitale",""],
+      ["logo","mono-sistemilegali.webp","Formazione","SistemiLegali",""],
+      ["logo","mono-protocollo-anticrisi.webp","Formazione","Protocollo Anticrisi",""]];
     function scheda(s) { return s[0] === "foto"
       ? '<div class="mcarta"><img src="' + M + s[1] + '" alt="" loading="lazy"><div class="t"><i>' + s[2] + '</i><b>' + s[3] + '</b><span>' + s[4] + '</span></div></div>'
       : '<div class="mcarta logo"><div class="l"><img src="' + M + s[1] + '" alt="' + s[3] + '" loading="lazy"></div><div class="t"><i>' + s[2] + '</i><b>' + s[3] + '</b>' + (s[4] ? '<span>' + s[4] + '</span>' : '') + '</div></div>'; }
