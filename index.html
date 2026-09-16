@@ -636,8 +636,14 @@
 @media (max-width:820px){.pos .cerca{padding:24px 20px}.pos .cerca .campo{flex-direction:column}.pos .cerca .tre{grid-template-columns:1fr}}
 
 /* le foto che scorrono (facce sotto il video, storie della community, casi): velate d'arancio, a colori al passaggio */
-.pos .pista img,.pos .rullo img,.pos .griglia img,.pos .storia video{filter:sepia(1) saturate(2.6) hue-rotate(-16deg) brightness(.82) contrast(1.05);transition:filter .45s ease}
-.pos .pista img:hover,.pos .rullo img:hover,.pos .griglia img:hover,.pos .caso:hover img,.pos .storia:hover video{filter:none}
+.pos .pista img,.pos .griglia img{filter:grayscale(1) sepia(1) saturate(4.5) hue-rotate(-24deg) brightness(.72) contrast(1.12);transition:filter .45s ease}
+.pos .tessera:hover img,.pos .griglia img:hover,.pos .caso:hover img{filter:none}
+/* le storie: video in bianco e nero sotto un velo arancio in moltiplicazione (duotone), a colori al passaggio */
+.pos .storia video{filter:grayscale(1) contrast(1.15) brightness(1.05);transition:filter .45s ease}
+.pos .storia::after{content:"";position:absolute;inset:0;z-index:1;background:#FF6B00;mix-blend-mode:multiply;opacity:.92;pointer-events:none;transition:opacity .45s ease}
+.pos .storia .capo,.pos .storia .piede{z-index:2}
+.pos .storia:hover video{filter:none}
+.pos .storia:hover::after{opacity:0}
 
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
