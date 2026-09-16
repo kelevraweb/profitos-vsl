@@ -70,7 +70,7 @@
 /* hero */
 .pos .hero{position:relative;overflow:hidden;padding:72px 0 88px}
 .pos .hero::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(110% 60% at 50% 0%,rgba(255,107,0,.18),transparent 55%)}
+  background:radial-gradient(90% 55% at 50% 0%,rgba(255,107,0,.22),transparent 60%),radial-gradient(60% 40% at 50% 100%,rgba(255,107,0,.08),transparent 70%)}
 .pos .hero .wide{position:relative}
 .pos h1{font-family:var(--black);font-weight:900;font-size:56px;line-height:72px;
   letter-spacing:-1.6px;text-wrap:balance;max-width:22ch}
@@ -93,11 +93,13 @@
 .pos .cond{max-width:34rem;margin:22px auto 0;color:var(--txt);
   font-weight:700;font-size:19px;line-height:28px}
 .pos .hero .sub,.pos .conto{margin-left:auto;margin-right:auto}
-/* questa headline e' lunga: alla misura piena occuperebbe tutto lo schermo */
-.pos .hero h1{font-size:clamp(28px,3.5vw,52px);line-height:1.16;letter-spacing:-1.4px;
-  max-width:none;text-wrap:balance}
+/* hero: occhiello, titolo grande (piu' dei titoli di sezione), riga sotto, nota, player */
+.pos .hero .et{justify-content:center;margin-bottom:26px}
+.pos .hero h1{font-size:clamp(40px,5vw,66px);line-height:1.04;letter-spacing:-2.4px;max-width:22ch;text-wrap:balance}
+.pos .hero h1 mark{padding:2px 18px;border-radius:14px}
+.pos .hero .cond{margin-top:26px;font-size:21px;line-height:31px}
 .pos .hero .cond{max-width:58ch;margin-left:auto;margin-right:auto}
-@media (max-width:1024px){.pos .hero h1{font-size:clamp(26px,5.4vw,34px);max-width:none}}
+@media (max-width:1024px){.pos .hero h1{font-size:clamp(34px,8vw,48px);letter-spacing:-1.6px;max-width:none}.pos .hero h1 mark{padding:0 10px;border-radius:10px}.pos .hero .cond{font-size:18px;line-height:27px}}
 .pos mark{white-space:nowrap}
 
 /* countdown */
@@ -647,6 +649,11 @@
 .pos .hero .video vturb-smartplayer{display:block}
 @media (max-width:900px){.pos .hero .video{max-width:none;border-radius:14px}}
 
+/* hero: titolo, riga sotto, nota piu' piccola, player */
+.pos .hero .cond b{color:#fff}
+.pos .hero .cond u{text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:4px;color:#fff}
+.pos .hero .nota-hero{margin-top:14px;font-size:15px;line-height:24px;color:var(--dim);max-width:62ch}
+
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -812,9 +819,13 @@
 
 <header class="hero">
   <div class="wide">
+    <p class="et">Prima di parlarci · 35 minuti</p>
     <h1>Il video che ti risparmia <mark>tutti i tentativi</mark> andati a vuoto.</h1>
-    <p class="cond">Offerta, contenuti, DM, funnel, vendita: come si incastrano, e cosa resta da fare a te
+    <p class="cond">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te
     (poco).</p>
+    <p class="cond nota-hero">Non è la nicchia, non è l&rsquo;offerta, non è il posizionamento: quelle te le hanno
+    già vendute. Nel 2026 la fiducia te la devi guadagnare, e per guadagnarla ci sono <u>venti cose da fare</u>.
+    Le fai tutte tu, ed è per questo che non ne funziona nessuna.</p>
     <div class="video">
       <vturb-smartplayer id="vid-6aa6edc426a2d95f642e484b" style="display:block;margin:0 auto;width:100%">
         <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background:#000"></div>
