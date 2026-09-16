@@ -688,6 +688,21 @@
 .pos.anima .sciame{opacity:0}.pos.anima.pronta .sciame{opacity:1;transition:opacity 1.4s .7s}
 @media (max-width:1100px){.pos .sciame{display:none}}
 @media (prefers-reduced-motion:reduce){.pos .sciame span{animation:none}}
+/* le testimonianze video: copertine dorate del wall of love, al click si apre il video Vimeo in una finestra sopra la pagina */
+.pos .voci-et{margin-top:52px}
+.pos .testimonianze{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.pos .tvoce{position:relative;display:block;border:1px solid var(--bor);padding:0;background:#000;cursor:pointer;border-radius:14px;overflow:hidden;text-align:left;font-family:inherit;color:#fff}
+.pos .tvoce img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1),filter .4s;filter:saturate(.85)}
+.pos .tvoce:hover img{transform:scale(1.05);filter:saturate(1.05)}
+.pos .tvoce .nome-t{position:absolute;left:0;right:0;bottom:0;padding:40px 12px 10px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.88));font-size:12px;line-height:16px}
+.pos .tvoce .nome-t b{display:block;color:#fff;font-size:13px}.pos .tvoce .nome-t span{color:rgba(240,232,226,.72)}
+.pos .tvoce:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pos-luce{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;padding:24px}
+.pos-luce .cornice-v{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,107,0,.3)}
+.pos-luce iframe{display:block;width:100%;height:100%;border:0}
+.pos-luce .chiudi{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.pos-luce .chiudi:hover{border-color:var(--acc);color:var(--acc)}
+@media (max-width:900px){.pos .testimonianze{grid-template-columns:1fr 1fr;gap:10px}.pos .tvoce .nome-t{padding:30px 10px 8px;font-size:11px}.pos .tvoce .nome-t b{font-size:12px}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -1263,7 +1278,10 @@
   <p class="et">I risultati</p>
   <h2>Alcuni di quelli che ce l'hanno già fatta.</h2>
   <div class="griglia" id="pos-casi"></div>
+  <p class="et voci-et">In video, con la loro voce</p>
+  <div class="testimonianze" id="pos-testimonianze"></div>
 </div></div>
+<div class="pos-luce" id="pos-luce" hidden><div class="cornice-v"><iframe id="pos-luce-video" title="Testimonianza" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><button type="button" class="chiudi" id="pos-luce-chiudi" aria-label="Chiudi">×</button></div>
 
 <div class="sez"><div class="wide">
   <div class="grande">
@@ -1669,6 +1687,36 @@
       '</p><p class="impact">Impact</p><ul>' + c[3].map(function (r) { return "<li>" + r + "</li>"; }).join("") + "</ul></article>";
   }).join("");
 
+  /* testimonianze video: [id Vimeo, file copertina, nome, cosa e' successo] */
+  var TESTI = [
+    [644575671, "01", "Carlo Alberto De Cesare", "Da dipendente a imprenditore"],
+    [644574623, "02", "Pierpaolo Chiti", "Primo contratto da 8.000€, agenzia web"],
+    [707795644, "03", "Valerio Barsanti", "25.000€ al mese, formazione finanziaria"],
+    [644576368, "04", "Ethel Bersanetti", "Investimento rientrato in una settimana"],
+    [704215770, "05", "Morris Bottazzi", "Ha smesso di buttare soldi in sponsorizzate"],
+    [803151377, "06", "Davide Strada e Riccardo Bianchi", "35.000€ al mese con le attività locali"],
+    [704212060, "07", "Paolo Ronchi", "Da studente a imprenditore"],
+    [655532481, "08", "Lorenzo Bignami", "20.000€ al mese con i consulenti fiscali"],
+    [704217184, "09", "Enrico Zangara", "Digital marketer"],
+    [644574975, "10", "Lorenzo Savasta", "Consulente marketing per strutture ricettive"],
+    [704218814, "12", "Riccardo D'Amici", "15.000€ al mese, consulenza legale"],
+    [644574829, "13", "Marika Manetta", "Consulente branding"],
+    [644574778, "14", "Patrizia Parca", "Consulente branding"],
+    [644576898, "15", "Stefano De Mojà", "Consulente marketing"],
+    [644575426, "16", "Isacco Bonardi", "Mental coach, partito da zero"]
+  ];
+  $("pos-testimonianze").innerHTML = TESTI.map(function (t) {
+    return '<button type="button" class="tvoce" data-video="' + t[0] + '"><img src="https://kelevraweb.github.io/profitos-vsl/img/testimonianze/' + t[1] + '.webp" alt="' + t[2] + '" width="720" height="402" loading="lazy">' +
+      '<span class="nome-t"><b>' + t[2] + '</b><span>' + t[3] + '</span></span></button>';
+  }).join("");
+  var luce = $("pos-luce"), luceVideo = $("pos-luce-video");
+  function apriLuce(id) { luceVideo.src = "https://player.vimeo.com/video/" + id + "?autoplay=1&title=0&byline=0&portrait=0&dnt=1"; luce.hidden = false; document.body.style.overflow = "hidden"; }
+  function chiudiLuce() { luce.hidden = true; luceVideo.src = ""; document.body.style.overflow = ""; }
+  $("pos-testimonianze").addEventListener("click", function (e) { var b = e.target.closest(".tvoce"); if (b) apriLuce(b.getAttribute("data-video")); });
+  $("pos-luce-chiudi").addEventListener("click", chiudiLuce);
+  luce.addEventListener("click", function (e) { if (e.target === luce) chiudiLuce(); });
+  addEventListener("keydown", function (e) { if (e.key === "Escape" && !luce.hidden) chiudiLuce(); });
+
   /* --- FAQ --- */
   var FAQ = [
     ["Sono già avanzato, questi strumenti ce li ho anch'io.","Bene: anch'io. E li uso lo stesso, tutti i giorni. Non è arroganza: <b>non sei più avanzato di me</b>, altrimenti non saresti qua, quindi ne hai comunque bisogno. E fidati, <b>sono migliori dei tuoi</b>: sono costruiti sul tuo posizionamento e si parlano fra loro. I tuoi no. Altrimenti sarei un deficiente: ho speso <b>decine di migliaia di euro di sviluppo e mesi di lavoro</b>. Se bastasse ManyChat o qualche prompt per risolvere il problema, li avrei usati anch'io."],
@@ -1860,7 +1908,7 @@
             ".fase, .colonna, .caso, details, .paese, .eco, .cielo, .mappa," +
             ".storie, .grande, .filo, .bonus, .ritratto, .chi h2, .chi p," +
             ".striscia .titolo, #pos-chiusura .bottone, #pos-chiusura .postilla, .schema," +
-            ".palco-video .chip, .cerca, .grido, .ps-box, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
+            ".palco-video .chip, .testimonianze, .cerca, .grido, .ps-box, .avviso, .team .persona, .bl-conto .testata, .bl-conto .voce, .bl-conto .totale > div, .martedi .et, .martedi .giorno, .martedi .freccia";
   var voci = Array.prototype.slice.call(R.querySelectorAll(SEL));
   var conta = new Map();
   voci.forEach(function (el) {
