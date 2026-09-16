@@ -70,7 +70,7 @@
 .pos-luce iframe{display:block;width:100%;height:100%;border:0}
 .pos-luce .chiudi{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .pos .chi{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start}
-.pos .chi img{width:100%;border-radius:16px;border:1px solid var(--bor)}
+.pos .chi img{width:100%;height:auto;border-radius:16px;border:1px solid var(--bor)}
 .pos .chi p{font-size:16px;line-height:27px;margin-top:14px}.pos .chi h2 span{color:var(--acc)}
 .pos .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pos details{border:1px solid var(--bor);border-radius:14px;background:var(--s3);padding:0 20px}
@@ -97,7 +97,15 @@
     Le fai tutte tu, ed è per questo che non ne funziona nessuna.</p>
   <div class="video"><vturb-smartplayer id="vid-6aa6edc426a2d95f642e484b" style="display:block;margin:0 auto;width:100%">
         <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background:#000"></div>
-      </vturb-smartplayer></div>
+      </vturb-smartplayer>
+      <script>
+        (function () {
+          var s = document.createElement("script");
+          s.src = "https://scripts.converteai.net/3624e535-0ed0-45c2-9694-b04d72b2e7f6/players/6aa6edc426a2d95f642e484b/v4/player.js";
+          s.async = true;
+          document.head.appendChild(s);
+        })();
+      </script></div>
   <a class="bottone" href="#" id="pos-cta-hero">Prenota la tua chiamata →</a>
 </div></header>
 
