@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>profitOS · Andrea Audisio</title>
-<style>html,body{margin:0;padding:0;background:#0C0908}</style>
+<style>html,body{margin:0;padding:0;background:#0C0908;overflow-x:clip}</style>
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
 <link rel="preload" href="https://scripts.converteai.net/3624e535-0ed0-45c2-9694-b04d72b2e7f6/players/6aa6edc426a2d95f642e484b/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
@@ -36,7 +36,7 @@
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@600;800&family=Mrs+Saint+Delafield&display=swap");
 
-.pos{
+.pos{overflow-x:clip;
   --acc:#FF6B00; --bg:#0C0908; --s2:#110C0A; --s3:rgba(15,11,9,.88);
   --txt:rgba(240,232,226,.8); --dim:rgba(240,232,226,.62); --bor:rgba(255,107,0,.15);
   --neg:rgb(158,145,138);
@@ -443,7 +443,7 @@
 }
 
 /* menu delle sezioni: parte sopra al problema e resta appiccicato in alto */
-.pos .menu{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(12,9,8,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+.pos .menu{position:fixed;top:0;left:0;right:0;width:100%;max-width:100%;overflow:hidden;z-index:60;background:rgba(12,9,8,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,107,0,.12);box-shadow:0 12px 32px rgba(0,0,0,.45);
   opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .5s ease,transform .5s ease}
 .pos .menu.fissa{opacity:1;transform:none;pointer-events:auto}
@@ -838,7 +838,7 @@
 .pos .bottone:hover{filter:brightness(1.1)}
 .pos .bottone:active{transform:translateY(1px)}
 .pos .postilla{margin-top:16px;color:var(--dim);font-size:13px}
-.pos .dock{position:fixed;left:0;right:0;bottom:0;z-index:40;border-top:1px solid var(--bor);
+.pos .dock{position:fixed;left:0;right:0;bottom:0;width:100%;max-width:100%;overflow:hidden;z-index:40;border-top:1px solid var(--bor);
   background:rgba(15,11,9,.94);transform:translateY(110%);
   transition:transform .4s cubic-bezier(.16,1,.3,1)}
 .pos .dock.on{transform:none}
