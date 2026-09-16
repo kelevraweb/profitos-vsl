@@ -100,7 +100,7 @@ var TAPPE = [
   {q:"Mese 3–6", t:"Il giro riparte", n:"Community · Delivery", s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.", o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.", p:"Essere solo, e un tetto che non rompi più.", a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
 ];
 /* posizioni nel mondo 1600x900: la rotta sale da sinistra in basso e finisce in alto a destra, lasciando libera la scheda a sinistra */
-var P = [[620,700],[760,560],[820,330],[1000,250],[1080,470],[1240,380],[1380,560],[1440,250],[1560,120]];
+var P = [[800,690],[920,560],[940,330],[1060,235],[1140,470],[1250,370],[1330,570],[1370,245],[1400,110]];
 var RAGGI = [[10,74,6],[55,46,4],[95,68,7],[140,42,4.5],[185,70,6],[230,44,4],[275,64,6.5],[320,40,4]];
 
 function costruisci(viaggio){
@@ -133,7 +133,7 @@ function costruisci(viaggio){
     RAGGI.forEach(function(r){rg.appendChild(el("path",{d:"M "+(-r[2])+" 0 L 0 "+(-r[1])+" L "+r[2]+" 0 Z",transform:"rotate("+r[0]+")"}))});
     corpo.appendChild(rg); corpo.appendChild(el("circle",{r:20,fill:"url(#"+uid+"-cuore)"})); corpo.appendChild(el("circle",{r:7,fill:"#fff"}));
     g.appendChild(corpo);
-    var t = el("text",{x:p[0],y:p[1]+(p[1]>400?-58:66),"text-anchor":"middle"}); t.textContent = "0"+(i+1)+" · "+TAPPE[i].n; g.appendChild(t);
+    var anc = p[0]>1300 ? "end" : "middle"; var t = el("text",{x:p[0]+(anc==="end"?10:0),y:p[1]+(p[1]>400?-58:66),"text-anchor":anc}); t.textContent = "0"+(i+1)+" · "+TAPPE[i].n; g.appendChild(t);
     svg.appendChild(g); return g;
   });
   /* rotta campionata (curva morbida per le stelle) */
