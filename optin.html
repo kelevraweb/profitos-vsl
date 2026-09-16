@@ -33,7 +33,7 @@ h1{font-family:var(--nero);font-weight:900;font-size:40px;line-height:54px;
   letter-spacing:-.8px;text-wrap:balance;margin:20px 0 0}
 mark{background:var(--accent);color:var(--bg);padding:4.5px 12px;border-radius:8px;
   -webkit-box-decoration-break:clone;box-decoration-break:clone}
-.sub{max-width:34rem;margin:28px auto 0;color:var(--testo);font-size:19px;line-height:31px}
+.sub{max-width:36rem;margin:28px auto 0;color:var(--testo);font-size:23px;line-height:35px}
 .sub b{color:#fff;font-weight:600}
 .os{color:var(--accent)}
 
@@ -46,8 +46,13 @@ label.et{display:block;margin-bottom:6px;color:var(--fioco);
   background:rgba(255,255,255,.05);overflow:hidden;transition:border-color .2s,box-shadow .2s}
 .campo:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,0,.22)}
 .campo.ko{border-color:var(--accent)}
-.pref{align-self:stretch;display:flex;align-items:center;padding:0 12px 0 16px;
-  border-right:1px solid var(--bordo);color:var(--fioco);font-size:15px}
+.pref{position:relative;align-self:stretch;display:flex;align-items:center;gap:6px;padding:0 30px 0 14px;border-right:1px solid var(--bordo);color:#fff;font-size:15px;white-space:nowrap}
+.pref .mostra{pointer-events:none}.pref .mostra i{font-style:normal;font-size:18px;line-height:1;margin-right:6px;vertical-align:-2px}
+.pref select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px}
+.pref select option{background:#15100d;color:#fff}
+.pref::after{content:"";position:absolute;right:12px;top:50%;width:6px;height:6px;margin-top:-5px;pointer-events:none;
+  border-right:1.5px solid var(--fioco);border-bottom:1.5px solid var(--fioco);transform:rotate(45deg)}
+.pref.aperto::after,.pref:focus-within::after{border-color:var(--accent)}
 .campo input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;
   padding:14px 16px;font-size:15px;font-family:inherit}
 .campo input::placeholder{color:var(--fioco)}
@@ -173,7 +178,44 @@ footer .link a{color:var(--testo)}
     </div>
     <div class="riga">
       <label class="et" for="tel">Cellulare</label>
-      <div class="campo"><span class="pref">+39</span><input id="tel" name="cellulare" type="tel" inputmode="tel" autocomplete="tel" placeholder="333 123 4567" maxlength="13"></div>
+      <div class="campo"><span class="pref" id="pref"><span class="mostra" id="pref-mostra"><i>🇮🇹</i>+39</span><select id="prefisso" name="prefisso" aria-label="Prefisso internazionale">
+        <option value="IT" selected>🇮🇹 Italia +39</option>
+        <option value="CH">🇨🇭 Svizzera +41</option>
+        <option value="SM">🇸🇲 San Marino +378</option>
+        <option value="GB">🇬🇧 Regno Unito +44</option>
+        <option value="DE">🇩🇪 Germania +49</option>
+        <option value="FR">🇫🇷 Francia +33</option>
+        <option value="ES">🇪🇸 Spagna +34</option>
+        <option value="AT">🇦🇹 Austria +43</option>
+        <option value="BE">🇧🇪 Belgio +32</option>
+        <option value="NL">🇳🇱 Paesi Bassi +31</option>
+        <option value="PT">🇵🇹 Portogallo +351</option>
+        <option value="IE">🇮🇪 Irlanda +353</option>
+        <option value="LU">🇱🇺 Lussemburgo +352</option>
+        <option value="MT">🇲🇹 Malta +356</option>
+        <option value="MC">🇲🇨 Monaco +377</option>
+        <option value="GR">🇬🇷 Grecia +30</option>
+        <option value="PL">🇵🇱 Polonia +48</option>
+        <option value="RO">🇷🇴 Romania +40</option>
+        <option value="HR">🇭🇷 Croazia +385</option>
+        <option value="SI">🇸🇮 Slovenia +386</option>
+        <option value="AL">🇦🇱 Albania +355</option>
+        <option value="SE">🇸🇪 Svezia +46</option>
+        <option value="NO">🇳🇴 Norvegia +47</option>
+        <option value="DK">🇩🇰 Danimarca +45</option>
+        <option value="FI">🇫🇮 Finlandia +358</option>
+        <option value="CZ">🇨🇿 Cechia +420</option>
+        <option value="HU">🇭🇺 Ungheria +36</option>
+        <option value="TR">🇹🇷 Turchia +90</option>
+        <option value="US">🇺🇸 Stati Uniti +1</option>
+        <option value="CA">🇨🇦 Canada +1</option>
+        <option value="BR">🇧🇷 Brasile +55</option>
+        <option value="AR">🇦🇷 Argentina +54</option>
+        <option value="MX">🇲🇽 Messico +52</option>
+        <option value="AE">🇦🇪 Emirati Arabi +971</option>
+        <option value="AU">🇦🇺 Australia +61</option>
+        <option value="IL">🇮🇱 Israele +972</option>
+      </select></span><input id="tel" name="cellulare" type="tel" inputmode="tel" autocomplete="tel" placeholder="333 123 4567" maxlength="16"></div>
     </div>
     <input type="text" name="azienda" id="trappola" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
     <label class="consenso" for="consenso">
@@ -304,7 +346,7 @@ footer .link a{color:var(--testo)}
 <script>
 /* ---------------------------------------------------------------
    Da riempire prima di pubblicare:
-   ENDPOINT  URL che riceve { nome, email, cellulare } in JSON
+   ENDPOINT  URL che riceve { nome, email, cellulare, paese } in JSON
              (webhook Make/Zapier, form endpoint di Brevo, Klaviyo…)
    REDIRECT  dove va la persona dopo l'invio: la pagina della VSL
    --------------------------------------------------------------- */
@@ -320,10 +362,51 @@ var REDIRECT = "/";
   var bottone = document.getElementById("invia");
   var trappola = document.getElementById("trappola");
 
-  /* +39 è fisso fuori dal campo: se uno incolla il numero intero lo ripulisco */
-  tel.addEventListener("input", function () {
-    tel.value = tel.value.replace(/[^\d\s]/g, "").replace(/^(?:0039|39)\s*/, "").replace(/^0+/, "");
+  var prefisso = document.getElementById("prefisso");
+  var PREFISSI = {IT:"39",CH:"41",SM:"378",GB:"44",DE:"49",FR:"33",ES:"34",AT:"43",BE:"32",NL:"31",PT:"351",IE:"353",LU:"352",MT:"356",MC:"377",GR:"30",PL:"48",RO:"40",HR:"385",SI:"386",AL:"355",SE:"46",NO:"47",DK:"45",FI:"358",CZ:"420",HU:"36",TR:"90",US:"1",CA:"1",BR:"55",AR:"54",MX:"52",AE:"971",AU:"61",IL:"972"};
+  function pre() { return PREFISSI[prefisso.value] || "39"; }
+  var mostra = document.getElementById("pref-mostra");
+  prefisso.addEventListener("change", function () {
+    var bandiera = prefisso.selectedOptions[0].textContent.trim().split(" ")[0];
+    mostra.innerHTML = "<i></i>+" + pre(); mostra.querySelector("i").textContent = bandiera;
+    tel.dispatchEvent(new Event("input"));
   });
+  /* il prefisso sta nel selettore: se uno incolla il numero intero lo ripulisco */
+  tel.addEventListener("input", function () {
+    var v = tel.value.replace(/[^\d\s]/g, "");
+    v = v.replace(new RegExp("^(?:00" + pre() + "|" + pre() + ")\\s*"), "");
+    tel.value = v.replace(/^0+/, "");
+  });
+
+  /* email finte: dominio usa e getta, dominio di prova, parti tutte uguali, refusi nei domini piu' comuni */
+  var GETTA = /(^|\.)(mailinator|yopmail|guerrillamail|10minutemail|tempmail|temp-mail|trashmail|sharklasers|dispostable|getnada|maildrop|throwawaymail|emailondeck|fakeinbox|mohmal|minutemail|spam4|mailnesia|tempr|discard|mailcatch|jetable|nospam|spamgourmet|trash-mail|burnermail|inboxkitten|tmpmail|mytemp)\./i;
+  var PROVA = /^(test|prova|fake|example|esempio|asd|asdf|qwerty|aaa|abc|xxx|email|mail|nessuno|niente|nome|none|null)\d*\./i;
+  var REFUSI = {"gmail.con":"gmail.com","gmail.co":"gmail.com","gmial.com":"gmail.com","gmal.com":"gmail.com","gamil.com":"gmail.com","gmail.it":"gmail.com","hotmail.con":"hotmail.com","hotmal.com":"hotmail.com","hotmail.co":"hotmail.com","outlook.con":"outlook.com","libero.ot":"libero.it","libero.i":"libero.it","yahoo.con":"yahoo.com","yaho.com":"yahoo.com","icloud.con":"icloud.com","alice.ot":"alice.it","tiscali.ot":"tiscali.it"};
+  function controllaEmail(v) {
+    v = v.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(v)) return "Questa email non sembra giusta.";
+    var locale = v.split("@")[0], dominio = v.split("@")[1];
+    if (REFUSI[dominio]) return "Forse intendevi " + locale + "@" + REFUSI[dominio] + "?";
+    if (GETTA.test(dominio)) return "Le email usa e getta non vanno bene: il video te lo mando li'.";
+    if (PROVA.test(dominio) || /^(test|prova|fake|asd|asdf|qwerty|aaa|abc|xxx|nessuno|niente)\d*$/.test(locale)) return "Serve un'email vera, e' li' che arriva il video.";
+    if (/^(.)\1+$/.test(locale) || /^(.)\1+\./.test(dominio)) return "Serve un'email vera, e' li' che arriva il video.";
+    if (locale.length < 2) return "Questa email non sembra giusta.";
+    return "";
+  }
+
+  /* numeri finti: tutte cifre uguali, sequenze, lunghezza sbagliata; in Italia il cellulare inizia per 3 */
+  function controllaTel(cifre) {
+    if (!cifre) return "Serve un cellulare dove possiamo scriverti.";
+    var it = pre() === "39";
+    if (it && (cifre.length < 9 || cifre.length > 10)) return "Un cellulare italiano ha 9 o 10 cifre.";
+    if (it && cifre[0] !== "3") return "Un cellulare italiano inizia per 3.";
+    if (!it && (cifre.length < 6 || cifre.length > 14)) return "Questo numero non sembra giusto.";
+    if (/^(\d)\1+$/.test(cifre) || /(\d)\1{5,}/.test(cifre)) return "Questo numero non sembra vero.";
+    var su = "01234567890123456789", giu = "98765432109876543210";
+    for (var i = 0; i + 8 <= cifre.length; i++) { var pezzo = cifre.substr(i, 8); if (su.indexOf(pezzo) > -1 || giu.indexOf(pezzo) > -1) return "Questo numero non sembra vero."; }
+    if (/^(\d{2,3})\1{2,}$/.test(cifre)) return "Questo numero non sembra vero.";
+    return "";
+  }
 
   function segna(campo, testo) {
     var riga = campo.closest(".riga") || campo.closest("form");
@@ -343,10 +426,11 @@ var REDIRECT = "/";
     if (trappola.value) return;               /* bot */
 
     var cifre = tel.value.replace(/\D/g, "");
+    var eEmail = controllaEmail(email.value), eTel = controllaTel(cifre);
     var prove = [
       [nome, nome.value.trim().length >= 2, "Scrivi il tuo nome."],
-      [email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()), "Questa email non sembra giusta."],
-      [tel, cifre.length >= 9 && cifre.length <= 11, "Serve un cellulare dove possiamo scriverti."],
+      [email, !eEmail, eEmail],
+      [tel, !eTel, eTel],
       [consenso, consenso.checked, "Serve il consenso per poterti mandare il video."]
     ];
 
@@ -363,7 +447,8 @@ var REDIRECT = "/";
     var dati = {
       nome: nome.value.trim(),
       email: email.value.trim().toLowerCase(),
-      cellulare: "+39" + cifre
+      cellulare: "+" + pre() + cifre,
+      paese: prefisso.value
     };
     function vai() { window.location.href = REDIRECT; }
 
