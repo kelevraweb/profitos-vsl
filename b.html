@@ -69,8 +69,11 @@
 .pos-luce .cornice-v{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden}
 .pos-luce iframe{display:block;width:100%;height:100%;border:0}
 .pos-luce .chiudi{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
-.pos .chi{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start}
-.pos .chi img{width:100%;height:auto;border-radius:16px;border:1px solid var(--bor)}
+.pos .chi{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 36%;align-items:center;min-height:520px;border:1px solid var(--bor);border-radius:24px;background:var(--s3);overflow:hidden}
+.pos .chi::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(55% 75% at 95% 55%,rgba(255,107,0,.16),transparent 70%)}
+.pos .chi-testo{position:relative;z-index:1;padding:44px 40px}
+.pos .chi-foto{position:absolute;right:0;top:0;height:100%;width:52%;object-fit:cover;object-position:62% 0;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 42%);mask:linear-gradient(90deg,transparent,#000 42%)}
 .pos .chi p{font-size:16px;line-height:27px;margin-top:14px}.pos .chi h2 span{color:var(--acc)}
 .pos .faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pos details{border:1px solid var(--bor);border-radius:14px;background:var(--s3);padding:0 20px}
@@ -85,7 +88,7 @@
 .pos .piede a{color:var(--dim);margin:0 8px}
 .pos .dock{position:fixed;left:0;right:0;bottom:0;width:100%;max-width:100%;overflow:hidden;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 24px;background:rgba(12,9,8,.94);border-top:1px solid var(--bor);transform:translateY(110%);transition:transform .3s}
 .pos .dock.su{transform:none}.pos .dock span{font-size:14px;color:#fff;font-weight:600}
-@media (max-width:820px){.pos h1{line-height:1.2;letter-spacing:-1.2px}.pos h2{letter-spacing:-.8px}.pos .due,.pos .strumenti,.pos .griglia,.pos .faq{grid-template-columns:1fr}.pos .testimonianze{grid-template-columns:1fr 1fr}.pos .chi{grid-template-columns:1fr}.pos .chi img{max-width:260px}.pos .sez{padding:52px 0}.pos .dock span{display:none}}
+@media (max-width:820px){.pos h1{line-height:1.2;letter-spacing:-1.2px}.pos h2{letter-spacing:-.8px}.pos .due,.pos .strumenti,.pos .griglia,.pos .faq{grid-template-columns:1fr}.pos .testimonianze{grid-template-columns:1fr 1fr}.pos .chi{grid-template-columns:1fr;min-height:0}.pos .chi-foto{position:relative;width:100%;height:340px;object-position:50% 6%;-webkit-mask:linear-gradient(180deg,#000 55%,transparent);mask:linear-gradient(180deg,#000 55%,transparent)}.pos .chi-testo{padding:0 22px 28px;margin-top:-80px}.pos .sez{padding:52px 0}.pos .dock span{display:none}}
 </style>
 <div class="pos" id="pos-vsl">
 <div class="barra"><span class="marchio">profit<span class="os">OS</span></span><a class="bottone" href="#" id="pos-cta-barra">Prenota la chiamata</a></div>
@@ -169,7 +172,8 @@
 <div class="pos-luce" id="pos-luce" hidden><div class="cornice-v"><iframe id="pos-luce-video" title="Testimonianza" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><button type="button" class="chiudi" id="pos-luce-chiudi" aria-label="Chiudi">×</button></div>
 
 <div class="sez"><div class="wide"><div class="chi">
-  <div><p class="et">Chi è Andrea</p>
+  <img class="chi-foto" src="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.webp" alt="" loading="lazy">
+  <div class="chi-testo"><p class="et">Chi è Andrea</p>
     <h2>Ho aperto partita IVA a 18 anni. Allora bastavano <span style="color:var(--acc)">50€</span>
     per riempire un ristorante di contatti.</h2>
     <p>Diciannove anni fa funzionava così, e non perché fossimo più bravi: c&rsquo;erano meno offerte
@@ -201,7 +205,6 @@
     Instagram ha tremila follower: rileggilo, perché è già mezza risposta al “ma io un pubblico non
     ce l&rsquo;ho”.</p>
   </div>
-  <img src="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.webp" alt="Andrea Audisio" width="880" height="1100" loading="lazy">
 </div></div></div>
 
 <div class="sez"><div class="wide">
