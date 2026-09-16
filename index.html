@@ -186,8 +186,13 @@
 .pos .storie{position:relative;margin-top:36px;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
-.pos .rullo{display:flex;gap:14px;width:max-content;
-  animation:pos-scorri 80s linear infinite}
+.pos .rullo{display:flex;gap:14px;width:max-content;will-change:transform}
+.pos .storie-box{position:relative}
+.pos .sfreccia{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,107,0,.5);background:rgba(15,11,9,.92);color:#fff;cursor:pointer;
+  font-size:12px;display:grid;place-items:center;padding:0;z-index:3;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:background .2s;-webkit-user-select:none;user-select:none;touch-action:none}
+.pos .sfreccia.sx{left:-12px}.pos .sfreccia.dx{right:-12px}
+.pos .sfreccia:hover{background:var(--acc);color:var(--bg)}.pos .sfreccia:active{transform:translateY(-50%) scale(.92)}
+@media (max-width:900px){.pos .sfreccia.sx{left:6px}.pos .sfreccia.dx{right:6px}}
 .pos .storia{position:relative;flex:0 0 17.5rem;width:17.5rem;border:1px solid var(--bor);
   border-radius:16px;overflow:hidden;background:var(--s3)}
 .pos .storia video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
@@ -1325,7 +1330,10 @@
   <h2>Chi c'è dentro profit<span class="os">OS</span>, adesso.</h2>
   <p class="intro">Non un elenco di loghi: le persone che stiamo seguendo adesso, con i loro
   contenuti e i loro profili.</p>
-  <div class="storie"><div class="rullo" id="pos-storie"></div></div>
+  <div class="storie-box">
+    <div class="storie"><div class="rullo" id="pos-storie"></div></div>
+    <button type="button" class="sfreccia sx" id="pos-storie-sx" aria-label="Scorri indietro">&#9664;</button><button type="button" class="sfreccia dx" id="pos-storie-dx" aria-label="Scorri avanti">&#9654;</button>
+  </div>
 </div></div>
 
 <div class="sez" id="pos-dove"><div class="wide">
@@ -1769,6 +1777,40 @@
       '<span class="cat">' + s[2] + "</span></div></article>";
   };
   $("pos-storie").innerHTML = STORIE.map(carta).join("") + STORIE.map(carta).join("");
+  /* il rullo scorre via JS: le frecce lo spingono (click = una card, pressione lunga = accelera); col mouse sopra si ferma */
+  (function () {
+    var rullo = $("pos-storie"), sx = $("pos-storie-sx"), dx = $("pos-storie-dx"); if (!rullo || !sx || !dx) return;
+    var x = 0, base = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 62, fattore = 1, verso = 1, spinta = 0, spintaVerso = 1, fermo = false, inVista = false, gira = false, ultimo = 0;
+    function passo(t) {
+      if (!inVista) { gira = false; return; }
+      var dt = Math.min(0.05, (t - ultimo) / 1000) || 0; ultimo = t;
+      var v = (fermo && fattore === 1) ? 0 : base * fattore * verso, extra = 0;
+      if (spinta > 0) { extra = Math.min(spinta, 1100 * dt); spinta -= extra; extra *= spintaVerso; }
+      var meta = rullo.scrollWidth / 2;
+      if (meta) { x = (((x + v * dt + extra) % meta) + meta) % meta; rullo.style.transform = "translateX(" + (-x).toFixed(1) + "px)"; }
+      requestAnimationFrame(passo);
+    }
+    function avvia() { if (!gira) { gira = true; ultimo = performance.now(); requestAnimationFrame(passo); } }
+    new IntersectionObserver(function (e) { e.forEach(function (k) { inVista = k.isIntersecting; if (inVista) avvia(); }); }, { rootMargin: "120px 0px" }).observe(rullo);
+    rullo.addEventListener("mouseenter", function () { fermo = true; });
+    rullo.addEventListener("mouseleave", function () { fermo = false; });
+    function freccia(btn, direzione) {
+      var timer = null, lunga = false;
+      btn.addEventListener("pointerdown", function (e) {
+        e.preventDefault(); try { btn.setPointerCapture(e.pointerId); } catch (err) {} lunga = false;
+        timer = setTimeout(function () { lunga = true; fattore = 5; verso = direzione; avvia(); }, 220);
+      });
+      function lascia() {
+        clearTimeout(timer);
+        if (lunga) { fattore = 1; verso = 1; }
+        else { var carta = rullo.firstElementChild; spinta += (carta ? carta.getBoundingClientRect().width : 280) + 14; spintaVerso = direzione; avvia(); }
+        lunga = false;
+      }
+      btn.addEventListener("pointerup", lascia); btn.addEventListener("pointercancel", lascia);
+      btn.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    }
+    freccia(dx, 1); freccia(sx, -1);
+  })();
   (function () {
     var io = new IntersectionObserver(function (voci) {
       voci.forEach(function (v) {
