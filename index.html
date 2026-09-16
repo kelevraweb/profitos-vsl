@@ -645,12 +645,10 @@
 
 /* il palco del video: griglia di punti, due orbite che girano, chip che fluttuano, finestra con cornice che segue il mouse */
 .pos .palco-video{position:relative;max-width:1000px;margin:44px auto 0;padding:56px 70px;perspective:1400px;
-  background:radial-gradient(circle at 50% 45%,rgba(255,107,0,.16),rgba(255,107,0,0) 55%),
-             radial-gradient(rgba(255,160,90,.16) 1px,transparent 1.5px);background-size:auto,22px 22px;
-  -webkit-mask:radial-gradient(110% 100% at 50% 50%,#000 55%,transparent 100%);mask:radial-gradient(110% 100% at 50% 50%,#000 55%,transparent 100%)}
+  background:radial-gradient(circle at 50% 45%,rgba(255,107,0,.16),rgba(255,107,0,0) 55%)}
 .pos .palco-video .orbita{position:absolute;left:50%;top:50%;border:1px solid rgba(255,107,0,.16);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%)}
-.pos .palco-video .o1{width:118%;aspect-ratio:1.55;animation:pos-orbita 38s linear infinite}
-.pos .palco-video .o2{width:136%;aspect-ratio:1.55;border-style:dashed;border-color:rgba(255,107,0,.1);animation:pos-orbita 64s linear infinite reverse}
+.pos .palco-video .o1{width:calc(2 * min(600px,42vw - 60px));height:calc(2 * min(600px,42vw - 60px) * .48)}
+.pos .palco-video .o2{width:calc(2 * min(690px,48vw - 80px));height:calc(2 * min(690px,48vw - 80px) * .48);border-style:dashed;border-color:rgba(255,107,0,.1)}
 @keyframes pos-orbita{to{transform:translate(-50%,-50%) rotate(360deg)}}
 .pos .palco-video .orbita i{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 14px rgba(255,107,0,.9);top:-4px;left:50%}
 .pos .palco-video .o2 i:nth-child(2){top:auto;bottom:-4px;left:30%;width:5px;height:5px}
@@ -862,7 +860,7 @@
     Le fai tutte tu, ed è per questo che non ne funziona nessuna.</p>
     <div class="sciame" id="pos-sciame" aria-hidden="true"></div>
     <div class="palco-video" id="pos-palco-video">
-      <div class="orbita o1"><i></i></div><div class="orbita o2"><i></i><i></i></div>
+      <div class="orbita o1"></div><div class="orbita o2"></div>
 
 
 
@@ -2227,10 +2225,10 @@ function costruisci(viaggio){
   /* le venti cose che oggi fai tu: in orbita attorno al palco, dietro la finestra */
   var sciame = document.getElementById("pos-sciame");
   if (sciame && palcoV) {
-    var COSE = ["rispondere ai DM", "inventare il post di oggi", "le stories, tutti i giorni", "il follow-up dimenticato", "scrivere il lead magnet",
-      "montare il video", "la landing da rifare", "il copy delle ads", "guardare i dati", "la call da convincere", "il preventivo", "il calendario editoriale",
-      "il webinar da preparare", "la VSL da riscrivere", "rincorrere il setter", "erogare la delivery", "i clienti fuori target", "la finestra di 24 ore",
-      "il tetto che non rompi", "il tuo martedì"];
+    var COSE = ["rispondere ai DM", "difficoltà a emergere", "inventare il post di oggi", "lead fuori target", "le stories, tutti i giorni",
+      "call che non chiudono", "il follow-up dimenticato", "pochi lead, sempre gli stessi", "scrivere il lead magnet", "contenuti che non portano niente",
+      "montare il video", "il tetto che non rompi", "la landing da rifare", "il calendario vuoto", "il copy delle ads", "prezzi tirati giù per chiudere",
+      "guardare i dati", "la call da convincere", "il preventivo", "il calendario editoriale", "la VSL da riscrivere", "rincorrere il setter", "erogare la delivery"];
     COSE.forEach(function (c, k) {
       var sp = document.createElement("span"); sp.style.setProperty("--a", (k / COSE.length * 360) + "deg");
       var b = document.createElement("b"); b.textContent = c; sp.appendChild(b); sciame.appendChild(sp);
