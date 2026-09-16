@@ -1703,13 +1703,23 @@
     [644574829, "n13", "Marika Manetta", "Consulente branding"],
     [644574778, "n14", "Patrizia Parca", "Consulente branding"],
     [644576898, "n15", "Stefano De Mojà", "Consulente marketing"],
-    [644575426, "n16", "Isacco Bonardi", "Mental coach, partito da zero"]
+    [644575426, "n16", "Isacco Bonardi", "Mental coach, partito da zero"],
+    ["yt:KbuyMNgxYOE", "y01", "Luca Balbarini", "Da zero al suo corso di lingua online"],
+    ["yt:saRSFjlO1dE", "y02", "Sara Gariglio", "Visibilità aziendale online"],
+    ["yt:0TU9-WK6RNI", "y03", "Franco Mastrorilli", "Cresciuto su LinkedIn"],
+    ["yt:X1WE5kxdRqQ", "y04", "Francesca e Alessandro", "Pix Around, marketing sviluppato insieme"],
+    ["yt:xc_XAdwimww", "y05", "Irina", "Studente Felice, fatturato in crescita"]
   ];
   $("pos-testimonianze").innerHTML = TESTI.map(function (t) {
     return '<button type="button" class="tvoce" data-video="' + t[0] + '"><img src="https://kelevraweb.github.io/profitos-vsl/img/testimonianze/' + t[1] + '.webp" alt="' + t[2] + ', ' + t[3] + '" width="720" height="405" loading="lazy"></button>';
   }).join("");
   var luce = $("pos-luce"), luceVideo = $("pos-luce-video");
-  function apriLuce(id) { luceVideo.src = "https://player.vimeo.com/video/" + id + "?autoplay=1&title=0&byline=0&portrait=0&dnt=1"; luce.hidden = false; document.body.style.overflow = "hidden"; }
+  function apriLuce(id) {
+    luceVideo.src = String(id).indexOf("yt:") === 0
+      ? "https://www.youtube-nocookie.com/embed/" + id.slice(3) + "?autoplay=1&rel=0&modestbranding=1"
+      : "https://player.vimeo.com/video/" + id + "?autoplay=1&title=0&byline=0&portrait=0&dnt=1";
+    luce.hidden = false; document.body.style.overflow = "hidden";
+  }
   function chiudiLuce() { luce.hidden = true; luceVideo.src = ""; document.body.style.overflow = ""; }
   $("pos-testimonianze").addEventListener("click", function (e) { var b = e.target.closest(".tvoce"); if (b) apriLuce(b.getAttribute("data-video")); });
   $("pos-luce-chiudi").addEventListener("click", chiudiLuce);
