@@ -611,7 +611,7 @@
 .pos .mp-binario b.viva span{opacity:1;color:#fff}
 .pos .mp-suggerimento{position:absolute;right:max(24px,calc((100vw - 1136px)/2 + 24px));bottom:52px;margin:0;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.4)}
 @media (max-width:900px){
-  .pos .mp-scheda{left:16px;right:16px;width:auto;top:auto;bottom:70px;transform:none;padding:20px}
+  .pos .mp-scheda{left:16px;right:16px;width:auto;top:auto;bottom:70px;transform:none;padding:20px;max-height:40vh;overflow:auto}
   .pos .mp-scheda h3{font-size:22px;margin-bottom:10px}.pos .mp-scheda .n{font-size:38px}.pos .mp-scheda dd{font-size:13.5px;line-height:20px}
   .pos .mp-binario{left:16px;right:16px;bottom:26px}.pos .mp-suggerimento{display:none}
   .pos .mp-velo{background:linear-gradient(180deg,rgba(7,5,4,.5),rgba(7,5,4,0) 20%,rgba(7,5,4,.2) 50%,rgba(7,5,4,.92) 75%)}
@@ -2395,7 +2395,7 @@ function costruisci(viaggio){
   /* le novae si distribuiscono nell'area libera: a destra della scheda (desktop) o nella meta' alta (mobile) */
   function posiziona(){
     var sr=scheda.getBoundingClientRect(), pr=palco.getBoundingClientRect(), stretto=W<900;
-    var ax=stretto?36:Math.max(60,sr.right-pr.left+70), aw=Math.max(200,W-ax-60), ay=stretto?64:90, ah=stretto?H*0.64-ay:H-ay-150;
+    var ax=stretto?36:Math.max(60,sr.right-pr.left+70), aw=Math.max(200,W-ax-60), ay=stretto?64:90, ah=stretto?Math.max(220,(sr.top-pr.top)-52-ay):H-ay-150;
     P=N.map(function(n){return [ax+n[0]*aw, ay+n[1]*ah]});
     novae.forEach(function(g,i){var p=P[i]; g.querySelector(".corpo").setAttribute("transform","translate("+p[0]+","+p[1]+")"); var t=g.querySelector("text"); var anc=n_anc(i); t.setAttribute("text-anchor",anc);
       var tx=p[0]+(anc==="end"?10:anc==="start"?-10:0), righe=t.querySelectorAll("tspan").length, sopra=stretto?(anc==="middle"):(N[i][1]>0.45);
@@ -2405,7 +2405,7 @@ function costruisci(viaggio){
     ROTTA=[]; for (var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2; for(var q=0;q<=40;q++){var u=q/40,iu=1-u; ROTTA.push([iu*iu*iu*a[0]+3*iu*iu*u*mx+3*iu*u*u*mx+u*u*u*b[0], iu*iu*iu*a[1]+3*iu*iu*u*a[1]+3*iu*u*u*b[1]+u*u*u*b[1]])}}
     ultima=-1;
   }
-  function n_anc(i){return N[i][0]>0.9?"end":N[i][0]<0.08?"start":"middle"}
+  function n_anc(i){return N[i][0]>=0.9?"end":N[i][0]<0.1?"start":"middle"}
   for (var pi=0;pi<3;pi++){var arr=[];for(var i=0;i<(pi===0?160:pi===1?90:40);i++)arr.push({x:Math.random()*1600,y:Math.random()*900,r:(pi+1)*0.55+Math.random()*0.9,f:Math.random()*6.28,v:0.6+Math.random()*1.4});piani.push(arr)}
   var ctxS=cvS.getContext("2d"), ctxF=cvF.getContext("2d"), progresso=0, fino=0, finoPrima=0, ultima=-1, vivo=true;
   function wx(x){return ox+x*k} function wy(y){return oy+y*k}
