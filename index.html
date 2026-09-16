@@ -694,17 +694,14 @@
 .pos .tvoce{position:relative;display:block;border:1px solid var(--bor);padding:0;background:#000;cursor:pointer;border-radius:14px;overflow:hidden;text-align:left;font-family:inherit;color:#fff}
 .pos .tvoce img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1),filter .4s;filter:saturate(.85)}
 .pos .tvoce:hover img{transform:scale(1.05);filter:saturate(1.05)}
-.pos .tvoce .nome-t{position:absolute;left:0;right:0;bottom:0;padding:40px 12px 10px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.88));font-size:12px;line-height:16px}
-.pos .tvoce .nome-t b{display:block;color:#fff;font-size:13px}.pos .tvoce .nome-t span{color:rgba(240,232,226,.72)}
 .pos .tvoce:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.pos .tvoce.nuova .nome-t{display:none}
 .pos-luce{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;padding:24px}
 .pos-luce[hidden]{display:none}
 .pos-luce .cornice-v{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,107,0,.3)}
 .pos-luce iframe{display:block;width:100%;height:100%;border:0}
 .pos-luce .chiudi{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .pos-luce .chiudi:hover{border-color:var(--acc);color:var(--acc)}
-@media (max-width:900px){.pos .testimonianze{grid-template-columns:1fr 1fr;gap:10px}.pos .tvoce .nome-t{padding:30px 10px 8px;font-size:11px}.pos .tvoce .nome-t b{font-size:12px}}
+@media (max-width:900px){.pos .testimonianze{grid-template-columns:1fr 1fr;gap:10px}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -1691,26 +1688,25 @@
 
   /* testimonianze video: [id Vimeo, file copertina, nome, cosa e' successo] */
   var TESTI = [
-    [644575671, "01", "Carlo Alberto De Cesare", "Da dipendente a imprenditore"],
-    [644574623, "02", "Pierpaolo Chiti", "Primo contratto da 8.000€, agenzia web"],
-    [707795644, "03", "Valerio Barsanti", "25.000€ al mese, formazione finanziaria"],
-    [644576368, "04", "Ethel Bersanetti", "Investimento rientrato in una settimana"],
-    [704215770, "05", "Morris Bottazzi", "Ha smesso di buttare soldi in sponsorizzate"],
-    [803151377, "06", "Davide Strada e Riccardo Bianchi", "35.000€ al mese con le attività locali"],
-    [704212060, "07", "Paolo Ronchi", "Da studente a imprenditore"],
-    [655532481, "n08", "Lorenzo Bignami", "20.000€ al mese con i consulenti fiscali", "nuova"],
-    [704217184, "09", "Enrico Zangara", "Digital marketer"],
-    [644574975, "10", "Lorenzo Savasta", "Consulente marketing per strutture ricettive"],
-    [704213129, "11", "Ivan Greppi", "25.000€ al mese con la formazione sales"],
-    [704218814, "12", "Riccardo D'Amici", "15.000€ al mese, consulenza legale"],
-    [644574829, "13", "Marika Manetta", "Consulente branding"],
-    [644574778, "14", "Patrizia Parca", "Consulente branding"],
-    [644576898, "15", "Stefano De Mojà", "Consulente marketing"],
-    [644575426, "16", "Isacco Bonardi", "Mental coach, partito da zero"]
+    [644575671, "n01", "Carlo Alberto De Cesare", "Da dipendente a imprenditore"],
+    [644574623, "n02", "Pierpaolo Chiti", "Primo contratto da 8.000€, agenzia web"],
+    [707795644, "n03", "Valerio Barsanti", "25.000€ al mese, formazione finanziaria"],
+    [644576368, "n04", "Ethel Bersanetti", "Investimento rientrato in una settimana"],
+    [704215770, "n05", "Morris Bottazzi", "Ha smesso di buttare soldi in sponsorizzate"],
+    [803151377, "n06", "Davide Strada e Riccardo Bianchi", "35.000€ al mese con le attività locali"],
+    [704212060, "n07", "Paolo Ronchi", "Da studente a imprenditore"],
+    [655532481, "n08", "Lorenzo Bignami", "20.000€ al mese con i consulenti fiscali"],
+    [704217184, "n09", "Enrico Zangara", "Digital marketer"],
+    [644574975, "n10", "Lorenzo Savasta", "Consulente marketing per strutture ricettive"],
+    [704213129, "n11", "Ivan Greppi", "25.000€ al mese con la formazione sales"],
+    [704218814, "n12", "Riccardo D'Amici", "15.000€ al mese, consulenza legale"],
+    [644574829, "n13", "Marika Manetta", "Consulente branding"],
+    [644574778, "n14", "Patrizia Parca", "Consulente branding"],
+    [644576898, "n15", "Stefano De Mojà", "Consulente marketing"],
+    [644575426, "n16", "Isacco Bonardi", "Mental coach, partito da zero"]
   ];
   $("pos-testimonianze").innerHTML = TESTI.map(function (t) {
-    return '<button type="button" class="tvoce' + (t[4] ? " " + t[4] : "") + '" data-video="' + t[0] + '"><img src="https://kelevraweb.github.io/profitos-vsl/img/testimonianze/' + t[1] + '.webp" alt="' + t[2] + '" width="720" height="402" loading="lazy">' +
-      '<span class="nome-t"><b>' + t[2] + '</b><span>' + t[3] + '</span></span></button>';
+    return '<button type="button" class="tvoce" data-video="' + t[0] + '"><img src="https://kelevraweb.github.io/profitos-vsl/img/testimonianze/' + t[1] + '.webp" alt="' + t[2] + ', ' + t[3] + '" width="720" height="405" loading="lazy"></button>';
   }).join("");
   var luce = $("pos-luce"), luceVideo = $("pos-luce-video");
   function apriLuce(id) { luceVideo.src = "https://player.vimeo.com/video/" + id + "?autoplay=1&title=0&byline=0&portrait=0&dnt=1"; luce.hidden = false; document.body.style.overflow = "hidden"; }
