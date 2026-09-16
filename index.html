@@ -1881,7 +1881,7 @@
       ? '<div class="testa"><img src="' + c[4] + '" alt="' + c[0] + '">' +
         '<div><p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3></div></div>"
       : '<p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3>";
-    if (c[5]) testa = '<div class="rit-box"><img src="' + c[5] + '" alt="' + c[0] + '" loading="lazy"></div><p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3>";
+    if (c[5]) testa = '<div class="rit-box"><img src="' + c[5] + '" alt="' + c[0] + '" decoding="async"></div><p class="et">' + c[0] + '</p><h3>' + c[1] + "</h3>";
     return '<article class="caso' + (c[5] ? " rit" : "") + '">' + testa + "<p>" + c[2] +
       '</p><p class="impact">Impact</p><ul>' + c[3].map(function (r) { return "<li>" + r + "</li>"; }).join("") + "</ul></article>";
   }).join("");
