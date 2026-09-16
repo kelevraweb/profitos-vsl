@@ -710,10 +710,12 @@
 .pos .globo .paese{padding:6px 11px;font-size:12px;background:rgba(15,11,9,.75)}
 .pos .mcolonne{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:520px;overflow:hidden;
   -webkit-mask:linear-gradient(transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(transparent,#000 10%,#000 90%,transparent)}
-.pos .mcol{display:flex;flex-direction:column;gap:12px;animation:pos-sali 120s linear infinite}
-.pos .mcol.giu{animation-direction:reverse;animation-duration:140s}
-.pos .mcolonne:hover .mcol{animation-play-state:paused}
-@keyframes pos-sali{to{transform:translateY(-50%)}}
+.pos .mcol-box{position:relative}
+.pos .mcol{display:flex;flex-direction:column;gap:12px;will-change:transform}
+.pos .mfrecce{position:absolute;right:-19px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:2}
+.pos .mfrecce button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,107,0,.5);background:rgba(15,11,9,.92);color:#fff;cursor:pointer;
+  font-size:11px;display:grid;place-items:center;padding:0;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:background .2s,transform .15s;-webkit-user-select:none;user-select:none;touch-action:none}
+.pos .mfrecce button:hover{background:var(--acc);color:var(--bg)}.pos .mfrecce button:active{transform:scale(.92)}
 .pos .mcarta{border:1px solid var(--bor);border-radius:16px;overflow:hidden;background:var(--s3)}
 .pos .mcarta img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(.7) brightness(.55);transition:filter .45s}.pos .mcarta:hover img{filter:none}
 .pos .mcarta .t{padding:12px 14px}.pos .mcarta .t i{display:block;font-style:normal;color:var(--acc);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700}
@@ -722,8 +724,7 @@
 .pos .mcarta.logo .l{width:76px;height:56px;display:flex;align-items:center;justify-content:center}
 .pos .mcarta.logo .l img{width:auto;height:auto;max-width:100%;max-height:100%;aspect-ratio:auto;object-fit:contain;filter:none;opacity:.8}.pos .mcarta.logo:hover .l img{opacity:1}
 .pos .mcarta.logo .t{padding:0}
-@media (max-width:900px){.pos .mondo-due{grid-template-columns:1fr}.pos .mcolonne{height:440px}}
-@media (prefers-reduced-motion:reduce){.pos .mcol{animation:none}}
+@media (max-width:900px){.pos .mondo-due{grid-template-columns:1fr}.pos .mcolonne{height:440px}.pos .mfrecce{right:6px}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -1336,7 +1337,10 @@
     <div class="globo" id="pos-globo"><canvas></canvas>
       <div class="paesi"><span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span><span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span><span class="paese"><i></i>Emirati · Dubai</span><span class="paese"><i></i>Spagna</span><span class="paese"><i></i>Germania</span><span class="paese"><i></i>Cipro</span><span class="paese"><i></i>Thailandia</span></div>
     </div>
-    <div class="mcolonne" id="pos-colonne"><div class="mcol" id="pos-col-a"></div><div class="mcol giu" id="pos-col-b"></div></div>
+    <div class="mcol-box">
+      <div class="mcolonne" id="pos-colonne"><div class="mcol" id="pos-col-a"></div><div class="mcol giu" id="pos-col-b"></div></div>
+      <div class="mfrecce"><button type="button" id="pos-freccia-su" aria-label="Scorri indietro">&#9650;</button><button type="button" id="pos-freccia-giu" aria-label="Scorri avanti">&#9660;</button></div>
+    </div>
   </div>
 </div></div>
 
@@ -1689,6 +1693,42 @@
       : '<div class="mcarta logo"><div class="l"><img src="' + M + s[1] + '" alt="' + s[3] + '" loading="lazy"></div><div class="t"><i>' + s[2] + '</i><b>' + s[3] + '</b>' + (s[4] ? '<span>' + s[4] + '</span>' : '') + '</div></div>'; }
     A.innerHTML = SA.map(scheda).join("") + SA.map(scheda).join("");
     B.innerHTML = SB.map(scheda).join("") + SB.map(scheda).join("");
+    /* le colonne scorrono via JS: cosi' le frecce possono spingerle. Un click sposta di un passo, tenendo premuto la velocita' sale. */
+    var box = document.getElementById("pos-colonne"), su = document.getElementById("pos-freccia-su"), giu = document.getElementById("pos-freccia-giu");
+    var colonne = [{ el: A, y: 0, dir: 1 }, { el: B, y: 0, dir: -1 }];
+    var base = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 16, fattore = 1, verso = 1, spinta = 0, spintaVerso = 1, fermo = false, inVista = false, gira = false, ultimo = 0;
+    function passo(t) {
+      if (!inVista) { gira = false; return; }
+      var dt = Math.min(0.05, (t - ultimo) / 1000) || 0; ultimo = t;
+      var v = (fermo && fattore === 1) ? 0 : base * fattore * verso, extra = 0;
+      if (spinta > 0) { extra = Math.min(spinta, 900 * dt); spinta -= extra; extra *= spintaVerso; }
+      colonne.forEach(function (c) {
+        var meta = c.el.scrollHeight / 2; if (!meta) return;
+        c.y = (((c.y + (v * dt + extra) * c.dir) % meta) + meta) % meta;
+        c.el.style.transform = "translateY(" + (-c.y).toFixed(1) + "px)";
+      });
+      requestAnimationFrame(passo);
+    }
+    function avvia() { if (!gira) { gira = true; ultimo = performance.now(); requestAnimationFrame(passo); } }
+    new IntersectionObserver(function (e) { e.forEach(function (x) { inVista = x.isIntersecting; if (inVista) avvia(); }); }, { rootMargin: "120px 0px" }).observe(box);
+    box.addEventListener("mouseenter", function () { fermo = true; });
+    box.addEventListener("mouseleave", function () { fermo = false; });
+    function freccia(btn, direzione) {
+      var timer = null, lunga = false;
+      btn.addEventListener("pointerdown", function (e) {
+        e.preventDefault(); try { btn.setPointerCapture(e.pointerId); } catch (err) {} lunga = false;
+        timer = setTimeout(function () { lunga = true; fattore = 7; verso = direzione; avvia(); }, 220);
+      });
+      function lascia() {
+        clearTimeout(timer);
+        if (lunga) { fattore = 1; verso = 1; }
+        else { spinta += 240; spintaVerso = direzione; avvia(); }
+        lunga = false;
+      }
+      btn.addEventListener("pointerup", lascia); btn.addEventListener("pointercancel", lascia);
+      btn.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    }
+    freccia(giu, 1); freccia(su, -1);
   })();
 
 
