@@ -697,6 +697,7 @@
 .pos .tvoce .nome-t{position:absolute;left:0;right:0;bottom:0;padding:40px 12px 10px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.88));font-size:12px;line-height:16px}
 .pos .tvoce .nome-t b{display:block;color:#fff;font-size:13px}.pos .tvoce .nome-t span{color:rgba(240,232,226,.72)}
 .pos .tvoce:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pos .tvoce.nuova .nome-t{display:none}
 .pos-luce{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;padding:24px}
 .pos-luce[hidden]{display:none}
 .pos-luce .cornice-v{width:min(1100px,100%);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,107,0,.3)}
@@ -1697,9 +1698,10 @@
     [704215770, "05", "Morris Bottazzi", "Ha smesso di buttare soldi in sponsorizzate"],
     [803151377, "06", "Davide Strada e Riccardo Bianchi", "35.000€ al mese con le attività locali"],
     [704212060, "07", "Paolo Ronchi", "Da studente a imprenditore"],
-    [655532481, "08", "Lorenzo Bignami", "20.000€ al mese con i consulenti fiscali"],
+    [655532481, "n08", "Lorenzo Bignami", "20.000€ al mese con i consulenti fiscali", "nuova"],
     [704217184, "09", "Enrico Zangara", "Digital marketer"],
     [644574975, "10", "Lorenzo Savasta", "Consulente marketing per strutture ricettive"],
+    [704213129, "11", "Ivan Greppi", "25.000€ al mese con la formazione sales"],
     [704218814, "12", "Riccardo D'Amici", "15.000€ al mese, consulenza legale"],
     [644574829, "13", "Marika Manetta", "Consulente branding"],
     [644574778, "14", "Patrizia Parca", "Consulente branding"],
@@ -1707,7 +1709,7 @@
     [644575426, "16", "Isacco Bonardi", "Mental coach, partito da zero"]
   ];
   $("pos-testimonianze").innerHTML = TESTI.map(function (t) {
-    return '<button type="button" class="tvoce" data-video="' + t[0] + '"><img src="https://kelevraweb.github.io/profitos-vsl/img/testimonianze/' + t[1] + '.webp" alt="' + t[2] + '" width="720" height="402" loading="lazy">' +
+    return '<button type="button" class="tvoce' + (t[4] ? " " + t[4] : "") + '" data-video="' + t[0] + '"><img src="https://kelevraweb.github.io/profitos-vsl/img/testimonianze/' + t[1] + '.webp" alt="' + t[2] + '" width="720" height="402" loading="lazy">' +
       '<span class="nome-t"><b>' + t[2] + '</b><span>' + t[3] + '</span></span></button>';
   }).join("");
   var luce = $("pos-luce"), luceVideo = $("pos-luce-video");
