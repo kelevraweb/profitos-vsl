@@ -690,7 +690,7 @@
 @media (prefers-reduced-motion:reduce){.pos .sciame span{animation:none}}
 /* le testimonianze video: copertine dorate del wall of love, al click si apre il video Vimeo in una finestra sopra la pagina */
 .pos .voci-et{margin-top:52px}
-.pos .testimonianze{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.pos .testimonianze{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
 .pos .tvoce{position:relative;display:block;border:1px solid var(--bor);padding:0;background:#000;cursor:pointer;border-radius:14px;overflow:hidden;text-align:left;font-family:inherit;color:#fff}
 .pos .tvoce img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1),filter .4s;filter:saturate(.85)}
 .pos .tvoce:hover img{transform:scale(1.05);filter:saturate(1.05)}
@@ -701,7 +701,7 @@
 .pos-luce iframe{display:block;width:100%;height:100%;border:0}
 .pos-luce .chiudi{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .pos-luce .chiudi:hover{border-color:var(--acc);color:var(--acc)}
-@media (max-width:900px){.pos .testimonianze{grid-template-columns:1fr 1fr;gap:10px}}
+@media (max-width:900px){.pos .testimonianze{grid-template-columns:1fr 1fr;gap:10px}.pos .tvoce:last-child:nth-child(odd){grid-column:span 2}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
