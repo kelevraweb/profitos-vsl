@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Hero · cinque proposte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#FF6B00;--bg:#0C0908;--txt:rgba(240,232,226,.8);--dim:rgba(240,232,226,.62);--bor:rgba(255,107,0,.15);--black:'Arial Black','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--txt);font-family:Figtree,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wide{max-width:1136px;margin:0 auto;padding:0 24px}
+.et{color:var(--acc);font-size:12px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin:0}
+.et::before{content:"";width:6px;height:6px;background:var(--acc);border-radius:2px 50% 50% 50%}
+h1{font-family:var(--black);font-weight:900;color:#fff;letter-spacing:-2.4px;line-height:1.04;margin:0;text-wrap:balance}
+mark{background:var(--acc);color:var(--bg);padding:2px 16px;border-radius:12px;white-space:nowrap}
+.sub{margin:22px 0 0;font-size:20px;line-height:30px;font-weight:700;color:var(--txt)}.sub b{color:#fff}
+.nota{margin:12px 0 0;font-size:15px;line-height:24px;color:var(--dim);max-width:62ch}
+.player{position:relative;aspect-ratio:16/9;background:#000;border-radius:inherit;overflow:hidden}
+.player .finto{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(60% 60% at 50% 50%,#1a110b,#000)}
+.player .finto i{width:84px;height:84px;border-radius:50%;background:var(--acc);display:grid;place-items:center;box-shadow:0 0 40px rgba(255,107,0,.6)}
+.player .finto i::after{content:"";border-left:26px solid #0C0908;border-top:15px solid transparent;border-bottom:15px solid transparent;margin-left:6px}
+.indice{padding:60px 0 20px;border-bottom:1px solid var(--bor)}
+.indice h2{color:#fff;margin:0;font-size:32px;letter-spacing:-1px}.indice p{max-width:760px;font-size:17px;line-height:27px}
+.indice .scelta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.indice .scelta a{padding:9px 14px;border:1px solid rgba(255,107,0,.35);border-radius:999px;color:#fff;text-decoration:none;font-weight:700;font-size:13px}
+.prop{padding:70px 0 90px;border-bottom:1px solid var(--bor);position:relative;overflow:hidden}
+.prop .tag{position:absolute;left:24px;top:22px;z-index:5;font-size:11px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);padding:6px 12px;border:1px solid rgba(255,107,0,.4);border-radius:999px;background:rgba(12,9,8,.7)}
+.prop .cosa{margin:0 0 34px;color:var(--dim);font-size:14px;max-width:820px;line-height:22px}.prop .cosa b{color:#fff}
+
+/* ===== 1 · OBSIDIAN ===== */
+.h1 .mesh{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.h1 .mesh i{position:absolute;width:60vw;height:60vw;border-radius:50%;filter:blur(90px);opacity:.5;animation:blob 22s ease-in-out infinite alternate}
+.h1 .mesh i:nth-child(1){left:-20vw;top:-10vw;background:rgba(255,107,0,.35)}
+.h1 .mesh i:nth-child(2){right:-25vw;top:10vw;background:rgba(255,60,0,.22);animation-duration:29s;animation-delay:-8s}
+.h1 .mesh i:nth-child(3){left:20vw;bottom:-40vw;background:rgba(255,150,60,.16);animation-duration:35s;animation-delay:-15s}
+@keyframes blob{from{transform:translate(0,0) scale(1)}to{transform:translate(12vw,8vw) scale(1.25)}}
+.h1 .grana{position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 .8 0 0 0 0 .6 0 0 0 .06 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.h1 .wide{position:relative;text-align:center}
+.h1 h1{font-size:clamp(40px,5.6vw,74px);max-width:16ch;margin:22px auto 0}
+.h1 h1 .w{display:inline-block;margin-right:.22em;opacity:0;transform:translateY(24px);animation:wr .8s cubic-bezier(.16,1,.3,1) forwards}
+.h1 h1 mark .w:last-child{margin-right:0}
+.h1 .sub,.h1 .nota{margin-left:auto;margin-right:auto;max-width:60ch}
+@keyframes wr{to{opacity:1;transform:none}}
+.h1 .lastra{position:relative;max-width:900px;margin:40px auto 0;perspective:1400px}
+.h1 .vetro{border-radius:22px;padding:10px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 50px 120px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.15),0 0 100px rgba(255,107,0,.18);transform:rotateX(6deg);transform-style:preserve-3d;transition:transform .2s linear}
+.h1 .vetro .player{border-radius:14px}
+.h1 .nastro{margin-top:36px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.h1 .nastro div{display:flex;gap:44px;width:max-content;animation:scorri 28s linear infinite;font-size:12px;letter-spacing:2.6px;text-transform:uppercase;color:rgba(240,232,226,.5)}
+.h1 .nastro span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acc);margin-right:14px;vertical-align:2px}
+@keyframes scorri{to{transform:translateX(-50%)}}
+
+/* ===== 2 · CAPITOLI ===== */
+.h2v .wide{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.h2v h1{font-size:clamp(36px,4.2vw,56px)}
+.h2v .cap{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid var(--bor)}
+.h2v .cap li{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--bor);align-items:baseline;opacity:0;transform:translateX(-10px);animation:capin .6s cubic-bezier(.16,1,.3,1) forwards}
+.h2v .cap li:nth-child(2){animation-delay:.1s}.h2v .cap li:nth-child(3){animation-delay:.2s}.h2v .cap li:nth-child(4){animation-delay:.3s}.h2v .cap li:nth-child(5){animation-delay:.4s}
+@keyframes capin{to{opacity:1;transform:none}}
+.h2v .cap b{font-family:var(--black);color:var(--acc);font-size:13px;letter-spacing:1px}
+.h2v .cap span{color:#fff;font-size:16px;font-weight:600}.h2v .cap small{display:block;color:var(--dim);font-size:13px;margin-top:2px;font-weight:400}
+.h2v .cornice{position:relative;border-radius:22px;border:1px solid rgba(255,107,0,.35);padding:10px;background:#0a0705;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 70px rgba(255,107,0,.14)}
+.h2v .cornice .player{border-radius:14px}
+.h2v .anello{position:absolute;right:-34px;top:-34px;width:112px;height:112px;border-radius:50%;background:#0C0908;border:1px solid rgba(255,107,0,.35);display:grid;place-items:center;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+.h2v .anello svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.h2v .anello circle{fill:none;stroke-width:4}.h2v .anello .f{stroke:rgba(255,107,0,.18)}.h2v .anello .p{stroke:var(--acc);stroke-linecap:round;stroke-dasharray:314;stroke-dashoffset:314;animation:anello 3s cubic-bezier(.16,1,.3,1) .4s forwards}
+@keyframes anello{to{stroke-dashoffset:60}}
+.h2v .anello b{position:relative;color:#fff;font-size:20px;letter-spacing:-.5px}.h2v .anello b small{display:block;font-size:9px;letter-spacing:2px;color:var(--dim);text-align:center}
+
+/* ===== 3 · CINEMA ===== */
+.h3v{background:radial-gradient(70% 50% at 50% 0%,rgba(255,107,0,.16),transparent 60%)}
+.h3v .wide{text-align:center;position:relative}
+.h3v h1{font-size:clamp(40px,5.4vw,72px);max-width:17ch;margin:22px auto 0}
+.h3v h1 em{font-style:normal;color:var(--acc);position:relative}
+.h3v .sub,.h3v .nota{margin-left:auto;margin-right:auto;max-width:60ch}
+.h3v .sala{position:relative;max-width:1100px;margin:44px auto 0}
+.h3v .fasci{position:absolute;left:0;right:0;top:-160px;height:220px;pointer-events:none;overflow:hidden}
+.h3v .fasci i{position:absolute;top:0;width:34%;height:100%;background:linear-gradient(180deg,rgba(255,150,80,0),rgba(255,150,80,.14) 40%,rgba(255,150,80,0));filter:blur(18px);transform-origin:top center;animation:faro 9s ease-in-out infinite alternate}
+.h3v .fasci i:nth-child(1){left:8%;transform:skewX(-14deg)}.h3v .fasci i:nth-child(2){left:38%;animation-delay:-3s}.h3v .fasci i:nth-child(3){left:62%;transform:skewX(14deg);animation-delay:-6s}
+@keyframes faro{from{opacity:.5}to{opacity:1}}
+.h3v .schermo{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 60px 140px rgba(0,0,0,.8),0 0 0 1px rgba(255,107,0,.3)}
+.h3v .schermo .player{border-radius:0}
+.h3v .schermo::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 120px rgba(0,0,0,.6)}
+.h3v .piede{display:flex;justify-content:center;gap:28px;margin-top:22px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.5)}
+.h3v .piede b{color:var(--acc)}
+
+/* ===== 4 · BLUEPRINT ===== */
+.h4v{background:linear-gradient(rgba(255,107,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,0,.06) 1px,transparent 1px);background-size:56px 56px;background-position:center}
+.h4v .wide{position:relative}
+.h4v .coord{position:absolute;right:24px;top:0;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:1px;color:rgba(240,232,226,.4)}
+.h4v h1{font-size:clamp(38px,5vw,66px);max-width:18ch;margin-top:18px}
+.h4v .tavola{position:relative;max-width:940px;margin:44px auto 0;padding:26px}
+.h4v .tavola::before,.h4v .tavola::after,.h4v .tavola i::before,.h4v .tavola i::after{content:"";position:absolute;width:26px;height:26px;border:2px solid var(--acc)}
+.h4v .tavola::before{left:0;top:0;border-right:0;border-bottom:0}.h4v .tavola::after{right:0;top:0;border-left:0;border-bottom:0}
+.h4v .tavola i::before{left:0;bottom:0;border-right:0;border-top:0}.h4v .tavola i::after{right:0;bottom:0;border-left:0;border-top:0}
+.h4v .tavola .player{border-radius:6px;box-shadow:0 40px 100px rgba(0,0,0,.7)}
+.h4v .nota-t{position:absolute;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.6px;color:#fff;padding:8px 12px;border:1px solid rgba(255,107,0,.5);background:rgba(12,9,8,.9);border-radius:6px;white-space:nowrap}
+.h4v .nota-t::before{content:"";position:absolute;width:60px;height:1px;background:var(--acc);top:50%}
+.h4v .n1{left:-180px;top:60px}.h4v .n1::before{right:-60px}
+.h4v .n2{right:-190px;top:140px}.h4v .n2::before{left:-60px}
+.h4v .n3{left:-180px;bottom:80px}.h4v .n3::before{right:-60px}
+.h4v .n4{right:-180px;bottom:40px}.h4v .n4::before{left:-60px}
+.h4v .nota-t small{display:block;color:var(--dim);font-size:10px;margin-top:2px}
+
+/* ===== 5 · LE VENTI COSE ===== */
+.h5v .wide{text-align:center;position:relative}
+.h5v h1{font-size:clamp(40px,5.4vw,70px);max-width:17ch;margin:22px auto 0}
+.h5v .sub,.h5v .nota{margin-left:auto;margin-right:auto;max-width:60ch}
+.h5v .giostra{position:relative;max-width:900px;margin:60px auto 0;padding:110px 0}
+.h5v .giostra .cornice{position:relative;z-index:2;border-radius:20px;border:1px solid rgba(255,107,0,.35);padding:8px;background:#0a0705;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 80px rgba(255,107,0,.16)}
+.h5v .giostra .cornice .player{border-radius:13px}
+.h5v .cose{position:absolute;inset:0;pointer-events:none;transform:scaleY(.6)}
+.h5v .cose span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a)));animation:sciame 40s linear infinite;--r:min(560px,39vw)}
+.h5v .cose b{display:block;transform:scaleY(1.667);padding:7px 12px;border-radius:999px;border:1px solid rgba(255,107,0,.25);background:rgba(15,11,9,.9);color:rgba(240,232,226,.62);font-size:12px;font-weight:400;white-space:nowrap}
+@keyframes sciame{to{transform:translate(-50%,-50%) rotate(calc(var(--a) + 360deg)) translateX(var(--r)) rotate(calc(-1 * var(--a) - 360deg))}}
+.h5v .cose span:nth-child(odd){--r:min(620px,43vw);animation-duration:52s;animation-direction:reverse}
+.h5v .cose span:nth-child(odd) b{color:rgba(240,232,226,.45)}
+.h5v .cose span:nth-child(3n){--r:min(500px,35vw)}
+.h5v .giostra::before{content:"";position:absolute;left:50%;top:50%;width:min(1240px,86vw);height:calc(min(1240px,86vw) * .6);border-radius:50%;transform:translate(-50%,-50%);border:1px dashed rgba(255,107,0,.12)}
+.h5v .giostra::after{content:"";position:absolute;left:50%;top:50%;width:min(1000px,70vw);height:calc(min(1000px,70vw) * .6);border-radius:50%;transform:translate(-50%,-50%);border:1px solid rgba(255,107,0,.1)}
+@media (max-width:900px){.h2v .wide{grid-template-columns:1fr}.h2v .anello{display:none}.h4v .nota-t{display:none}.h5v .cose{display:none}.h1 .vetro{transform:none}}
+</style>
+</head>
+<body>
+<div class="indice"><div class="wide">
+  <p class="et">Hero · cinque proposte</p>
+  <h2>Stesso titolo, cinque modi di metterlo in scena.</h2>
+  <p>Nessuna parla degli strumenti (chi arriva non sa ancora cosa sono): parlano del <b>video</b>, dei <b>problemi</b> e di quello che <b>vedrai</b>. Il player e' finto nei mockup (cornice nera con play) ma ha la misura vera: 860px, quella a cui VTurb non sgrana. Riferimenti presi da motionsites (sfondi animati, vetro, 3D) e webthemez (griglie, blueprint).</p>
+  <div class="scelta"><a href="#p1">1 · Obsidian</a><a href="#p2">2 · Capitoli</a><a href="#p3">3 · Cinema</a><a href="#p4">4 · Blueprint</a><a href="#p5">5 · Le venti cose</a></div>
+</div></div>
+
+<!-- 1 -->
+<section class="prop h1" id="p1"><span class="tag">1 · Obsidian</span>
+  <div class="mesh"><i></i><i></i><i></i></div><div class="grana"></div>
+  <div class="wide">
+    <p class="cosa" style="text-align:left"><b>Cos'e':</b> sfondo "liquido" arancio che si muove piano (tre macchie sfocate), grana fine sopra, titolo che entra parola per parola, il video su una lastra di vetro inclinata in 3D che si raddrizza col mouse. Sotto, un nastro che scorre con i capitoli del video.</p>
+    <p class="et" style="justify-content:center">Prima di parlarci · 35 minuti</p>
+    <h1 id="kin"></h1>
+    <p class="sub">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te (poco).</p>
+    <p class="nota">Non e' la nicchia, non e' l'offerta, non e' il posizionamento: quelle te le hanno gia' vendute. Nel 2026 la fiducia te la devi guadagnare, e per guadagnarla ci sono venti cose da fare. Le fai tutte tu, ed e' per questo che non ne funziona nessuna.</p>
+    <div class="lastra" id="lastra"><div class="vetro" id="vetro"><div class="player"><div class="finto"><i></i></div></div></div></div>
+    <div class="nastro"><div><span>Perche' non cresci online</span><span>Le tre porte chiuse</span><span>La delega inversa</span><span>Il conto delle ore</span><span>Il giro completo</span><span>La garanzia a due strati</span><span>Perche' non cresci online</span><span>Le tre porte chiuse</span><span>La delega inversa</span><span>Il conto delle ore</span><span>Il giro completo</span><span>La garanzia a due strati</span></div></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="prop h2v" id="p2"><span class="tag">2 · Capitoli</span>
+  <div class="wide" style="display:block"><p class="cosa"><b>Cos'e':</b> due colonne. A sinistra il titolo e l'indice del video come capitoli con i minuti (cosi' uno sa cosa lo aspetta e puo' saltare). A destra il player in cornice con un anello che si riempie fino a 35:12. Sobrio, "prodotto".</p></div>
+  <div class="wide">
+    <div>
+      <p class="et">Prima di parlarci · 35 minuti</p>
+      <h1>Il video che ti risparmia <mark>tutti i tentativi</mark> andati a vuoto.</h1>
+      <p class="sub">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te (poco).</p>
+      <ol class="cap">
+        <li><b>00:00</b><span>Perche' non cresci online<small>La fiducia e' crollata, la barriera e' sparita</small></span></li>
+        <li><b>08:40</b><span>Le tre porte che hai gia' provato<small>Agenzia, affiancamento, AI generica</small></span></li>
+        <li><b>16:50</b><span>La delega inversa<small>Deleghi la fatica, ti tieni la testa</small></span></li>
+        <li><b>23:30</b><span>Il giro, pezzo per pezzo<small>Dall'offerta alla vendita, e la delivery che torna dentro</small></span></li>
+        <li><b>33:10</b><span>La garanzia, letta qui<small>Due strati, nessuna clausola</small></span></li>
+      </ol>
+    </div>
+    <div class="cornice"><div class="player"><div class="finto"><i></i></div></div><div class="anello"><svg viewBox="0 0 108 108"><circle class="f" cx="54" cy="54" r="50"/><circle class="p" cx="54" cy="54" r="50"/></svg><b>35:12<small>minuti</small></b></div></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="prop h3v" id="p3"><span class="tag">3 · Cinema</span>
+  <div class="wide">
+    <p class="cosa" style="text-align:left"><b>Cos'e':</b> il video e' il protagonista: schermo largo (1100px, ma il player resta 860 dentro), tre fari di luce che scendono dall'alto come in una sala, vignettatura, sotto la riga "durata · capitoli · senza slide". Il titolo con la parola chiave in arancio, niente blocco.</p>
+    <p class="et" style="justify-content:center">Ora in sala · 35 minuti</p>
+    <h1>Il video che ti risparmia <em>tutti i tentativi</em> andati a vuoto.</h1>
+    <p class="sub">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te (poco).</p>
+    <div class="sala"><div class="fasci"><i></i><i></i><i></i></div><div class="schermo"><div class="player"><div class="finto"><i></i></div></div></div>
+      <div class="piede"><span><b>35:12</b> minuti</span><span><b>5</b> capitoli</span><span><b>0</b> slide</span><span>parlato, a faccia scoperta</span></div></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="prop h4v" id="p4"><span class="tag">4 · Blueprint</span>
+  <div class="wide">
+    <p class="cosa"><b>Cos'e':</b> griglia tecnica sullo sfondo, angoli disegnati attorno al video, e quattro annotazioni con la linea, come su un progetto: dicono cosa succede al tuo business, non che strumento lo fa. Serio, da "sistema", coerente con lo schema della delega e con la tabella delle ore.</p>
+    <span class="coord">FIG. 01 · IL SISTEMA · 35:12</span>
+    <p class="et">Prima di parlarci</p>
+    <h1>Il video che ti risparmia <mark>tutti i tentativi</mark> andati a vuoto.</h1>
+    <p class="sub">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te (poco).</p>
+    <div class="tavola"><i></i><div class="player"><div class="finto"><i></i></div></div>
+      <div class="nota-t n1">nessuno in chat<small>i DM non si perdono piu'</small></div>
+      <div class="nota-t n2">pubblichi ogni giorno<small>senza inventare niente</small></div>
+      <div class="nota-t n3">arrivano gia' decisi<small>due call, non nove</small></div>
+      <div class="nota-t n4">2-3 ore al giorno<small>il resto lo fa il sistema</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="prop h5v" id="p5"><span class="tag">5 · Le venti cose</span>
+  <div class="wide">
+    <p class="cosa" style="text-align:left"><b>Cos'e':</b> attorno al video girano piano, su due orbite, le venti cose che oggi fai tu ("rispondere ai DM", "inventare il post", "il follow-up dimenticato"...): rendono visibile la frase "le fai tutte tu". Il video sta al centro, fermo, come la risposta. Piu' narrativo, e aggancia subito la sezione del problema.</p>
+    <p class="et" style="justify-content:center">Prima di parlarci · 35 minuti</p>
+    <h1>Il video che ti risparmia <mark>tutti i tentativi</mark> andati a vuoto.</h1>
+    <p class="sub">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te (poco).</p>
+    <div class="giostra">
+      <div class="cose" id="cose"></div>
+      <div class="cornice"><div class="player"><div class="finto"><i></i></div></div></div>
+    </div>
+  </div>
+</section>
+<div style="height:60px"></div>
+<script>
+/* 1: titolo parola per parola + lastra che segue il mouse */
+var T="Il video che ti risparmia |tutti i tentativi| andati a vuoto.", kin=document.getElementById("kin"), i=0;
+T.split("|").forEach(function(seg,k){ if(k===1){var m=document.createElement("mark");seg.split(" ").forEach(function(w){var s=document.createElement("span");s.className="w";s.style.animationDelay=(i++*0.09)+"s";s.textContent=w;m.appendChild(s)});kin.appendChild(m);kin.appendChild(document.createTextNode(" "))}
+  else seg.trim().split(" ").forEach(function(w){var s=document.createElement("span");s.className="w";s.style.animationDelay=(i++*0.09)+"s";s.textContent=w;kin.appendChild(s)})});
+var lastra=document.getElementById("lastra"),vetro=document.getElementById("vetro");
+lastra.addEventListener("mousemove",function(e){var r=lastra.getBoundingClientRect();var x=(e.clientX-r.left)/r.width*2-1,y=(e.clientY-r.top)/r.height*2-1;vetro.style.transform="rotateX("+(6-y*6)+"deg) rotateY("+(x*6)+"deg)"});
+lastra.addEventListener("mouseleave",function(){vetro.style.transform="rotateX(6deg)"});
+/* 5: le venti cose in orbita */
+var COSE=["rispondere ai DM","inventare il post di oggi","le stories, tutti i giorni","il follow-up dimenticato","scrivere il lead magnet","montare il video","la landing da rifare","il copy delle ads","guardare i dati","la call da convincere","il preventivo","il calendario editoriale","il webinar da preparare","la VSL da riscrivere","rincorrere il setter","erogare la delivery","i clienti fuori target","la finestra di 24 ore","il tetto che non rompi","il tuo martedi'"];
+var cose=document.getElementById("cose");COSE.forEach(function(c,k){var s=document.createElement("span");s.style.setProperty("--a",(k/COSE.length*360)+"deg");var b=document.createElement("b");b.textContent=c;s.appendChild(b);cose.appendChild(s)});
+</script>
+</body>
+</html>

@@ -754,7 +754,7 @@
   letter-spacing:-.3px;display:flex;justify-content:space-between;gap:20px;align-items:center}
 .pos summary::-webkit-details-marker{display:none}
 .pos summary::after{content:"+";color:var(--acc);font-size:26px;font-weight:400;line-height:1}
-.pos details[open] summary::after{content:"–"}
+.pos details[open] summary::after{content:"−"}
 .pos details p{color:var(--txt);font-size:16px;line-height:27px;margin-top:14px}
 .pos details b{color:#fff;font-weight:600}
 
@@ -852,10 +852,9 @@
     Le fai tutte tu, ed è per questo che non ne funziona nessuna.</p>
     <div class="palco-video" id="pos-palco-video">
       <div class="orbita o1"><i></i></div><div class="orbita o2"><i></i><i></i></div>
-      <div class="chip c1"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><b>Setty</b><span>3 call prenotate mentre dormivi</span></div>
-      <div class="chip c2"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg></span><b>Peddy</b><span>il piano del mese è pronto</span></div>
-      <div class="chip c3"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg></span><b>Funnel Builder</b><span>landing online, prima versione</span></div>
-      <div class="chip c4"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><b>SalesCoach AI</b><span>“chiedi il budget adesso”</span></div>
+
+
+
       <div class="finestra" id="pos-finestra">
         <div class="barra"><i></i><i></i><i></i><span>profitOS · come funziona · 35 min</span><em>REC</em></div>
     <div class="video">
@@ -2077,14 +2076,14 @@
   /* --- il percorso: la cometa (nove novae, scroll-driven) --- */
   var TAPPE = [
   {q:"Giorno 0", t:"Entri, e parti lo stesso giorno", n:"Onboarding", s:"Accessi alla piattaforma, roadmap su misura costruita sul punto da cui parti, prima call fissata.", o:"Sai esattamente cosa fare nei primi sette giorni, e con chi.", p:"La paralisi da corso: mille video e nessun ordine.", a:"Hai un ordine. Non si salta."},
-  {q:"Giorni 1–7", t:"L'offerta, e nient'altro", n:"Offerta", s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca né un contenuto né un funnel.", o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.", p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.", a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
-  {q:"Settimane 2–3", t:"I contenuti escono da soli", n:"Contenuti · Peddy", s:"Dal posizionamento nascono idee, script e calendario. Le stories con lo script sul teleprompter, i post programmati da dentro.", o:"Piani interi in una passata. A te resta girare.", p:"Non sapere cosa dire ogni giorno, e le stories che non fai.", a:"Pubblichi tutti i giorni senza inventare niente."},
+  {q:"Giorni 1-7", t:"L'offerta, e nient'altro", n:"Offerta", s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca né un contenuto né un funnel.", o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.", p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.", a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
+  {q:"Settimane 2-3", t:"I contenuti escono da soli", n:"Contenuti · Peddy", s:"Dal posizionamento nascono idee, script e calendario. Le stories con lo script sul teleprompter, i post programmati da dentro.", o:"Piani interi in una passata. A te resta girare.", p:"Non sapere cosa dire ogni giorno, e le stories che non fai.", a:"Pubblichi tutti i giorni senza inventare niente."},
   {q:"Settimana 3", t:"I DM non si perdono più", n:"Setting · Setty", s:"I messaggi entrano in un CRM che risponde, segue e prenota. Un lead magnet agganciato a ogni contenuto, consegnato in automatico.", o:"Follow-up che non dimentichi, calendario che si riempie da solo.", p:"La finestra di 24 ore, i messaggi persi, il setter che se ne sbatte.", a:"Nessuno in chat. Nessun lead fermo."},
   {q:"Settimana 4", t:"Un funnel che parla come te", n:"Funnel Builder", s:"VSL, copy e landing prodotti dalla carta dell'offerta: la prima versione la fa il sistema, tu correggi.", o:"Dieci funnel, pagine online, dati da guardare.", p:"Pagare un'agenzia per un pezzo solo, e il resto a te.", a:"Un funnel tuo, coerente con tutto il resto."},
   {q:"Mese 2", t:"Arrivano già decisi", n:"SalesCoach AI", s:"Role play con clienti simulati, plugin live in call, analisi delle chiamate vere.", o:"Il suggeritore che ti dice cosa non hai chiesto. Due call, già decise.", p:"O sei bravo tu, o paghi qualcuno che lo sia.", a:"Chiudi tu, senza closer. Finché non hai un team."},
   {q:"Sempre", t:"Non sei mai fermo", n:"Nova", s:"L'assistente che tiene dentro il tuo posizionamento, tutto quello che hai costruito e la nostra base di lavoro.", o:"Risposte sul tuo caso, 24 ore su 24.", p:"Bloccarsi alle 23 senza nessuno a cui chiedere.", a:"Vai avanti anche quando noi dormiamo."},
   {q:"Ogni settimana", t:"Correggi con me", n:"Live con Andrea", s:"Live settimanali sul tuo materiale, supporto sulle piattaforme e sull'offerta.", o:"La testa dell'esperto sulla tua prima versione.", p:"Correggere da solo, senza sapere dove guardare.", a:"Non impari facendo: impari correggendo, a un decimo del tempo."},
-  {q:"Mese 3–6", t:"Il giro riparte", n:"Community · Delivery", s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.", o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.", p:"Essere solo, e un tetto che non rompi più.", a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
+  {q:"Mese 3-6", t:"Il giro riparte", n:"Community · Delivery", s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.", o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.", p:"Essere solo, e un tetto che non rompi più.", a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
 ];
 /* posizioni nel mondo 1600x900: la rotta sale da sinistra in basso e finisce in alto a destra, lasciando libera la scheda a sinistra */
 var N = [[0.05,0.90],[0.50,0.84],[0.95,0.80],[0.90,0.50],[0.50,0.54],[0.08,0.48],[0.12,0.14],[0.50,0.10],[0.92,0.18]];
