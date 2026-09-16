@@ -2396,11 +2396,13 @@ function costruisci(viaggio){
   function posiziona(){
     var sr=scheda.getBoundingClientRect(), pr=palco.getBoundingClientRect(), stretto=W<900;
     var ax=stretto?36:Math.max(60,sr.right-pr.left+70), aw=Math.max(200,W-ax-60), ay=stretto?64:90, ah=stretto?Math.max(220,(sr.top-pr.top)-52-ay):H-ay-150;
-    var NM=[[0.12,0.02],[0.88,0.14],[0.12,0.26],[0.88,0.38],[0.12,0.50],[0.88,0.62],[0.12,0.74],[0.88,0.86],[0.12,0.98]], NN=stretto?NM:N;
+    /* zig-zag a due colonne anche su tablet, quando l'area libera a destra della scheda e' stretta */
+    var zig=stretto||aw<680, NM=[[0.12,0.02],[0.88,0.14],[0.12,0.26],[0.88,0.38],[0.12,0.50],[0.88,0.62],[0.12,0.74],[0.88,0.86],[0.12,0.98]], NN=zig?NM:N;
+    if (zig&&!stretto){ay=70;ah=H-ay-110}
     P=NN.map(function(n){return [ax+n[0]*aw, ay+n[1]*ah]});
-    novae.forEach(function(g,i){var p=P[i]; g.querySelector(".corpo").setAttribute("transform","translate("+p[0]+","+p[1]+")"+(stretto?" scale(.55)":"")); var t=g.querySelector("text"); var anc=stretto?(NN[i][0]<0.5?"start":"end"):n_anc(i); t.setAttribute("text-anchor",anc);
+    novae.forEach(function(g,i){var p=P[i]; g.querySelector(".corpo").setAttribute("transform","translate("+p[0]+","+p[1]+")"+(stretto?" scale(.55)":zig?" scale(.7)":"")); var t=g.querySelector("text"); var anc=zig?(NN[i][0]<0.5?"start":"end"):n_anc(i); t.setAttribute("text-anchor",anc);
       var righe=t.querySelectorAll("tspan").length, tx, ty;
-      if (stretto) { tx=p[0]+(anc==="start"?30:-30); ty=p[1]+4; }
+      if (zig) { tx=p[0]+(anc==="start"?(stretto?30:40):(stretto?-30:-40)); ty=p[1]+4-(righe-1)*7; }
       else { tx=p[0]+(anc==="end"?10:anc==="start"?-10:0); var sopra=N[i][1]>0.45; ty=sopra?p[1]-58-(righe-1)*14:p[1]+66; }
       t.setAttribute("x",tx); t.setAttribute("y",ty); t.querySelectorAll("tspan").forEach(function(sp){sp.setAttribute("x",tx)})});
     onde.forEach(function(o,i){o.setAttribute("cx",P[i][0]);o.setAttribute("cy",P[i][1])});
