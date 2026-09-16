@@ -70,13 +70,15 @@ button:disabled{opacity:.6;cursor:default}
 
 /* ---- chi sono, casi, chiusura, footer ---- */
 .divisorio{border-top:1px solid var(--bordo);padding-top:56px}
-.chi{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 40%;align-items:center;min-height:460px;
-  border:1px solid var(--bordo);border-radius:24px;overflow:hidden;background:var(--s3);text-align:left}
-.chi::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(55% 75% at 95% 55%,rgba(255,107,0,.18),transparent 70%)}
+.chi{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 40%;align-items:center;min-height:460px;margin-top:70px;
+  border:1px solid var(--bordo);border-radius:24px;background:var(--s3);text-align:left}
+.chi::after{content:"";position:absolute;inset:0;border-radius:24px;pointer-events:none;background:radial-gradient(55% 75% at 95% 55%,rgba(255,107,0,.18),transparent 70%)}
 .chi-testo{position:relative;z-index:1;padding:44px 40px}
 .chi-testo h2{font-size:34px;line-height:38px}
-.chi-foto{position:absolute;right:-4%;top:0;height:100%;width:52%;object-fit:cover;object-position:62% 4%;
-  -webkit-mask:linear-gradient(90deg,transparent,#000 38%);mask:linear-gradient(90deg,transparent,#000 38%)}
+/* il ritratto scontornato: la testa esce dal riquadro in alto (il bordo passa dietro), il corpo si chiude sul fondo del riquadro */
+.chi-foto{position:absolute;right:0;top:-70px;bottom:0;width:52%;overflow:hidden;border-radius:0 0 24px 0;z-index:1;pointer-events:none}
+.chi-foto img{position:absolute;right:-6%;bottom:0;height:calc(100% + 0px);width:auto;max-width:none;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 30%);mask:linear-gradient(90deg,transparent,#000 30%)}
 .et-arancio{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:2.3px;
   text-transform:uppercase;margin:0}
 h2{font-family:var(--nero);font-weight:900;font-size:28px;line-height:32px;letter-spacing:-.9px;margin:12px 0 0}
@@ -132,9 +134,10 @@ footer .link a{color:var(--testo)}
 @media (max-width:571px){
   h1{font-size:28px;line-height:40px;letter-spacing:-.5px}
   .wrap{padding:48px 20px}
-  .chi{grid-template-columns:1fr;min-height:0}
-  .chi-foto{position:relative;width:100%;height:340px;object-position:50% 10%;-webkit-mask:linear-gradient(180deg,#000 55%,transparent);mask:linear-gradient(180deg,#000 55%,transparent)}
-  .chi-testo{padding:0 24px 32px;margin-top:-56px}
+  .chi{grid-template-columns:1fr;min-height:0;margin-top:60px}
+  .chi-foto{position:relative;top:0;bottom:auto;width:100%;height:300px;margin-top:-60px;border-radius:0}
+  .chi-foto img{right:auto;left:50%;transform:translateX(-50%);height:100%;-webkit-mask:linear-gradient(180deg,#000 60%,transparent);mask:linear-gradient(180deg,#000 60%,transparent)}
+  .chi-testo{padding:0 24px 32px;margin-top:-30px}
   .chi-testo h2{font-size:28px;line-height:32px}
   .griglia{grid-template-columns:1fr}
   .caso,.scheda{padding:20px}
@@ -229,7 +232,7 @@ footer .link a{color:var(--testo)}
 <section class="wide">
   <div class="divisorio">
     <div class="chi">
-      <img class="chi-foto" src="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.webp" alt="Andrea Audisio" width="880" height="1100" loading="lazy">
+      <div class="chi-foto"><img src="https://kelevraweb.github.io/profitos-vsl/img/andrea-scontorno.webp" alt="Andrea Audisio" loading="lazy"></div>
       <div class="chi-testo">
         <p class="et-arancio">Chi sono</p>
         <h2>Andrea Audisio</h2>
