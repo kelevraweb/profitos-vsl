@@ -577,7 +577,7 @@
 .pos .mp-nova.futura .corpo{transform:scale(.28);opacity:.45}
 .pos .mp-nova.fatta .corpo{transform:scale(.55);opacity:.9}
 .pos .mp-nova.viva .corpo{transform:scale(1);opacity:1}
-.pos .mp-nova text{fill:rgba(240,232,226,.5);font-size:12px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;transition:fill .4s,opacity .4s;opacity:.7}
+.pos .mp-nova text{fill:rgba(240,232,226,.5);font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;transition:fill .4s,opacity .4s;opacity:.7}
 .pos .mp-nova.viva text{fill:#fff;opacity:1}.pos .mp-nova.fatta text{fill:rgba(255,200,150,.85);opacity:1}
 .pos .mp-cometa{transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 14px rgba(255,200,150,.9)) drop-shadow(0 0 40px rgba(255,107,0,.7))}
 .pos .mp-cometa .raggi{animation:pos-mp-ruota 9s linear infinite;transform-box:fill-box;transform-origin:center}
@@ -2044,7 +2044,8 @@
   {q:"Mese 3–6", t:"Il giro riparte", n:"Community · Delivery", s:"Volumi più grandi, stesso carico. Gli altri che stanno costruendo, i casi che tornano dentro.", o:"Il tuo caso studio. Semmai togli figure, non le aggiungi.", p:"Essere solo, e un tetto che non rompi più.", a:"Ti sei ripagato. Se no, <b>resti dentro finché non ti ripaghi</b>: secondo strato di garanzia."}
 ];
 /* posizioni nel mondo 1600x900: la rotta sale da sinistra in basso e finisce in alto a destra, lasciando libera la scheda a sinistra */
-var P = [[800,690],[920,560],[940,330],[1060,235],[1140,470],[1250,370],[1330,570],[1370,245],[1400,110]];
+var N = [[0.05,0.90],[0.50,0.84],[0.95,0.80],[0.90,0.50],[0.50,0.54],[0.08,0.48],[0.12,0.14],[0.50,0.10],[0.92,0.18]];
+  var P = N.map(function(n){return [n[0]*1600,n[1]*900]});
 var RAGGI = [[10,74,6],[55,46,4],[95,68,7],[140,42,4.5],[185,70,6],[230,44,4],[275,64,6.5],[320,40,4]];
 
 function costruisci(viaggio){
@@ -2070,7 +2071,7 @@ function costruisci(viaggio){
     '<radialGradient id="'+uid+'-cuore"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="55%" stop-color="#fff" stop-opacity=".35"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></radialGradient>'+
     '<filter id="'+uid+'-soffio" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6"/></filter>';
   svg.appendChild(defs);
-  var novae = P.map(function(p,i){
+  var novae = P.map(function(p,i){ p=[0,0];
     var g = el("g",{"class":"mp-nova futura"});
     var corpo = el("g",{"class":"corpo",transform:"translate("+p[0]+","+p[1]+")"});
     corpo.appendChild(el("circle",{"class":"alone",r:72,fill:"url(#"+uid+"-alone)"}));
@@ -2078,15 +2079,26 @@ function costruisci(viaggio){
     RAGGI.forEach(function(r){rg.appendChild(el("path",{d:"M "+(-r[2])+" 0 L 0 "+(-r[1])+" L "+r[2]+" 0 Z",transform:"rotate("+r[0]+")"}))});
     corpo.appendChild(rg); corpo.appendChild(el("circle",{r:20,fill:"url(#"+uid+"-cuore)"})); corpo.appendChild(el("circle",{r:7,fill:"#fff"}));
     g.appendChild(corpo);
-    var anc = p[0]>1300 ? "end" : "middle"; var t = el("text",{x:p[0]+(anc==="end"?10:0),y:p[1]+(p[1]>400?-58:66),"text-anchor":anc}); t.textContent = "0"+(i+1)+" · "+TAPPE[i].n; g.appendChild(t);
+    var anc = p[0]>1300 ? "end" : "middle"; var t = el("text",{x:0,y:0,"text-anchor":anc}); t.textContent = "0"+(i+1)+" · "+TAPPE[i].n; g.appendChild(t);
     svg.appendChild(g); return g;
   });
   /* rotta campionata (curva morbida per le stelle) */
-  var ROTTA = []; for (var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2; for(var s=0;s<=40;s++){var u=s/40,iu=1-u; var x=iu*iu*iu*a[0]+3*iu*iu*u*mx+3*iu*u*u*mx+u*u*u*b[0], y=iu*iu*iu*a[1]+3*iu*iu*u*a[1]+3*iu*u*u*b[1]+u*u*u*b[1]; ROTTA.push([x,y])}}
+  var ROTTA = [];
   var PASSI = 41;
   /* campo stellare su tre piani + meteore */
   var W=0,H=0,k=1,ox=0,oy=0, piani=[], meteore=[], mx=0,my=0, tx=0,ty=0;
-  function misura(){W=palco.clientWidth;H=palco.clientHeight;cvS.width=cvF.width=W;cvS.height=cvF.height=H;k=Math.max(W/1600,H/900);ox=(W-1600*k)/2;oy=(H-900*k)/2}
+  function misura(){W=palco.clientWidth;H=palco.clientHeight;cvS.width=cvF.width=W;cvS.height=cvF.height=H;k=1;ox=0;oy=0;svg.setAttribute("viewBox","0 0 "+W+" "+H);posiziona()}
+  /* le novae si distribuiscono nell'area libera: a destra della scheda (desktop) o nella meta' alta (mobile) */
+  function posiziona(){
+    var sr=scheda.getBoundingClientRect(), pr=palco.getBoundingClientRect(), stretto=W<900;
+    var ax=stretto?36:Math.max(60,sr.right-pr.left+70), aw=Math.max(200,W-ax-60), ay=stretto?70:90, ah=stretto?H*0.5-ay:H-ay-150;
+    P=N.map(function(n){return [ax+n[0]*aw, ay+n[1]*ah]});
+    novae.forEach(function(g,i){var p=P[i]; g.querySelector(".corpo").setAttribute("transform","translate("+p[0]+","+p[1]+")"); var t=g.querySelector("text"); var anc=n_anc(i); t.setAttribute("text-anchor",anc); t.setAttribute("x",p[0]+(anc==="end"?10:anc==="start"?-10:0)); t.setAttribute("y",p[1]+(N[i][1]>0.45?-58:66))});
+    onde.forEach(function(o,i){o.setAttribute("cx",P[i][0]);o.setAttribute("cy",P[i][1])});
+    ROTTA=[]; for (var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2; for(var q=0;q<=40;q++){var u=q/40,iu=1-u; ROTTA.push([iu*iu*iu*a[0]+3*iu*iu*u*mx+3*iu*u*u*mx+u*u*u*b[0], iu*iu*iu*a[1]+3*iu*iu*u*a[1]+3*iu*u*u*b[1]+u*u*u*b[1]])}}
+    ultima=-1;
+  }
+  function n_anc(i){return N[i][0]>0.9?"end":N[i][0]<0.08?"start":"middle"}
   for (var pi=0;pi<3;pi++){var arr=[];for(var i=0;i<(pi===0?160:pi===1?90:40);i++)arr.push({x:Math.random()*1600,y:Math.random()*900,r:(pi+1)*0.55+Math.random()*0.9,f:Math.random()*6.28,v:0.6+Math.random()*1.4});piani.push(arr)}
   var ctxS=cvS.getContext("2d"), ctxF=cvF.getContext("2d"), progresso=0, fino=0, finoPrima=0, ultima=-1, vivo=true;
   function wx(x){return ox+x*k} function wy(y){return oy+y*k}
