@@ -510,7 +510,7 @@
 .pos .porta .fondo{position:absolute;left:0;right:0;top:0;width:100%;height:60%;object-fit:cover;object-position:50% 0;display:block;
   filter:saturate(.9);transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
   -webkit-mask:linear-gradient(180deg,#000 32%,rgba(0,0,0,.6) 60%,transparent 90%);mask:linear-gradient(180deg,#000 32%,rgba(0,0,0,.6) 60%,transparent 90%)}
-.pos .porta:hover .fondo{transform:scale(1.04)}
+.pos .porta .fondo{will-change:transform}
 .pos .porta .testa,.pos .porta h3,.pos .porta p:not(.ordinale):not(.quale){position:relative;z-index:1}
 .pos .porta .testa{margin-top:0}
 @media (max-width:1024px){.pos .porte .fase.porta{min-height:600px;padding-top:320px}}
@@ -2155,6 +2155,21 @@ function costruisci(viaggio){
   misura(); addEventListener("resize",function(){misura();passo()}); addEventListener("scroll",passo,{passive:true}); passo();
 }
   var _v = document.getElementById("pos-viaggio"); if (_v) costruisci(_v);
+
+  /* tre porte: la foto di sfondo segue il mouse (parallasse leggera) e zooma, senza mai scoprire i bordi */
+  document.querySelectorAll(".porta").forEach(function (box) {
+    var im = box.querySelector(".fondo"); if (!im) return;
+    var tx = 0, ty = 0, ts = 1, x = 0, y = 0, sc = 1, gira = false;
+    function passo() { x += (tx - x) * .12; y += (ty - y) * .12; sc += (ts - sc) * .12;
+      im.style.transform = "translate(" + x.toFixed(2) + "%," + y.toFixed(2) + "%) scale(" + sc.toFixed(3) + ")";
+      if (Math.abs(tx - x) > .02 || Math.abs(ty - y) > .02 || Math.abs(ts - sc) > .002) requestAnimationFrame(passo); else gira = false; }
+    function muovi() { if (!gira) { gira = true; passo(); } }
+    box.addEventListener("mouseenter", function () { ts = 1.08; muovi(); });
+    box.addEventListener("mousemove", function (e) { var r = box.getBoundingClientRect();
+      /* scala 1.08 = 4% di margine per lato: lo spostamento resta entro il 3% */
+      tx = -((e.clientX - r.left) / r.width * 2 - 1) * 3; ty = -((e.clientY - r.top) / r.height * 2 - 1) * 3; muovi(); });
+    box.addEventListener("mouseleave", function () { tx = 0; ty = 0; ts = 1; muovi(); });
+  });
 
   /* scudo: col mouse sopra segue il puntatore, poi riprende a girare da dove era */
   var scudo = document.getElementById("pos-scudo");
