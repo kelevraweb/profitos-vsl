@@ -585,7 +585,7 @@
 .pos .mp-nova.fatta .corpo{transform:scale(.55);opacity:.9}
 .pos .mp-nova.viva .corpo{transform:scale(1);opacity:1}
 .pos .mp-nova text{fill:rgba(240,232,226,.5);font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;transition:fill .4s,opacity .4s;opacity:.7}
-@media (max-width:900px){.pos .mp-nova text{font-size:10px;letter-spacing:1.3px}}
+@media (max-width:900px){.pos .mp-nova text{font-size:10px;letter-spacing:1.3px}.pos .mp-nova tspan+tspan{display:none}}
 .pos .mp-nova.viva text{fill:#fff;opacity:1}.pos .mp-nova.fatta text{fill:rgba(255,200,150,.85);opacity:1}
 .pos .mp-cometa{transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 14px rgba(255,200,150,.9)) drop-shadow(0 0 40px rgba(255,107,0,.7))}
 .pos .mp-cometa .raggi{animation:pos-mp-ruota 9s linear infinite;transform-box:fill-box;transform-origin:center}
@@ -2396,10 +2396,12 @@ function costruisci(viaggio){
   function posiziona(){
     var sr=scheda.getBoundingClientRect(), pr=palco.getBoundingClientRect(), stretto=W<900;
     var ax=stretto?36:Math.max(60,sr.right-pr.left+70), aw=Math.max(200,W-ax-60), ay=stretto?64:90, ah=stretto?Math.max(220,(sr.top-pr.top)-52-ay):H-ay-150;
-    P=N.map(function(n){return [ax+n[0]*aw, ay+n[1]*ah]});
-    novae.forEach(function(g,i){var p=P[i]; g.querySelector(".corpo").setAttribute("transform","translate("+p[0]+","+p[1]+")"); var t=g.querySelector("text"); var anc=n_anc(i); t.setAttribute("text-anchor",anc);
-      var tx=p[0]+(anc==="end"?10:anc==="start"?-10:0), righe=t.querySelectorAll("tspan").length, sopra=stretto?(anc==="middle"):(N[i][1]>0.45);
-      var ty=sopra?p[1]-(stretto?50:58)-(righe-1)*14:p[1]+(stretto?44:66);
+    var NM=[[0.12,0.02],[0.88,0.14],[0.12,0.26],[0.88,0.38],[0.12,0.50],[0.88,0.62],[0.12,0.74],[0.88,0.86],[0.12,0.98]], NN=stretto?NM:N;
+    P=NN.map(function(n){return [ax+n[0]*aw, ay+n[1]*ah]});
+    novae.forEach(function(g,i){var p=P[i]; g.querySelector(".corpo").setAttribute("transform","translate("+p[0]+","+p[1]+")"+(stretto?" scale(.55)":"")); var t=g.querySelector("text"); var anc=stretto?(NN[i][0]<0.5?"start":"end"):n_anc(i); t.setAttribute("text-anchor",anc);
+      var righe=t.querySelectorAll("tspan").length, tx, ty;
+      if (stretto) { tx=p[0]+(anc==="start"?30:-30); ty=p[1]+4; }
+      else { tx=p[0]+(anc==="end"?10:anc==="start"?-10:0); var sopra=N[i][1]>0.45; ty=sopra?p[1]-58-(righe-1)*14:p[1]+66; }
       t.setAttribute("x",tx); t.setAttribute("y",ty); t.querySelectorAll("tspan").forEach(function(sp){sp.setAttribute("x",tx)})});
     onde.forEach(function(o,i){o.setAttribute("cx",P[i][0]);o.setAttribute("cy",P[i][1])});
     ROTTA=[]; for (var i=1;i<P.length;i++){var a=P[i-1],b=P[i],mx=(a[0]+b[0])/2; for(var q=0;q<=40;q++){var u=q/40,iu=1-u; ROTTA.push([iu*iu*iu*a[0]+3*iu*iu*u*mx+3*iu*u*u*mx+u*u*u*b[0], iu*iu*iu*a[1]+3*iu*iu*u*a[1]+3*iu*u*u*b[1]+u*u*u*b[1]])}}
