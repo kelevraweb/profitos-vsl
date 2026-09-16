@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Dove lavoriamo · tre demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#FF6B00;--bg:#0C0908;--txt:rgba(240,232,226,.8);--dim:rgba(240,232,226,.62);--bor:rgba(255,107,0,.15);--s3:rgba(15,11,9,.88);--black:'Arial Black','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--txt);font-family:Figtree,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wide{max-width:1136px;margin:0 auto;padding:0 24px}
+.et{color:var(--acc);font-size:12px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin:0}
+.et::before{content:"";width:6px;height:6px;background:var(--acc);border-radius:2px 50% 50% 50%}
+h2{font-family:var(--black);font-weight:900;color:#fff;font-size:40px;line-height:1.08;letter-spacing:-1.4px;margin:14px 0 0}
+.intro{font-size:17px;line-height:27px;margin:14px 0 0;max-width:60ch}
+.indice{padding:60px 0 24px;border-bottom:1px solid var(--bor)}.indice p{max-width:760px}
+.scelta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.scelta a{padding:9px 14px;border:1px solid rgba(255,107,0,.35);border-radius:999px;color:#fff;text-decoration:none;font-weight:700;font-size:13px}
+.demo{padding:72px 0 84px;border-bottom:1px solid var(--bor);position:relative}
+.tag{position:absolute;left:24px;top:22px;font-size:11px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);padding:6px 12px;border:1px solid rgba(255,107,0,.4);border-radius:999px}
+.cosa{margin:0 0 30px;color:var(--dim);font-size:14px;max-width:820px;line-height:22px}.cosa b{color:#fff}
+.due{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center;margin-top:34px}
+/* il mondo: puntini su una sfera che gira, i cinque Paesi accesi */
+.globo{position:relative;aspect-ratio:1;border:1px solid var(--bor);border-radius:24px;background:radial-gradient(60% 60% at 50% 45%,rgba(255,107,0,.12),transparent 70%),var(--s3);overflow:hidden}
+.globo canvas{display:block;width:100%;height:100%}
+.globo .paesi{position:absolute;left:14px;right:14px;bottom:14px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.globo .paese{display:flex;align-items:center;gap:7px;border:1px solid var(--bor);border-radius:99px;padding:6px 11px;background:rgba(15,11,9,.7);font-size:12px;color:#fff}
+.globo .paese i{width:6px;height:6px;border-radius:50%;background:var(--acc);box-shadow:0 0 8px rgba(255,107,0,.9)}
+/* demo 1: numeri e nastri di loghi */
+.numeri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.num{border:1px solid var(--bor);border-radius:16px;padding:18px 16px;background:var(--s3)}
+.num b{display:block;font-family:var(--black);font-size:34px;letter-spacing:-1px;color:#fff;line-height:1}.num b i{font-style:normal;color:var(--acc)}
+.num span{display:block;margin-top:8px;font-size:13px;color:var(--dim);line-height:18px}
+.nastro{overflow:hidden;margin-top:14px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.nastro .fila{display:flex;gap:10px;width:max-content;animation:scorri 38s linear infinite}
+.nastro.contro .fila{animation-direction:reverse;animation-duration:46s}
+@keyframes scorri{to{transform:translateX(-50%)}}
+.chip{flex:0 0 auto;width:120px;height:66px;border-radius:12px;background:#f4efe9;display:grid;place-items:center;padding:10px;filter:grayscale(1) brightness(.62);transition:filter .35s}
+.chip:hover{filter:none}.chip img{max-width:100%;max-height:100%;object-fit:contain}
+.dida{margin:14px 0 0;font-size:13px;color:var(--dim);line-height:20px}
+/* demo 2: muro di volti e palchi */
+.muro{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:118px;gap:10px}
+.mattone{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--bor);background:var(--s3)}
+.mattone img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.7) brightness(.55);transition:filter .45s,transform .6s cubic-bezier(.16,1,.3,1)}
+.mattone:hover img{filter:none;transform:scale(1.05)}
+.mattone .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:11.5px;line-height:15px;color:#fff}
+.mattone .cap i{display:block;font-style:normal;color:var(--acc);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;margin-bottom:2px}
+.mattone.logo{display:grid;place-items:center;background:#f4efe9;padding:16px}.mattone.logo img{object-fit:contain;filter:grayscale(1) brightness(.62)}.mattone.logo:hover img{filter:none;transform:none}
+.mattone.logo .cap{background:none;color:#0C0908;padding:0 8px 6px;font-weight:700}.mattone.logo .cap i{color:var(--acc)}
+.alto{grid-row:span 2}.largo{grid-column:span 2}
+/* demo 3: due colonne che scorrono */
+.colonne{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:520px;overflow:hidden;-webkit-mask:linear-gradient(transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(transparent,#000 10%,#000 90%,transparent)}
+.col{display:flex;flex-direction:column;gap:12px;animation:sali 34s linear infinite}
+.col.giu{animation-direction:reverse;animation-duration:40s}
+@keyframes sali{to{transform:translateY(-50%)}}
+.carta{border:1px solid var(--bor);border-radius:16px;overflow:hidden;background:var(--s3)}
+.carta img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(.7) brightness(.55);transition:filter .45s}.carta:hover img{filter:none}
+.carta .t{padding:12px 14px}.carta .t i{display:block;font-style:normal;color:var(--acc);font-size:10px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700}.carta .t b{display:block;color:#fff;font-size:14px;margin-top:3px}.carta .t span{display:block;color:var(--dim);font-size:12.5px;line-height:18px;margin-top:2px}
+.carta.logo{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:10px;padding:10px 14px 10px 10px}.carta.logo .l{background:#f4efe9;border-radius:10px;height:56px;display:grid;place-items:center;padding:8px}.carta.logo .l img{width:100%;height:100%;object-fit:contain;aspect-ratio:auto;filter:grayscale(1) brightness(.62)}.carta.logo:hover .l img{filter:none}.carta.logo .t{padding:0}
+@media (max-width:900px){.due{grid-template-columns:1fr}.numeri{grid-template-columns:1fr 1fr 1fr}.muro{grid-auto-rows:96px}.colonne{height:440px}}
+</style>
+</head>
+<body>
+<div class="indice"><div class="wide">
+  <p class="et">Dove lavoriamo · tre demo</p>
+  <h2>Il mondo a sinistra, che gira. A destra, la prova.</h2>
+  <p class="intro">In tutte e tre il mondo è lo stesso: una sfera di puntini che ruota piano, i cinque Paesi accesi in arancio, i nomi sotto. Cambia la colonna di destra, riempita con quello che c'è sul wall of love: multinazionali, celebrità, enti ed eventi. Loghi e foto sono quelli veri; si scuriscono come le altre foto della pagina e tornano a colori al passaggio.</p>
+  <div class="scelta"><a href="#d1">1 · Numeri e nastri</a><a href="#d2">2 · Muro dei palchi</a><a href="#d3">3 · Due colonne che scorrono</a></div>
+</div></div>
+
+<section class="demo" id="d1"><span class="tag">1 · Numeri e nastri</span><div class="wide">
+  <p class="cosa"><b>Cos'è:</b> tre numeri grossi presi dal wall of love, e sotto due nastri di loghi che scorrono in direzioni opposte: sopra multinazionali ed enti, sotto celebrità e agenzie. È la versione più "prova sociale": in due secondi si capisce chi c'è passato.</p>
+  <p class="et">Dove siamo</p><h2>Dove lavoriamo, e con chi.</h2>
+  <div class="due">
+    <div class="globo"><canvas></canvas><div class="paesi"><span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span><span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span><span class="paese"><i></i>Dubai</span></div></div>
+    <div>
+      <div class="numeri"><div class="num"><b><i>+</i>4.483</b><span>progetti di marketing gestiti</span></div><div class="num"><b><i>+</i>1.324</b><span>imprenditori e professionisti formati</span></div><div class="num"><b>15 <i>anni</i></b><span>al fianco di aziende, celebrità ed enti</span></div></div>
+      <div class="nastro"><div class="fila"><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-msc.webp" alt="msc" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-lego.webp" alt="lego" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-bmw.webp" alt="bmw" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-ducati.webp" alt="ducati" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-porsche.webp" alt="porsche" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-volkswagen.webp" alt="volkswagen" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-regione-piemonte.webp" alt="Regione Piemonte" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-confesercenti.webp" alt="Confesercenti" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-forte-fenestrelle.webp" alt="Il Forte di Fenestrelle" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-freelance-day.webp" alt="Freelance Day" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-stelle-di-lorenzo.webp" alt="Le stelle di Lorenzo" loading="lazy"></span> <span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-msc.webp" alt="msc" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-lego.webp" alt="lego" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-bmw.webp" alt="bmw" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-ducati.webp" alt="ducati" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-porsche.webp" alt="porsche" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-volkswagen.webp" alt="volkswagen" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-regione-piemonte.webp" alt="Regione Piemonte" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-confesercenti.webp" alt="Confesercenti" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-forte-fenestrelle.webp" alt="Il Forte di Fenestrelle" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-freelance-day.webp" alt="Freelance Day" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-stelle-di-lorenzo.webp" alt="Le stelle di Lorenzo" loading="lazy"></span></div></div>
+      <div class="nastro contro"><div class="fila"><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-bebe-vio.webp" alt="Bebe Vio" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-masters-of-magic.webp" alt="Walter Rolfo · Masters of Magic" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-luca-mercatanti.webp" alt="Luca Mercatanti" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-gabriele-martelli.webp" alt="Gabriele Martelli" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-prodea.webp" alt="prodea" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-world-comm.webp" alt="world-comm" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-aqua.webp" alt="aqua" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-soco.webp" alt="soco" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-epicura.webp" alt="epicura" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-growlancer.webp" alt="growlancer" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-marketeen.webp" alt="marketeen" loading="lazy"></span> <span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-bebe-vio.webp" alt="Bebe Vio" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-masters-of-magic.webp" alt="Walter Rolfo · Masters of Magic" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-luca-mercatanti.webp" alt="Luca Mercatanti" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-gabriele-martelli.webp" alt="Gabriele Martelli" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-prodea.webp" alt="prodea" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-world-comm.webp" alt="world-comm" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-aqua.webp" alt="aqua" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-soco.webp" alt="soco" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-epicura.webp" alt="epicura" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-growlancer.webp" alt="growlancer" loading="lazy"></span><span class="chip"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-marketeen.webp" alt="marketeen" loading="lazy"></span></div></div>
+      <p class="dida">Da MSC Crociere a LEGO, da Bebe Vio a Regione Piemonte: sedici anni di progetti, dal palco al DM.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="demo" id="d2"><span class="tag">2 · Muro dei palchi</span><div class="wide">
+  <p class="cosa"><b>Cos'è:</b> un muro di tessere: foto vere degli eventi (Bali, il gala, il palco) mescolate alle tessere bianche con i loghi delle celebrità e degli enti, ognuna con una riga sotto. Più "album": si guarda, si passa sopra, si scopre.</p>
+  <p class="et">Dove siamo</p><h2>Dal palco alla community.</h2>
+  <div class="due">
+    <div class="globo"><canvas></canvas><div class="paesi"><span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span><span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span><span class="paese"><i></i>Dubai</span></div></div>
+    <div class="muro">
+      <div class="mattone alto"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/foto-bali-fly-to-success.webp" alt=""><div class="cap"><i>Mastermind</i>Fly To Success · Bali</div></div>
+      <div class="mattone logo"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-bebe-vio.webp" alt=""><div class="cap"><i>Celebrità</i>Bebe Vio</div></div>
+      <div class="mattone"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/foto-andrea-microfono.webp" alt=""><div class="cap"><i>Conferenze</i>Sul palco</div></div>
+      <div class="mattone logo"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-masters-of-magic.webp" alt=""><div class="cap"><i>Eventi</i>Walter Rolfo · Masters of Magic</div></div>
+      <div class="mattone"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/foto-evento-gala.webp" alt=""><div class="cap"><i>Eventi</i>Serata di gala</div></div>
+      <div class="mattone largo"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/foto-evento-gruppo.webp" alt=""><div class="cap"><i>Formazione dal vivo</i>Il gruppo di una mastermind</div></div>
+      <div class="mattone logo"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-regione-piemonte.webp" alt=""><div class="cap"><i>Enti</i>Regione Piemonte</div></div>
+      <div class="mattone logo"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-luca-mercatanti.webp" alt=""><div class="cap"><i>Celebrità</i>Luca Mercatanti</div></div>
+      <div class="mattone"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/foto-fts-2022.webp" alt=""><div class="cap"><i>Mastermind</i>Fly To Success 2022</div></div>
+      <div class="mattone logo"><img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/logo-confesercenti.webp" alt=""><div class="cap"><i>Enti</i>Confesercenti</div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="demo" id="d3"><span class="tag">3 · Due colonne che scorrono</span><div class="wide">
+  <p class="cosa"><b>Cos'è:</b> a destra due colonne di schede che scorrono da sole in direzioni opposte, come un feed: foto degli eventi con titolo e riga, e schede con logo e nome per celebrità, enti e multinazionali. Vive da sola, senza scroll, e ne mostra tante in poco spazio.</p>
+  <p class="et">Dove siamo</p><h2>Quindici anni, un feed solo.</h2>
+  <div class="due">
+    <div class="globo"><canvas></canvas><div class="paesi"><span class="paese"><i></i>Italia</span><span class="paese"><i></i>Portogallo</span><span class="paese"><i></i>Malta</span><span class="paese"><i></i>Stati Uniti</span><span class="paese"><i></i>Dubai</span></div></div>
+    <div class="colonne">
+      <div class="col" id="colA"></div>
+      <div class="col giu" id="colB"></div>
+    </div>
+  </div>
+</div></section>
+<div style="height:60px"></div>
+<script>
+/* il mondo: la griglia 104x48 della landing (2 bit per cella) proiettata su una sfera */
+var GRIGLIA = "AAAAAAAAAAQVRVVVUAAUAAAAAFAAAAAAAAAAAAAAAAAAQAUFVVVQABEAAAAAAAAAAAAAAAAAAAAAAAQARQVVVUAAAAAAEAAUAAAAAAAAAAAAAAAAAVEQABVVUAAAAABAAVUABAAAAAAAAAAAAAAAAAAAFVVQAAAAAQAFVAAAAAAAAAAAAAAAAAURQUAVVUAAAAAEABVVVQAAAAAAAAAAAAAABVFVQBVVQAAAAAQEVVVVRUAAAAAAAAAAKqABVEFUBVVAAAEAABVVVVVVVBAAAAAAAACqpVUQVBQFVAAAABRBVVVVVVVVVAAAAAAAFKqlVVVQFQVQAAAQFFVVVVVVVVVUAAAAAAAAKqVVVVRUBUAAAEARVVVVVVVVVVQAAAAAAACqpVVVQEABAAABQBVVVVVVVVVUUAAAAAAAACoFVVUAUAAAAAFAFVVVVVVVVREAAAAAAAAAAABVVVAVAAAAAABVVVVVVVVQBQAAAAAAAAAAAFVVVFVAAAAAABVVVVVVVVAEAAAAAAAAAAAAFVVVVUAAAAAAVVVVVVVVUAAAAAAAAAAAAAAKqoVUEAAAAAEVVVVQABVQAAAAAAAAAAAAAAqqqWkAAAAAgAFEVVUAVUAAAAAAAAAAAAAACqqqoAAAAIAgVAAAVVVUBAAAAAAAAAAAAAAKqqqAAAAAACBVAAFVVUAAAAAAAAAAAAAAAAKqqgAAAAAAAAAAAVVVUEAAAAAAAAAAAAAAAFoCAAAAAAAAAAABVVVQAAAAAAAAAAAAAAAAVQAAAAAAAAAAAAVRVUAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAVFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVQAAAAAAAAAABBBAAAAAAAAAAAAAAAAAAAFVUAAAAAAAAAAAEAQAAAAAAAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFVAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAVVAAAAAAAAAAAAAAAAAAUVQAAAAAAAAAAAVVVAAAAAAAAAAAAAAAAABVQAAAAAAAAAAABVVUAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAABVVQAAAAAAAAAAAAAAAABVAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQAVVVVVAAAAAAAAAAAAAAAAAAUAAAAAAAFVUFVVVVVQAAAA", COL = 104, RIG = 48;
+var bin = atob(GRIGLIA), celle = [];
+for (var i = 0; i < bin.length; i++) { var by = bin.charCodeAt(i); for (var sh = 6; sh >= 0; sh -= 2) celle.push((by >> sh) & 3); }
+var punti = [];
+for (var k = 0; k < COL * RIG; k++) { var v = celle[k]; if (!v) continue; var c = k % COL, r = (k / COL) | 0;
+  var lon = (c + .5) / COL * Math.PI * 2 - Math.PI, lat = Math.PI / 2 - (r + .5) / RIG * Math.PI;
+  punti.push([Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon), v]); }
+document.querySelectorAll(".globo canvas").forEach(function (cv, idx) {
+  var ctx = cv.getContext("2d"), t = idx * 1.3, tilt = -0.32, dpr = Math.min(2, devicePixelRatio || 1);
+  function misura() { var r = cv.getBoundingClientRect(); cv.width = r.width * dpr; cv.height = r.height * dpr; }
+  misura(); addEventListener("resize", misura);
+  function disegna() {
+    var W = cv.width, H = cv.height, R = Math.min(W, H) * .44, cx = W / 2, cy = H / 2 - R * .06;
+    ctx.clearRect(0, 0, W, H);
+    ctx.beginPath(); ctx.arc(cx, cy, R * 1.02, 0, Math.PI * 2); ctx.strokeStyle = "rgba(255,107,0,.18)"; ctx.lineWidth = 1 * dpr; ctx.stroke();
+    var g = ctx.createRadialGradient(cx - R * .3, cy - R * .3, R * .1, cx, cy, R); g.addColorStop(0, "rgba(40,26,16,.9)"); g.addColorStop(1, "rgba(12,9,8,.95)");
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+    var ct = Math.cos(t), st = Math.sin(t), cti = Math.cos(tilt), sti = Math.sin(tilt);
+    for (var i = 0; i < punti.length; i++) {
+      var p = punti[i], x = p[0] * ct - p[2] * st, z = p[0] * st + p[2] * ct, y = p[1];
+      var y2 = y * cti - z * sti, z2 = y * sti + z * cti;
+      if (z2 < -0.05) continue;
+      var a = Math.max(0, Math.min(1, (z2 + .05) / 1.05)), sx = cx + x * R, sy = cy - y2 * R;
+      if (p[3] === 2) { ctx.fillStyle = "rgba(255,107,0," + (0.5 + a * .5) + ")"; ctx.shadowColor = "rgba(255,107,0,.9)"; ctx.shadowBlur = 8 * dpr; ctx.beginPath(); ctx.arc(sx, sy, 2.6 * dpr, 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0; }
+      else { ctx.fillStyle = "rgba(190,140,100," + (0.22 + a * .78) + ")"; ctx.beginPath(); ctx.arc(sx, sy, 1.9 * dpr, 0, Math.PI * 2); ctx.fill(); }
+    }
+    t += 0.0035; requestAnimationFrame(disegna);
+  }
+  disegna();
+});
+/* demo 3: le schede, stampate due volte per il giro */
+var IMG = "https://kelevraweb.github.io/profitos-vsl/img/mondo/";
+var A = [["foto","foto-bali-fly-to-success.webp","Mastermind","Fly To Success · Bali","Una settimana di lavoro sul business, dall'altra parte del mondo."],
+ ["logo","logo-bebe-vio.webp","Celebrità","Bebe Vio","Campionessa paralimpica"],
+ ["foto","foto-andrea-microfono.webp","Conferenze","Sul palco","Eventi di formazione dal vivo, in Italia e all'estero."],
+ ["logo","logo-msc.webp","Multinazionali","MSC Crociere",""],
+ ["foto","foto-evento-gala.webp","Eventi","Serata di gala","Con la community, una volta l'anno."],
+ ["logo","logo-regione-piemonte.webp","Enti","Regione Piemonte","Progetti di formazione"]];
+var B = [["logo","logo-masters-of-magic.webp","Eventi","Walter Rolfo","Masters of Magic"],
+ ["foto","foto-evento-gruppo.webp","Formazione dal vivo","Il gruppo","Una mastermind in presenza."],
+ ["logo","logo-lego.webp","Multinazionali","LEGO",""],
+ ["logo","logo-confesercenti.webp","Enti","Confesercenti","Formazione per le imprese"],
+ ["foto","foto-fts-2022.webp","Mastermind","Fly To Success 2022","La prima edizione."],
+ ["logo","logo-luca-mercatanti.webp","Celebrità","Luca Mercatanti",""],
+ ["logo","logo-porsche.webp","Multinazionali","Porsche",""]];
+function scheda(s) { return s[0] === "foto"
+  ? '<div class="carta"><img src="' + IMG + s[1] + '" alt="" loading="lazy"><div class="t"><i>' + s[2] + '</i><b>' + s[3] + '</b><span>' + s[4] + '</span></div></div>'
+  : '<div class="carta logo"><div class="l"><img src="' + IMG + s[1] + '" alt="" loading="lazy"></div><div class="t"><i>' + s[2] + '</i><b>' + s[3] + '</b>' + (s[4] ? '<span>' + s[4] + '</span>' : '') + '</div></div>'; }
+document.getElementById("colA").innerHTML = A.map(scheda).join("") + A.map(scheda).join("");
+document.getElementById("colB").innerHTML = B.map(scheda).join("") + B.map(scheda).join("");
+</script>
+</body>
+</html>
