@@ -436,9 +436,10 @@
 }
 
 /* menu delle sezioni: parte sopra al problema e resta appiccicato in alto */
-.pos .menu{position:sticky;top:0;z-index:60;background:rgba(12,9,8,.78);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border-top:1px solid rgba(255,107,0,.12);border-bottom:1px solid rgba(255,107,0,.12);transition:background .3s,box-shadow .3s}
-.pos .menu.fissa{background:rgba(12,9,8,.92);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.pos .menu{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(12,9,8,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,107,0,.12);box-shadow:0 12px 32px rgba(0,0,0,.45);
+  opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .5s ease,transform .5s ease}
+.pos .menu.fissa{opacity:1;transform:none;pointer-events:auto}
 .pos .menu .wide{display:flex;align-items:center;gap:16px;height:58px}
 .pos .menu .marca{flex:0 0 auto;color:#fff;font-size:17px;font-weight:700;letter-spacing:-.4px;text-decoration:none}
 .pos .menu .marca b{color:var(--acc)}
@@ -1918,7 +1919,8 @@
     function segna() {
       var y = window.scrollY + menu.offsetHeight + 90, k = -1;
       mete.forEach(function (m, i) { if (m && m.offsetTop <= y) k = i; });
-      menu.classList.toggle("fissa", menu.getBoundingClientRect().top <= 0 && window.scrollY > 10);
+      var prob = document.getElementById("pos-problema");
+      menu.classList.toggle("fissa", prob && prob.getBoundingClientRect().top <= 80);
       if (k === ultima) return;
       ultima = k;
       voci.forEach(function (a, i) { a.classList.toggle("attiva", i === k); });
