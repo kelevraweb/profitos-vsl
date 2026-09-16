@@ -536,15 +536,16 @@
 
 /* lo scudo in 3D: gira piano, una faccia per strato */
 .pos .scudo3d{position:relative;perspective:1100px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 0 0}
-.pos .scudo3d .corpo{position:relative;width:300px;height:330px;transform-style:preserve-3d;animation:pos-scudo-gira 14s cubic-bezier(.65,0,.35,1) infinite}
-@keyframes pos-scudo-gira{0%,38%{transform:rotateY(0deg)}50%,88%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}
+.pos .scudo3d .asse{transform:rotateX(14deg) rotateZ(-8deg);transform-style:preserve-3d}
+.pos .scudo3d .corpo{position:relative;width:300px;height:330px;transform-style:preserve-3d;animation:pos-scudo-gira 16s linear infinite}
+@keyframes pos-scudo-gira{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
 .pos .scudo3d .faccia{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 34px 0}
 .pos .scudo3d .faccia.retro{transform:rotateY(180deg)}
 .pos .scudo3d .faccia svg{position:absolute;inset:0;width:100%;height:100%}
 .pos .scudo3d .faccia svg path{fill:url(#pos-scudo-g);stroke:var(--acc);stroke-width:2;filter:drop-shadow(0 0 18px rgba(255,107,0,.45))}
 .pos .scudo3d .faccia.retro svg path{fill:rgba(255,107,0,.16)}
 .pos .scudo3d .faccia .et{position:relative;margin:0 0 10px;font-size:11px}
-.pos .scudo3d .faccia .grande{position:relative;margin:0;color:#fff;font-size:30px;line-height:32px;font-weight:800;letter-spacing:-1px}
+.pos .scudo3d .faccia .titolone{position:relative;margin:0;color:#fff;font-size:30px;line-height:32px;font-weight:800;letter-spacing:-1px}
 .pos .scudo3d .faccia .sotto{position:relative;margin:12px 0 0;color:var(--txt);font-size:14px;line-height:21px;max-width:200px}
 .pos .scudo3d .didascalia{margin-top:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.45)}
 .pos .scudo3d:hover .corpo{animation-play-state:paused}
@@ -1312,16 +1313,16 @@
   </div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pos-scudo-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6B00" stop-opacity=".26"/><stop offset="1" stop-color="#FF6B00" stop-opacity=".04"/></linearGradient></defs></svg>
   <div class="scudo3d" aria-label="Due strati di garanzia">
-    <div class="corpo">
+    <div class="asse"><div class="corpo">
       <div class="faccia fronte">
         <svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg>
-        <p class="et">01 · Primi giorni</p><p class="grande">Ti restituiamo tutto</p><p class="sotto">Se l'offerta non ti torna, una mail e sei fuori</p>
+        <p class="et">01 · Primi giorni</p><p class="titolone">Ti restituiamo tutto</p><p class="sotto">Se l'offerta non ti torna, una mail e sei fuori</p>
       </div>
       <div class="faccia retro">
         <svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg>
-        <p class="et">02 · A fine mesi</p><p class="grande">Resti dentro</p><p class="sotto">finché non ti sei ripagato l'investimento</p>
+        <p class="et">02 · A fine mesi</p><p class="titolone">Resti dentro</p><p class="sotto">finché non ti sei ripagato l'investimento</p>
       </div>
-    </div>
+    </div></div>
     <p class="didascalia">Il rischio sta da questa parte del tavolo.</p>
   </div>
   </div>
