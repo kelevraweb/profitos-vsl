@@ -641,6 +641,12 @@
 .pos .pista img,.pos .griglia img,.pos .storia video{filter:grayscale(.7) brightness(.5) contrast(1.05);transition:filter .45s ease}
 .pos .tessera:hover img,.pos .griglia img:hover,.pos .caso:hover img,.pos .storia:hover video{filter:none}
 
+/* il player: VTurb serve al massimo 1280x720, sopra gli 860px viene ingrandito e sgrana */
+.pos .hero .video{max-width:860px;margin:34px auto 0;border-radius:18px;overflow:hidden;border:1px solid rgba(255,107,0,.3);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(255,107,0,.12);background:#000}
+.pos .hero .video vturb-smartplayer{display:block}
+@media (max-width:900px){.pos .hero .video{max-width:none;border-radius:14px}}
+
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
