@@ -1846,7 +1846,7 @@
     ["La mia azienda vuole un ecosistema suo.","Si può fare: se sei già strutturato te lo costruiamo su misura. Prenota comunque la chiamata e <b>segnalalo quando ti chiediamo di cosa hai bisogno</b>."],
     ["Quanto costa?","Il prezzo te lo diciamo in chiamata, e non è una furbizia per farti prenotare: a quel punto sai già cosa facciamo e come lavoriamo, perché in questa pagina c&rsquo;è tutto. Resta solo da capire quanto investire."]
   ];  $("pos-faq").innerHTML = FAQ.map(function (f, i) {
-    return "<details" + (i ? "" : " open") + "><summary>" + f[0] + "</summary><p>" + f[1] + "</p></details>";
+    return "<details" + (i ? "" : " open") + "><summary><span>" + f[0] + "</span></summary><p>" + f[1] + "</p></details>";
   }).join("");
 
   /* --- Ecosistema Circolare: cerchio su desktop, colonna su telefono --- */
