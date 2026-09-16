@@ -561,11 +561,11 @@
 .pos #pos-percorso{padding-bottom:0}
 .pos .mp-viaggio{position:relative;height:calc(9 * 85vh);margin-top:24px}
 .pos .mp-palco{position:sticky;top:0;height:100vh;overflow:hidden;background:#070504}
-.pos .mp-nebulosa{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.9;will-change:transform;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pos .mp-nebulosa{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.28;filter:brightness(.7) saturate(.75);will-change:transform;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .pos .mp-palco canvas,.pos .mp-novae{position:absolute;inset:0;width:100%;height:100%}
 .pos .mp-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,5,4,.92) 0%,rgba(7,5,4,.72) 30%,rgba(7,5,4,.15) 52%,rgba(7,5,4,0) 70%),linear-gradient(180deg,rgba(7,5,4,.6),rgba(7,5,4,0) 18%,rgba(7,5,4,0) 80%,rgba(7,5,4,.85))}
 .pos .mp-fasci{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.pos .mp-fasci i{position:absolute;top:-30%;height:160%;width:22%;transform:rotate(18deg);background:linear-gradient(90deg,rgba(255,150,80,0),rgba(255,150,80,.07) 45%,rgba(255,150,80,0));filter:blur(14px);animation:pos-fascio 14s ease-in-out infinite alternate}
+.pos .mp-fasci i{position:absolute;top:-30%;height:160%;width:22%;transform:rotate(18deg);background:linear-gradient(90deg,rgba(255,150,80,0),rgba(255,150,80,.04) 45%,rgba(255,150,80,0));filter:blur(14px);animation:pos-fascio 14s ease-in-out infinite alternate}
 .pos .mp-fasci i:nth-child(1){left:38%}.pos .mp-fasci i:nth-child(2){left:58%;width:14%;animation-duration:19s;animation-delay:-6s}.pos .mp-fasci i:nth-child(3){left:76%;width:26%;animation-duration:23s;animation-delay:-11s}
 @keyframes pos-fascio{from{transform:rotate(18deg) translateX(-6%);opacity:.6}to{transform:rotate(18deg) translateX(8%);opacity:1}}
 .pos .mp-nova{transform-box:fill-box;transform-origin:center}
