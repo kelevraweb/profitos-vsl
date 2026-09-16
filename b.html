@@ -25,7 +25,8 @@
 .pos .sez{padding:72px 0;border-top:1px solid var(--bor)}
 .pos .et{color:var(--acc);font-size:12px;font-weight:700;letter-spacing:2.3px;text-transform:uppercase;margin:0 0 12px}
 .pos h1,.pos h2,.pos h3{font-family:var(--black);font-weight:900;color:#fff;margin:0}
-.pos h1{font-size:clamp(34px,4.6vw,58px);line-height:1.06;letter-spacing:-1.8px;text-wrap:balance}
+.pos h1{font-size:clamp(34px,4.6vw,58px);line-height:1.14;letter-spacing:-1.8px;text-wrap:balance}
+.pos h1 mark{padding:0 .28em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .pos h2{font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:-1.2px;margin-bottom:18px;text-wrap:balance}
 .pos h3{font-size:19px;line-height:26px;letter-spacing:-.3px}
 .pos mark{background:var(--acc);color:var(--bg);padding:2px 12px;border-radius:10px}
@@ -84,7 +85,7 @@
 .pos .piede a{color:var(--dim);margin:0 8px}
 .pos .dock{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 24px;background:rgba(12,9,8,.94);border-top:1px solid var(--bor);transform:translateY(110%);transition:transform .3s}
 .pos .dock.su{transform:none}.pos .dock span{font-size:14px;color:#fff;font-weight:600}
-@media (max-width:820px){.pos .due,.pos .strumenti,.pos .griglia,.pos .faq{grid-template-columns:1fr}.pos .testimonianze{grid-template-columns:1fr 1fr}.pos .chi{grid-template-columns:1fr}.pos .chi img{max-width:260px}.pos .sez{padding:52px 0}.pos .dock span{display:none}}
+@media (max-width:820px){.pos h1{line-height:1.2;letter-spacing:-1.2px}.pos h2{letter-spacing:-.8px}.pos .due,.pos .strumenti,.pos .griglia,.pos .faq{grid-template-columns:1fr}.pos .testimonianze{grid-template-columns:1fr 1fr}.pos .chi{grid-template-columns:1fr}.pos .chi img{max-width:260px}.pos .sez{padding:52px 0}.pos .dock span{display:none}}
 </style>
 <div class="pos" id="pos-vsl">
 <div class="barra"><span class="marchio">profit<span class="os">OS</span></span><a class="bottone" href="#" id="pos-cta-barra">Prenota la chiamata</a></div>
