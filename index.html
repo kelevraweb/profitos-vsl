@@ -554,11 +554,15 @@
 .pos .scudo3d .faccia .et{margin:6px 0 8px;font-size:10px;letter-spacing:2px}
 .pos .scudo3d .faccia .titolone{color:#fff;font-size:22px;line-height:24px;font-weight:800;letter-spacing:-.8px;max-width:160px}
 .pos .scudo3d .faccia .sotto{margin-top:8px;color:var(--txt);font-size:12px;line-height:16px;max-width:128px}
+.pos .scudo3d .faccia .marchio-scudo{position:absolute;left:0;right:0;bottom:44px;margin:0;font-size:13px;font-weight:700;letter-spacing:-.3px;color:rgba(240,232,226,.55)}
+.pos .scudo3d .faccia .marchio-scudo b{color:var(--acc);font-weight:800}
 .pos .scudo3d .didascalia{margin-top:14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,226,.45)}
 /* il percorso: la cometa. Nove novae nel cielo, tu sei la cometa che vola da una all'altra scorrendo */
 .pos #pos-percorso{padding-bottom:0}
 .pos .mp-viaggio{position:relative;height:calc(9 * 85vh);margin-top:24px}
-.pos .mp-palco{position:sticky;top:0;height:100vh;overflow:hidden;background:#070504}
+.pos .mp-palco{position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(120% 90% at 70% 40%,rgba(255,107,0,.05),rgba(12,9,8,0) 60%),var(--bg)}
+.pos .mp-bagliore{position:absolute;left:0;top:0;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,107,0,.22) 0%,rgba(255,107,0,.08) 30%,rgba(255,107,0,0) 62%);transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
 .pos .mp-nebulosa{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;opacity:.9;will-change:transform;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .pos .mp-palco canvas,.pos .mp-novae{position:absolute;inset:0;width:100%;height:100%}
 .pos .mp-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(7,5,4,.92) 0%,rgba(7,5,4,.72) 30%,rgba(7,5,4,.15) 52%,rgba(7,5,4,0) 70%),linear-gradient(180deg,rgba(7,5,4,.6),rgba(7,5,4,0) 18%,rgba(7,5,4,0) 80%,rgba(7,5,4,.85))}
@@ -1181,8 +1185,7 @@
 </div>
 <div class="mp-viaggio" id="pos-viaggio">
   <div class="mp-palco">
-    <img class="mp-nebulosa" src="https://kelevraweb.github.io/profitos-vsl/img/spazio.webp" alt="" loading="lazy">
-    <div class="mp-fasci"><i></i><i></i><i></i></div>
+    <div class="mp-bagliore" id="pos-bagliore-mappa"></div>
     <canvas class="mp-stelle"></canvas><canvas class="mp-fascio"></canvas>
     <svg class="mp-novae" id="pos-novae" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"></svg>
     <div class="mp-velo"></div>
@@ -1403,11 +1406,11 @@
       <div class="strato-3d" style="--z:9"><svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg></div>
       <div class="faccia fronte">
         <svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg>
-        <p class="num">01</p><p class="et">Primi giorni</p><p class="titolone">Ti restituiamo tutto</p><p class="sotto">Se l'offerta non ti torna: una mail, e sei fuori.</p>
+        <p class="num">01</p><p class="et">Primi giorni</p><p class="titolone">Ti restituiamo tutto</p><p class="sotto">Se l'offerta non ti torna: una mail, e sei fuori.</p><p class="marchio-scudo">profit<b>OS</b></p>
       </div>
       <div class="faccia retro">
         <svg viewBox="0 0 300 330" aria-hidden="true"><path d="M150,22 L246,56 V150 C246,220 200,272 150,296 C100,272 54,220 54,150 V56 Z"/></svg>
-        <p class="num">02</p><p class="et">A fine mesi</p><p class="titolone">Resti dentro</p><p class="sotto">finché non ti sei ripagato l'investimento.</p>
+        <p class="num">02</p><p class="et">A fine mesi</p><p class="titolone">Resti dentro</p><p class="sotto">finché non ti sei ripagato l'investimento.</p><p class="marchio-scudo">profit<b>OS</b></p>
       </div>
     </div></div>
     <p class="didascalia">Il rischio sta da questa parte del tavolo.</p>
@@ -2053,7 +2056,7 @@ function costruisci(viaggio){
     '<div class="voce"><dt>Che problema risolve</dt><dd class="d-p"></dd></div><div class="voce"><dt>Dove arrivi</dt><dd class="d-a"></dd></div></dl></div>'+
     '<div class="binario"></div><p class="suggerimento">scorri per viaggiare</p></div>';
   var palco = viaggio.querySelector(".mp-palco"), svg = viaggio.querySelector("svg.mp-novae"), cvS = viaggio.querySelector("canvas.mp-stelle"), cvF = viaggio.querySelector("canvas.mp-fascio");
-  var scheda = viaggio.querySelector(".mp-scheda"), binario = viaggio.querySelector(".mp-binario"), neb = viaggio.querySelector(".mp-nebulosa");
+  var scheda = viaggio.querySelector(".mp-scheda"), binario = viaggio.querySelector(".mp-binario");
   var NS = "http://www.w3.org/2000/svg";
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
   var defs = el("defs",{}); var uid = modo;
@@ -2079,7 +2082,7 @@ function costruisci(viaggio){
   /* campo stellare su tre piani + meteore */
   var W=0,H=0,k=1,ox=0,oy=0, piani=[], meteore=[], mx=0,my=0, tx=0,ty=0;
   function misura(){W=palco.clientWidth;H=palco.clientHeight;cvS.width=cvF.width=W;cvS.height=cvF.height=H;k=Math.max(W/1600,H/900);ox=(W-1600*k)/2;oy=(H-900*k)/2}
-  for (var pi=0;pi<3;pi++){var arr=[];for(var i=0;i<(pi===0?160:pi===1?90:40);i++)arr.push({x:Math.random()*1600,y:Math.random()*900,r:(pi+1)*0.55+Math.random()*0.9,f:Math.random()*6.28,v:0.6+Math.random()*1.4});piani.push(arr)}
+  for (var pi=0;pi<3;pi++){var arr=[];for(var i=0;i<(pi===0?110:pi===1?60:26);i++)arr.push({x:Math.random()*1600,y:Math.random()*900,r:(pi+1)*0.55+Math.random()*0.9,f:Math.random()*6.28,v:0.6+Math.random()*1.4});piani.push(arr)}
   var ctxS=cvS.getContext("2d"), ctxF=cvF.getContext("2d"), progresso=0, fino=0, finoPrima=0, ultima=-1, vivo=true;
   function wx(x){return ox+x*k} function wy(y){return oy+y*k}
   function disegnaStelle(t){
@@ -2124,10 +2127,11 @@ function costruisci(viaggio){
   function mostra(kk){ if(kk===ultima)return; ultima=kk; var T=TAPPE[kk]; scheda.classList.remove("dentro");
     setTimeout(function(){scheda.querySelector(".quando").textContent=T.q;scheda.querySelector(".n").textContent="0"+(kk+1);scheda.querySelector("h3").textContent=T.t;scheda.querySelector(".d-s").innerHTML=T.s;scheda.querySelector(".d-o").innerHTML=T.o;scheda.querySelector(".d-p").innerHTML=T.p;scheda.querySelector(".d-a").innerHTML=T.a;scheda.classList.add("dentro")},120);
     novae.forEach(function(n,i){n.setAttribute("class","mp-nova "+(i<kk?"fatta":i===kk?"viva":"futura"))});
+    var bag=viaggio.querySelector(".mp-bagliore"); if(bag){bag.style.transform="translate("+wx(P[kk][0])+"px,"+wy(P[kk][1])+"px)";}
     if (kk>0){ var o=onde[kk]; o.classList.remove("via"); void o.getBBox(); o.classList.add("via"); } tacche.forEach(function(b,i){b.classList.toggle("fatta",i<kk);b.classList.toggle("viva",i===kk)}) }
   function passo(){ var r=viaggio.getBoundingClientRect(); var tot=r.height-innerHeight; if(tot<=0)return; var p=Math.min(1,Math.max(0,-r.top/tot)); progresso=p;
     var kk=Math.min(P.length-1,Math.floor(p*P.length)); var frac=p*P.length-kk; fino=Math.round(Math.min(ROTTA.length-1,(kk+frac)*PASSI)); if(kk===P.length-1)fino=ROTTA.length-1;
-    neb.style.transform="translate("+(-p*3+tx*1.2)+"%,"+(p*2+ty*1.2)+"%) scale(1.04)"; mostra(kk) }
+    mostra(kk) }
   palco.addEventListener("mousemove",function(e){var r=palco.getBoundingClientRect();mx=(e.clientX-r.left)/r.width*2-1;my=(e.clientY-r.top)/r.height*2-1});
   palco.addEventListener("mouseleave",function(){mx=0;my=0});
   var inVista=false;
