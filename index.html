@@ -95,11 +95,11 @@
 .pos .hero .sub,.pos .conto{margin-left:auto;margin-right:auto}
 /* hero: occhiello, titolo grande (piu' dei titoli di sezione), riga sotto, nota, player */
 .pos .hero .et{justify-content:center;margin-bottom:26px}
-.pos .hero h1{font-size:clamp(40px,5vw,66px);line-height:1.04;letter-spacing:-2.4px;max-width:22ch;text-wrap:balance}
+.pos .hero h1{font-size:clamp(40px,5vw,66px);line-height:1.04;letter-spacing:-2.4px;max-width:none;white-space:nowrap}
 .pos .hero h1 mark{padding:2px 18px;border-radius:14px}
 .pos .hero .cond{margin-top:26px;font-size:21px;line-height:31px}
 .pos .hero .cond{max-width:58ch;margin-left:auto;margin-right:auto}
-@media (max-width:1024px){.pos .hero h1{font-size:clamp(34px,8vw,48px);letter-spacing:-1.6px;max-width:none}.pos .hero h1 mark{padding:0 10px;border-radius:10px}.pos .hero .cond{font-size:18px;line-height:27px}}
+@media (max-width:1024px){.pos .hero h1{font-size:clamp(34px,8vw,48px);letter-spacing:-1.6px;max-width:none;white-space:normal;text-wrap:balance}.pos .hero h1 br{display:none}.pos .hero h1 mark{padding:0 10px;border-radius:10px}.pos .hero .cond{font-size:18px;line-height:27px}}
 .pos mark{white-space:nowrap}
 
 /* countdown */
@@ -678,6 +678,18 @@
 @media (max-width:1100px){.pos .palco-video{padding:28px 18px;margin-top:28px}.pos .palco-video .chip{display:none}.pos .palco-video .orbita{display:none}}
 @media (max-width:900px){.pos .palco-video{padding:0;background:none;-webkit-mask:none;mask:none}.pos .palco-video .finestra{border-radius:14px}}
 @media (prefers-reduced-motion:reduce){.pos .palco-video .orbita,.pos .palco-video .chip,.pos .palco-video .barra em{animation:none}}
+/* le venti cose che oggi fai tu: in orbita attorno al palco, dietro la finestra del video */
+.pos .sciame{position:absolute;pointer-events:none;z-index:0;transform:scaleY(.48)}
+.pos .sciame span{position:absolute;left:50%;top:50%;--r:min(600px,42vw - 60px);
+  transform:translate(-50%,-50%) rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a)));animation:pos-sciame 46s linear infinite}
+.pos .sciame span:nth-child(odd){--r:min(690px,48vw - 80px);animation-duration:64s;animation-direction:reverse}
+.pos .sciame b{display:block;transform:scaleY(2.083);padding:7px 12px;border-radius:999px;border:1px solid rgba(255,107,0,.25);
+  background:rgba(15,11,9,.92);color:rgba(240,232,226,.6);font-size:12px;font-weight:600;white-space:nowrap}
+.pos .sciame span:nth-child(odd) b{color:rgba(240,232,226,.42);border-color:rgba(255,107,0,.16)}
+@keyframes pos-sciame{to{transform:translate(-50%,-50%) rotate(calc(var(--a) + 360deg)) translateX(var(--r)) rotate(calc(-1 * var(--a) - 360deg))}}
+.pos.anima .sciame{opacity:0}.pos.anima.pronta .sciame{opacity:1;transition:opacity 1.4s .7s}
+@media (max-width:1100px){.pos .sciame{display:none}}
+@media (prefers-reduced-motion:reduce){.pos .sciame span{animation:none}}
 /* le tre tappe del percorso: una linea, tre punti */
 .pos .tappe{position:relative;padding-top:30px}
 .pos .tappe::before{content:"";position:absolute;left:16%;right:16%;top:0;height:2px;
@@ -844,12 +856,13 @@
 <header class="hero">
   <div class="wide">
     <p class="et">Prima di parlarci · 35 minuti</p>
-    <h1>Il video che ti risparmia <mark>tutti i tentativi</mark> andati a vuoto.</h1>
+    <h1>Il video che ti risparmia<br><mark>tutti i tentativi</mark> andati a vuoto.</h1>
     <p class="cond">Offerta, contenuti, DM, funnel, vendita: <b>come si incastrano</b>, e cosa resta da fare a te
     (poco).</p>
     <p class="cond nota-hero">Non è la nicchia, non è l&rsquo;offerta, non è il posizionamento: quelle te le hanno
     già vendute. Nel 2026 la fiducia te la devi guadagnare, e per guadagnarla ci sono <u>venti cose da fare</u>.
     Le fai tutte tu, ed è per questo che non ne funziona nessuna.</p>
+    <div class="sciame" id="pos-sciame" aria-hidden="true"></div>
     <div class="palco-video" id="pos-palco-video">
       <div class="orbita o1"><i></i></div><div class="orbita o2"><i></i><i></i></div>
 
@@ -1826,6 +1839,7 @@
   if (h1) {
     var pezzi = [];
     h1.childNodes.forEach(function (nodo) {
+      if (nodo.nodeName === "BR") { pezzi.push(document.createElement("br")); return; }
       if (nodo.nodeType === 3) {
         nodo.textContent.split(/(\s+)/).forEach(function (t) {
           if (!t.trim()) { pezzi.push(document.createTextNode(t)); return; }
@@ -2073,7 +2087,9 @@
     inp.addEventListener("keydown", function (e) { if (e.key === "Enter" && inp.value.trim()) mostra(inp.value); });
   })();
 
-  /* --- il percorso: la cometa (nove novae, scroll-driven) --- */
+  /* --- il percorso: la cometa (nove novae, scroll-driven). In una funzione propria: le sue variabili
+     (N, P, RAGGI, TAPPE) non devono sovrascrivere quelle del ritratto, che vive nello stesso scope --- */
+  (function () {
   var TAPPE = [
   {q:"Giorno 0", t:"Entri, e parti lo stesso giorno", n:"Onboarding", s:"Accessi alla piattaforma, roadmap su misura costruita sul punto da cui parti, prima call fissata.", o:"Sai esattamente cosa fare nei primi sette giorni, e con chi.", p:"La paralisi da corso: mille video e nessun ordine.", a:"Hai un ordine. Non si salta."},
   {q:"Giorni 1-7", t:"L'offerta, e nient'altro", n:"Offerta", s:"Analisi dell'offerta in sei passaggi con i punteggi, validata insieme in call. Prima di chiuderla non si tocca né un contenuto né un funnel.", o:"La carta dell'offerta nera su bianco, posizionamento e promessa, il brand book, i lead magnet proposti.", p:"Un'offerta che non si distingue: tutto il resto amplificherebbe l'errore.", a:"Un posizionamento scritto <b>senza averlo scritto tu</b>. Qui scatta il primo strato di garanzia."},
@@ -2197,6 +2213,7 @@ function costruisci(viaggio){
   misura(); addEventListener("resize",function(){misura();passo()}); addEventListener("scroll",passo,{passive:true}); passo();
 }
   var _v = document.getElementById("pos-viaggio"); if (_v) costruisci(_v);
+  })();
 
   /* il palco del video: la finestra si inclina di qualche grado verso il mouse */
   var palcoV = document.getElementById("pos-palco-video"), fin = document.getElementById("pos-finestra");
@@ -2207,6 +2224,25 @@ function costruisci(viaggio){
     function fmuovi() { if (!fgira) { fgira = true; fpasso(); } }
     palcoV.addEventListener("mousemove", function (e) { var r = palcoV.getBoundingClientRect(); fx = (e.clientX - r.left) / r.width * 2 - 1; fy = (e.clientY - r.top) / r.height * 2 - 1; fmuovi(); });
     palcoV.addEventListener("mouseleave", function () { fx = 0; fy = 0; fmuovi(); });
+  }
+
+  /* le venti cose che oggi fai tu: in orbita attorno al palco, dietro la finestra */
+  var sciame = document.getElementById("pos-sciame");
+  if (sciame && palcoV) {
+    var COSE = ["rispondere ai DM", "inventare il post di oggi", "le stories, tutti i giorni", "il follow-up dimenticato", "scrivere il lead magnet",
+      "montare il video", "la landing da rifare", "il copy delle ads", "guardare i dati", "la call da convincere", "il preventivo", "il calendario editoriale",
+      "il webinar da preparare", "la VSL da riscrivere", "rincorrere il setter", "erogare la delivery", "i clienti fuori target", "la finestra di 24 ore",
+      "il tetto che non rompi", "il tuo martedì"];
+    COSE.forEach(function (c, k) {
+      var sp = document.createElement("span"); sp.style.setProperty("--a", (k / COSE.length * 360) + "deg");
+      var b = document.createElement("b"); b.textContent = c; sp.appendChild(b); sciame.appendChild(sp);
+    });
+    function sistemaSciame() {
+      sciame.style.left = palcoV.offsetLeft + "px"; sciame.style.top = palcoV.offsetTop + "px";
+      sciame.style.width = palcoV.offsetWidth + "px"; sciame.style.height = palcoV.offsetHeight + "px";
+    }
+    sistemaSciame(); addEventListener("resize", sistemaSciame); addEventListener("load", sistemaSciame);
+    [400, 1500, 4000].forEach(function (t) { setTimeout(sistemaSciame, t); });
   }
 
   /* tre porte: la foto di sfondo segue il mouse (parallasse leggera) e zooma, senza mai scoprire i bordi */
