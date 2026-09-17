@@ -789,14 +789,14 @@
 .pos .griglia{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
 .pos .griglia.con-rit{margin-top:100px;row-gap:90px}
 /* caso con ritratto scontornato: la persona esce dal bordo in alto, il testo sta a sinistra */
-.pos .caso.rit{position:relative;padding-right:44%;min-height:420px;background:radial-gradient(55% 70% at 100% 60%,rgba(255,107,0,.16),transparent 70%),var(--s3)}
-.pos .caso.rit .rit-box{position:absolute;right:0;top:-72px;bottom:0;width:48%;overflow:hidden;border-radius:0 0 20px 0;pointer-events:none;-webkit-mask:linear-gradient(90deg,transparent,#000 42%);mask:linear-gradient(90deg,transparent,#000 42%)}
-.pos .caso.rit .rit-box img{position:absolute;right:-8%;bottom:0;height:100%;width:auto;max-width:none;filter:saturate(.85) contrast(1.05)}
+/* caso con ritratto: la persona sta in alto a destra e esce dal bordo; il testo di testa le gira intorno, i bullet sotto vanno su due colonne */
+.pos .caso.rit{position:relative;min-height:420px;background:radial-gradient(55% 70% at 100% 40%,rgba(255,107,0,.16),transparent 70%),var(--s3)}
+.pos .caso.rit .rit-box{position:absolute;right:0;top:-72px;bottom:0;width:60%;overflow:hidden;border-radius:0 0 20px 0;pointer-events:none;-webkit-mask:linear-gradient(90deg,transparent,#000 26%);mask:linear-gradient(90deg,transparent,#000 26%)}
+.pos .caso.rit .rit-box img{position:absolute;right:-4%;top:0;height:58%;width:auto;max-width:none;filter:saturate(.85) contrast(1.05);-webkit-mask:linear-gradient(180deg,#000 78%,transparent);mask:linear-gradient(180deg,#000 78%,transparent)}
 .pos .caso.rit .et,.pos .caso.rit h3,.pos .caso.rit p,.pos .caso.rit ul{position:relative;z-index:1}
-.pos .caso.rit.coppia{padding-right:50%}
-.pos .caso.rit.coppia .rit-box{width:62%;-webkit-mask:linear-gradient(90deg,transparent,#000 26%);mask:linear-gradient(90deg,transparent,#000 26%)}
-.pos .caso.rit.coppia .rit-box img{top:0;bottom:auto;right:-4%;height:68%;-webkit-mask:linear-gradient(180deg,#000 78%,transparent);mask:linear-gradient(180deg,#000 78%,transparent)}
-@media (max-width:900px){.pos .caso.rit{padding-right:36px;padding-top:0;min-height:0}.pos .caso.rit .rit-box{position:relative;top:0;bottom:auto;right:auto;width:100%;height:280px;margin:-60px 0 6px;border-radius:0;-webkit-mask:linear-gradient(180deg,#000 58%,transparent);mask:linear-gradient(180deg,#000 58%,transparent)}.pos .caso.rit .rit-box img{right:auto;left:50%;transform:translateX(-50%)}.pos .griglia.con-rit{margin-top:110px;row-gap:84px}.pos .caso.rit.coppia{padding-right:36px}.pos .caso.rit.coppia .rit-box{width:100%;-webkit-mask:linear-gradient(180deg,#000 58%,transparent);mask:linear-gradient(180deg,#000 58%,transparent)}.pos .caso.rit.coppia .rit-box img{top:auto;bottom:0;right:auto;height:100%;-webkit-mask:none;mask:none}}
+.pos .caso.rit > h3,.pos .caso.rit > p:not(.impact){padding-right:52%}.pos .caso.rit > .et{padding-right:40%}
+.pos .caso.rit ul{display:grid;grid-template-columns:1fr 1fr;gap:2px 22px}
+@media (max-width:900px){.pos .caso.rit{padding-top:0;min-height:0}.pos .caso.rit > .et,.pos .caso.rit > h3,.pos .caso.rit > p:not(.impact){padding-right:0}.pos .caso.rit ul{grid-template-columns:1fr}.pos .caso.rit .rit-box{position:relative;top:0;bottom:auto;right:auto;width:100%;height:280px;margin:-60px 0 6px;border-radius:0;-webkit-mask:linear-gradient(180deg,#000 58%,transparent);mask:linear-gradient(180deg,#000 58%,transparent)}.pos .caso.rit .rit-box img{right:auto;left:50%;top:auto;bottom:0;height:100%;transform:translateX(-50%);-webkit-mask:none;mask:none}.pos .griglia.con-rit{margin-top:110px;row-gap:84px}}
 .pos .caso{border:1px solid var(--bor);border-radius:20px;padding:36px;background:var(--s3)}
 .pos .caso h3{font-size:19px;line-height:24px;letter-spacing:-.38px;margin-top:8px}
 .pos .caso .testa{display:flex;align-items:center;gap:16px}
