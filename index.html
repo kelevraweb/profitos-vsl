@@ -2416,14 +2416,20 @@
         if (Math.abs(meta - ora) > 0.01 || Math.abs(tx - vx) > 0.005 || Math.abs(ty - vy) > 0.005) requestAnimationFrame(passo); else gira = false;
       }
       function muovi() { if (!gira) { gira = true; requestAnimationFrame(passo); } }
+      /* mouse fermo (stesse coordinate, anche se si scorre con la rotella) per 7 secondi: la testa torna dritta */
+      var ux = null, uy = null, tFermoMouse = null;
+      function tornaDritta() { meta = C; tx = 0; ty = 0; muovi(); }
       sezChi.addEventListener("mousemove", function (e) {
+        if (e.clientX === ux && e.clientY === uy) return;
+        ux = e.clientX; uy = e.clientY;
+        clearTimeout(tFermoMouse); tFermoMouse = setTimeout(tornaDritta, 7000);
         carica();
         var r = sezChi.getBoundingClientRect();
         var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
         meta = x < 0.5 ? x * 2 * C : C + (x - 0.5) * 2 * (N - 1 - C); tx = x * 2 - 1; ty = Math.max(-1, Math.min(1, y * 2 - 1)); muovi();
         sveglia(); riposa();
       });
-      sezChi.addEventListener("mouseleave", function () { meta = C; tx = 0; ty = 0; muovi(); sveglia(); riposa(); });
+      sezChi.addEventListener("mouseleave", function () { clearTimeout(tFermoMouse); ux = uy = null; meta = C; tx = 0; ty = 0; muovi(); sveglia(); riposa(); });
       /* anche senza mai entrare col mouse: quando la sezione e' in vista, al centro respira */
       new IntersectionObserver(function (e) { e.forEach(function (x) { if (x.isIntersecting) riposa(); else { sveglia(); if (palp.src) palp.pause(); } }); }, { rootMargin: "100px 0px" }).observe(rit);
     }
