@@ -1364,11 +1364,8 @@
 </div></div>
 
 <div class="sez" id="pos-andrea">
-  <div class="ritratto vivo" id="pos-ritratto" data-base="https://kelevraweb.github.io/profitos-vsl/img/andrea/f" data-ext=".webp" data-frames="38" data-centro="17">
-    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f17.webp" width="900" height="1125" alt="Andrea Audisio" loading="lazy"><img class="quadro quadro2" src="https://kelevraweb.github.io/profitos-vsl/img/andrea/f17.webp" width="900" height="1125" alt="" aria-hidden="true" loading="lazy">
-    <video class="respiro" muted loop playsinline preload="none" poster="https://kelevraweb.github.io/profitos-vsl/img/andrea-ritratto.webp" data-src="https://kelevraweb.github.io/profitos-vsl/img/andrea-testa.mp4" aria-hidden="true"></video>
-    <video class="palpebre" muted loop playsinline preload="none" data-src="https://kelevraweb.github.io/profitos-vsl/img/andrea-fermo.mp4" aria-hidden="true"></video>
-    <span class="didascalia">muovi il mouse: ti segue</span>
+  <div class="ritratto" id="pos-ritratto">
+    <img class="quadro" src="https://kelevraweb.github.io/profitos-vsl/img/andrea-scrivania.webp" width="1344" height="2016" alt="Andrea Audisio" loading="lazy">
   </div>
 <div class="wide"><div class="chi">
   <div>
@@ -2211,7 +2208,7 @@
   /* ritratto vivo: 21 fotogrammi della testa che gira (sinistra, frontale, destra); il mouse sulla sezione sceglie il fotogramma,
      e il riquadro si inclina un filo verso il puntatore. Senza mouse (touch) parte il video in loop. */
   var rit = document.getElementById("pos-ritratto");
-  if (rit) {
+  if (rit && rit.classList.contains("vivo")) {
     var senzaMouse = matchMedia("(hover: none)").matches, sezChi = rit.closest(".sez");
     if (senzaMouse || calmo) {
       rit.classList.add("tocco");
