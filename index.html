@@ -2011,10 +2011,57 @@
   /* --- nastro dei loghi sotto la striscia: la stessa collezione della pagina di ringraziamento --- */
   (function () {
     var riga = $("pos-nastro"); if (!riga) return;
+    var ALTRI = [
+      'mono-alfa-romeo.webp',
+      'mono-aqua.webp',
+      'mono-audi.webp',
+      'mono-bebe-vio.webp',
+      'mono-bmw.webp',
+      'mono-co2-advertising.webp',
+      'mono-confesercenti.webp',
+      'mono-consulente-high-ticket.webp',
+      'mono-digital-product-mastery.webp',
+      'mono-ducati.webp',
+      'mono-epicura.webp',
+      'mono-ford.webp',
+      'mono-forte-fenestrelle.webp',
+      'mono-freelance-day.webp',
+      'mono-gabriele-martelli.webp',
+      'mono-growlancer.webp',
+      'mono-isacco-bonardi.webp',
+      'mono-king-seduction.webp',
+      'mono-klepierre.webp',
+      'mono-lego.webp',
+      'mono-lorenzo-savasta.webp',
+      'mono-luca-mercatanti.webp',
+      'mono-marketeen.webp',
+      'mono-marketing-consulting.webp',
+      'mono-masters-of-magic.webp',
+      'mono-msc.webp',
+      'mono-multycashflow.webp',
+      'mono-net-work.webp',
+      'mono-porsche.webp',
+      'mono-protocollo-anticrisi.webp',
+      'mono-regione-piemonte.webp',
+      'mono-savills.webp',
+      'mono-sistemilegali.webp',
+      'mono-soco.webp',
+      'mono-sos-wp.webp',
+      'mono-stelle-di-lorenzo.webp',
+      'mono-to-be.webp',
+      'mono-verum.webp',
+      'mono-volkswagen.webp',
+      'mono-wine-marketing.webp',
+      'mono-world-comm.webp',
+      'mono-yamaha.webp',
+      'mono-zendiet.webp'
+    ];
     var pezzi = [];
-    for (var giro = 0; giro < 2; giro++)
+    for (var giro = 0; giro < 2; giro++) {
       for (var i = 1; i <= 25; i++)
         pezzi.push('<img src="https://kelevraweb.github.io/profitos-vsl/img/nastro/logo-' + (i < 10 ? '0' + i : i) + '.webp" alt="" loading="lazy">');
+      ALTRI.forEach(function (n) { pezzi.push('<img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/' + n + '" alt="" loading="lazy">'); });
+    }
     riga.innerHTML = pezzi.join("");
   })();
 
