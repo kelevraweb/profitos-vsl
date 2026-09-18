@@ -142,9 +142,10 @@
 .pos .pista{display:flex;gap:12px;width:max-content;animation:pos-scorri 52s linear infinite}
 /* nastro dei loghi: gli stessi della pagina di ringraziamento, in bianco su nero */
 .pos .nastro{margin-top:26px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.pos .nastro-riga{display:flex;gap:56px;width:max-content;align-items:center;animation:pos-scorri 48s linear infinite}
-.pos .nastro-riga img{height:26px;width:auto;opacity:.62;filter:brightness(1.1)}
-@media (max-width:900px){.pos .nastro{margin-top:18px}.pos .nastro-riga{gap:38px}.pos .nastro-riga img{height:20px}}
+.pos .nastro-riga{display:flex;gap:44px;width:max-content;align-items:center;animation:pos-scorri 64s linear infinite}
+.pos .nastro-riga .lg{flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:132px;height:44px}
+.pos .nastro-riga img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;opacity:.68;filter:brightness(1.12)}
+@media (max-width:900px){.pos .nastro{margin-top:18px}.pos .nastro-riga{gap:30px}.pos .nastro-riga .lg{width:104px;height:34px}}
 @keyframes pos-scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .pos .tessera{display:flex;align-items:center;gap:12px;flex-shrink:0;
   border:1px solid var(--bor);border-radius:16px;padding:12px 16px;background:rgba(15,11,9,.6)}
@@ -2008,9 +2009,12 @@
   $("pos-cta-dock").href = URL_CHIAMATA;
   $("pos-cta-candidatura").href = URL_CANDIDATURA;
 
-  /* --- nastro dei loghi sotto la striscia: la stessa collezione della pagina di ringraziamento --- */
+  /* --- nastro dei loghi sotto la striscia: quelli della pagina di ringraziamento
+     più gli altri della collezione. Fuori chi è già nella striscia qui sopra. --- */
   (function () {
     var riga = $("pos-nastro"); if (!riga) return;
+    var M = "https://kelevraweb.github.io/profitos-vsl/img/";
+    var SALTA = [2, 7, 19, 23];
     var ALTRI = [
       'mono-alfa-romeo.webp',
       'mono-aqua.webp',
@@ -2020,14 +2024,12 @@
       'mono-co2-advertising.webp',
       'mono-confesercenti.webp',
       'mono-consulente-high-ticket.webp',
-      'mono-digital-product-mastery.webp',
       'mono-ducati.webp',
       'mono-epicura.webp',
       'mono-ford.webp',
       'mono-forte-fenestrelle.webp',
       'mono-freelance-day.webp',
       'mono-gabriele-martelli.webp',
-      'mono-growlancer.webp',
       'mono-isacco-bonardi.webp',
       'mono-king-seduction.webp',
       'mono-klepierre.webp',
@@ -2053,14 +2055,14 @@
       'mono-volkswagen.webp',
       'mono-wine-marketing.webp',
       'mono-world-comm.webp',
-      'mono-yamaha.webp',
-      'mono-zendiet.webp'
+      'mono-yamaha.webp'
     ];
     var pezzi = [];
+    function metti(src) { pezzi.push('<span class="lg"><img src="' + src + '" alt="" loading="lazy"></span>'); }
     for (var giro = 0; giro < 2; giro++) {
       for (var i = 1; i <= 25; i++)
-        pezzi.push('<img src="https://kelevraweb.github.io/profitos-vsl/img/nastro/logo-' + (i < 10 ? '0' + i : i) + '.webp" alt="" loading="lazy">');
-      ALTRI.forEach(function (n) { pezzi.push('<img src="https://kelevraweb.github.io/profitos-vsl/img/mondo/' + n + '" alt="" loading="lazy">'); });
+        if (SALTA.indexOf(i) < 0) metti(M + 'nastro/logo-' + (i < 10 ? '0' + i : i) + '.webp');
+      ALTRI.forEach(function (n) { metti(M + 'mondo/' + n); });
     }
     riga.innerHTML = pezzi.join("");
   })();
