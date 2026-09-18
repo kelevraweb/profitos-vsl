@@ -707,6 +707,8 @@
 .pos .palco-video .finestra{position:relative;border:1px solid rgba(255,107,0,.38);border-radius:20px;overflow:hidden;background:#0a0705;
   box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.6) inset,0 0 80px rgba(255,107,0,.16);
   transform-style:preserve-3d;will-change:transform;transition:transform .15s linear}
+/* fuori schermo niente trasformazioni: altrimenti il mini player resta prigioniero della cornice */
+.pos .palco-video.via .finestra{transform:none!important;will-change:auto;transform-style:flat;overflow:visible}
 .pos .palco-video .barra{display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;background:linear-gradient(180deg,rgba(38,24,14,.98),rgba(20,13,9,.98));border-bottom:1px solid rgba(255,107,0,.2)}
 .pos .palco-video .barra i{width:10px;height:10px;border-radius:50%;background:rgba(255,107,0,.25);border:1px solid rgba(255,107,0,.45)}
 .pos .palco-video .barra i:first-child{background:var(--acc)}
@@ -2100,7 +2102,7 @@
   /* --- striscia: lista stampata due volte, l'animazione trasla di -50% --- */
   var RAIL = [
     ["IE","Investitore Efficace","Finanza personale","0","4M€","all'anno","mondo/mono-investitore-efficace.webp"],
-    ["SV","SalesValley","Sales recruitment","0","70+","clienti in 12 mesi","mondo/mono-salesvalley.webp"],
+    ["SV","SalesValley","Sales recruitment","0","100+","clienti B2B","mondo/mono-salesvalley.webp"],
     ["EV","Evolutiaa","Liberi professionisti","5-6K","60-70K","al mese","mondo/mono-evolutiaa.webp"],
     ["FE","Financial Elite","Lorenzo Bignami","","20K","al mese","mondo/mono-financial-elite.webp"],
     ["ST","100k SalesTraining","Ivan Greppi","","20K","al mese","community/greppi-avatar.webp"],
@@ -2128,9 +2130,9 @@
      ["Creato e lanciato il brand da zero","Strutturato community funnel e prime campagne advertising","Installate SOP e procedure di gestione team e processi","Portato il business da startup a brand leader di nicchia"],
      "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab8d19a2eb1d7808531db.jpeg",
      "https://kelevraweb.github.io/profitos-vsl/img/casi/felipe.webp"],
-    ["SalesValley","+70 clienti B2B in 12 mesi",
-     "SalesValley è un progetto nostro, nato da zero e diventato in meno di un anno il punto di riferimento in Italia per hiring di sales e setter. In una nicchia iper-competitiva siamo riusciti a costruire un'azienda solida, con un posizionamento forte e clienti tra le aziende più importanti del Paese.",
-     ["Creato l'azienda e il brand da zero","Scalati a quasi 80 clienti in meno di un anno","Posizionamento come leader nazionale in Sales Recruitment","Team, procedure e academy interna costruite da zero"],
+    ["SalesValley","+100 clienti B2B, dai coach alle aziende corporate",
+     "SalesValley è un progetto nostro, nato da zero e diventato in meno di un anno il punto di riferimento in Italia per hiring di sales e setter. In una nicchia iper-competitiva siamo riusciti a costruire un'azienda solida, con un posizionamento forte e clienti che vanno dai coach alle aziende corporate come <b>Verisure</b> ed <b>Eolo</b>.",
+     ["Creato l'azienda e il brand da zero","Oltre 100 clienti B2B","Corporate come Verisure ed Eolo, non solo coach e consulenti","Team, procedure e academy interna costruite da zero"],
      "https://assets.cdn.filesafe.space/yfFcdqju49Ta8CnyU0nO/media/6a9ab92280583b8e7057a1c0.jpg",
      "https://kelevraweb.github.io/profitos-vsl/img/casi/salesvalley.webp", "coppia"],
     ["Evolutia","Da 6K a oltre 30/40K al mese in pochi mesi",
@@ -2772,6 +2774,13 @@ function costruisci(viaggio){
     function fmuovi() { if (!fgira) { fgira = true; fpasso(); } }
     palcoV.addEventListener("mousemove", function (e) { var r = palcoV.getBoundingClientRect(); fx = (e.clientX - r.left) / r.width * 2 - 1; fy = (e.clientY - r.top) / r.height * 2 - 1; fmuovi(); });
     palcoV.addEventListener("mouseleave", function () { fx = 0; fy = 0; fmuovi(); });
+  }
+  /* il mini player del video: appare quando il palco esce dallo schermo, e per restare
+     appiccicato all'angolo ha bisogno che la cornice non sia più trasformata */
+  if (palcoV && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) { palcoV.classList.toggle("via", !v.isIntersecting); });
+    }, { rootMargin: "0px" }).observe(palcoV);
   }
 
   /* le venti cose che oggi fai tu: in orbita attorno al palco, dietro la finestra */
