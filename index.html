@@ -140,6 +140,11 @@
 .pos .striscia .titolo{max-width:76rem;margin:0 auto 14px;padding:0 40px;
   color:var(--dim);font-size:11px;font-weight:600;letter-spacing:1.76px;text-transform:uppercase}
 .pos .pista{display:flex;gap:12px;width:max-content;animation:pos-scorri 52s linear infinite}
+/* nastro dei loghi: gli stessi della pagina di ringraziamento, in bianco su nero */
+.pos .nastro{margin-top:26px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pos .nastro-riga{display:flex;gap:56px;width:max-content;align-items:center;animation:pos-scorri 48s linear infinite}
+.pos .nastro-riga img{height:26px;width:auto;opacity:.62;filter:brightness(1.1)}
+@media (max-width:900px){.pos .nastro{margin-top:18px}.pos .nastro-riga{gap:38px}.pos .nastro-riga img{height:20px}}
 @keyframes pos-scorri{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .pos .tessera{display:flex;align-items:center;gap:12px;flex-shrink:0;
   border:1px solid var(--bor);border-radius:16px;padding:12px 16px;background:rgba(15,11,9,.6)}
@@ -980,6 +985,7 @@
 <div class="striscia">
   <p class="titolo">Hanno già lavorato con noi</p>
   <div class="pista" id="pos-pista"></div>
+  <div class="nastro"><div class="nastro-riga" id="pos-nastro"></div></div>
 </div>
 
 <nav class="menu" id="pos-menu" aria-label="Sezioni della pagina">
@@ -2001,6 +2007,47 @@
   $("pos-cta").href = URL_CHIAMATA;
   $("pos-cta-dock").href = URL_CHIAMATA;
   $("pos-cta-candidatura").href = URL_CANDIDATURA;
+
+  /* --- nastro dei loghi sotto la striscia: la stessa collezione della pagina di ringraziamento --- */
+  (function () {
+    var riga = $("pos-nastro"); if (!riga) return;
+    var pezzi = [];
+    for (var giro = 0; giro < 2; giro++)
+      for (var i = 1; i <= 25; i++)
+        pezzi.push('<img src="https://kelevraweb.github.io/profitos-vsl/img/nastro/logo-' + (i < 10 ? '0' + i : i) + '.webp" alt="" loading="lazy">');
+    riga.innerHTML = pezzi.join("");
+  })();
+
+  /* --- questa pagina è il primo passo del funnel: la visita finisce nel registro
+     delle candidature, e la sessione prosegue nel form --- */
+  (function () {
+    var ROBOT = /bot|crawl|spider|slurp|facebookexternalhit|facebot|whatsapp|telegram|embedly|preview|headless|lighthouse|pingdom|gtmetrix|python|curl|wget|monitor/i;
+    if (ROBOT.test(navigator.userAgent || "") || navigator.webdriver === true) return;
+    var URL_REG = "https://gthfuexuljqiguwdpqvq.supabase.co/rest/v1/candidatura_sessioni";
+    var CHIAVE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0aGZ1ZXh1bGpxaWd1d2RwcXZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0OTM2NDEsImV4cCI6MjA5NjA2OTY0MX0.5oSmwDcxaqKLywmzUIVSk_goFp-EXCgNaaJGiNU5DTI";
+    /* stessa sessione del form: dura 30 minuti dall'ultimo movimento */
+    var SID = (function () {
+      try {
+        var v = JSON.parse(localStorage.getItem("po_sessione") || "null");
+        if (v && v.id && Date.now() - v.t < 1800000) { localStorage.setItem("po_sessione", JSON.stringify({ id: v.id, t: Date.now() })); return v.id; }
+      } catch (e) {}
+      var nuovo = (crypto && crypto.randomUUID) ? crypto.randomUUID() : "s-" + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+      try { localStorage.setItem("po_sessione", JSON.stringify({ id: nuovo, t: Date.now() })); } catch (e) {}
+      return nuovo;
+    })();
+    try {
+      fetch(URL_REG, { method: "POST", keepalive: true,
+        headers: { apikey: CHIAVE, Authorization: "Bearer " + CHIAVE, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify([{ sessione: SID, ultimo_passo: "apertura home", ultimo_indice: 1,
+          aggiornato_il: new Date().toISOString(), utm: location.search ? location.search.slice(1) : null,
+          schermo: innerWidth + "x" + innerHeight }]) }).catch(function () {});
+    } catch (e) {}
+    /* la sessione viaggia fino al form */
+    var coda = (location.search ? location.search + "&" : "?") + "sid=" + SID;
+    ["pos-cta", "pos-cta-dock", "pos-cta-candidatura"].forEach(function (id) {
+      var a = $(id); if (a && /\/candidatura/.test(a.href)) a.href = a.href.split("?")[0] + coda;
+    });
+  })();
 
   /* --- striscia: lista stampata due volte, l'animazione trasla di -50% --- */
   var RAIL = [
